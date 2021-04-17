@@ -5,6 +5,21 @@
     <script type="text/javascript" src="./sup/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="./sup/jquery.mobile-1.4.5.min.js"></script>
     <title>file list</title>
+
+    <script>
+
+        var filter = "win16|win32|win64|mac|macintel";
+        if ( navigator.platform ) {
+            if (filter.indexOf( navigator.platform.toLowerCase() ) < 0 ) { 
+                //mobile 
+                alert('mobile 접속'); 
+            } else { 
+                //pc 
+                alert('pc 접속'); } 
+            }
+    </script>
+
+
 </head>
 
     <form>
@@ -33,15 +48,14 @@
             </div>
 
             <!-- COPY BELOW START -->
-            <div data-role="collapsible" data-filtertext=""> 
+            <!-- <div data-role="collapsible" data-filtertext=""> 
                 <h3></h3>
                 <ul data-role="listview" data-inset="false">
                     <li><a href="">src</a></li>
                     <li><a href="">api</a></li>
                 </ul>
-            </div>
+            </div> -->
             <!-- COPY BELOW E N D -->
         </div>
-
 </body>
 </html>
