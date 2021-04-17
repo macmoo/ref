@@ -4,18 +4,24 @@
 table, td, th {
     border : 1px solid black;
     border-collapse : collapse;
+    text-align: left;
 };
-th {
+th, td {
     text-align: left;
     background-color: lightgray;
 }
-td {
-    text-align: left;
-}
+
 a {
     text-decoration: none;
     
 }
+.headNum {
+    width: 50px;
+}
+.headFile {
+    width: 200px;
+}
+
 </style>
 
 <head>
@@ -25,13 +31,13 @@ a {
 <body>
     <div>
         <table>
-            <tr class="tblHead">
-                <th>#</th>
-                <th>file name</th>
+            <tr>
+                <th class="headNum">#</th>
+                <th class="headFile">file name</th>
             </tr>
             <tr>
                 <td>1</td>
-                <td><a href="https://github.com/macmoo/StudyWin32/blob/master/_ref_src/files/WinUser.h">WinUser.h</a></td>
+                <td><a href="./files/WinUser.html">WinUser.h</a></td>
             </tr>
             
         </table>
