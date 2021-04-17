@@ -1,47 +1,43 @@
 <!DOCTYPE html>
 
-<style>
-table, td, th {
-    border : 1px solid black;
-    border-collapse : collapse;
-    text-align: left;
-};
-th, td {
-    text-align: left;
-    background-color: lightgray;
-}
-
-a {
-    text-decoration: none;
-    
-}
-.headNum {
-    width: 50px;
-}
-.headFile {
-    width: 150px;
-}
-
-</style>
-
 <head>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
     <title>file list</title>
 </head>
 
-<body>
-    <div>
-        <table>
-            <tr>
-                <th class="headNum">#</th>
-                <th class="headFile">file name</th>
-                <th class="headDoc">MS docs</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td><a href="./files/WinUser.html">WinUser.h</a></td>
-                <td><a href="https://docs.microsoft.com/en-us/windows/win32/api/winuser/">link</a></td>
-            </tr>
-        </table>
-    </div>
+    <form>
+        <input data-type="search" id="searchForCollapsibleSet">
+    </form>
+        <div data-role="collapsibleset" data-filter="true" data-inset="true" id="collapsiblesetForFilter" data-input="#searchForCollapsibleSet">
+        
+            <div data-role="collapsible" data-filtertext="WinUser.h">
+                <h3>WinUser.h</h3>
+                <ul data-role="listview" data-inset="false">
+                    <li><a href="https://macmoo.github.io/ref/files/WinUser.html">src</a></li>
+                    <li><a href="https://docs.microsoft.com/en-us/windows/win32/api/winuser/">api</a></li>
+                </ul>
+            </div>
+
+            <div data-role="collapsible" data-filtertext="WNDCLASSEXW"> 
+                <h3>WNDCLASSEXW structure</h3>
+                <ul data-role="listview" data-inset="false">
+                    <li><a href="#">src</a></li>
+                    <li><a href="https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-wndclassexw">api</a></li>
+                </ul>
+            </div>
+
+            <!-- COPY BELOW START -->
+            <div data-role="collapsible" data-filtertext=""> 
+                <h3></h3>
+                <ul data-role="listview" data-inset="false">
+                    <li><a href="">src</a></li>
+                    <li><a href="">api</a></li>
+                </ul>
+            </div>
+            <!-- COPY BELOW E N D -->
+        </div>
+
 </body>
 </html>
