@@ -4,9 +4,24 @@
     <link rel="stylesheet" href="./sup/jquery.mobile-1.4.5.min.css" />
     <script type="text/javascript" src="./sup/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="./sup/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="./sup/detectmobilebrowser.js"></script>
+    
+    <script>
+        if(jQuery.browser.mobile == true){
+            alert("mobile");
+        } else {
+            alert("pc");
+        }
+
+
+    </script>
+    
+    
     <title>file list</title>
 
-    <script>
+
+
+    <!-- <script>
 
         var filter = "win16|win32|win64|mac|macintel";
         if ( navigator.platform ) {
@@ -17,7 +32,7 @@
                 //pc 
                 alert('pc 접속'); } 
             }
-    </script>
+    </script> -->
 
 
 </head>
