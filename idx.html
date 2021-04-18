@@ -12,43 +12,57 @@
 
 <body>
     
-    <div><a href="https://macmoo.github.io/ref/src.html" class="ui-btn">src</a></div>
+        <!-- <a href="https://macmoo.github.io/ref/prj.html" class="ui-btn">prj</a> -->
+
+    <div data-role="collapsibleset" 
+         data-filter="true" 
+         data-inset="true" 
+         data-input="#searchForCollapsibleSet"
+         id="collapsiblesetForFilter">
+        <div data-role="collapsible" >
+            <h3>idx</h3>
+            <ul data-role="listview" data-inset="false">
+                <li><a href="https://macmoo.github.io/ref/src.html" class="ui-btn">src</a></li>
+                <li><a href="https://macmoo.github.io/ref/prj.html" class="ui-btn">prj</a></li>
+            </ul>
+        </div>
+    </div>
 
     <form>
         <input data-type="search" id="searchForCollapsibleSet">
     </form>
-        <div data-role="collapsibleset" 
-             data-filter="true" 
-             data-inset="true" 
-             data-input="#searchForCollapsibleSet"
-             id="collapsiblesetForFilter">
-        
-            <div data-role="collapsible" data-filtertext="WinUser.h">
-                <h3>WinUser.h</h3>
-                <ul data-role="listview" data-inset="false">
-                    <li><a href="https://macmoo.github.io/ref/files/WinUser.html">src</a></li>
-                    <li><a href="https://docs.microsoft.com/en-us/windows/win32/api/winuser/">api</a></li>
-                </ul>
-            </div>
-
-            <div data-role="collapsible" data-filtertext="WNDCLASSEXW"> 
-                <h3>WNDCLASSEXW structure</h3>
-                <ul data-role="listview" data-inset="false">
-                    <li><a href="#">src</a></li>
-                    <li><a href="https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-wndclassexw">api</a></li>
-                </ul>
-            </div>
-
-            <!-- COPY BELOW START -->
-            <!-- <div data-role="collapsible" data-filtertext=""> 
-                <h3></h3>
-                <ul data-role="listview" data-inset="false">
-                    <li><a href="">src</a></li>
-                    <li><a href="">api</a></li>
-                </ul>
-            </div> -->
-            <!-- COPY BELOW E N D -->
+    <div data-role="collapsibleset" 
+         data-filter="true" 
+         data-inset="true" 
+         data-input="#searchForCollapsibleSet"
+         id="collapsiblesetForFilter">
+    
+        <div data-role="collapsible" data-filtertext="WinUser.h">
+            <h3>WinUser.h</h3>
+            <ul data-role="listview" data-inset="false">
+                <li><a href="https://macmoo.github.io/ref/files/WinUser.html">src</a></li>
+                <li><a href="https://docs.microsoft.com/en-us/windows/win32/api/winuser/">api</a></li>
+            </ul>
         </div>
+
+        <div data-role="collapsible" data-filtertext="WNDCLASSEXW"> 
+            <h3>WNDCLASSEXW structure</h3>
+            <ul data-role="listview" data-inset="false">
+                <li><a href="#">src</a></li>
+                <li><a href="https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-wndclassexw">api</a></li>
+            </ul>
+        </div>
+
+        <!-- COPY BELOW START -->
+        <!-- <div data-role="collapsible" data-filtertext=""> 
+            <h3></h3>
+            <ul data-role="listview" data-inset="false">
+                <li><a href="">src</a></li>
+                <li><a href="">api</a></li>
+            </ul>
+        </div> -->
+        <!-- COPY BELOW E N D -->
+    </div>
 
 </body>
 </html>
