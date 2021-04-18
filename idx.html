@@ -6,41 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script type="text/javascript" src="./sup/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="./sup/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="./sup/custom.js"></script>
     <link rel="stylesheet" href="./sup/jquery.mobile-1.4.5.min.css?ver=3" />
     <!-- E N D -->
 </head>
-
 <body>
-    
-        <!-- <a href="https://macmoo.github.io/ref/prj.html" class="ui-btn">prj</a> -->
-
-    <div data-role="collapsibleset" 
-         data-filter="true" 
-         data-inset="true" 
-         data-input="#searchForCollapsibleSet"
-         id="collapsiblesetForFilter">
-        <div data-role="collapsible" >
-            <h3>idx</h3>
-            <ul data-role="listview" data-inset="false">
-                <li><a href="https://macmoo.github.io/ref/src.html" class="ui-btn">src</a></li>
-                <li><a href="https://macmoo.github.io/ref/prj.html" class="ui-btn">prj</a></li>
+    <!-- Top Navigation Menu START ////////////////////////////  -->
+    <div data-role="page" id="pageone">
+        <div data-role="header">
+            <h2>Project</h2>
+            <div data-role="navbar" data-iconpos="top">
+            <ul>
+              <li><a href="https://macmoo.github.io/ref/idx.html" data-icon="home">Idx</a></li>
+              <li><a href="https://macmoo.github.io/ref/prj.html" data-icon="alert">Prj</a></li>
+              <li><a href="https://macmoo.github.io/ref/src.html" data-icon="camera">Src</a></li>
             </ul>
         </div>
     </div>
-
+    <!-- Top Navigation Menu E N D ////////////////////////////  -->
     <form>
         <input data-type="search" id="searchForCollapsibleSet">
     </form>
+
     <div data-role="collapsibleset" 
          data-filter="true" 
          data-inset="true" 
+         data-autodividers="true"
          data-input="#searchForCollapsibleSet"
          id="collapsiblesetForFilter">
     
         <div data-role="collapsible" data-filtertext="WinUser.h">
             <h3>WinUser.h</h3>
             <ul data-role="listview" data-inset="false">
-                <li><a href="https://macmoo.github.io/ref/files/WinUser.html">src</a></li>
+                <li><a href="https://macmoo.github.io/ref/files/api/WinUser.html">src</a></li>
                 <li><a href="https://docs.microsoft.com/en-us/windows/win32/api/winuser/">api</a></li>
             </ul>
         </div>
