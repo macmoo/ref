@@ -114,7 +114,8 @@ LRESULT WINAPI WinProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
                 vkKeys[VK_RCONTROL] = true;
             break;
         }
-        InvalidateRect(hwnd, NULL, TRUE); // WM_PAINT 강제함
+        // WM_PAINT 강제함
+        InvalidateRect(hwnd, NULL, TRUE);
         return 0;
         break;
     case WM_KEYUP:
@@ -133,7 +134,6 @@ LRESULT WINAPI WinProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
             if ((nVirtKey & SHIFTED) == 0)
                 vkKeys[VK_RSHIFT] = false;
             break;
-        
         case VK_CONTROL:
             // control key
             nVirtKey = GetKeyState(VK_LCONTROL);
@@ -179,11 +179,13 @@ LRESULT WINAPI WinProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
             {
                 if (vkKeys[r * 16 + c])
                 {
-                    SetBkMode(hdc, OPAQUE);         // opaque text background
+                    // opaque text background
+                    SetBkMode(hdc, OPAQUE);
                     TextOut(hdc, c * chWidth + chWidth * 2, r * chHeight + chHeight * 2, "T ", 2);
                 }
                 else {
-                    SetBkMode(hdc, TRANSPARENT);    // transparent text background
+                    // transparent text background
+                    SetBkMode(hdc, TRANSPARENT);
                     TextOut(hdc, c * chWidth + chWidth * 2, r * chHeight + chHeight * 2, "F ", 2);
                 }
             }
