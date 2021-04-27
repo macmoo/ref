@@ -19,42 +19,42 @@
 #include <Windows.h>
 // ------------------------------------------
 int mdays[][12] ={
-       {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
-       {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
+    {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
+    {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
 };
 // ------------------------------------------
 int is_leap(int year)
 {
-       return (year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0);
+    return (year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0);
 }
 // ------------------------------------------
 int day_of_year(int y, int m, int d)
 {
-       int    i;
-       int days = d;
-       for(i = 0; i < m; i++)
-       {
-              days += mdays[is_leap(y)][i-1];
-       }
-       return days;
+    int    i;
+    int days = d;
+    for(i = 0; i < m; i++)
+    {
+           days += mdays[is_leap(y)][i-1];
+    }
+    return days;
 }
 // ------------------------------------------
 int main(void)
 {
-       int year, month, day;
-       int retry;
-       do
-       {
-              printf("년 : "); scanf_s("%d", &year);
-              printf("월 : "); scanf_s("%d", &month);
-              printf("일 : "); scanf_s("%d", &day);
-              
-              printf("년내에 %d일째 입니다.\n", day_of_year(year, month, day));
-              printf("다시?(1..YES/0..NO : ");
-              scanf_s("%d", &retry);
-       } while(retry == 1);
-       system("pause");
-       return 0;
+    int year, month, day;
+    int retry;
+    do
+    {
+        printf("년 : "); scanf_s("%d", &year);
+        printf("월 : "); scanf_s("%d", &month);
+        printf("일 : "); scanf_s("%d", &day);
+
+        printf("년내에 %d일째 입니다.\n", day_of_year(year, month, day));
+        printf("다시?(1..YES/0..NO : ");
+        scanf_s("%d", &retry);
+    } while(retry == 1);
+    system("pause");
+    return 0;
 }
 // ------------------------------------------
 </code></pre>
