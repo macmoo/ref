@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Walter+Turncoat');
+
+body{
+  font-family: 'Walter Turncoat', cursive;
+  font-size: 1.5em;
+  background-size: 1em 1em;
+  background-image: radial-gradient(circle,rgba(0,50,255,0.2) 1px,rgba(0,0,0, 0) 2px); 
+  background-position:.3em .62em;
+}
 .nav  ul {
     list-style-type: none;
     margin:0;
@@ -31,4 +40,30 @@
 
 .active{
     background-color: #4CAF50;
+}
+
+
+
+ol {
+    list-style: none;
+    counter-reset: steps;
+}
+
+ol li {
+    counter-increment: steps;
+}
+ol li::before{
+    content: counter(steps);
+    margin-right: 0.5rem;
+    background: #ff6f00;
+    color:white;
+    width:1.2em;
+    border-radius:50%;
+    display:inline-grid;
+    place-items: center;
+    line-height: 1.2em;
+}
+
+ol ol li::before{
+    background: darkorchid;
 }
