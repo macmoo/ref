@@ -3,8 +3,7 @@
 
 body{
   font-family: 'Walter Turncoat', cursive;
-  font-size: 2.5em;
-  padding:1em;
+  font-size: 1.5em;
   background-size: 1em 1em;
   background-image: radial-gradient(circle,rgba(0,50,255,0.2) 1px,rgba(0,0,0, 0) 2px); 
   background-position:.3em .62em;
