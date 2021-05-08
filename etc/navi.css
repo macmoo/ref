@@ -55,7 +55,7 @@ ol li {
 ol li::before{
     content: counter(steps);
     margin-right: 0.5rem;
-    background: #ff6f00;
+    background: black;
     color:white;
     width:1.2em;
     border-radius:50%;
@@ -65,5 +65,5 @@ ol li::before{
 }
 
 ol ol li::before{
-    background: darkorchid;
+    background: #ff6f00;
 }
