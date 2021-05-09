@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<head>
+    <title>memory.h</title>
+
+    <!-- START -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../etc/androidstudio.css">
+    <link rel="stylesheet" type="text/css" href="../../etc/custom.css">
+    <script type="text/javascript" src="../../etc/highlight.min.js"></script>
+    <script type="text/javascript" src="../../etc/highlightjs-line-numbers.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>hljs.initLineNumbersOnLoad();</script>
+    <!-- E N D -->
+</head>
+
+<body>
+    <pre><code class="c#">using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+using System.Security.AccessControl;
+using System.Diagnostics;
+
+namespace ImageFileMove
+{
+    public partial class formMain : Form
+    {
+        // -------------------------------------------------------------------
+        // 고정문자열
+        private static string LIST_VIEW_TITLE = "이름";
+        private static string LIST_VIEW_TYPE = "타입";
+        private static string LIST_VIEW_DATE = "날짜";
+        private static string LIST_VIEW_SIZE = "크기";
+        // , ".dng", ".bmp", ".nef" 
+        private static string[] IMAGE_FILE_LIST = { ".jpg", ".jpeg"};
+        private static ListView viewFile;
+        private static string IMAGE_FULL_PATH;
+        private static string IMAGE_PATH_ONLY;
+        private static string IMAGE_NAME_ONLY;
+        
+        public formMain()
+        {
+            InitializeComponent();
+            initTreeViewDir();
+            initListViewFiles();
+        }
+        // ------------------------------------------------------------------------------------------
+        // 디렉토리 트리 만들기
+        private void initTreeViewDir()
+        {
+            // using System.IO;
+            foreach (DriveInfo drvInfo in DriveInfo.GetDrives())
+            {
+                if (drvInfo.DriveType != DriveType.Fixed)
+                    continue;
+                TreeNode node = new TreeNode(drvInfo.Name);
+                node.Nodes.Add(new TreeNode());
+                treeViewDir.Nodes.Add(node);
+            }
+        }
+        // ------------------------------------------------------------------------------------------
+        // 트리뷰에서 디렉토리를 확장했을때 발생하는 이벤트
+        private void treeViewDir_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+        {
+            TreeNode node = e.Node;
+            IMAGE_PATH_ONLY = node.FullPath;
+            updateLabelFilePath();
+            node.Nodes.Clear();
+            try
+            {
+                DirectoryInfo dirInfo = new DirectoryInfo(node.FullPath);
+                foreach (DirectoryInfo subDir in dirInfo.GetDirectories())
+                {
+                    if (!isDirectoryValid(subDir))
+                        continue;
+                    TreeNode subNode = new TreeNode(subDir.Name);
+                    if (isDirectoryAccessable(subDir)
+                        && isDirectoryHasChild(subDir))
+                        subNode.Nodes.Add(new TreeNode());
+                    node.Nodes.Add(subNode);
+                }
+            }
+            catch (IOException ioe)
+            {
+                // using System.Diagnostics;
+                Debug.WriteLine(ioe.Message);
+            }
+        }
+        // ------------------------------------------------------------------------------------------
+        // 사용가능한 디렉토리인지 확인
+        private bool isDirectoryValid(DirectoryInfo dirInfo)
+        {
+            if (((dirInfo.Attributes & FileAttributes.System) == FileAttributes.System
+                    || (dirInfo.Attributes & FileAttributes.Hidden) == FileAttributes.Hidden
+                    || (dirInfo.Attributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly)
+                    || (dirInfo.Attributes & FileAttributes.Directory) != FileAttributes.Directory)
+                return false;
+            return true;
+        }
+        // ------------------------------------------------------------------------------------------
+        // 접근가능한 디렉토리인지 확인
+        private bool isDirectoryAccessable(DirectoryInfo di)
+        {
+            try
+            {
+                // using System.Security.AccessControl;
+                AuthorizationRuleCollection collection = Directory.GetAccessControl(di.FullName)
+                    .GetAccessRules(true, true, typeof(System.Security.Principal.NTAccount));
+            }
+            catch (System.UnauthorizedAccessException e)
+            {
+                return false;
+            }
+            return true;
+        }
+        // ------------------------------------------------------------------------------------------
+        // 자식디렉토리가 있는지 확인
+        private bool isDirectoryHasChild(DirectoryInfo di)
+        {
+            try
+            {
+                if (Directory.GetDirectories(di.FullName, "*", SearchOption.TopDirectoryOnly).Length > 0)
+                    return true;
+            }
+            catch (Exception e)
+            {
+                //log("isDirectoryHasChild", e.Message);
+            }
+            return false;
+        }
+        // ------------------------------------------------------------------------------------------
+        private void treeViewDir_BeforeSelect(object sender, TreeViewCancelEventArgs e)
+        {
+            TreeNode node = e.Node;
+            IMAGE_PATH_ONLY = node.FullPath;
+            updateLabelFilePath();
+            makeFileList(node.FullPath);
+        }
+        // ------------------------------------------------------------------------------------------
+        // 파일뷰 초기화
+        private void initListViewFiles()
+        {
+            listViewFile.View = View.Details;
+            listViewFile.Clear();
+            listViewFile.Columns.Add(LIST_VIEW_TITLE);
+            listViewFile.Columns.Add(LIST_VIEW_TYPE);
+            listViewFile.Columns.Add(LIST_VIEW_DATE);
+            listViewFile.Columns.Add(LIST_VIEW_SIZE);
+        }
+        // ------------------------------------------------------------------------------------------
+        private void makeFileList(string path)
+        {
+            initListViewFiles();
+            DirectoryInfo dirInfo = new DirectoryInfo(path);
+            foreach (FileInfo file in dirInfo.GetFiles())
+            {
+                ListViewItem item = new ListViewItem(file.Name);
+                if (!isImageFile(file.Name))
+                    continue;
+                item.SubItems.Add(file.Extension);
+                item.SubItems.Add(string.Format("{0:yyyy/mm/dd hh:mm:ss}", file.LastAccessTime));
+                item.SubItems.Add(getFileSize(file.Length));
+                listViewFile.Items.Add(item);
+            }
+            listViewFile.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+        }
+        // ------------------------------------------------------------------------------------------
+        // 파일사이즈 계산
+        private string getFileSize(long filesize)
+        {
+            String ret = filesize + " Byte";
+            if (filesize > (1024f * 1024f * 1024f))
+                ret = Math.Round((filesize / 1024f / 1024f / 1024f), 2).ToString() + " GB";
+            else if (filesize > (1024f * 1024f))
+                ret = Math.Round((filesize / 1024f / 1024f), 2).ToString() + " MB";
+            else if (filesize > 1024f)
+                ret = Math.Round((filesize / 1024f), 2).ToString() + " KB";
+            return ret;
+        }
+        // ------------------------------------------------------------------------------------------
+        private bool isImageFile(String name)
+        {
+            string ext = Path.GetExtension(name).ToLower();
+            foreach (string tmpExt in IMAGE_FILE_LIST)
+            {
+                if (tmpExt.Equals(ext))
+                    return true;
+            }
+            return false;
+        }
+        // ------------------------------------------------------------------------------------------
+        // 파일리스트뷰 클릭 이벤트
+        private void listViewFile_Click(object sender, EventArgs e)
+        {
+
+            var item = listViewFile.SelectedItems[0];
+            IMAGE_NAME_ONLY = item.Text;
+            updateLabelFilePath();
+            updatePictureBox();
+        }
+        // ------------------------------------------------------------------------------------------
+        // 파일패스라벨 갱신
+        private void updateLabelFilePath()
+        {
+            IMAGE_FULL_PATH = IMAGE_PATH_ONLY + "\\" + IMAGE_NAME_ONLY; ;
+            IMAGE_FULL_PATH = IMAGE_FULL_PATH.Replace("\\\\", "\\");
+            lblOrgFilePath.Text = IMAGE_FULL_PATH;
+        }
+        // ------------------------------------------------------------------------------------------
+        // 이미지 표시
+        private void updatePictureBox()
+        {
+            if (picBox != null && picBox.Image != null)
+                picBox.Image.Dispose();
+            picBox.SizeMode = PictureBoxSizeMode.Zoom; // or Zoom;
+            // picBox.Image = Image.FromFile(IMAGE_FULL_PATH);
+            using (var bmpTemp = new Bitmap(IMAGE_FULL_PATH))
+            {
+                picBox.Image = new Bitmap(bmpTemp);
+            }
+            Debug.WriteLine("path : " + IMAGE_FULL_PATH);
+        }
+        // ------------------------------------------------------------------------------------------
+        // 엔터키를 누르면 파일을 이동시킨다.
+        private void listViewFile_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                string pathNew = IMAGE_PATH_ONLY + "\\backup";
+                pathNew = pathNew.Replace("\\\\", "\\"); ;
+                if (!Directory.Exists(pathNew))
+                    Directory.CreateDirectory(pathNew);
+                picBox.Dispose();
+                picBox.InitialImage = null;
+                //picBox = null;
+                File.Move(IMAGE_FULL_PATH, pathNew + "\\" + IMAGE_NAME_ONLY);
+
+            }
+        }
+        // ------------------------------------------------------------------------------------------
+        private void listViewFile_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if(e.IsSelected)
+            {
+                Debug.WriteLine(e.Item);
+                IMAGE_NAME_ONLY = e.Item.Text;
+                updateLabelFilePath();
+                updatePictureBox();
+            }
+        }
+        // ------------------------------------------------------------------------------------------
+        // CHECK
+        //public byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        //{
+        //    using (var ms = new MemoryStream())
+        //    {
+        //        imageIn.Save(ms, imageIn.RawFormat);
+        //        return ms.ToArray();
+        //    }
+        //}
+        // ------------------------------------------------------------------------------------------
+        // CHECK
+        // 이미지 축소
+        //private Bitmap getResizedImage(string filepath, int zoom)
+        //{
+        //    using (var fs = new FileStream(filepath, FileMode.Open))
+        //    {
+        //        Bitmap rtnImage = null;
+        //        Bitmap bmp = new Bitmap(fs);
+        //        try
+        //        {
+        //            int zoomMag = 1;
+        //            Size resize = new Size((int)(bmp.Width / zoomMag), (int)(bmp.Height / zoomMag));
+        //            rtnImage = new Bitmap(bmp, resize);
+        //        }
+        //        catch (Exception exp)
+        //        {
+        //            Debug.WriteLine(exp.Message);
+        //        }
+        //        fs.Close();
+        //        bmp.Dispose();
+        //        return rtnImage;
+        //    }
+        //}
+        // ------------------------------------------------------------------------------------------
+
+    }
+}
+</code></pre>
+</body>
+
+</html>
