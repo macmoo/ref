@@ -27,9 +27,13 @@ using System.Windows.Forms;
 using System.IO;
 using System.Security.AccessControl;
 using System.Diagnostics;
+using System.Collections;
 
 namespace ImageFileMove
 {
+
+
+
     public partial class formMain : Form
     {
         // ------------------------------------------------------------------------------------------
@@ -44,6 +48,14 @@ namespace ImageFileMove
         private static string IMAGE_PATH_ONLY;
         private static string IMAGE_NAME_ONLY;
         private static int SELECT_ITEM_IDX;
+        private struct STRUCT_HIST
+        {
+            public string srcPath;
+            public string destPath;
+            public ListViewItem item;
+        }
+        // using System.Collections;
+        private Stack STACK_HIST = new Stack();
         // ------------------------------------------------------------------------------------------
         public formMain()
         {
@@ -239,7 +251,7 @@ namespace ImageFileMove
                 if (String.IsNullOrEmpty(pathBackup))
                     pathBackup = "backup";
                 string pathNew = IMAGE_PATH_ONLY + "\\" + pathBackup;
-                
+
                 // 디렉토리생성
                 if (!Directory.Exists(pathNew))
                     Directory.CreateDirectory(pathNew);
@@ -249,18 +261,29 @@ namespace ImageFileMove
                 if (File.Exists(tmpFileFullPath))
                     File.Delete(tmpFileFullPath);
                 File.Move(IMAGE_FULL_PATH, tmpFileFullPath);
-                updateListViewFile(item);
+                makeHistoryStack(item, IMAGE_FULL_PATH, tmpFileFullPath);
+                deleteListViewFile(item);
                 updateCurrentPositionListView();
             }
         }
         // ------------------------------------------------------------------------------------------
+        // 이동한 이력을 스택에 푸쉬
+        private void makeHistoryStack(ListViewItem item, string src, string dest)
+        {
+            STRUCT_HIST hist = new STRUCT_HIST();
+            hist.item = item;
+            hist.destPath = dest;
+            hist.srcPath = src;
+            STACK_HIST.Push(hist);
+        }
+        // ------------------------------------------------------------------------------------------
         // 이동한 파일을 리스트에서 제거
-        private void updateListViewFile(ListViewItem param)
+        private void deleteListViewFile(ListViewItem param)
         {
             listViewFile.BeginUpdate();
-            foreach(ListViewItem item in listViewFile.Items)
-            {   
-                if(item.Text.Equals(param.Text))
+            foreach (ListViewItem item in listViewFile.Items)
+            {
+                if (item.Text.Equals(param.Text))
                 {
                     listViewFile.Items.Remove(item);
                     break;
@@ -273,7 +296,7 @@ namespace ImageFileMove
         // 하는 지금선택중인것에대한 이벤트, 나머지는 새로 선택한 아이템에 대한 이벤트
         private void listViewFile_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            if(e.IsSelected)
+            if (e.IsSelected)
             {
                 IMAGE_NAME_ONLY = e.Item.Text;
                 updateLabelFilePath();
@@ -286,10 +309,57 @@ namespace ImageFileMove
         // 이미지를 이동했을때의 위치를 새로운 리스트내에서 다시 선택한다.
         private void updateCurrentPositionListView()
         {
-            if(SELECT_ITEM_IDX >= 0 && SELECT_ITEM_IDX < listViewFile.Items.Count)
+            if (SELECT_ITEM_IDX >= 0 && SELECT_ITEM_IDX < listViewFile.Items.Count)
             {
                 listViewFile.Items[SELECT_ITEM_IDX].Selected = true;
             }
+        }
+        // -------------------------------------------------------------------
+        // 키 입력
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Shift | Keys.Control | Keys.X))
+                Application.Exit();
+            else if (keyData == (Keys.Control | Keys.Z))
+            {
+                moveFileBack();
+            }
+            else if (keyData == (Keys.Control | Keys.C))
+            {
+                Debug.WriteLine("STACK_HIST.Count;" + STACK_HIST.Count);
+            }
+            else
+                return base.ProcessCmdKey(ref msg, keyData);
+            return true;
+        }
+        // ------------------------------------------------------------------------------------------
+        // 파일을 하나씩 되돌린다
+        private void moveFileBack()
+        {
+            if (STACK_HIST.Count == 0)
+            {
+                MessageBox.Show("No More History");
+                return;
+            }
+            STRUCT_HIST hist = (STRUCT_HIST)STACK_HIST.Pop();
+            if (!File.Exists(hist.destPath))
+            {
+                MessageBox.Show("File Does Not Exists!");
+                return;
+            }
+            if (File.Exists(hist.srcPath))
+            {
+                MessageBox.Show("File Already Exists!");
+                return;
+            }
+            File.Move(hist.destPath, hist.srcPath);
+            addListViewFile(hist.item);
+            updateCurrentPositionListView();
+        }
+        // ------------------------------------------------------------------------------------------
+        private void addListViewFile(ListViewItem item)
+        {
+            listViewFile.Items.Add(item);
         }
         // ------------------------------------------------------------------------------------------
         // CHECK
