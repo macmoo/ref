@@ -48,6 +48,7 @@ namespace ImageFileMove
         private static string IMAGE_PATH_ONLY;
         private static string IMAGE_NAME_ONLY;
         private static int SELECT_ITEM_IDX;
+        private static int LIST_SIZE = 20;
         private struct STRUCT_HIST
         {
             public string srcPath;
@@ -55,7 +56,8 @@ namespace ImageFileMove
             public ListViewItem item;
         }
         // using System.Collections;
-        private Stack STACK_HIST = new Stack();
+        // private Stack STACK_HIST = new Stack();
+        private List<STRUCT_HIST> listHist = new List<STRUCT_HIST>();
         // ------------------------------------------------------------------------------------------
         public formMain()
         {
@@ -81,6 +83,7 @@ namespace ImageFileMove
         // 트리뷰에서 디렉토리를 확장했을때 발생하는 이벤트
         private void treeViewDir_BeforeExpand(object sender, TreeViewCancelEventArgs e)
         {
+            setNotice("");
             TreeNode node = e.Node;
             IMAGE_PATH_ONLY = node.FullPath.Replace("\\\\", "\\");
             updateLabelFilePath();
@@ -102,7 +105,8 @@ namespace ImageFileMove
             catch (IOException ioe)
             {
                 // using System.Diagnostics;
-                Debug.WriteLine(ioe.Message);
+                // Debug.WriteLine(ioe.Message);
+                setNotice("[Exception] treeViewDir BeforeExpand");
             }
         }
         // ------------------------------------------------------------------------------------------
@@ -128,6 +132,7 @@ namespace ImageFileMove
             }
             catch (System.UnauthorizedAccessException e)
             {
+                setNotice("[Exception] isDirectoryAccessable");
                 return false;
             }
             return true;
@@ -143,13 +148,14 @@ namespace ImageFileMove
             }
             catch (Exception e)
             {
-                //log("isDirectoryHasChild", e.Message);
+                setNotice("[Exception] isDirectoryHasChild");
             }
             return false;
         }
         // ------------------------------------------------------------------------------------------
         private void treeViewDir_BeforeSelect(object sender, TreeViewCancelEventArgs e)
         {
+            setNotice("");
             TreeNode node = e.Node;
             IMAGE_PATH_ONLY = node.FullPath.Replace("\\\\", "\\");
             updateLabelFilePath();
@@ -182,6 +188,7 @@ namespace ImageFileMove
                 listViewFile.Items.Add(item);
             }
             listViewFile.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+            setListCount();
         }
         // ------------------------------------------------------------------------------------------
         // 파일사이즈 계산
@@ -211,6 +218,7 @@ namespace ImageFileMove
         // 파일리스트뷰 클릭 이벤트
         private void listViewFile_Click(object sender, EventArgs e)
         {
+            setNotice("");
             var item = listViewFile.SelectedItems[0];
             IMAGE_NAME_ONLY = item.Text;
             updateLabelFilePath();
@@ -242,6 +250,7 @@ namespace ImageFileMove
         // 엔터키를 누르면 파일을 이동시킨다.
         private void listViewFile_KeyDown(object sender, KeyEventArgs e)
         {
+            setNotice("");
             if (e.KeyCode == Keys.Enter)
             {
                 ListViewItem item = listViewFile.SelectedItems[0];
@@ -264,6 +273,7 @@ namespace ImageFileMove
                 makeHistoryStack(item, IMAGE_FULL_PATH, tmpFileFullPath);
                 deleteListViewFile(item);
                 updateCurrentPositionListView();
+                setListCount();
             }
         }
         // ------------------------------------------------------------------------------------------
@@ -274,7 +284,17 @@ namespace ImageFileMove
             hist.item = item;
             hist.destPath = dest;
             hist.srcPath = src;
-            STACK_HIST.Push(hist);
+
+            // STACK -> LIST로 변경
+            // STACK_HIST.Push(hist);
+            // 리스트가 가득찼으면 앞에서 부터 하나씩 지운다
+            if(listHist.Count == LIST_SIZE)
+            {
+                setNotice("List is Full, Remove First Item");
+                listHist.RemoveAt(0);
+            }
+            // 추가
+            listHist.Add(hist);
         }
         // ------------------------------------------------------------------------------------------
         // 이동한 파일을 리스트에서 제거
@@ -296,6 +316,7 @@ namespace ImageFileMove
         // 하는 지금선택중인것에대한 이벤트, 나머지는 새로 선택한 아이템에 대한 이벤트
         private void listViewFile_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
+            setNotice("");
             if (e.IsSelected)
             {
                 IMAGE_NAME_ONLY = e.Item.Text;
@@ -326,7 +347,7 @@ namespace ImageFileMove
             }
             else if (keyData == (Keys.Control | Keys.C))
             {
-                Debug.WriteLine("STACK_HIST.Count;" + STACK_HIST.Count);
+                setNotice("Count of History : " + listHist.Count);
             }
             else
                 return base.ProcessCmdKey(ref msg, keyData);
@@ -336,31 +357,42 @@ namespace ImageFileMove
         // 파일을 하나씩 되돌린다
         private void moveFileBack()
         {
-            if (STACK_HIST.Count == 0)
+            if (listHist.Count == 0)
             {
-                MessageBox.Show("No More History");
+                setNotice("No History");
                 return;
             }
-            STRUCT_HIST hist = (STRUCT_HIST)STACK_HIST.Pop();
+            // STRUCT_HIST hist = (STRUCT_HIST)STACK_HIST.Pop();
+            STRUCT_HIST hist = listHist[listHist.Count - 1];
+            listHist.RemoveAt(listHist.Count - 1);
             if (!File.Exists(hist.destPath))
             {
-                MessageBox.Show("File Does Not Exists!");
+                setNotice("File Does Not Exists!");
                 return;
             }
             if (File.Exists(hist.srcPath))
             {
-                MessageBox.Show("File Already Exists!");
+                setNotice("File Already Exists!");
                 return;
             }
             File.Move(hist.destPath, hist.srcPath);
-            addListViewFile(hist.item);
+            listViewFile.Items.Add(hist.item);
             updateCurrentPositionListView();
+            setListCount();
         }
         // ------------------------------------------------------------------------------------------
-        private void addListViewFile(ListViewItem item)
+        // 메시지 표시
+        private void setNotice(string notice)
         {
-            listViewFile.Items.Add(item);
+            lblNotice.Text = notice;
         }
+        // ------------------------------------------------------------------------------------------
+        // 파일리스트의 아이템 남은 개수 표시
+        private void setListCount()
+        {
+            lblListCount.Text = listViewFile.Items.Count + "";
+        }
+
         // ------------------------------------------------------------------------------------------
         // CHECK
         //public byte[] ImageToByteArray(System.Drawing.Image imageIn)
@@ -396,7 +428,6 @@ namespace ImageFileMove
         //    }
         //}
         // ------------------------------------------------------------------------------------------
-
     }
 }
 </code></pre>
