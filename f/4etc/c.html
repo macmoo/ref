@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    <!-- ############################### -->
     <pre><code class="c">#ifdef _MSC_VER
 #define _CRT_SECURE_NO_WARNINGS
 #endif
@@ -40,10 +41,9 @@ int main()
     return 0;
 }</code>
 </pre>
-    <br>
-    <pre><code class="c">#ifdef _MSC_VER
-#define _CRT_SECURE_NO_WARNINGS
-#endif
+
+    <br><!-- ############################### -->
+    <pre><code class="c">
 #include <stdio.h>
 
 int main()
@@ -60,10 +60,106 @@ int main()
 }</code>
 </pre>
 
-
+    <br><!-- ############################### -->
     <pre><code class="c">
-</code>
-</pre>
+#include <stdio.h>
+
+// calloc사용
+int main()
+{
+    int* x;
+    x = calloc(1, sizeof(int));
+
+    if (x == NULL)
+        puts("영역확보에 실패했다.");
+    else {
+        *x = 57;
+        printf("*x = %d\n", *x);
+        free(x);
+    }
+
+}</code></pre>
+    <br><!-- ############################### -->
+    <pre><code class="c">#include <stdio.h>
+#include <stdlib.h>
+int main(void)
+{
+    int i;
+    int* a; // 배열의 선두요소의 포인터
+    int na;
+
+    printf("요소수 :");
+    scanf("%d", &na);
+
+    a = calloc(na, sizeof(int));
+
+    if (a == NULL)
+        puts("영역확보실패");
+    else
+    {
+        printf("%d개의 정수를 입력하시오:\n", na);
+        for (i = 0; i < na; i++)
+        {
+            printf("a[%d]", i);
+            scanf("%d", &a[i]);
+        }
+        printf("-- 출력 --\n");
+        for (int i = 0; i < na; i++)
+            printf("a[%d] = %d\n", i, a[i]);
+        free(a); // 요소수 na의 int형 배열을 파기
+    }
+    return 0;
+}</code></pre>
+    <br><!-- ############################### -->
+    <pre><code class="c">#include <stdio.h>
+#include <stdlib.h>
+int maxOf(const int a[], int n)
+{
+    int i;
+    int max = a[0];
+    for (i = 1; i < n; i++)
+        if (a[i] > max) max = a[i];
+    return max;
+}
+int main(void)
+{
+    int i;
+    int* a; // 배열의 선두요소의 포인터
+    int na;
+
+    printf("요소수 :");
+    scanf("%d", &na);
+
+    a = calloc(na, sizeof(int));
+
+    if (a == NULL)
+        puts("영역확보실패");
+    else
+    {
+        printf("%d개의 정수를 입력하시오:\n", na);
+        for (i = 0; i < na; i++)
+        {
+            printf("a[%d]", i);
+            scanf("%d", &a[i]);
+        }
+        printf("-- 출력 --\n");
+        printf("최대값은 :%d", maxOf(a, na));
+        free(a);
+    }
+    return 0;
+}</code></pre>
+    <br><!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <br><!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <br><!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <br><!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <br><!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <br><!-- ############################### -->
+    <pre><code class="c"></code></pre>
 
 </body>
 
