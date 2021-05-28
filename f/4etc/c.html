@@ -132,20 +132,15 @@ int main(void)
 
     a = calloc(na, sizeof(int));
 
-    if (a == NULL)
-        puts("영역확보실패");
-    else
+    printf("%d개의 정수를 입력하시오:\n", na);
+    for (i = 0; i < na; i++)
     {
-        printf("%d개의 정수를 입력하시오:\n", na);
-        for (i = 0; i < na; i++)
-        {
-            printf("a[%d]", i);
-            scanf("%d", &a[i]);
-        }
-        printf("-- 출력 --\n");
-        printf("최대값은 :%d", maxOf(a, na));
-        free(a);
+        printf("a[%d]", i);
+        scanf("%d", &a[i]);
     }
+    printf("-- 출력 --\n");
+    printf("최대값은 :%d", maxOf(a, na));
+    free(a);
     return 0;
 }</code></pre>
     <br><!-- ############################### -->
