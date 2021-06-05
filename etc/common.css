@@ -82,7 +82,7 @@ ol ol li::before{
     text-align: left;
     outline: none;
     font-size: 15px;
-    font-family: 'Jeju Hallasan', cursive;
+    font-family: Consolas,monaco,monospace; 
 }
 .active,
 .collapsible:hover {
@@ -104,7 +104,7 @@ ol ol li::before{
     overflow: hidden;
     transition: max-height 0.2s ease-out;
     background-color: #f1f1f1;
-    font-family: 'Jeju Hallasan', cursive;
+    font-family: Consolas,monaco,monospace; 
 }
 .content img {
     max-width: 100%;
