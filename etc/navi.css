@@ -68,3 +68,6 @@ ol ol li::before{
     background: #ff6f00;
     font-size: small;
 }
+ol ol li::before{
+    font-size: small;
+}
