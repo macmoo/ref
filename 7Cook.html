@@ -5,63 +5,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- <link href="http://fonts.googleapis.com/earlyaccess/jejuhallasan.css" rel="stylesheet"> -->
-    <link href="http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css" rel="stylesheet">
     <script>
         $(function () {
             $("#topMenu").load("0hed.html");
         });
     </script>
     <!-- E N D -->
-    <style>
-        .collapsible {
-            background-color: #777;
-            color: white;
-            cursor: pointer;
-            padding: 18px;
-            width: 100%;
-            border: none;
-            text-align: left;
-            outline: none;
-            font-size: 15px;
-            /* font-family: 'Jeju Hallasan', cursive; */
-            font-family: 'Nanum Gothic Coding', monospace;
-        }
-
-        .active,
-        .collapsible:hover {
-            background-color: #555;
-        }
-
-        .collapsible:after {
-            content: '\002B';
-            color: white;
-            font-weight: bold;
-            float: right;
-            margin-left: 5px;
-        }
-
-        .active:after {
-            content: "\2212";
-        }
-
-        .content {
-            padding: 0 18px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.2s ease-out;
-            background-color: #f1f1f1;
-            /* font-family: 'Jeju Hallasan', cursive; */
-            font-family: 'Nanum Gothic Coding', monospace;
-        }
-
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-    </style>
 </head>
 
 <body>
@@ -73,22 +22,14 @@
     <!-- ############################################ -->
     <button type="button" class="collapsible">닭갈비</button>
     <div class="content">
-        <p>
-        <table style="width:100%;">
-            <tr>
-                <td>■양념장</td>
-                <td>고추장1컵, 황설탕1컵, 굵은고추가루1컵, 맛술1컵, 진간장1컵, 간마늘1컵</td>
-            </tr>
-            <tr>
-                <td>■닭갈비</td>
-                <td>닭다리살350g, 양념장250g, 감자1/2개, 양파1/2개, 청양고추1개, 꽈리고추3개, 대파1컵, 양배추1컵, 마늘15개</td>
-            </tr>
-            <tr>
-                <td>■기 타</td>
-                <td>후추, 참기름, 물, 깨소금, 우동사리, 떡볶이떡</td>
-            </tr>
-        </table>
-        </p>
+        <pre>
+        ■양념장
+          고추장1컵, 황설탕1컵, 굵은고추가루1컵, 맛술1컵, 진간장1컵, 간마늘1컵</td>
+        ■닭갈비
+          닭다리살350g, 양념장250g, 감자1/2개, 양파1/2개, 청양고추1개, 꽈리고추3개, 대파1컵, 양배추1컵, 마늘15개</td>
+        ■기 타
+          후추, 참기름, 물, 깨소금, 우동사리, 떡볶이떡
+        </pre>
     </div>
     <!-- ############################################ -->
     <br>
@@ -96,7 +37,7 @@
     <!-- ############################################ -->
     <button type="button" class="collapsible">진쟈로스</button>
     <div class="content">
-        <p><a href="https://bbs.ruliweb.com/hobby/board/300117/read/30626914">link</a></p>
+        <a href="https://bbs.ruliweb.com/hobby/board/300117/read/30626914">link</a>
     </div>
     <!-- ############################################ -->
     <br>
@@ -104,26 +45,10 @@
     <!-- ############################################ -->
     <button type="button" class="collapsible">소스</button>
     <div class="content">
-        <p><img src="./f/7img/cook/0001.jpg" />p>
+        <img src="./f/7img/cook/0001.jpg" />
+        <p>
     </div>
     <!-- ############################################ -->
-    <script>
-        var coll = document.getElementsByClassName("collapsible");
-        var i;
-
-        for (i = 0; i < coll.length; i++) {
-            coll[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
-            });
-        }
-    </script>
-
 </body>
 
 </html>
