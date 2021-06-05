@@ -43,7 +43,7 @@ body{
 }
 
 
-
+/* 리스트에 번호매기기  */
 ol {
     list-style: none;
     counter-reset: steps;
@@ -66,4 +66,5 @@ ol li::before{
 
 ol ol li::before{
     background: #ff6f00;
+    font-size: small;
 }
