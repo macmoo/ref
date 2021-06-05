@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    <!-- ############################################# -->
     <pre><code class="properties"># 현재 위치(HEAD)에서 한 단계 과거로 가는 명령어
 git checkout HEAD~1
 
@@ -25,10 +26,14 @@ git checkout master
 $ git rm [File Name]
 
 # 원격 저장소에 있는 파일을 삭제한다. 로컬 저장소에 있는 파일은 삭제하지 않는다.
-$ git rm --cached [File Name]
-</code>
+$ git rm --cached [File Name]</code>
 </pre>
+    <!-- ############################################# -->
+    <pre><code class="properties">[ERR]fatal: The current branch master has no upstream branch.
+$ git remote -v
 
+$ git push origin master</code>
+</pre>
 </body>
 
 </html>
