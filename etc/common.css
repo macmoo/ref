@@ -47,6 +47,7 @@ ol {
 }
 ol li {
     counter-increment: steps;
+    padding: 2px;
 }
 ol li::before{
     content: counter(steps);
