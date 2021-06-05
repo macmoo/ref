@@ -21,7 +21,6 @@ body{
     float:left;
     border-right: 1px solid #bbb
 }
-
 .nav  li a {
     display: block;
     padding: 8px;
@@ -30,25 +29,22 @@ body{
     text-decoration: none;
     font-size: large;
 }
-
 .nav  li a:hove {
     background-color: #111;
 }
 .nav  li:last-child{
     border-right:none;
 }
-
 .active{
     background-color: #4CAF50;
 }
-
 
 /* 리스트에 번호매기기  */
 ol {
     list-style: none;
     counter-reset: steps;
+    padding: 0 1px;
 }
-
 ol li {
     counter-increment: steps;
 }
@@ -63,7 +59,6 @@ ol li::before{
     place-items: center;
     line-height: 1.2em;
 }
-
 ol ol li::before{
     background: #ff6f00;
     font-size: small;
@@ -71,6 +66,7 @@ ol ol li::before{
 ol ol li::before{
     font-size: small;
 }
+
 /* 리스트 폴딩 */
 .collapsible {
     background-color: #777;
@@ -99,7 +95,7 @@ ol ol li::before{
     content: "\2212";
 }
 .content {
-    padding: 0 18px;
+    padding: 0 1px;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
