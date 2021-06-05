@@ -95,7 +95,7 @@ ol ol li::before{
     content: "\2212";
 }
 .content {
-    padding: 5px 10px;
+    padding: 0px 10px;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
