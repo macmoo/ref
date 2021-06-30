@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<head>
+    <title></title>
+    <!-- START -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../etc/androidstudio.css">
+    <link rel="stylesheet" type="text/css" href="../../etc/custom.css">
+    <script type="text/javascript" src="../../etc/highlight.min.js"></script>
+    <script type="text/javascript" src="../../etc/highlightjs-line-numbers.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>hljs.initLineNumbersOnLoad();</script>
+    <!-- E N D -->
+</head>
+
+<body>
+    <!-- ############################################# -->
+    <pre><code class="java">// 문자열 패턴 체크
+private static boolean isPatternMatched(String target, String ptn) {
+    if(StringUtils.isBlank(target)) {
+        return true;
+    }
+    Pattern pattern = Pattern.compile(ptn);
+    Matcher matcher = pattern.matcher(target);
+    return matcher.matches();
+}</code></pre>
+    <!-- ############################################# -->
+    <pre><code class="java">// 데이트 유효성 체크
+private static boolean isDateValid(String target, String ptn) {
+    String afterConvert = null;
+    try {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern(ptn);
+        afterConvert = dtf.format(LocalDate.parse(target, dtf));
+    } catch (DateTimeParseException dtp) {
+        return false;
+    }
+    return StringUtils.equals(target, afterConvert);
+}</code></pre>
+    <!-- ############################################# -->
+    <pre><code class="java">// 문자열 마지막의 개행코드(\r\n)확인
+private static boolean checkCRLF(String target) {
+    if( target.charAt(target.length() - 2 ) == (char)13
+        && target.charAt(target.length() - 1 ) == (char)10 ) {
+        return true;
+    }
+    return false;
+}</code></pre>
+    <!-- ############################################# -->
+    <pre><code class="java"></code></pre>
+    <!-- ############################################# -->
+    <pre><code class="java"></code></pre>
+    <!-- ############################################# -->
+
+</body>
+
+</html>
