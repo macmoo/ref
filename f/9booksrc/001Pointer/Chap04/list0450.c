@@ -1,13 +1,13 @@
-/*--- strrchr‚ÌÀŒ»—áF<stddef.h>‚ÌƒCƒ“ƒNƒ‹[ƒh‚ª•K—v ---*/
+/*--- strrchrã®å®Ÿç¾ä¾‹ï¼š<stddef.h>ã®ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãŒå¿…è¦ ---*/
 char *strrchr(const char *s, int c)
 {
-	const char	*p = NULL;			/* oŒ»ˆÊ’u */
+	const char	*p = NULL;			/* å‡ºç¾ä½ç½® */
 
 	c = (char)c;
 	while (1) {
-		if (*s == c)				/* Œ©‚Â‚¯‚½ */
+		if (*s == c)				/* è¦‹ã¤ã‘ãŸ */
 			p = s;
-		if (*s == '\0')				/* ‘–¸I—¹ */
+		if (*s == '\0')				/* èµ°æŸ»çµ‚äº† */
 			break;
 		s++;
 	}

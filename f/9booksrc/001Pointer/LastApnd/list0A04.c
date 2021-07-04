@@ -1,10 +1,10 @@
 /*
-	”Ä—pƒNƒCƒbƒNƒ\[ƒgiqsortŠÖ”‚É€‚¶‚½d—lj
+	æ±ç”¨ã‚¯ã‚¤ãƒƒã‚¯ã‚½ãƒ¼ãƒˆï¼ˆqsorté–¢æ•°ã«æº–ã˜ãŸä»•æ§˜ï¼‰
 */
 
 #include  <stdlib.h>
 
-/*--- x, y‚Ìw‚·nƒoƒCƒg‚Ì—Ìˆæ‚ğŒğŠ· ---*/
+/*--- x, yã®æŒ‡ã™nãƒã‚¤ãƒˆã®é ˜åŸŸã‚’äº¤æ› ---*/
 static void memswap(void *x, void *y, size_t n)
 {
 	unsigned char  *a = (unsigned char *)x;
@@ -17,15 +17,15 @@ static void memswap(void *x, void *y, size_t n)
 	}
 }
 
-/*--- ”Ä—pƒNƒCƒbƒNƒ\[ƒgiqsortŠÖ”‚É€‚¶‚½d—lj ---*/
+/*--- æ±ç”¨ã‚¯ã‚¤ãƒƒã‚¯ã‚½ãƒ¼ãƒˆï¼ˆqsorté–¢æ•°ã«æº–ã˜ãŸä»•æ§˜ï¼‰ ---*/
 void quick(void *base, size_t nmemb, size_t size,
 		   int (*compar)(const void *, const void *))
 {
 	if (nmemb > 0) {
-		size_t	pl = 0;					/* ¶ƒJ[ƒ\ƒ‹ */
-		size_t	pr = nmemb - 1;			/* ‰EƒJ[ƒ\ƒ‹ */
+		size_t	pl = 0;					/* å·¦ã‚«ãƒ¼ã‚½ãƒ« */
+		size_t	pr = nmemb - 1;			/* å³ã‚«ãƒ¼ã‚½ãƒ« */
 		char	*v = (char *)base;
-		char	*x = &v[((pl + pr) / 2) * size];	/* •²‚Í’†‰›‚Ì—v‘f */
+		char	*x = &v[((pl + pr) / 2) * size];	/* æ¢è»¸ã¯ä¸­å¤®ã®è¦ç´  */
 
 		do {
 			while (compar((const void *)&v[pl * size], x) < 0) pl++;
@@ -33,7 +33,7 @@ void quick(void *base, size_t nmemb, size_t size,
 			if (pl <= pr) {
 				memswap(&v[pl * size], &v[pr * size], size);
 				pl++;
-				if (pr == 0)	/* •„†–³‚µ®”0‚©‚ç‚ÌƒfƒNƒŠƒƒ“ƒg‚ğ”ğ‚¯‚é */
+				if (pr == 0)	/* ç¬¦å·ç„¡ã—æ•´æ•°0ã‹ã‚‰ã®ãƒ‡ã‚¯ãƒªãƒ¡ãƒ³ãƒˆã‚’é¿ã‘ã‚‹ */
 					goto QuickRight;
 				pr--;
 			}
@@ -47,7 +47,7 @@ void quick(void *base, size_t nmemb, size_t size,
 
 #include  <stdio.h>
 	
-/*--- intŒ^‚Ì”äŠrŠÖ”i¸‡ƒ\[ƒg—pj ---*/
+/*--- intå‹ã®æ¯”è¼ƒé–¢æ•°ï¼ˆæ˜‡é †ã‚½ãƒ¼ãƒˆç”¨ï¼‰ ---*/
 int int_cmp(const int *a, const int *b)
 {
 	if (*a > *b)
@@ -64,19 +64,19 @@ int main(void)
 	int	 x[7];
 	int	 nx = sizeof(x) / sizeof(x[0]);
 
-	printf("%dŒÂ‚Ì®”‚ğ“ü—Í‚¹‚æB\n", nx);
+	printf("%då€‹ã®æ•´æ•°ã‚’å…¥åŠ›ã›ã‚ˆã€‚\n", nx);
 	for (i = 0; i < nx; i++) {
 		printf("x[%d] : ", i);
 		scanf("%d", &x[i]);
 	}
 
-	qsort(x,											/* ”z—ñ */
-		  nx,											/* —v‘f” */
-		  sizeof(int),									/* —v‘f‚Ì‘å‚«‚³ */
-		  (int (*)(const void *, const void *))int_cmp	/* ”äŠrŠÖ” */
+	qsort(x,											/* é…åˆ— */
+		  nx,											/* è¦ç´ æ•° */
+		  sizeof(int),									/* è¦ç´ ã®å¤§ãã• */
+		  (int (*)(const void *, const void *))int_cmp	/* æ¯”è¼ƒé–¢æ•° */
 		 );
 
-	puts("¸‡‚Éƒ\[ƒg‚µ‚Ü‚µ‚½B");
+	puts("æ˜‡é †ã«ã‚½ãƒ¼ãƒˆã—ã¾ã—ãŸã€‚");
 	for (i = 0; i < nx; i++)
 		printf("x[%d] = %d\n", i, x[i]);
 

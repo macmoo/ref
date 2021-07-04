@@ -1,25 +1,25 @@
 /*
-	•¶š—ñ“à‚Ì•¶š‚ğ‚P•¶š‚¸‚Â•\¦
+	æ–‡å­—åˆ—å†…ã®æ–‡å­—ã‚’ï¼‘æ–‡å­—ãšã¤è¡¨ç¤º
 */
 
 #include  <stdio.h>
 
 int main(void)
 {
-	char  str[] = "ABC";	/* ”z—ñ‚É‚æ‚é•¶š—ñ */
-	char  *ptr	= "XYZ";	/* ƒ|ƒCƒ“ƒ^‚É‚æ‚é•¶š—ñ */
+	char  str[] = "ABC";	/* é…åˆ—ã«ã‚ˆã‚‹æ–‡å­—åˆ— */
+	char  *ptr	= "XYZ";	/* ãƒã‚¤ãƒ³ã‚¿ã«ã‚ˆã‚‹æ–‡å­—åˆ— */
 
-	printf("•¶š—ñstr‚Í\"");
+	printf("æ–‡å­—åˆ—strã¯\"");
 	putchar(str[0]);
 	putchar(str[1]);
 	putchar(str[2]);
-	puts("\"‚Å‚·B");
+	puts("\"ã§ã™ã€‚");
 
-	printf("•¶š—ñptr‚Í\"");
+	printf("æ–‡å­—åˆ—ptrã¯\"");
 	putchar(ptr[0]);
 	putchar(ptr[1]);
 	putchar(ptr[2]);
-	puts("\"‚Å‚·B");
+	puts("\"ã§ã™ã€‚");
 
 	return (0);
 }

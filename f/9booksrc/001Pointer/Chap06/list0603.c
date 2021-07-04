@@ -1,5 +1,5 @@
 /*
-	\‘¢‘Ìƒƒ“ƒo‚ÌƒAƒhƒŒƒX‚ğ•\¦
+	æ§‹é€ ä½“ãƒ¡ãƒ³ãƒã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¡¨ç¤º
 */
 
 #include  <stdio.h>
@@ -12,9 +12,9 @@ int main(void)
 		double	z;
 	} sa;
 
-	printf("&sa.x = %p\n", &sa.x);		/* ƒƒ“ƒo‚Ö‚Ìƒ|ƒCƒ“ƒ^‚ğ•\¦	*/
-	printf("&sa.y = %p\n", &sa.y);		/*			@V			*/
-	printf("&sa.z = %p\n", &sa.z);		/*		@	@V			*/
+	printf("&sa.x = %p\n", &sa.x);		/* ãƒ¡ãƒ³ãƒã¸ã®ãƒã‚¤ãƒ³ã‚¿ã‚’è¡¨ç¤º	*/
+	printf("&sa.y = %p\n", &sa.y);		/*			ã€€ã€ƒ			*/
+	printf("&sa.z = %p\n", &sa.z);		/*		ã€€	ã€€ã€ƒ			*/
 
 	return (0);
 }

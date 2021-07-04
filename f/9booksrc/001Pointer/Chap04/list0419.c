@@ -1,15 +1,15 @@
 /*
-	•¶š—ñ‚©‚ç‚Ì•¶š‚Ì’Tõ
+	æ–‡å­—åˆ—ã‹ã‚‰ã®æ–‡å­—ã®æ¢ç´¢
 */
 
 #include  <stdio.h>
 
-/*--- •¶š—ñs‚©‚ç•¶šc‚ğ’Tõ ---*/
+/*--- æ–‡å­—åˆ—sã‹ã‚‰æ–‡å­—cã‚’æ¢ç´¢ ---*/
 char *str_chr(const char *s, int c)
 {
 	c = (char)c;
 	while (*s != c) {
-		if (*s == '\0')				/* Œ©‚Â‚©‚ç‚È‚©‚Á‚½ */
+		if (*s == '\0')				/* è¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸ */
 			return (NULL);
 		s++;
 	}
@@ -22,13 +22,13 @@ int main(void)
 	char  ch[2];	
 	char  letter[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-	printf("‰p‘å•¶š‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢F");
+	printf("è‹±å¤§æ–‡å­—ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼š");
 	scanf("%s", ch);
 
 	if ((ptr = str_chr(letter, ch[0])) == NULL)
-		printf("%c‚Í‰p‘å•¶š‚Å‚Í‚ ‚è‚Ü‚¹‚ñB\n", ch[0]);
+		printf("%cã¯è‹±å¤§æ–‡å­—ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚\n", ch[0]);
 	else
-		printf("%c‚©‚çŒã‚ÌƒAƒ‹ƒtƒ@ƒxƒbƒg‚Í%s‚Å‚·B\n", ch[0], ptr);
+		printf("%cã‹ã‚‰å¾Œã®ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆã¯%sã§ã™ã€‚\n", ch[0], ptr);
 
 	return (0);
 }

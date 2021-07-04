@@ -1,5 +1,5 @@
 /*
-	register�L����N���X�w��q�t���Ő錾���ꂽ�I�u�W�F�N�g�̃A�h���X
+	register記憶域クラス指定子付きで宣言されたオブジェクトのアドレス
 */
 
 #include  <stdio.h>
@@ -8,7 +8,7 @@ int main(void)
 {
 	register int  nx;
 
-	printf("&nx�̒l��%p�ł��B\n", &nx);			/* �G���[ */
+	printf("&nxの値は%pです。\n", &nx);			/* エラー */
 
 	return (0);
 }

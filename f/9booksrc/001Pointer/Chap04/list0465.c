@@ -1,11 +1,11 @@
 /*
-	memsetŠÖ”‚Ì—˜—p—ái‚»‚Ì‚Qj
+	memseté–¢æ•°ã®åˆ©ç”¨ä¾‹ï¼ˆãã®ï¼’ï¼‰
 */
 
 #include  <stdio.h>
 #include  <string.h>
 
-/*--- —v‘fŒ^‚ªintŒ^‚Å—v‘f”no‚Ì”z—ña‚Ì‘S—v‘f‚É0‚ğ‘ã“ü ---*/
+/*--- è¦ç´ å‹ãŒintå‹ã§è¦ç´ æ•°noã®é…åˆ—aã®å…¨è¦ç´ ã«0ã‚’ä»£å…¥ ---*/
 void fill_ary0(int a[], int no)
 {
 	if (no > 0)
@@ -21,9 +21,9 @@ int main(void)
 	for (i = 0; i < nx; i++)
 		printf("nx[%d] = %d\n", i, x[i]);
 
-	fill_ary0(x, nx);		/* ”z—ñx‚Ì‘S—v‘f‚É0‚ğ‘ã“ü */
+	fill_ary0(x, nx);		/* é…åˆ—xã®å…¨è¦ç´ ã«0ã‚’ä»£å…¥ */
 
-	puts("‘S—v‘f‚É0‚ğ‘ã“ü‚µ‚Ü‚µ‚½B");
+	puts("å…¨è¦ç´ ã«0ã‚’ä»£å…¥ã—ã¾ã—ãŸã€‚");
 
 	for (i = 0; i < nx; i++)
 		printf("nx[%d] = %d\n", i, x[i]);

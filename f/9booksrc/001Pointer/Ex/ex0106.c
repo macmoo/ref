@@ -1,8 +1,8 @@
-/* ‰‰K1-6‚Ì‰ğ“š—á */
+/* æ¼”ç¿’1-6ã®è§£ç­”ä¾‹ */
 
 #include  <stdio.h>
 
-/*--- *x‚Æ*y‚Ì’l‚ğŒğŠ· ---*/
+/*--- *xã¨*yã®å€¤ã‚’äº¤æ› ---*/
 void swapd(double *x, double *y)
 {
 	double  temp = *x;
@@ -10,7 +10,7 @@ void swapd(double *x, double *y)
 	*y = temp;
 }
 
-/*--- *pa…*pb…*pc‚Æ‚È‚é‚æ‚¤‚Éƒ\[ƒg ---*/
+/*--- *paâ‰¦*pbâ‰¦*pcã¨ãªã‚‹ã‚ˆã†ã«ã‚½ãƒ¼ãƒˆ ---*/
 void sort3d(double *pa, double *pb, double *pc)
 {
 	if (*pa > *pb) swapd(pa, pb);
@@ -24,9 +24,9 @@ int main(void)
 
 	sort3d(&d1, &d2, &d3);
 
-	printf("d1‚Ì’l%.3f\n", d1);				/* d1‚Ì’l‚ğ•\¦ */
-	printf("d2‚Ì’l%.3f\n", d2);				/* d2‚Ì’l‚ğ•\¦ */
-	printf("d3‚Ì’l%.3f\n", d3);				/* d3‚Ì’l‚ğ•\¦ */
+	printf("d1ã®å€¤ï¼%.3f\n", d1);				/* d1ã®å€¤ã‚’è¡¨ç¤º */
+	printf("d2ã®å€¤ï¼%.3f\n", d2);				/* d2ã®å€¤ã‚’è¡¨ç¤º */
+	printf("d3ã®å€¤ï¼%.3f\n", d3);				/* d3ã®å€¤ã‚’è¡¨ç¤º */
 
 	return (0);
 }

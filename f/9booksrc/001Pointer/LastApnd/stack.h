@@ -1,5 +1,5 @@
 /*
-	�ėp�X�^�b�N�i�w�b�_���j	"stack.h"
+	汎用スタック（ヘッダ部）	"stack.h"
 */
 
 #if !defined(__STACK)
@@ -7,42 +7,42 @@
 
 #include  <stdlib.h>
 
-/*--- �X�^�b�N����������\���� ---*/
+/*--- スタックを実現する構造体 ---*/
 typedef struct {
-	size_t	sz;		/* �v�f�̑傫�� */
-	int		max;	/* �ő�̗v�f�� */
-	int		ptr;	/* �X�^�b�N�|�C���^ */
-	void	*stk;	/* �X�^�b�N�i�̐擪�v�f�ւ̃|�C���^�j */
+	size_t	sz;		/* 要素の大きさ */
+	int		max;	/* 最大の要素数 */
+	int		ptr;	/* スタックポインタ */
+	void	*stk;	/* スタック（の先頭要素へのポインタ） */
 } Stack;
 
-/*--- �X�^�b�N�̏����� ---*/
+/*--- スタックの初期化 ---*/
 Stack *StackAlloc(size_t size, int max);
 
-/*--- �X�^�b�N�̌�n�� ---*/
+/*--- スタックの後始末 ---*/
 void StackFree(Stack *s);
 
-/*--- �X�^�b�N�Ƀf�[�^���v�b�V�� ---*/
+/*--- スタックにデータをプッシュ ---*/
 int StackPush(Stack *s, void *x);
 
-/*--- �X�^�b�N����f�[�^���|�b�v ---*/
+/*--- スタックからデータをポップ ---*/
 int StackPop(Stack *s, void *x);
 
-/*--- �X�^�b�N����f�[�^���s�[�N ---*/
+/*--- スタックからデータをピーク ---*/
 int StackPeek(const Stack *s, void *x);
 
-/*--- �X�^�b�N�̑傫�� ---*/
+/*--- スタックの大きさ ---*/
 int StackSize(const Stack *s);
 
-/*--- �X�^�b�N�ɐς܂�Ă���f�[�^�� ---*/
+/*--- スタックに積まれているデータ数 ---*/
 int StackNo(const Stack *s);
 
-/*--- �X�^�b�N�͋� ---*/
+/*--- スタックは空か ---*/
 int StackIsEmpty(const Stack *s);
 
-/*--- �X�^�b�N�͖��t�� ---*/
+/*--- スタックは満杯か ---*/
 int StackIsFull(const Stack *s);
 
-/*--- �X�^�b�N����ɂ��� ---*/
+/*--- スタックを空にする ---*/
 void StackClear(Stack *s);
 
 #endif

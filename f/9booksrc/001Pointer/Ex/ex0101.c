@@ -1,4 +1,4 @@
-/* ‰‰K1-1‚Ì‰ğ“š—á */
+/* æ¼”ç¿’1-1ã®è§£ç­”ä¾‹ */
 
 #include  <stdio.h>
 
@@ -7,15 +7,15 @@ int main(void)
 	int	 nx  = 100;
 	int	 *pt = &nx;
 
-	printf("@nx‚Ì’l%d\n", nx);	/* @nx‚ÍintŒ^ */
-	printf("*&nx‚Ì’l%d\n", *&nx);	/* *&nx‚ÍintŒ^ */
-	printf("@pt‚Ì’l%p\n", pt);	/* @pt‚Íint *Œ^ */
-	printf("&*pt‚Ì’l%p\n", &*pt);	/* &*pt‚Íint *Œ^ */
+	printf("ã€€nxã®å€¤ï¼%d\n", nx);	/* ã€€nxã¯intå‹ */
+	printf("*&nxã®å€¤ï¼%d\n", *&nx);	/* *&nxã¯intå‹ */
+	printf("ã€€ptã®å€¤ï¼%p\n", pt);	/* ã€€ptã¯int *å‹ */
+	printf("&*ptã®å€¤ï¼%p\n", &*pt);	/* &*ptã¯int *å‹ */
 
-	printf("sizeof(nx)@%u\n", (unsigned)sizeof(nx));
-	printf("sizeof(*&nx)%u\n", (unsigned)sizeof(*&nx));
-	printf("sizeof(pt)@%u\n", (unsigned)sizeof(pt));
-	printf("sizeof(&*pt)%u\n", (unsigned)sizeof(&*pt));
+	printf("sizeof(nx)ã€€ï¼%u\n", (unsigned)sizeof(nx));
+	printf("sizeof(*&nx)ï¼%u\n", (unsigned)sizeof(*&nx));
+	printf("sizeof(pt)ã€€ï¼%u\n", (unsigned)sizeof(pt));
+	printf("sizeof(&*pt)ï¼%u\n", (unsigned)sizeof(&*pt));
 
 	return (0);
 }

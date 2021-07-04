@@ -1,26 +1,26 @@
 /*
-	\‘¢‘Ì‚Ìƒƒ“ƒo‚É’l‚ğ‘ã“ü‚µ‚Ä•\¦
+	æ§‹é€ ä½“ã®ãƒ¡ãƒ³ãƒã«å€¤ã‚’ä»£å…¥ã—ã¦è¡¨ç¤º
 */
 
 #include  <stdio.h>
 
 int main(void)
 {
-	struct xyz {			/* xyz‚Íƒ^ƒO–¼ */
-		int		x;			/* ƒƒ“ƒo */
-		long	y;			/* @V@ */
-		double	z;			/* @V@ */
+	struct xyz {			/* xyzã¯ã‚¿ã‚°å */
+		int		x;			/* ãƒ¡ãƒ³ãƒ */
+		long	y;			/* ã€€ã€ƒã€€ */
+		double	z;			/* ã€€ã€ƒã€€ */
 	};
 
-	struct xyz	sa;					/* sa‚Ístruct xyzŒ^‚ÌƒIƒuƒWƒFƒNƒg */
+	struct xyz	sa;					/* saã¯struct xyzå‹ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ */
 
-	sa.x = 50;						/* ƒƒ“ƒo‚É’l‚ğ‘ã“ü */
-	sa.y = 99999999L;				/* @V@ */
-	sa.z = 3.14;					/* @V@ */
+	sa.x = 50;						/* ãƒ¡ãƒ³ãƒã«å€¤ã‚’ä»£å…¥ */
+	sa.y = 99999999L;				/* ã€€ã€ƒã€€ */
+	sa.z = 3.14;					/* ã€€ã€ƒã€€ */
 
-	printf("sa.x = %d\n",	sa.x);	/* ƒƒ“ƒo‚Ì’l‚ğ•\¦ */
-	printf("sa.y = %ld\n",	sa.y);	/* @V@ */
-	printf("sa.z = %.2f\n",	sa.z);	/* @V@ */
+	printf("sa.x = %d\n",	sa.x);	/* ãƒ¡ãƒ³ãƒã®å€¤ã‚’è¡¨ç¤º */
+	printf("sa.y = %ld\n",	sa.y);	/* ã€€ã€ƒã€€ */
+	printf("sa.z = %.2f\n",	sa.z);	/* ã€€ã€ƒã€€ */
 
 	return (0);
 }

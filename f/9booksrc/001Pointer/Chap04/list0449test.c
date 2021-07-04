@@ -1,32 +1,32 @@
 /*
-	strchrŠÖ”‚ÆstrrchrŠÖ”‚Ì—˜—p—á
+	strchré–¢æ•°ã¨strrchré–¢æ•°ã®åˆ©ç”¨ä¾‹
 */
 
 #include  <stdio.h>
 #include  <string.h>
 
-/*--- strchr‚ÌÀŒ»—áF<stddef.h>‚ÌƒCƒ“ƒNƒ‹[ƒh‚ª•K—v ---*/
+/*--- strchrã®å®Ÿç¾ä¾‹ï¼š<stddef.h>ã®ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãŒå¿…è¦ ---*/
 char *strchr(const char *s, int c)
 {
 	c = (char)c;
 	while (*s != c) {
-		if (*s == '\0')				/* Œ©‚Â‚¯‚é‚±‚Æ‚ª‚Å‚«‚È‚©‚Á‚½ */
+		if (*s == '\0')				/* è¦‹ã¤ã‘ã‚‹ã“ã¨ãŒã§ããªã‹ã£ãŸ */
 			return (NULL);
 		s++;
 	}
 	return ((char *)s);
 }
 
-/*--- strrchr‚ÌÀŒ»—áF<stddef.h>‚ÌƒCƒ“ƒNƒ‹[ƒh‚ª•K—v ---*/
+/*--- strrchrã®å®Ÿç¾ä¾‹ï¼š<stddef.h>ã®ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãŒå¿…è¦ ---*/
 char *strrchr(const char *s, int c)
 {
-	const char	*p = NULL;			/* oŒ»ˆÊ’u */
+	const char	*p = NULL;			/* å‡ºç¾ä½ç½® */
 
 	c = (char)c;
 	while (1) {
-		if (*s == c)				/* Œ©‚Â‚¯‚½ */
+		if (*s == c)				/* è¦‹ã¤ã‘ãŸ */
 			p = s;
-		if (*s == '\0')				/*	‘–¸I—¹ */
+		if (*s == '\0')				/*	èµ°æŸ»çµ‚äº† */
 			break;
 		s++;
 	}
@@ -35,26 +35,26 @@ char *strrchr(const char *s, int c)
 
 int main(void)
 {
-	char  str[60];		/* ‚±‚Ì•¶š—ñ‚©‚ç’Tõ */
+	char  str[60];		/* ã“ã®æ–‡å­—åˆ—ã‹ã‚‰æ¢ç´¢ */
 	char  tmp[60];
-	int	  ch;			/* ’T‚·•¶š */
+	int	  ch;			/* æ¢ã™æ–‡å­— */
 	char  *p;
 
-	printf("•¶š—ñ‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢F");
+	printf("æ–‡å­—åˆ—ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼š");
 	scanf("%s", str);
 
-	printf("’T‚·•¶š‚ÍF");
-	scanf("%s", tmp);			/* ‚¢‚Á‚½‚ñ•¶š—ñ‚Æ‚µ‚Ä“Ç‚İ‚ñ‚Å */
-	ch = tmp[0];				/* ‚»‚ÌÅ‰‚Ì•¶š‚ğ’Tõ•¶š‚Æ‚·‚é */
+	printf("æ¢ã™æ–‡å­—ã¯ï¼š");
+	scanf("%s", tmp);			/* ã„ã£ãŸã‚“æ–‡å­—åˆ—ã¨ã—ã¦èª­ã¿è¾¼ã‚“ã§ */
+	ch = tmp[0];				/* ãã®æœ€åˆã®æ–‡å­—ã‚’æ¢ç´¢æ–‡å­—ã¨ã™ã‚‹ */
 
-	if ((p = strchr(str, ch)) == NULL)				/* æ“ª‚ÌoŒ»‚ğ’Tõ */
-		printf("•¶š'%c'‚Í•¶š—ñ’†‚É‘¶İ‚µ‚Ü‚¹‚ñB\n", ch);
+	if ((p = strchr(str, ch)) == NULL)				/* å…ˆé ­ã®å‡ºç¾ã‚’æ¢ç´¢ */
+		printf("æ–‡å­—'%c'ã¯æ–‡å­—åˆ—ä¸­ã«å­˜åœ¨ã—ã¾ã›ã‚“ã€‚\n", ch);
 	else {
-		printf("•¶š'%c'‚ÌÅ‰‚ÌoŒ»ˆÈ~‚Í\"%s\"‚Å‚·B\n", ch, p);
+		printf("æ–‡å­—'%c'ã®æœ€åˆã®å‡ºç¾ä»¥é™ã¯\"%s\"ã§ã™ã€‚\n", ch, p);
 
-		p = strrchr(str, ch);						/* ––”ö‚ÌoŒ»‚ğ’Tõ */
+		p = strrchr(str, ch);						/* æœ«å°¾ã®å‡ºç¾ã‚’æ¢ç´¢ */
 
-		printf("•¶š'%c'‚ÌÅŒã‚ÌoŒ»ˆÈ~‚Í\"%s\"‚Å‚·B\n", ch, p);
+		printf("æ–‡å­—'%c'ã®æœ€å¾Œã®å‡ºç¾ä»¥é™ã¯\"%s\"ã§ã™ã€‚\n", ch, p);
 	}
 
 	return (0);

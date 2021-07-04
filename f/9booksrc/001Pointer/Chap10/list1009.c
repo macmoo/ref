@@ -1,13 +1,13 @@
 /*
 	|  2  1	 1	|
-	|  1  3	 1	| ‚Ì‹ts—ñ‚ğ‹‚ß‚é
+	|  1  3	 1	| ã®é€†è¡Œåˆ—ã‚’æ±‚ã‚ã‚‹
 	|  2  2	 4	|
 */
 
 #include  <stdio.h>
 #include  "matrix.h"
 
-/*--- s—ñ‚Ì“à—e‚ğ•\¦ ---*/
+/*--- è¡Œåˆ—ã®å†…å®¹ã‚’è¡¨ç¤º ---*/
 void print(MAT *x)
 {
 	int	i, j;
@@ -24,16 +24,16 @@ int main(void)
 {
 	MAT	 a, b;
 
-	MATalloc(&a, 3, 3);		/* a‚Í‚Rs‚R—ñ‚Ìs—ñ */
-	MATalloc(&b, 3, 3);		/* b‚Í‚Rs‚R—ñ‚Ìs—ñ */
+	MATalloc(&a, 3, 3);		/* aã¯ï¼“è¡Œï¼“åˆ—ã®è¡Œåˆ— */
+	MATalloc(&b, 3, 3);		/* bã¯ï¼“è¡Œï¼“åˆ—ã®è¡Œåˆ— */
 	MATelem(a,1,1) = 2.0; MATelem(a,1,2) = 1.0; MATelem(a,1,3) = 1.0;
 	MATelem(a,2,1) = 1.0; MATelem(a,2,2) = 3.0; MATelem(a,2,3) = 1.0;
 	MATelem(a,3,1) = 2.0; MATelem(a,3,2) = 2.0; MATelem(a,3,3) = 4.0;
 	MATinvgauss(&b, &a);
 	print(&a);
 	print(&b);
-	MATfree(&a);			/* —Ìˆæ‰ğ•ú */
-	MATfree(&b);			/* —Ìˆæ‰ğ•ú */
+	MATfree(&a);			/* é ˜åŸŸè§£æ”¾ */
+	MATfree(&b);			/* é ˜åŸŸè§£æ”¾ */
 
 	return (0);
 }

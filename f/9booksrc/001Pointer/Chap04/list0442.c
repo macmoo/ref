@@ -1,5 +1,5 @@
 /*
-	strcpyŠÖ”‚ÆstrncpyŠÖ”‚Ì—˜—p—á
+	strcpyé–¢æ•°ã¨strncpyé–¢æ•°ã®åˆ©ç”¨ä¾‹
 */
 
 #include  <stdio.h>
@@ -8,7 +8,7 @@
 int main(void)
 {
 	char  s1[10], s2[10], s3[10];
-	char *x = "XXXXXXXXX";	/* 9ŒÂ‚Ì'X'‚Æƒiƒ‹•¶š */
+	char *x = "XXXXXXXXX";	/* 9å€‹ã®'X'ã¨ãƒŠãƒ«æ–‡å­— */
 
 	strcpy(s1, "ABC");
 	printf("s1 = %s\n", s1);

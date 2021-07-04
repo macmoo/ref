@@ -1,7 +1,7 @@
 #include  <stdio.h>
 #include  <stddef.h>
 
-/*--- memcmp‚ÌÀŒ»—áF<sttdef.h>‚ÌƒCƒ“ƒNƒ‹[ƒh‚ª•K—v ---*/
+/*--- memcmpã®å®Ÿç¾ä¾‹ï¼š<sttdef.h>ã®ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãŒå¿…è¦ ---*/
 int memcmp(const void *s1, const void *s2, size_t n)
 {
 	const unsigned char	 *p1 = (const unsigned char *)s1;

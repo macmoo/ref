@@ -1,5 +1,5 @@
 /*
-	ˆê‚Â‚Ì•¶Žš—ñƒŠƒeƒ‰ƒ‹‚Å©–¼‚Æ©‚ð•\‚·i‚»‚Ì‚Qj
+	ä¸€ã¤ã®æ–‡å­—åˆ—ãƒªãƒ†ãƒ©ãƒ«ã§å§“åã¨å§“ã‚’è¡¨ã™ï¼ˆãã®ï¼’ï¼‰
 */
 
 #include  <stdio.h>
@@ -9,8 +9,8 @@ int main(void)
 	char  s1[] = "BohYoh Shibata";
 	char  *s2 = &s1[7];
 
-	printf("ƒtƒ‹ƒl[ƒ€‚Í%s‚Å‚·B\n", s1);
-	printf("ƒtƒ@ƒ~ƒŠ[ƒl[ƒ€‚Í%s‚Å‚·B\n", s2);
+	printf("ãƒ•ãƒ«ãƒãƒ¼ãƒ ã¯%sã§ã™ã€‚\n", s1);
+	printf("ãƒ•ã‚¡ãƒŸãƒªãƒ¼ãƒãƒ¼ãƒ ã¯%sã§ã™ã€‚\n", s2);
 
 	return (0);
 }

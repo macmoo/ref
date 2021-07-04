@@ -1,9 +1,9 @@
-/*--- strstr‚ÌÀŒ»—á‚`F<string.h>‚ÌƒCƒ“ƒNƒ‹[ƒh‚ª•K—v ---*/
+/*--- strstrã®å®Ÿç¾ä¾‹ï¼¡ï¼š<string.h>ã®ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãŒå¿…è¦ ---*/
 char *strstr(const char *s1, const char *s2)
 {
-	if (*s2 == '\0') return ((char *)s1);		/* s2‚Í‹ó•¶š—ñ */
+	if (*s2 == '\0') return ((char *)s1);		/* s2ã¯ç©ºæ–‡å­—åˆ— */
 
-	for ( ; (s1 = strchr(s1, *s2)) != NULL; ++s1) {		/* strchr‚ğ—˜—p */
+	for ( ; (s1 = strchr(s1, *s2)) != NULL; ++s1) {		/* strchrã‚’åˆ©ç”¨ */
 		const char	*sc1 = s1;
 		const char	*sc2 = s2;
 

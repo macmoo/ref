@@ -1,15 +1,15 @@
 /*
-	strcmpŠÖ”‚ÆstrncmpŠÖ”‚Ì—˜—p—á
+	strcmpé–¢æ•°ã¨strncmpé–¢æ•°ã®åˆ©ç”¨ä¾‹
 */
 
 #include  <stdio.h>
 #include  <string.h>
 
-/*--- strcmp‚ÌÀŒ»—á ---*/
+/*--- strcmpã®å®Ÿç¾ä¾‹ ---*/
 int strcmp(const char *s1, const char *s2)
 {
 	while (*s1 == *s2) {
-		if (*s1 == '\0')			/* “™‚µ‚¢ */
+		if (*s1 == '\0')			/* ç­‰ã—ã„ */
 			return (0);
 		s1++;
 		s2++;
@@ -17,11 +17,11 @@ int strcmp(const char *s1, const char *s2)
 	return ((unsigned char)*s1 - (unsigned char)*s2);
 }
 
-/*--- strncmp‚ÌÀŒ»—á ---*/
+/*--- strncmpã®å®Ÿç¾ä¾‹ ---*/
 int strncmp(const char *s1, const char *s2, size_t n)
 {
 	while (n && *s1 && *s2) {
-		if (*s1 != *s2)			/* “™‚µ‚­‚È‚¢ */
+		if (*s1 != *s2)			/* ç­‰ã—ããªã„ */
 			return ((unsigned char)*s1 - (unsigned char)*s2);
 		s1++;
 		s2++;
@@ -37,11 +37,11 @@ int main(void)
 	int	  cmp1, cmp2;
 	char  st[100];
 
-	puts("\"ABCDE\"‚Æ‚Ì”äŠr‚ğs‚¢‚Ü‚·B");
-	puts("\"XXXXX\"‚ÅI—¹‚µ‚Ü‚·B");
+	puts("\"ABCDE\"ã¨ã®æ¯”è¼ƒã‚’è¡Œã„ã¾ã™ã€‚");
+	puts("\"XXXXX\"ã§çµ‚äº†ã—ã¾ã™ã€‚");
 
 	while (1) {
-		printf("\n•¶š—ñstF");
+		printf("\næ–‡å­—åˆ—stï¼š");
 		scanf("%s", st);
 
 		if (strcmp(st, "XXXXX") == 0)

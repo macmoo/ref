@@ -1,4 +1,4 @@
-/*--- strcpy‚ÌŽÀŒ»—á ---*/
+/*--- strcpyê¶»ë ³ë™¸ì€¡ ---*/
 char *strcpy(char *s1, const char *s2)
 {
 	char  *p = s1;

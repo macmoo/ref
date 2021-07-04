@@ -1,28 +1,28 @@
-/* ‰‰K5-1‚Ì‰ğ“š—á */
+/* æ¼”ç¿’5-1ã®è§£ç­”ä¾‹ */
 
 #include  <time.h>
 #include  <stdio.h>
 #include  <stdlib.h>
 #include  <limits.h>
 
-#define	QNO	   12		/* ’PŒê‚Ì” */
-#define	CNO		4		/* ‘I‘ğˆ‚Ì” */
+#define	QNO	   12		/* å˜èªã®æ•° */
+#define	CNO		4		/* é¸æŠè‚¢ã®æ•° */
 
 #define swap(type, x, y) do { type t = x; x = y; y = t; } while (0)
 
-/*--- “ú–{Œê ---*/
+/*--- æ—¥æœ¬èª ---*/
 char *jptr[] = {
-	"“®•¨", "Ô",	"‰Ô",	"‰Æ",	"Š÷",	"–{",
-	"ˆÖq", "•ƒ",	"•ê",	"ˆ¤",	"•½˜a",	"G",
+	"å‹•ç‰©", "è»Š",	"èŠ±",	"å®¶",	"æœº",	"æœ¬",
+	"æ¤…å­", "çˆ¶",	"æ¯",	"æ„›",	"å¹³å’Œ",	"é›‘èªŒ",
 };
 
-/*--- ‰pŒê ---*/
+/*--- è‹±èª ---*/
 char *eptr[] = {
 	"animal", "car",	"flower", "house", "desk",	"book",
 	"chair",  "father",	"mother", "love",  "peace",	"magazine",
 };
 
-/*--- ‘I‘ğˆ‚ğì¬‚µ³‰ğ‚Ì“Yš‚ğ•Ô‚· ---*/
+/*--- é¸æŠè‚¢ã‚’ä½œæˆã—æ­£è§£ã®æ·»å­—ã‚’è¿”ã™ ---*/
 int make_cand(int c[], int n)
 {
 	int	 i, j;
@@ -44,22 +44,22 @@ int make_cand(int c[], int n)
 	return (j);
 }
 
-/*--- ‘I‘ğˆ‚ğ•\¦ ---*/
+/*--- é¸æŠè‚¢ã‚’è¡¨ç¤º ---*/
 void print_cand(int c[], int sw)
 {
 	int	 i;
 	for (i = 0; i < CNO; i++)
 		printf("(%d) %s  ", i, sw ? jptr[c[i]] : eptr[c[i]]);
-	printf("F");
+	printf("ï¼š");
 }
 
 int main(void)
 {
-	int	 nq;			/* –â‘è‚Ì”Ô† */
-	int	 na;			/* ³‰ğ‚Ì”Ô† */
-	int	 sw;			/* 0F‰pŒê¨“ú–{Œê^1F“ú–{Œê¨‰pŒê */
-	int	 retry;			/* Ä’§í‚·‚é‚©H */
-	int	 cand[CNO];		/* ‘I‘ğˆ‚Ì”Ô† */
+	int	 nq;			/* å•é¡Œã®ç•ªå· */
+	int	 na;			/* æ­£è§£ã®ç•ªå· */
+	int	 sw;			/* 0ï¼šè‹±èªâ†’æ—¥æœ¬èªï¼1ï¼šæ—¥æœ¬èªâ†’è‹±èª */
+	int	 retry;			/* å†æŒ‘æˆ¦ã™ã‚‹ã‹ï¼Ÿ */
+	int	 cand[CNO];		/* é¸æŠè‚¢ã®ç•ªå· */
 
 	srand((unsigned)time(NULL) % RAND_MAX);
 
@@ -70,16 +70,16 @@ int main(void)
 		na = make_cand(cand, nq);
 		sw = rand() % 2;
 
-		printf("%s‚Í‚Ç‚ê‚Å‚·‚©H\n", sw ? eptr[nq] : jptr[nq]);
+		printf("%sã¯ã©ã‚Œã§ã™ã‹ï¼Ÿ\n", sw ? eptr[nq] : jptr[nq]);
 
 		do {
 			print_cand(cand, sw);
 			scanf("%d", &no);
 			if (no != na)
-				puts("ˆá‚¢‚Ü‚·B");
+				puts("é•ã„ã¾ã™ã€‚");
 		} while (no != na);
-		puts("³‰ğ‚Å‚·B");
-		printf("‚à‚¤ˆê“xH 0-‚¢‚¢‚¦^1-‚Í‚¢F");
+		puts("æ­£è§£ã§ã™ã€‚");
+		printf("ã‚‚ã†ä¸€åº¦ï¼Ÿ 0-ã„ã„ãˆï¼1-ã¯ã„ï¼š");
 		scanf("%d", &retry);
 	} while (retry == 1);
 

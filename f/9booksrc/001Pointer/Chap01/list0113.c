@@ -1,17 +1,17 @@
 /*
-	ƒ|ƒCƒ“ƒ^‚ğ®”’l‚É•ÏŠ·‚µ‚Ä•\¦
+	ãƒã‚¤ãƒ³ã‚¿ã‚’æ•´æ•°å€¤ã«å¤‰æ›ã—ã¦è¡¨ç¤º
 */
 
 #include  <stdio.h>
 
 int main(void)
 {
-	int	 nx;			/* nx‚ÍintŒ^ */
-	int	 *pt = &nx;		/* pt‚Ínx‚ğw‚·ƒ|ƒCƒ“ƒ^ */
+	int	 nx;			/* nxã¯intå‹ */
+	int	 *pt = &nx;		/* ptã¯nxã‚’æŒ‡ã™ãƒã‚¤ãƒ³ã‚¿ */
 
-	/* nx‚Ö‚Ìƒ|ƒCƒ“ƒ^‚ğ•„†–³‚µ®”’l‚É•ÏŠ·‚µ‚Ä•\¦ */
-	printf("&nxF%lu\n", (unsigned long)&nx);
-	printf(" ptF%lu\n", (unsigned long)pt);
+	/* nxã¸ã®ãƒã‚¤ãƒ³ã‚¿ã‚’ç¬¦å·ç„¡ã—æ•´æ•°å€¤ã«å¤‰æ›ã—ã¦è¡¨ç¤º */
+	printf("&nxï¼š%lu\n", (unsigned long)&nx);
+	printf(" ptï¼š%lu\n", (unsigned long)pt);
 
 	return (0);
 }

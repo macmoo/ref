@@ -1,5 +1,5 @@
 /*
-	‚QŽŸŒ³”z—ñ‚Ì—v‘f‚ðŠÔˆá‚Á‚½•û–@‚ÅƒAƒNƒZƒX
+	ï¼’æ¬¡å…ƒé…åˆ—ã®è¦ç´ ã‚’é–“é•ã£ãŸæ–¹æ³•ã§ã‚¢ã‚¯ã‚»ã‚¹
 */
 
 #include  <stdio.h>
@@ -11,7 +11,7 @@ int main(void)
 
 	for (i = 0; i < 3; i++)
 		for (j = 0; j < 2; j++)
-			printf("ma[%d][%d] = %d\n", i, j, ma[i, j]);	/* H */
+			printf("ma[%d][%d] = %d\n", i, j, ma[i, j]);	/* ï¼Ÿ */
 
 	return (0);
 }

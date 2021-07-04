@@ -1,5 +1,5 @@
 /*
-	�P�o�C�g�Ɋ܂܂��r�b�g����\��
+	１バイトに含まれるビット数を表示
 */
 
 #include  <stdio.h>
@@ -7,7 +7,7 @@
 
 int main(void)
 {
-	printf("�P�o�C�g��%d�r�b�g�ł��B\n", CHAR_BIT);
+	printf("１バイトは%dビットです。\n", CHAR_BIT);
 				
 	return (0);
 }

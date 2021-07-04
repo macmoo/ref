@@ -1,43 +1,43 @@
 /*
-	”Ä—p‚Q•ª’TõŠÖ”ibsearchŠÖ”‚ğŠg’£j
+	æ±ç”¨ï¼’åˆ†æ¢ç´¢é–¢æ•°ï¼ˆbsearché–¢æ•°ã‚’æ‹¡å¼µï¼‰
 */
 
 #include  <stdlib.h>
 
-/*--- base‚ªw‚·—v‘f‚Ì‘å‚«‚³‚ªsize‚Å—v‘f”‚ªnmemb‚Ì”z—ñ‚©‚çkey‚Æˆê’v‚·‚é—v‘f‚ğ
-	  ”äŠrŠÖ”compar‚ğ—p‚¢‚Ä‚Q•ª’Tõ
-	  ¦ key‚Æ“™‚µ‚¢—v‘f‚ª•¡”‘¶İ‚·‚éê‡‚ÍÅ‚àæ“ª‚Ì—v‘f‚ğ’T‚· ---*/
+/*--- baseãŒæŒ‡ã™è¦ç´ ã®å¤§ãã•ãŒsizeã§è¦ç´ æ•°ãŒnmembã®é…åˆ—ã‹ã‚‰keyã¨ä¸€è‡´ã™ã‚‹è¦ç´ ã‚’
+	  æ¯”è¼ƒé–¢æ•°comparã‚’ç”¨ã„ã¦ï¼’åˆ†æ¢ç´¢
+	  â€» keyã¨ç­‰ã—ã„è¦ç´ ãŒè¤‡æ•°å­˜åœ¨ã™ã‚‹å ´åˆã¯æœ€ã‚‚å…ˆé ­ã®è¦ç´ ã‚’æ¢ã™ ---*/
 void *bsearchx(const void *key, const void *base, size_t nmemb, size_t size,
 			   int (*compar)(const void *, const void *))
 {
 	if (nmemb > 0) {
-		size_t	pl = 0;							/* ’Tõ”ÍˆÍæ“ª‚Ì“Yš */
-		size_t	pr = nmemb - 1;					/* ’Tõ”ÍˆÍ––”ö‚Ì“Yš */
-		size_t	pc;								/* ’Tõ”ÍˆÍ’†‰›‚Ì“Yš */
+		size_t	pl = 0;							/* æ¢ç´¢ç¯„å›²å…ˆé ­ã®æ·»å­— */
+		size_t	pr = nmemb - 1;					/* æ¢ç´¢ç¯„å›²æœ«å°¾ã®æ·»å­— */
+		size_t	pc;								/* æ¢ç´¢ç¯„å›²ä¸­å¤®ã®æ·»å­— */
 		char  	*x = (char *)base;
 
 		while (1) {
 			int	 comp = compar(key, (const void *)&x[(pc = (pl+pr)/2) * size]);
 
-			if (comp == 0) { 				/* ’Tõ¬Œ÷ */
-				for ( ; pc > pl; pc--)		/* key‚Æ“™‚µ‚¢æ“ª‚Ì—v‘f‚ğ’T‚· */
+			if (comp == 0) { 				/* æ¢ç´¢æˆåŠŸ */
+				for ( ; pc > pl; pc--)		/* keyã¨ç­‰ã—ã„å…ˆé ­ã®è¦ç´ ã‚’æ¢ã™ */
 					if (compar((const void *)&x[(pc-1) * size], key))
 						break;
 				return (&x[pc * size]);
-			} else if (pl == pr)				/* ’Tõ”ÍˆÍ‚ª‚È‚­‚È‚Á‚½ */
+			} else if (pl == pr)				/* æ¢ç´¢ç¯„å›²ãŒãªããªã£ãŸ */
 				break;			
 			else if (comp > 0)
-				pl = pc + 1;					/* ’Tõ”ÍˆÍ‚ğŒã”¼‚Éi‚è‚Ş */
+				pl = pc + 1;					/* æ¢ç´¢ç¯„å›²ã‚’å¾ŒåŠã«çµã‚Šè¾¼ã‚€ */
 			else
-				pr = pc - 1;					/* ’Tõ”ÍˆÍ‚ğ‘O”¼‚Éi‚è‚Ş */
+				pr = pc - 1;					/* æ¢ç´¢ç¯„å›²ã‚’å‰åŠã«çµã‚Šè¾¼ã‚€ */
 		}
 	}
-	return (NULL);							/* ’Tõ¸”s */
+	return (NULL);							/* æ¢ç´¢å¤±æ•— */
 }
 
 #include  <stdio.h>
 
-/*--- intŒ^®”‚ğ”äŠr‚·‚éŠÖ” ---*/
+/*--- intå‹æ•´æ•°ã‚’æ¯”è¼ƒã™ã‚‹é–¢æ•° ---*/
 int int_cmp(const int *a, const int *b)
 {
 	if (*a < *b)
@@ -55,28 +55,28 @@ int main(void)
 	int *ptr;
 	int	 nx = sizeof(x) / sizeof(x[0]);
 
-	printf("%dŒÂ‚Ì®”‚ğ¸‡‚É“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B\n", nx);
+	printf("%då€‹ã®æ•´æ•°ã‚’æ˜‡é †ã«å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚\n", nx);
 
-	printf("x[0]F");
+	printf("x[0]ï¼š");
 	scanf("%ld", &x[0]);
 
 	for (i = 1; i < nx; i++) {
 		do {
-			printf("x[%d]F", i);
+			printf("x[%d]ï¼š", i);
 			scanf("%ld", &x[i]);
-		} while (x[i] < x[i - 1]);	/* ˆê‚Â‘O‚Ì’l‚æ‚è‚à‘å‚«‚¯‚ê‚ÎÄ“ü—Í */
+		} while (x[i] < x[i - 1]);	/* ä¸€ã¤å‰ã®å€¤ã‚ˆã‚Šã‚‚å¤§ãã‘ã‚Œã°å†å…¥åŠ› */
 	}
 	
-	printf("’T‚·’lF");
+	printf("æ¢ã™å€¤ï¼š");
 	scanf("%ld", &ky);
 
 	ptr = bsearchx(&ky, x, nx, sizeof(int), 
 				(int (*)(const void *, const void*))int_cmp);
 
 	if (ptr == NULL)
-		puts("\a’Tõ‚É¸”s‚µ‚Ü‚µ‚½B");
+		puts("\aæ¢ç´¢ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
 	else
-		printf("%d‚Í%d”Ô–Ú‚É‚ ‚è‚Ü‚·B\n", ky, ptr - x + 1);
+		printf("%dã¯%dç•ªç›®ã«ã‚ã‚Šã¾ã™ã€‚\n", ky, ptr - x + 1);
 
 	return (0);
 }

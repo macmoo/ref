@@ -1,11 +1,11 @@
 /*
-	strlenŠÖ”‚Ì—˜—p—á
+	strlené–¢æ•°ã®åˆ©ç”¨ä¾‹
 */
 
 #include  <stdio.h>
 #include  <string.h>
 
-/*--- strlen‚ÌÀŒ»—á‚a ---*/
+/*--- strlenã®å®Ÿç¾ä¾‹ï¼¢ ---*/
 size_t strlen(const char *s)
 {
 	const char	*p = s;

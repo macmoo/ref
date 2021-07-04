@@ -1,5 +1,5 @@
 /*
-	”Ä—pƒXƒ^ƒbƒNiÀŒ»•”j	"stack.c"
+	æ±ç”¨ã‚¹ã‚¿ãƒƒã‚¯ï¼ˆå®Ÿç¾éƒ¨ï¼‰	"stack.c"
 */
 
 #include  <stdio.h>
@@ -7,15 +7,15 @@
 #include  <string.h>
 #include  "stack.h"
 
-/*--- ƒXƒ^ƒbƒN‚Ì‰Šú‰» ---*/
+/*--- ã‚¹ã‚¿ãƒƒã‚¯ã®åˆæœŸåŒ– ---*/
 Stack *StackAlloc(size_t size, int max)
 {
 	Stack *s;
 
 	if ((s = calloc(1, sizeof(Stack))) == NULL)
-		return (s);									/* ƒXƒ^ƒbƒN‚ÌŠm•Û‚É¸”s */
+		return (s);									/* ã‚¹ã‚¿ãƒƒã‚¯ã®ç¢ºä¿ã«å¤±æ•— */
 	if ((s->stk = calloc(max, size)) == NULL) {
-		free(s);									/* –{‘Ì•”‚ÌŠm•Û‚É¸”s */
+		free(s);									/* æœ¬ä½“éƒ¨ã®ç¢ºä¿ã«å¤±æ•— */
 		return (NULL);
 	}
 	s->sz  = size;
@@ -24,7 +24,7 @@ Stack *StackAlloc(size_t size, int max)
 	return (s);
 }
 
-/*--- ƒXƒ^ƒbƒN‚ÌŒãn–– ---*/
+/*--- ã‚¹ã‚¿ãƒƒã‚¯ã®å¾Œå§‹æœ« ---*/
 void StackFree(Stack *s)
 {
 	if (s != NULL  &&  s->stk != NULL) {
@@ -33,7 +33,7 @@ void StackFree(Stack *s)
 	}
 }
 
-/*--- ƒXƒ^ƒbƒN‚Éƒf[ƒ^‚ğƒvƒbƒVƒ… ---*/
+/*--- ã‚¹ã‚¿ãƒƒã‚¯ã«ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ—ãƒƒã‚·ãƒ¥ ---*/
 int StackPush(Stack *s, void *x)
 {
 	if (s->ptr >= s->max)
@@ -43,10 +43,10 @@ int StackPush(Stack *s, void *x)
 	return (0);
 }
 
-/*--- ƒXƒ^ƒbƒN‚©‚çƒf[ƒ^‚ğƒ|ƒbƒv ---*/
+/*--- ã‚¹ã‚¿ãƒƒã‚¯ã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚’ãƒãƒƒãƒ— ---*/
 int StackPop(Stack *s, void *x)
 {
-	if (s->ptr <= 0)							/* ƒXƒ^ƒbƒN‚Í‹ó */
+	if (s->ptr <= 0)							/* ã‚¹ã‚¿ãƒƒã‚¯ã¯ç©º */
 		return (-1);
 	s->ptr--;
 	memcpy(x, (char *)s->stk + s->ptr * s->sz, s->sz);
@@ -54,40 +54,40 @@ int StackPop(Stack *s, void *x)
 }
 
 
-/*--- ƒXƒ^ƒbƒN‚©‚çƒf[ƒ^‚ğƒs[ƒN ---*/
+/*--- ã‚¹ã‚¿ãƒƒã‚¯ã‹ã‚‰ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ”ãƒ¼ã‚¯ ---*/
 int StackPeek(const Stack *s, void *x)
 {
-	if (s->ptr <= 0)							/* ƒXƒ^ƒbƒN‚Í‹ó */
+	if (s->ptr <= 0)							/* ã‚¹ã‚¿ãƒƒã‚¯ã¯ç©º */
 		return (-1);
 	memcpy(x, (char *)s->stk + (s->ptr - 1) * s->sz, s->sz);
 	return (0);
 }
 
-/*--- ƒXƒ^ƒbƒN‚Ì‘å‚«‚³ ---*/
+/*--- ã‚¹ã‚¿ãƒƒã‚¯ã®å¤§ãã• ---*/
 int StackSize(const Stack *s)
 {
 	return (s->max);
 }
 
-/*--- ƒXƒ^ƒbƒN‚ÉÏ‚Ü‚ê‚Ä‚¢‚éƒf[ƒ^” ---*/
+/*--- ã‚¹ã‚¿ãƒƒã‚¯ã«ç©ã¾ã‚Œã¦ã„ã‚‹ãƒ‡ãƒ¼ã‚¿æ•° ---*/
 int StackNo(const Stack *s)
 {
 	return (s->ptr);
 }
 
-/*--- ƒXƒ^ƒbƒN‚Í‹ó‚© ---*/
+/*--- ã‚¹ã‚¿ãƒƒã‚¯ã¯ç©ºã‹ ---*/
 int StackIsEmpty(const Stack *s)
 {
 	return (s->ptr <= 0);
 }
 
-/*--- ƒXƒ^ƒbƒN‚Í–”t‚© ---*/
+/*--- ã‚¹ã‚¿ãƒƒã‚¯ã¯æº€æ¯ã‹ ---*/
 int StackIsFull(const Stack *s)
 {
 	return (s->ptr >= s->max);
 }
 
-/*--- ƒXƒ^ƒbƒN‚ğ‹ó‚É‚·‚é ---*/
+/*--- ã‚¹ã‚¿ãƒƒã‚¯ã‚’ç©ºã«ã™ã‚‹ ---*/
 void StackClear(Stack *s)
 {
 	s->ptr = 0;

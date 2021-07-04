@@ -1,10 +1,10 @@
 /*
-	int�^�̗L���r�b�g����\��
+	int型の有効ビット数を表示
 */
 
 #include  <stdio.h>
 
-/*--- int�^�^unsigned int�^�̃r�b�g����Ԃ� ---*/
+/*--- int型／unsigned int型のビット数を返す ---*/
 int int_bits(void)
 {
 	int		  count = 0;
@@ -19,7 +19,7 @@ int int_bits(void)
 
 int main(void)
 {
-	printf("int�^�̗L���r�b�g��%d�r�b�g�ł��B\n", int_bits());
+	printf("int型の有効ビットは%dビットです。\n", int_bits());
 
 	return (0);
 }

@@ -1,5 +1,5 @@
 /*
-	���I�Ɋm�ۂ��������ɒl��ǂݍ���
+	動的に確保した整数に値を読み込む
 */
 
 #include  <stdio.h>
@@ -9,15 +9,15 @@ int main(void)
 {
 	int	 *p;
 
-	p = (int *)calloc(1, sizeof(int));		/* �������P���I�Ɋm�� */
+	p = (int *)calloc(1, sizeof(int));		/* 整数を１個動的に確保 */
 
 	if (p == NULL)
-		puts("�L����̊m�ۂɎ��s���܂����B");
+		puts("記憶域の確保に失敗しました。");
 	else {
-		printf("��������͂��Ă��������F");
-		scanf("%d",	p);						/* �l��ǂݍ��� */
-		printf("*p�̒l��%d�ł��B\n", *p);
-		free(p);							/* �m�ۂ��Ă����̈����� */
+		printf("整数を入力してください：");
+		scanf("%d",	p);						/* 値を読み込む */
+		printf("*pの値は%dです。\n", *p);
+		free(p);							/* 確保していた領域を解放 */
 	}
 
 	return (0);

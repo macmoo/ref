@@ -1,5 +1,5 @@
 /*
-	•¶š—ñ‚Ì”äŠr
+	æ–‡å­—åˆ—ã®æ¯”è¼ƒ
 */
 
 #include  <stdio.h>
@@ -10,19 +10,19 @@ int main(void)
 	char  str[10];
 	int	  cmp;
 
-	printf("•¶š—ñ‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢F");
+	printf("æ–‡å­—åˆ—ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼š");
 	scanf("%s", str);
 
-	cmp = strcmp(str, "ABC");			/* str‚Æ"ABC"‚ğ”äŠr */
+	cmp = strcmp(str, "ABC");			/* strã¨"ABC"ã‚’æ¯”è¼ƒ */
 
-	printf("‚»‚Ì•¶š—ñ‚Í\"ABC\"");
+	printf("ãã®æ–‡å­—åˆ—ã¯\"ABC\"");
 	
 	if (cmp == 0)
-		puts("‚Æ“™‚µ‚¢‚Å‚·B");
+		puts("ã¨ç­‰ã—ã„ã§ã™ã€‚");
 	else if (cmp > 0)
-		puts("‚æ‚è‘å‚«‚¢‚Å‚·B");
+		puts("ã‚ˆã‚Šå¤§ãã„ã§ã™ã€‚");
 	else
-		puts("‚æ‚è¬‚³‚¢‚Å‚·B");
+		puts("ã‚ˆã‚Šå°ã•ã„ã§ã™ã€‚");
 
 	return (0);
 }

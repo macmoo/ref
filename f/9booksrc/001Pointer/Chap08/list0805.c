@@ -1,11 +1,11 @@
-/*--- ‘Sƒm[ƒh‚ð•\Ž¦ ---*/
+/*--- å…¨ãƒŽãƒ¼ãƒ‰ã‚’è¡¨ç¤º ---*/
 void PrintList(List *list)
 {
 	Node  *ptr;
 
 	ptr = list->head;
 	while (ptr != list->tail) {
-		printf("%ss%st\n", ptr->name, ptr->tel);
+		printf("%sã€Š%sã€‹\n", ptr->name, ptr->tel);
 		ptr = ptr->next;
 	}
 }

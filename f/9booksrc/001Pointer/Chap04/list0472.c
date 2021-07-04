@@ -1,5 +1,5 @@
 /*
-	strtodŠÖ”‚Ì—˜—p—á
+	strtodé–¢æ•°ã®åˆ©ç”¨ä¾‹
 */
 
 #include  <errno.h>
@@ -13,20 +13,20 @@ int main(void)
 	char	str[60];
 	char	*ptr = str;
 
-	printf("À”‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢F");
+	printf("å®Ÿæ•°ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼š");
 	scanf("%s", str);
 
 	x = strtod(str, &ptr);
 
 	if (errno == ERANGE)
-		puts("doubleŒ^‚Ì•\Œ»”ÍˆÍ‚ğ’´‚¦‚Ä‚¢‚Ü‚·B");
+		puts("doubleå‹ã®è¡¨ç¾ç¯„å›²ã‚’è¶…ãˆã¦ã„ã¾ã™ã€‚");
 	else {
 		if (ptr == str)
-			puts("•‚“®¬”“_”‚É•ÏŠ·‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B");
+			puts("æµ®å‹•å°æ•°ç‚¹æ•°ã«å¤‰æ›ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚");
 		else {
-			printf("‚»‚Ì’l‚Í%f‚Å‚·B\n", x);
+			printf("ãã®å€¤ã¯%fã§ã™ã€‚\n", x);
 			if (ptr != &str[strlen(str)])
-				printf("%s‚Ì•”•ª‚Í•ÏŠ·‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B\n", ptr);
+				printf("%sã®éƒ¨åˆ†ã¯å¤‰æ›ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚\n", ptr);
 		}
 	}
 

@@ -1,5 +1,5 @@
 /*
-	�m�ۂ����̈�̑傫����ύX�i���ǔŁj
+	確保した領域の大きさを変更（改良版）
 */
 
 #include  <stdio.h>
@@ -7,39 +7,39 @@
 
 int main(void)
 {
-	int	 no;		/* �z��̗v�f�� */
+	int	 no;		/* 配列の要素数 */
 	int	 *p;
 
-	printf("�m�ۂ���z��̗v�f���F");
+	printf("確保する配列の要素数：");
 	scanf("%d", &no);
 
-	p = (int *)calloc(no, sizeof(int));		/* ������no���I�Ɋm�� */
+	p = (int *)calloc(no, sizeof(int));		/* 整数をno個動的に確保 */
 
 	if (p == NULL)
-		puts("�L����̊m�ۂɎ��s���܂����B");
+		puts("記憶域の確保に失敗しました。");
 	else {
 		int	 i, n2;
 		int	 *temp;
 
-		for (i = 0; i < no; i++)			/* �S�v�f�ɓY���Ɠ����l���� */
+		for (i = 0; i < no; i++)			/* 全要素に添字と同じ値を代入 */
 			p[i] = i;
 
-		printf("�v�f���������ɕύX���܂����F");
+		printf("要素数をいくつに変更しますか：");
 		scanf("%d", &n2);
 
-		temp = (int *)realloc(p, n2 * sizeof(int));	/* �v�f����n2�ɕύX */
+		temp = (int *)realloc(p, n2 * sizeof(int));	/* 要素数をn2に変更 */
 
 		if (temp == NULL)
-			puts("�̈�̑傫���̕ύX�Ɏ��s���܂����B");
+			puts("領域の大きさの変更に失敗しました。");
 		else {
 			p = temp;
-			for (i = no; i < n2; i++)	/* �������v�f�ɓY���Ɠ����l���� */
+			for (i = no; i < n2; i++)	/* 増えた要素に添字と同じ値を代入 */
 				p[i] = i;
 
-			for (i = 0; i < n2; i++)		/* �S�v�f�̒l��\�� */
+			for (i = 0; i < n2; i++)		/* 全要素の値を表示 */
 				printf("p[%d] = %d\n", i, p[i]);
 		}
-		free(p);							/* �m�ۂ��Ă����̈����� */
+		free(p);							/* 確保していた領域を解放 */
 	}
 	return (0);
 }

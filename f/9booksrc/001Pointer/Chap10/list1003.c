@@ -1,17 +1,17 @@
 /*
-	‰Â•ÏŒÂˆø”‚ÌƒAƒNƒZƒXi‚»‚Ì‚Pj
+	å¯å¤‰å€‹å¼•æ•°ã®ã‚¢ã‚¯ã‚»ã‚¹ï¼ˆãã®ï¼‘ï¼‰
 */
 
 #include  <stdio.h>
 #include  <stdarg.h>
 
-/*--- ‘æ‚Pˆø”‚É‰‚¶‚Ä‚»‚êˆÈ~‚Ìˆø”‚Ì˜a‚ğ‹‚ß‚é ---*/
+/*--- ç¬¬ï¼‘å¼•æ•°ã«å¿œã˜ã¦ãã‚Œä»¥é™ã®å¼•æ•°ã®å’Œã‚’æ±‚ã‚ã‚‹ ---*/
 double vsum(int sw, ...)
 {
 	double	 sum = 0.0;
 	va_list	 ap;
 
-	va_start(ap, sw);					/* ‰Â•Ï•”ˆø”ƒAƒNƒZƒXŠJn */
+	va_start(ap, sw);					/* å¯å¤‰éƒ¨å¼•æ•°ã‚¢ã‚¯ã‚»ã‚¹é–‹å§‹ */
 	switch (sw) {
 	 case 0: sum += va_arg(ap, int);	/* vsum(0, int, int) */
 			 sum += va_arg(ap, int);
@@ -24,7 +24,7 @@ double vsum(int sw, ...)
 			 sum += va_arg(ap, double);	
 			 break;
 	}
-	va_end(ap);							/* ‰Â•Ï•”ˆø”ƒAƒNƒZƒXI—¹ */
+	va_end(ap);							/* å¯å¤‰éƒ¨å¼•æ•°ã‚¢ã‚¯ã‚»ã‚¹çµ‚äº† */
 	return (sum);
 }
 

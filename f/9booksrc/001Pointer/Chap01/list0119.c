@@ -1,5 +1,5 @@
 /*
-	printfŠÖ”‚ÆscanfŠÖ”‚Ì—˜—p—á
+	printfé–¢æ•°ã¨scanfé–¢æ•°ã®åˆ©ç”¨ä¾‹
 */
 
 #include  <stdio.h>
@@ -10,18 +10,18 @@ int main(void)
 	long  k;
 	char  s[20];
 
-	printf("®”‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢F");
-	scanf("%d", &i);					/* &‚ª•K—v */
+	printf("æ•´æ•°ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼š");
+	scanf("%d", &i);					/* &ãŒå¿…è¦ */
 
-	printf("®”‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢F");
-	scanf("%ld", &k);					/* &‚ª•K—v */
+	printf("æ•´æ•°ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼š");
+	scanf("%ld", &k);					/* &ãŒå¿…è¦ */
 
-	printf("•¶Žš—ñ‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢F");
-	scanf("%s", s);						/* •¶Žš—ñ‚Ì“Çž‚Ý‚Å‚Í&‚ª•s—v */
+	printf("æ–‡å­—åˆ—ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼š");
+	scanf("%s", s);						/* æ–‡å­—åˆ—ã®èª­è¾¼ã¿ã§ã¯&ãŒä¸è¦ */
 
-	printf("®” i ‚Ì’l‚Í%d‚Å‚·B\n",  i);			/* &‚Í•s—v */
-	printf("®” k ‚Ì’l‚Í%ld‚Å‚·B\n", k);			/* &‚Í•s—v */
-	printf("•¶Žš—ñs‚Ì’l‚Í%s‚Å‚·B\n",  s);			/* &‚Í•s—v */
+	printf("æ•´æ•° i ã®å€¤ã¯%dã§ã™ã€‚\n",  i);			/* &ã¯ä¸è¦ */
+	printf("æ•´æ•° k ã®å€¤ã¯%ldã§ã™ã€‚\n", k);			/* &ã¯ä¸è¦ */
+	printf("æ–‡å­—åˆ—sã®å€¤ã¯%sã§ã™ã€‚\n",  s);			/* &ã¯ä¸è¦ */
 
 	return (0);
 }

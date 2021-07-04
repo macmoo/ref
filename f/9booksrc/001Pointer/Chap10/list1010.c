@@ -1,11 +1,11 @@
 /*
-	s—ñ‰‰Zƒ‰ƒCƒuƒ‰ƒŠ‚ÌƒeƒXƒgƒvƒƒOƒ‰ƒ€
+	è¡Œåˆ—æ¼”ç®—ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ãƒ†ã‚¹ãƒˆãƒ—ãƒ­ã‚°ãƒ©ãƒ 
 */
 
 #include  <stdio.h>
 #include  "matrix.h"
 
-/*--- s—ñ‚Ì“à—e‚ğ•\¦ ---*/
+/*--- è¡Œåˆ—ã®å†…å®¹ã‚’è¡¨ç¤º ---*/
 void print(MAT *x)
 {
 	int	i, j;
@@ -26,37 +26,37 @@ int main(void)
 	MATalloc(&mat2, 2, 2);
 	MATalloc(&mat3, 2, 2);
 
-	printf("s—ñ‚Ìs”%d\n", MATheight(mat1));
-	printf("s—ñ‚Ì—ñ”%d\n", MATwidth(mat1));
+	printf("è¡Œåˆ—ã®è¡Œæ•°ï¼%d\n", MATheight(mat1));
+	printf("è¡Œåˆ—ã®åˆ—æ•°ï¼%d\n", MATwidth(mat1));
 
-	MATclear(&mat1);			/* —ës—ñ‚É‚·‚é */
+	MATclear(&mat1);			/* é›¶è¡Œåˆ—ã«ã™ã‚‹ */
 
-	MATsquare(&mat2);			/* ’PˆÊs—ñ‚É‚·‚é */
+	MATsquare(&mat2);			/* å˜ä½è¡Œåˆ—ã«ã™ã‚‹ */
 
 	MATelem(mat3, 1, 1) = 2.0;
 	MATelem(mat3, 1, 2) = 3.0;
 	MATelem(mat3, 2, 1) = 4.0;
 	MATelem(mat3, 2, 2) = 5.0;
 
-	MATadd(&mat1, &mat2, &mat3);		/* mat1‚Émat2‚Æmat3‚Ì˜a‚ğ•Ô‚· */
+	MATadd(&mat1, &mat2, &mat3);		/* mat1ã«mat2ã¨mat3ã®å’Œã‚’è¿”ã™ */
 		print(&mat1);
 
-	MATtransport(&mat2, &mat3);			/* mat2‚Émat3‚Ì“]’us—ñ‚ğ•Ô‚· */
+	MATtransport(&mat2, &mat3);			/* mat2ã«mat3ã®è»¢ç½®è¡Œåˆ—ã‚’è¿”ã™ */
 		print(&mat2);
 
-	MATassign(&mat1, &mat3);			/* mat1‚Émat3‚ğ‘ã“ü‚·‚é */
+	MATassign(&mat1, &mat3);			/* mat1ã«mat3ã‚’ä»£å…¥ã™ã‚‹ */
 		print(&mat1);
 
-	MATcmul(&mat1, 3.0);				/* mat1‚ğ3.0”{‚·‚é */
+	MATcmul(&mat1, 3.0);				/* mat1ã‚’3.0å€ã™ã‚‹ */
 		print(&mat1);
 
-	MATmul(&mat2, &mat1, &mat3);		/* mat2‚Émat1‚Æmat3‚ÌÏ‚ğ•Ô‚· */
+	MATmul(&mat2, &mat1, &mat3);		/* mat2ã«mat1ã¨mat3ã®ç©ã‚’è¿”ã™ */
 		print(&mat2);
 
-	MATsub(&mat2, &mat1, &mat3);		/* mat2‚Émat1‚Æmat3‚Ì·‚ğ•Ô‚· */
+	MATsub(&mat2, &mat1, &mat3);		/* mat2ã«mat1ã¨mat3ã®å·®ã‚’è¿”ã™ */
 		print(&mat2);
 
-	MATfree(&mat1);						/* —Ìˆæ‰ğ•ú */
+	MATfree(&mat1);						/* é ˜åŸŸè§£æ”¾ */
 	MATfree(&mat2);
 	MATfree(&mat3);
 

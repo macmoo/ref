@@ -1,5 +1,5 @@
 /*
-	\‘¢‘Ì‚Ìƒƒ“ƒo‚ÌƒIƒtƒZƒbƒg‚ğ•\¦
+	æ§‹é€ ä½“ã®ãƒ¡ãƒ³ãƒã®ã‚ªãƒ•ã‚»ãƒƒãƒˆã‚’è¡¨ç¤º
 */
 
 #include  <stdio.h>
@@ -17,9 +17,9 @@ int main(void)
 		long  c;
 	} x;
 
-	printf("a‚ÌƒIƒtƒZƒbƒg%u\n", (unsigned)offsetof(struct abc, a));
-	printf("b‚ÌƒIƒtƒZƒbƒg%u\n", (unsigned)offsetof(struct abc, b));
-	printf("c‚ÌƒIƒtƒZƒbƒg%u\n", (unsigned)offsetof(struct abc, c));
+	printf("aã®ã‚ªãƒ•ã‚»ãƒƒãƒˆï¼%u\n", (unsigned)offsetof(struct abc, a));
+	printf("bã®ã‚ªãƒ•ã‚»ãƒƒãƒˆï¼%u\n", (unsigned)offsetof(struct abc, b));
+	printf("cã®ã‚ªãƒ•ã‚»ãƒƒãƒˆï¼%u\n", (unsigned)offsetof(struct abc, c));
 
 	return (0);
 }

@@ -1,5 +1,5 @@
 /*
-	���p�̗̂�
+	共用体の例
 */
 
 #include  <stdio.h>

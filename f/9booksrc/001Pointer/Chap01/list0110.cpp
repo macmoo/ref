@@ -1,5 +1,5 @@
 /*
-	ƒ|ƒCƒ“ƒ^‚Ì‰Šú‰»i‚b++j
+	ãƒã‚¤ãƒ³ã‚¿ã®åˆæœŸåŒ–ï¼ˆï¼£++ï¼‰
 */
 
 #include  <iostream>
@@ -8,15 +8,15 @@ using namespace	 std;
 
 int main(void)
 {
-	int	 nx = 100;		// nx‚Ì’l‚Í100
-	int	 ny = 200;		// ny‚Ì’l‚Í200
-	int* px = &nx;		// px‚Ínx‚ğw‚·ƒ|ƒCƒ“ƒ^
-	int* py = &ny;		// py‚Íny‚ğw‚·ƒ|ƒCƒ“ƒ^
+	int	 nx = 100;		// nxã®å€¤ã¯100
+	int	 ny = 200;		// nyã®å€¤ã¯200
+	int* px = &nx;		// pxã¯nxã‚’æŒ‡ã™ãƒã‚¤ãƒ³ã‚¿
+	int* py = &ny;		// pyã¯nyã‚’æŒ‡ã™ãƒã‚¤ãƒ³ã‚¿
 
-	cout << " nx‚Ì’l" << nx << '\n';		// nx‚Ì’l
-	cout << " ny‚Ì’l" << ny << '\n';		// ny‚Ì’l
-	cout << "*px‚Ì’l" << *px << '\n';		// px‚ªw‚·ƒIƒuƒWƒFƒNƒg‚Ì’l
-	cout << "*py‚Ì’l" << *py << '\n';		// py‚ªw‚·ƒIƒuƒWƒFƒNƒg‚Ì’l
+	cout << " nxã®å€¤ï¼" << nx << '\n';		// nxã®å€¤
+	cout << " nyã®å€¤ï¼" << ny << '\n';		// nyã®å€¤
+	cout << "*pxã®å€¤ï¼" << *px << '\n';		// pxãŒæŒ‡ã™ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å€¤
+	cout << "*pyã®å€¤ï¼" << *py << '\n';		// pyãŒæŒ‡ã™ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å€¤
 
 	return (0);
 }

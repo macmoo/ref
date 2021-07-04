@@ -1,5 +1,5 @@
 /*
-	strlenŠÖ”‚Ì—˜—p—á
+	strlené–¢æ•°ã®åˆ©ç”¨ä¾‹
 */
 
 #include  <stdio.h>

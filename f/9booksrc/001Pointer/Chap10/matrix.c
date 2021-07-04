@@ -1,5 +1,5 @@
 /*
-	s—ñ‰‰Zƒ‰ƒCƒuƒ‰ƒŠ		"matrix.c"
+	ë›±ì€±ë¶ëŸê¹‹ê·½ê¸³ê¹‹ê¹		"matrix.c"
 */
 
 #include  <math.h>
@@ -7,12 +7,12 @@
 #include  <stdlib.h>
 #include  "matrix.h"
 
-/*--- typeŒ^x,y‚Ì’l‚ğŒğŠ·‚·‚é ---*/
+/*--- type?x,yê¶»ë­ ê·©ëš´ë“‚ê¶¥ê·¡ ---*/
 #define	 swap(type, x, y)	do { type t = x; x = y; y = t; } while (0)
 
 double	MATeps = 1.0E-6;
 
-/*--- msn—ñ‚Ì‹L‰¯ˆæ‚ğŠm•Û ---*/
+/*--- më›±nì€±ê¶»ë”¯ë¬ëƒê·©ë‘´ëº ---*/
 int MATalloc(MAT *mat, int m, int n)
 {
 	if ((mat->x = (double *)calloc(m * n , sizeof(double))) != NULL) {
@@ -24,13 +24,13 @@ int MATalloc(MAT *mat, int m, int n)
 	return (-1);
 }
 
-/*--- ‹L‰¯ˆæ‚ğ‰ğ•ú ---*/
+/*--- ë”¯ë¬ëƒê·©ë¶ëº³ ---*/
 void MATfree(MAT *mat)
 {
 	free(mat->x);
 }
 
-/*--- mat‚ğ—ës—ñ‰» ---*/
+/*--- matê·©ì€«ë›±ì€±ë¸ ---*/
 void MATclear(MAT *mat)
 {
 	int	 i, j;
@@ -40,7 +40,7 @@ void MATclear(MAT *mat)
 			MATelem(*mat, i, j) = 0.0;
 }
 
-/*--- mat‚ğ’PˆÊs—ñ‰» ---*/
+/*--- matê·©ë­ëŒ§ë›±ì€±ë¸ ---*/
 int MATsquare(MAT *mat)
 {
 	int	 i;
@@ -54,7 +54,7 @@ int MATsquare(MAT *mat)
 	return (0);
 }
 
-/*--- ‘ã“üimat1 © mat2j ---*/
+/*--- ë¬†ë³ºê±mat1 ê²‘ mat2ê±‚ ---*/
 int MATassign(MAT *mat1, const MAT *mat2)
 {
 	int	 i, j;
@@ -69,7 +69,7 @@ int MATassign(MAT *mat1, const MAT *mat2)
 	return (0);
 }
 
-/*--- ‰ÁZimat1 © mat2 + mat3j ---*/
+/*--- ë¿ëŸê±mat1 ê²‘ mat2 + mat3ê±‚ ---*/
 int MATadd(MAT *mat1, const MAT *mat2, const MAT *mat3)
 {
 	int	 i, j;
@@ -84,7 +84,7 @@ int MATadd(MAT *mat1, const MAT *mat2, const MAT *mat3)
 	return (0);
 }
 
-/*--- Œ¸Zimat1 © mat2 - mat3j ---*/
+/*--- ë™µëŸê±mat1 ê²‘ mat2 - mat3ê±‚ ---*/
 int MATsub(MAT *mat1, const MAT *mat2, const MAT *mat3)
 {
 	int	 i, j;
@@ -99,7 +99,7 @@ int MATsub(MAT *mat1, const MAT *mat2, const MAT *mat3)
 	return (0);
 }
 
-/*--- ƒXƒJƒ‰[”{imat © c * matj ---*/
+/*--- ê¸šê¸‡ê¹‹??ê±mat ê²‘ c * matê±‚ ---*/
 void MATcmul(MAT *mat, double c)
 {
 	int	 i, j;
@@ -110,7 +110,7 @@ void MATcmul(MAT *mat, double c)
 
 }
 
-/*--- æZimat1 © mat2 * mat3j ---*/
+/*--- ë¤¸ëŸê±mat1 ê²‘ mat2 * mat3ê±‚ ---*/
 int MATmul(MAT *mat1, const MAT *mat2, const MAT *mat3)
 {
 	int		i, j, k;
@@ -131,7 +131,7 @@ int MATmul(MAT *mat1, const MAT *mat2, const MAT *mat3)
 	return (0);
 }
 
-/*--- ‚PŸ•û’ö®iƒKƒEƒX‚ÌÁ‹–@j ---*/
+/*--- ê´¦ë …ëº´ë¯´ë œê±ê¸Šê¸‚ê¸šê¶»ë¤‘ë•¸?ê±‚ ---*/
 int MATgauss(MAT *a, const MAT *x)
 {
 	int		i, j, k, mx;
@@ -166,7 +166,7 @@ int MATgauss(MAT *a, const MAT *x)
 	return (0);
 }
 
-/*--- ‹ts—ñ ---*/
+/*--- ë•¤ë›±ì€± ---*/
 int MATinvgauss(MAT *ia, const MAT *x)
 {
 	int		i, j, k, n, mx;
@@ -222,7 +222,7 @@ int MATinvgauss(MAT *ia, const MAT *x)
 	return (0);
 }
 
-/*--- “]’us—ñ ---*/
+/*--- ?ë­«ë›±ì€± ---*/
 int MATtransport(MAT *mat1, const MAT *mat2)
 {
 	int	 i, j;

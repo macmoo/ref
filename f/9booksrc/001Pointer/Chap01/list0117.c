@@ -1,10 +1,10 @@
 /*
-	•¶š'*'‚ğ˜A‘±‚µ‚Ä•\¦i‘æ‚P”Åj
+	æ–‡å­—'*'ã‚’é€£ç¶šã—ã¦è¡¨ç¤ºï¼ˆç¬¬ï¼‘ç‰ˆï¼‰
 */
 
 #include  <stdio.h>
 
-/*--- •¶š'*'‚ğnoŒÂ˜A‘±‚µ‚Ä•\¦ ---*/
+/*--- æ–‡å­—'*'ã‚’noå€‹é€£ç¶šã—ã¦è¡¨ç¤º ---*/
 void put_stars(int no)
 {
 	int	 i;
@@ -17,12 +17,12 @@ int main(void)
 {
 	int	 count;
 
-	printf("‰½ŒÂ•\¦‚µ‚Ü‚·‚©F");
+	printf("ä½•å€‹è¡¨ç¤ºã—ã¾ã™ã‹ï¼š");
 	scanf("%d", &count);
 
 	put_stars(count);
 
-	printf("\n%dŒÂ•\¦‚µ‚Ü‚µ‚½B\n", count);
+	printf("\n%då€‹è¡¨ç¤ºã—ã¾ã—ãŸã€‚\n", count);
 
 	return (0);
 }

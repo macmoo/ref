@@ -1,10 +1,10 @@
 /*
-	•¶š—ñ‚ğƒRƒs[i‘æ‚R”Åj
+	æ–‡å­—åˆ—ã‚’ã‚³ãƒ”ãƒ¼ï¼ˆç¬¬ï¼“ç‰ˆï¼‰
 */
 
 #include  <stdio.h>
 
-/*--- •¶š—ñs‚ğd‚ÉƒRƒs[i‘æ‚R”Åj ---*/
+/*--- æ–‡å­—åˆ—sã‚’dã«ã‚³ãƒ”ãƒ¼ï¼ˆç¬¬ï¼“ç‰ˆï¼‰ ---*/
 char *str_copy(char *d, const char *s)
 {
 	char  *p = d;
@@ -19,15 +19,15 @@ int main(void)
 	char  tmp[100];
 	char  st1[100], st2[100], st3[100];
 
-	printf("•¶š—ñ‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢F");
+	printf("æ–‡å­—åˆ—ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼š");
 	scanf("%s", tmp);
 
-	/* st1‚ÉƒRƒs[‚µ‚½•¶š—ñ‚ğst2‚É‚àƒRƒs[ */
+	/* st1ã«ã‚³ãƒ”ãƒ¼ã—ãŸæ–‡å­—åˆ—ã‚’st2ã«ã‚‚ã‚³ãƒ”ãƒ¼ */
 	str_copy(st1, str_copy(st2, tmp));	
 
-	printf("•¶š—ñst1‚Í\"%s\"‚Å‚·B\n", st1);
-	printf("•¶š—ñst2‚Í\"%s\"‚Å‚·B\n", st2);
-	printf("•¶š—ñst3‚Í\"%s\"‚Å‚·B\n", str_copy(st3, tmp));
+	printf("æ–‡å­—åˆ—st1ã¯\"%s\"ã§ã™ã€‚\n", st1);
+	printf("æ–‡å­—åˆ—st2ã¯\"%s\"ã§ã™ã€‚\n", st2);
+	printf("æ–‡å­—åˆ—st3ã¯\"%s\"ã§ã™ã€‚\n", str_copy(st3, tmp));
 
 	return (0);
 }

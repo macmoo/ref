@@ -1,5 +1,5 @@
 /*
-	•¶š—ñ‚Ì”z—ñ‚ğ“®“I‚É¶¬
+	æ–‡å­—åˆ—ã®é…åˆ—ã‚’å‹•çš„ã«ç”Ÿæˆ
 */
 
 #include  <stdio.h>
@@ -8,16 +8,16 @@
 
 int main(void)
 {
-	int	  num;			/* •¶š—ñ‚ÌŒÂ” */
+	int	  num;			/* æ–‡å­—åˆ—ã®å€‹æ•° */
 	char  **pt;
 
-	printf("•¶š—ñ‚Í‰½ŒÂF");
+	printf("æ–‡å­—åˆ—ã¯ä½•å€‹ï¼š");
 	scanf("%d", &num);
 
 	pt = (char **)calloc(num, sizeof(char *));
 
 	if (pt == NULL) 
-		puts("‹L‰¯ˆæ‚ÌŠm•Û‚É¸”s‚µ‚Ü‚µ‚½B");
+		puts("è¨˜æ†¶åŸŸã®ç¢ºä¿ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
 	else {
 		int	 i;
 
@@ -33,7 +33,7 @@ int main(void)
 			pt[i] = (char *)malloc(strlen(temp) + 1);
 
 			if (pt[i] == NULL) {
-				puts("‹L‰¯ˆæ‚ÌŠm•Û‚É¸”s‚µ‚Ü‚µ‚½B");
+				puts("è¨˜æ†¶åŸŸã®ç¢ºä¿ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
  				goto Free;
 			} else 
 				strcpy(pt[i], temp);
@@ -42,7 +42,7 @@ int main(void)
 			printf("pt[%d] = %s\n", i, pt[i]);
 Free:
 		for (i = 0; i < num; i++)
-			free(pt[i]);					/* ‹L‰¯ˆæ‚ğ‰ğ•ú */
+			free(pt[i]);					/* è¨˜æ†¶åŸŸã‚’è§£æ”¾ */
 		free(pt);
 	}
 	return (0);

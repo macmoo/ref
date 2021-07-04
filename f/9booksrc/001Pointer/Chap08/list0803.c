@@ -1,7 +1,7 @@
-/*--- æ“ª‚Ö‚Ìƒm[ƒh‘}“ü ---*/
+/*--- å…ˆé ­ã¸ã®ãƒŽãƒ¼ãƒ‰æŒ¿å…¥ ---*/
 void InsertNode(List *list, const char *name, const char *tel)
 {
-	Node  *ptr = list->head;			/* ‘}“ü‘O‚Ìæ“ªƒm[ƒh‚Ö‚Ìƒ|ƒCƒ“ƒ^ */
+	Node  *ptr = list->head;			/* æŒ¿å…¥å‰ã®å…ˆé ­ãƒŽãƒ¼ãƒ‰ã¸ã®ãƒã‚¤ãƒ³ã‚¿ */
 
 	list->head = AllocNode();
 	strcpy(list->head->name, name);

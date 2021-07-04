@@ -1,17 +1,17 @@
 /*
-	strpbrkŠÖ”‚Ì—˜—p—ái‚»‚Ì‚Pj
+	strpbrké–¢æ•°ã®åˆ©ç”¨ä¾‹ï¼ˆãã®ï¼‘ï¼‰
 */
 
 #include  <stdio.h>
 #include  <string.h>
 
-/*--- strpbrk‚ÌÀŒ»—áF<stddef.h>‚ÌƒCƒ“ƒNƒ‹[ƒh‚ª•K—v ---*/
+/*--- strpbrkã®å®Ÿç¾ä¾‹ï¼š<stddef.h>ã®ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãŒå¿…è¦ ---*/
 char *strpbrk(const char *s1, const char *s2)
 {
 	for ( ; *s1; s1++) {
 		const char	*t = s2;
 		for ( ; *t; t++)
-			if (*t == *s1)					/* Œ©‚Â‚¯‚½ */
+			if (*t == *s1)					/* è¦‹ã¤ã‘ãŸ */
 				return ((char *)s1);
 	}
 	return (NULL);
@@ -22,14 +22,14 @@ int main(void)
 	char  s1[80], s2[80];
 	char  *p;
 
-	printf("•¶š—ñS1F");	  scanf("%s", s1);
-	printf("•¶š—ñS2F");	  scanf("%s", s2);
+	printf("æ–‡å­—åˆ—S1ï¼š");	  scanf("%s", s1);
+	printf("æ–‡å­—åˆ—S2ï¼š");	  scanf("%s", s2);
 
 	if ((p = strpbrk(s1, s2)) == NULL)
-		printf("•¶š—ñS2’†‚Ì‚Ç‚Ì•¶š‚à•¶š—ñS1’†‚É‚Í‘¶İ‚µ‚Ü‚¹‚ñB\n");
+		printf("æ–‡å­—åˆ—S2ä¸­ã®ã©ã®æ–‡å­—ã‚‚æ–‡å­—åˆ—S1ä¸­ã«ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚\n");
 	else
-		printf("•¶š—ñS2‚ÉŠÜ‚Ü‚ê‚é•¶š‚Ì•¶š—ñS1‚Å‚ÌÅ‰‚ÌoŒ»ˆÈ~‚Í"
-												"\"%s\"‚Å‚·B\n", p);
+		printf("æ–‡å­—åˆ—S2ã«å«ã¾ã‚Œã‚‹æ–‡å­—ã®æ–‡å­—åˆ—S1ã§ã®æœ€åˆã®å‡ºç¾ä»¥é™ã¯"
+												"\"%s\"ã§ã™ã€‚\n", p);
 
 	return (0);
 }

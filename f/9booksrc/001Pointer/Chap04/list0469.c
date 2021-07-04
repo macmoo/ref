@@ -1,4 +1,4 @@
-/*--- memchr‚ÌÀŒ»—áF<stddef.h>‚ÌƒCƒ“ƒNƒ‹[ƒh‚ª•K—v ---*/
+/*--- memchrã®å®Ÿç¾ä¾‹ï¼š<stddef.h>ã®ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãŒå¿…è¦ ---*/
 void *memchr(const void *s, int c, size_t n)
 {
 	const unsigned char	 uc = c;

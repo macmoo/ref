@@ -1,4 +1,4 @@
-/* ЙЙПK7-2В╠ЙЁУЪЧс */
+/* ц╝Фч┐Т7-2уБошзгчнФф╛Л */
 
 void *recalloc(void *ptr, size_t size, size_t old_size)
 {

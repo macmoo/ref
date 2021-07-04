@@ -1,16 +1,16 @@
-/* ‰‰K6-3‚Ì‰ğ“š—á */
+/* æ¼”ç¿’6-3ã®è§£ç­”ä¾‹ */
 
 #include  <stdio.h>
 
-typedef struct {		/* ‰ïˆõƒf[ƒ^ */
-	int	  no;			/* ‰ïˆõ”Ô† */
-	char  name[10];		/* @@–¼ */
+typedef struct {		/* ä¼šå“¡ãƒ‡ãƒ¼ã‚¿ */
+	int	  no;			/* ä¼šå“¡ç•ªå· */
+	char  name[10];		/* æ°ã€€ã€€å */
 } Member;
 
 void getMember(Member *p)
 {
-	printf("‰ïˆõ”Ô†F");	scanf("%d", &p->no);		/* &‚Í•K—v */
-	printf("@@–¼F");	scanf("%s", p->name);		/* &‚Í•s—v */
+	printf("ä¼šå“¡ç•ªå·ï¼š");	scanf("%d", &p->no);		/* &ã¯å¿…è¦ */
+	printf("æ°ã€€ã€€åï¼š");	scanf("%s", p->name);		/* &ã¯ä¸è¦ */
 }
 
 int main(void)
@@ -19,8 +19,8 @@ int main(void)
 
 	getMember(&m1);
 
-	printf("‰ïˆõ”Ô†%d\n", m1.no);
-	printf("@@–¼%s\n", m1.name);
+	printf("ä¼šå“¡ç•ªå·ï¼%d\n", m1.no);
+	printf("æ°ã€€ã€€åï¼%s\n", m1.name);
 
 	return (0);
 }

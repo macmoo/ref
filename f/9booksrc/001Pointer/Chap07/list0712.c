@@ -1,5 +1,5 @@
 /*
-	ƒfƒRƒ{ƒR‚QŽŸŒ³”z—ñ‚ðŠm•Û‚·‚éƒvƒƒOƒ‰ƒ€
+	ãƒ‡ã‚³ãƒœã‚³ï¼’æ¬¡å…ƒé…åˆ—ã‚’ç¢ºä¿ã™ã‚‹ãƒ—ãƒ­ã‚°ãƒ©ãƒ 
 */
 
 #include  <stdio.h>
@@ -14,7 +14,7 @@ int main(void)
 	x[2] = calloc(7 , sizeof(int));
 	x[3] = calloc(6 , sizeof(int));
 
-	/* ’†—ª */
+	/* ä¸­ç•¥ */
 
 	free(x[0]);
 	free(x[1]);

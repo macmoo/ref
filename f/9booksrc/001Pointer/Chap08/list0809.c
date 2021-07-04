@@ -1,4 +1,4 @@
-/*--- ‘Sƒm[ƒh‚Ìíœ ---*/
+/*--- å…¨ãƒãƒ¼ãƒ‰ã®å‰Šé™¤ ---*/
 void ClearList(List *list)
 {
 	Node  *ptr = list->head;

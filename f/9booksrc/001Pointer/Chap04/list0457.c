@@ -1,5 +1,5 @@
 /*
-	strstrŠÖ”‚Ì—˜—p—á
+	strstré–¢æ•°ã®åˆ©ç”¨ä¾‹
 */
 
 #include  <stdio.h>
@@ -11,18 +11,18 @@ int main(void)
 	char  s1[80], s2[80];
 	char  *p;
 
-	printf("•¶š—ñS1F");	scanf("%s", s1);
-	printf("•¶š—ñS2F");	scanf("%s", s2);
+	printf("æ–‡å­—åˆ—S1ï¼š");	scanf("%s", s1);
+	printf("æ–‡å­—åˆ—S2ï¼š");	scanf("%s", s2);
 
 	p = strstr(s1, s2);
 
 	if (p == NULL)
-		printf("•¶š—ñS1’†‚É‚Í•¶š—ñS2‚Í‘¶İ‚µ‚Ü‚¹‚ñB\n");
+		printf("æ–‡å­—åˆ—S1ä¸­ã«ã¯æ–‡å­—åˆ—S2ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚\n");
 	else {
 		int	 ofs = p - s1;
-		printf("\n%s\n",  s1);				/* XXXABCDXXXXXXXXX	‚ğ•\¦ */
-		printf("%*s|\n",  ofs, "");			/*	  |				‚ğ•\¦ */
-		printf("%*s%s\n", ofs, "", s2);		/*	  ABCD			‚ğ•\¦ */
+		printf("\n%s\n",  s1);				/* XXXABCDXXXXXXXXX	ã‚’è¡¨ç¤º */
+		printf("%*s|\n",  ofs, "");			/*	  |				ã‚’è¡¨ç¤º */
+		printf("%*s%s\n", ofs, "", s2);		/*	  ABCD			ã‚’è¡¨ç¤º */
 	}
 
 	return (0);

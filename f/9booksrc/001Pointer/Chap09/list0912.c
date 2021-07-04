@@ -1,36 +1,36 @@
 /*
-	‘I‚Î‚ê‚½“®•¨‚Ì–Â‚«º‚ğ•\¦i‘æ‚P”Åj
+	é¸ã°ã‚ŒãŸå‹•ç‰©ã®é³´ãå£°ã‚’è¡¨ç¤ºï¼ˆç¬¬ï¼‘ç‰ˆï¼‰
 */
 
 #include  <stdio.h>
 
 typedef enum {Dog, Cat, Monkey, Invalid} Animal;
 
-/*--- Œ¢‚ª–Â‚­ ---*/
+/*--- çŠ¬ãŒé³´ã ---*/
 void dog(void)
 {
-	puts("ƒƒ“ƒƒ“!!");
+	puts("ãƒ¯ãƒ³ãƒ¯ãƒ³!!");
 }
 
-/*--- ”L‚ª–Â‚­ ---*/
+/*--- çŒ«ãŒé³´ã ---*/
 void cat(void)
 {
-	puts("ƒjƒƒ`ƒI!!");
+	puts("ãƒ‹ãƒ£ï½ã‚ª!!");
 }
 
-/*--- ‰‚ª–Â‚­ ---*/
+/*--- çŒ¿ãŒé³´ã ---*/
 void monkey(void)
 {
-	puts("ƒLƒbƒLƒb!!");
+	puts("ã‚­ãƒƒã‚­ãƒƒ!!");
 }
 
-/*--- “®•¨‚ğ‘I‚Ô ---*/
+/*--- å‹•ç‰©ã‚’é¸ã¶ ---*/
 Animal select(void)
 {
 	int	 tmp;
 
 	do {
-		printf("‚OcŒ¢@‚Pc”L@‚Qc‰@‚RcI—¹F");
+		printf("ï¼â€¦çŠ¬ã€€ï¼‘â€¦çŒ«ã€€ï¼’â€¦çŒ¿ã€€ï¼“â€¦çµ‚äº†ï¼š");
 		scanf("%d", &tmp);
 	} while (tmp < Dog	||	tmp > Invalid);
 	return (tmp);
@@ -43,9 +43,9 @@ int main(void)
 	do {
 		selected = select();
 		switch (selected) {
-		 case Dog :	   dog();		break;		/* Œ¢ */
-		 case Cat :	   cat();		break;		/* ”L */
-		 case Monkey : monkey();	break;		/* ‰ */
+		 case Dog :	   dog();		break;		/* çŠ¬ */
+		 case Cat :	   cat();		break;		/* çŒ« */
+		 case Monkey : monkey();	break;		/* çŒ¿ */
 		}
 	} while (selected != Invalid);
 

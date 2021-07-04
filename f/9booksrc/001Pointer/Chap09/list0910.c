@@ -1,11 +1,11 @@
 /*
-	bsearchŠÖ”‚ğ—˜—p‚µ‚Ä—v‘f‚ğ’Tõ
+	bsearché–¢æ•°ã‚’åˆ©ç”¨ã—ã¦è¦ç´ ã‚’æ¢ç´¢
 */
 
 #include  <stdio.h>
 #include  <stdlib.h>
 
-/*--- ®”‚ğ”äŠr‚·‚éŠÖ” ---*/
+/*--- æ•´æ•°ã‚’æ¯”è¼ƒã™ã‚‹é–¢æ•° ---*/
 int int_cmp(const int *a, const int *b)
 {
 	return (*a < *b ? -1 : *a > *b ? 1 : 0);
@@ -15,18 +15,18 @@ int main(void)
 {
 	int	 no, *p; 
 	int	 x[10] = {1, 3, 15, 27, 31, 45, 51, 67, 69, 90};
-	int	 nx = sizeof(x) / sizeof(x[0]);	/* x‚Ì—v‘f” */
+	int	 nx = sizeof(x) / sizeof(x[0]);	/* xã®è¦ç´ æ•° */
 	
-	printf("’Tõ‚·‚é’l‚ğ“ü—Í‚¹‚æF");
+	printf("æ¢ç´¢ã™ã‚‹å€¤ã‚’å…¥åŠ›ã›ã‚ˆï¼š");
 	scanf("%d", &no);
 
 	p = bsearch(&no, x, nx, sizeof(int),
 							(int (*)(const void *, const void *))int_cmp);
 
 	if (p != NULL)
-		printf("x[%d]‚ªˆê’v‚µ‚Ü‚·B\n", (int)(p - &x[0]));
+		printf("x[%d]ãŒä¸€è‡´ã—ã¾ã™ã€‚\n", (int)(p - &x[0]));
 	else
-		puts("Œ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B");
+		puts("è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚");
 
 	return (0);
 }

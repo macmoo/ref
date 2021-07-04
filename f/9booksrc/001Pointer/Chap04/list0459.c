@@ -1,4 +1,4 @@
-/*--- strcspn‚ÌÀŒ»—áF<stddef.h>‚ÌƒCƒ“ƒNƒ‹[ƒh‚ª•K—v ---*/
+/*--- strcspnã®å®Ÿç¾ä¾‹ï¼š<stddef.h>ã®ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãŒå¿…è¦ ---*/
 size_t strcspn(const char *s1, const char *s2)
 {
 	const char	*p = s1;

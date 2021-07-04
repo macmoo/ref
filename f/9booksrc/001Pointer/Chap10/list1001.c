@@ -1,5 +1,5 @@
 /*
-	ŠÖ”ŒÄo‚µ‚ÆƒXƒ^ƒbƒN
+	é–¢æ•°å‘¼å‡ºã—ã¨ã‚¹ã‚¿ãƒƒã‚¯
 */
 
 #include  <stdio.h>
@@ -7,29 +7,29 @@
 
 void fa(void)
 {
-	puts("¡¡ŠÖ”faŠJn");
-	puts("¡¡ŠÖ”faI—¹");
+	puts("â– â– é–¢æ•°faé–‹å§‹");
+	puts("â– â– é–¢æ•°façµ‚äº†");
 }
 
 void fb(void)
 {
-	puts("¡¡ŠÖ”fbŠJn");
-	puts("¡¡ŠÖ”fbI—¹");
+	puts("â– â– é–¢æ•°fbé–‹å§‹");
+	puts("â– â– é–¢æ•°fbçµ‚äº†");
 }
 
 void fc(void)
 {
-	puts("¡ŠÖ”fcŠJn");
+	puts("â– é–¢æ•°fcé–‹å§‹");
 	fa();
 	fb();
-	puts("¡ŠÖ”fcI—¹");
+	puts("â– é–¢æ•°fcçµ‚äº†");
 }
 
 int main(void)
 {
-	puts("mainŠÖ”ŠJn");
+	puts("mainé–¢æ•°é–‹å§‹");
 	fc();
-	puts("mainŠÖ”I—¹");
+	puts("mainé–¢æ•°çµ‚äº†");
 
 	return (0);
 }

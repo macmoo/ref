@@ -1,25 +1,25 @@
 /*
-	ƒvƒƒOƒ‰ƒ€I—¹‚ÉƒƒbƒZ[ƒW‚Æ‚ğ•\¦
+	ãƒ—ãƒ­ã‚°ãƒ©ãƒ çµ‚äº†æ™‚ã«ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã¨æ™‚åˆ»ã‚’è¡¨ç¤º
 */
 
 #include  <time.h>
 #include  <stdio.h>
 #include  <stdlib.h>
 
-/*--- I—¹ƒƒbƒZ[ƒW•\¦ ----*/
+/*--- çµ‚äº†ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸è¡¨ç¤º ----*/
 void good_bye(void)
 {
-	puts("ƒvƒƒOƒ‰ƒ€³íI—¹I");
+	puts("ãƒ—ãƒ­ã‚°ãƒ©ãƒ æ­£å¸¸çµ‚äº†ï¼");
 }
 
-/*--- Œ»İ‚Ì‚ğ•\¦ ---*/
+/*--- ç¾åœ¨ã®æ™‚åˆ»ã‚’è¡¨ç¤º ---*/
 void put_time(void)
 {
 	time_t	   current;
 	struct tm  *lctm;
 
-	time(&current);					/* Œ»İ‚Ì‚ğæ“¾ */
-	lctm = localtime(&current);		/* ’n•û‚Ì\‘¢‘Ì‚É•ÏŠ· */
+	time(&current);					/* ç¾åœ¨ã®æ™‚åˆ»ã‚’å–å¾— */
+	lctm = localtime(&current);		/* åœ°æ–¹æ™‚ã®æ§‹é€ ä½“ã«å¤‰æ› */
 	printf("%02d:%02d:%02d\n", lctm->tm_hour, lctm->tm_min, lctm->tm_sec);
 }
 
@@ -27,13 +27,13 @@ int main(void)
 {
 	int	 x;
 
-	atexit(good_bye);		/* ŠÖ”good_bye‚ğ“o˜^ */
-	atexit(put_time);		/* ŠÖ”put_time‚ğ“o˜^ */
+	atexit(good_bye);		/* é–¢æ•°good_byeã‚’ç™»éŒ² */
+	atexit(put_time);		/* é–¢æ•°put_timeã‚’ç™»éŒ² */
 
-	printf("³íI—¹(0)‚»‚ê‚Æ‚àˆÙíI—¹(1)F");
+	printf("æ­£å¸¸çµ‚äº†(0)ãã‚Œã¨ã‚‚ç•°å¸¸çµ‚äº†(1)ï¼š");
 	scanf("%d", &x);
 
-	if (x) abort();			/* ˆÙíI—¹i“o˜^ŠÖ”‚ÍŒÄ‚Ño‚³‚ê‚È‚¢j */
+	if (x) abort();			/* ç•°å¸¸çµ‚äº†ï¼ˆç™»éŒ²é–¢æ•°ã¯å‘¼ã³å‡ºã•ã‚Œãªã„ï¼‰ */
 
 	return (0);
 }

@@ -1,8 +1,8 @@
-/*--- strcmp‚ÌÀŒ»—á ---*/
+/*--- strcmpã®å®Ÿç¾ä¾‹ ---*/
 int strcmp(const char *s1, const char *s2)
 {
 	while (*s1 == *s2) {
-		if (*s1 == '\0')			/* “™‚µ‚¢ */
+		if (*s1 == '\0')			/* ç­‰ã—ã„ */
 			return (0);
 		s1++;
 		s2++;

@@ -1,5 +1,5 @@
 /*
-	\‘¢‘Ì‚Ìƒƒ“ƒo‚É’l‚ğ“Ç‚İ‚Ş
+	æ§‹é€ ä½“ã®ãƒ¡ãƒ³ãƒã«å€¤ã‚’èª­ã¿è¾¼ã‚€
 */
 
 #include  <stdio.h>
@@ -10,7 +10,7 @@ typedef struct {
 	double	z;
 } XYZ;
 
-/*--- a‚Ìw‚·\‘¢‘Ì‚Ìƒƒ“ƒo‚É’l‚ğ“Ç‚İ‚Ş ---*/
+/*--- aã®æŒ‡ã™æ§‹é€ ä½“ã®ãƒ¡ãƒ³ãƒã«å€¤ã‚’èª­ã¿è¾¼ã‚€ ---*/
 void getXYZ(XYZ *a)
 {
 	printf("x : ");	  scanf("%d",  &a->x);
@@ -24,9 +24,9 @@ int main(void)
 
 	getXYZ(&sa);
 
-	printf("sa.x = %d\n",	sa.x);	/* ƒƒ“ƒo‚Ì’l‚ğ•\¦ */
-	printf("sa.y = %ld\n",	sa.y);	/* @V@ */
-	printf("sa.z = %.2f\n",	sa.z);	/* @V@ */
+	printf("sa.x = %d\n",	sa.x);	/* ãƒ¡ãƒ³ãƒã®å€¤ã‚’è¡¨ç¤º */
+	printf("sa.y = %ld\n",	sa.y);	/* ã€€ã€ƒã€€ */
+	printf("sa.z = %.2f\n",	sa.z);	/* ã€€ã€ƒã€€ */
 
 	return (0);
 }

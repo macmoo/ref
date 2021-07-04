@@ -1,4 +1,4 @@
-/* ‰‰K3-2‚Ì‰ğ“š—á */
+/* æ¼”ç¿’3-2ã®è§£ç­”ä¾‹ */
 
 #include  <stdio.h>
 
@@ -6,7 +6,7 @@ int main(void)
 {
 	int	 x[3][2][4];
 
-	printf("”z—ñx‚Í%d~%d~%d‚Ì‚RŸŒ³”z—ñ‚Å‚·B\n",
+	printf("é…åˆ—xã¯%dÃ—%dÃ—%dã®ï¼“æ¬¡å…ƒé…åˆ—ã§ã™ã€‚\n",
 				(int)(sizeof(x)		  / sizeof(int[2][4])),
 				(int)(sizeof(x[0])	  / sizeof(int[4])),
 				(int)(sizeof(x[0][0]) / sizeof(int)));

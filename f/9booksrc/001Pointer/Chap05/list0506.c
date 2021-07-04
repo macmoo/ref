@@ -1,5 +1,5 @@
 /*
-	sƒ|ƒCƒ“ƒ^‚É‚æ‚é•¶Žš—ñt‚Ì”z—ñ“à‚Ì•¶Žš—ñ‚ð‚P•¶Žš‚¸‚Â‘–¸‚µ‚Ä•\Ž¦
+	ã€Šãƒã‚¤ãƒ³ã‚¿ã«ã‚ˆã‚‹æ–‡å­—åˆ—ã€‹ã®é…åˆ—å†…ã®æ–‡å­—åˆ—ã‚’ï¼‘æ–‡å­—ãšã¤èµ°æŸ»ã—ã¦è¡¨ç¤º
 */
 
 #include  <stdio.h>
@@ -8,7 +8,7 @@ int main(void)
 {
 	int	  i, j;
 	char  *ptr[] = {"W140", "S", "500"};
-	int	  np = sizeof(ptr) / sizeof(ptr[0]);	/* ptr‚Ì—v‘f” */
+	int	  np = sizeof(ptr) / sizeof(ptr[0]);	/* ptrã®è¦ç´ æ•° */
 
 	for (i = 0; i < np; i++) {
 		printf("ptr[%d] = \"", i);

@@ -1,5 +1,5 @@
 /*
-	‚QŸŒ³”z—ñ‚Ì—v‘f”‚ğ•\¦
+	ï¼’æ¬¡å…ƒé…åˆ—ã®è¦ç´ æ•°ã‚’è¡¨ç¤º
 */
 
 #include  <stdio.h>
@@ -8,7 +8,7 @@ int main(void)
 {
 	int	 x[4][3];
 
-	printf("”z—ñx‚Í%d~%d‚Ì‚QŸŒ³”z—ñ‚Å‚·B\n",
+	printf("é…åˆ—xã¯%dÃ—%dã®ï¼’æ¬¡å…ƒé…åˆ—ã§ã™ã€‚\n",
 								(int)(sizeof(x)	   / sizeof(x[0])),
 								(int)(sizeof(x[0]) / sizeof(x[0][0])));
 	return (0);

@@ -1,4 +1,4 @@
-/*--- ––”öƒm[ƒh‚Ìíœ ---*/
+/*--- æœ«å°¾ãƒãƒ¼ãƒ‰ã®å‰Šé™¤ ---*/
 void RemoveNode(List *list)
 {
 	if (list->head != list->tail) {

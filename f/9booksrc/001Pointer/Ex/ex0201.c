@@ -1,4 +1,4 @@
-/* ‰‰K2-1‚Ì‰ğ“š—á */
+/* æ¼”ç¿’2-1ã®è§£ç­”ä¾‹ */
 
 #include  <stdio.h>
 
@@ -6,7 +6,7 @@ int main(void)
 {
 	int	 i;
 	int	 a[5];
-	int	 *p = &a[2];		/* p‚Ía[2]‚ğw‚· */
+	int	 *p = &a[2];		/* pã¯a[2]ã‚’æŒ‡ã™ */
 
 	for (i = 0; i < 5; i++)
 		printf("&a[%d] = %p  p+(%2d) = %p\n", i, &a[i], i - 2, p + i - 2);

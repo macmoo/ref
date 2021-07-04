@@ -1,22 +1,22 @@
 /*
-	‹ãX‚Ì‰ÁZ‚ÆæZ
+	ä¹ã€…ã®åŠ ç®—ã¨ä¹—ç®—
 */
 
 #include  <stdio.h>
 
-/*--- x1‚Æx2‚Ì˜a‚ğ‹‚ß‚é ---*/
+/*--- x1ã¨x2ã®å’Œã‚’æ±‚ã‚ã‚‹ ---*/
 int sum(int x1, int x2)
 {
 	return (x1 + x2);
 }
 
-/*--- x1‚Æx2‚ÌÏ‚ğ‹‚ß‚é ---*/
+/*--- x1ã¨x2ã®ç©ã‚’æ±‚ã‚ã‚‹ ---*/
 int mul(int x1, int x2)
 {
 	return (x1 * x2);
 }
 
-/*--- ‹ãX‚Ì•\‚ğo—Í ---*/
+/*--- ä¹ã€…ã®è¡¨ã‚’å‡ºåŠ› ---*/
 void kuku(int calc(int, int))
 {
 	int	 i, j;
@@ -30,10 +30,10 @@ void kuku(int calc(int, int))
 
 int main(void)
 {
-	puts("‹ãX‚Ì‘«‚µZ•\");
+	puts("ä¹ã€…ã®è¶³ã—ç®—è¡¨");
 	kuku(sum);
 
-	puts("\n‹ãX‚ÌŠ|‚¯Z•\");
+	puts("\nä¹ã€…ã®æ›ã‘ç®—è¡¨");
 	kuku(mul);
 
 	return (0);

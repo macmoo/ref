@@ -1,10 +1,10 @@
 /*
-	•¶š—ñ‚ğƒRƒs[i‘æ‚P”Åj
+	æ–‡å­—åˆ—ã‚’ã‚³ãƒ”ãƒ¼ï¼ˆç¬¬ï¼‘ç‰ˆï¼‰
 */
 
 #include  <stdio.h>
 
-/*--- •¶š—ñs‚ğd‚ÉƒRƒs[i‘æ‚Q”Åj ---*/
+/*--- æ–‡å­—åˆ—sã‚’dã«ã‚³ãƒ”ãƒ¼ï¼ˆç¬¬ï¼’ç‰ˆï¼‰ ---*/
 void str_copy(char *d, const char *s)
 {
 	while (*d++ = *s++)
@@ -16,13 +16,13 @@ int main(void)
 	char  str[100] = "ABC";
 	char  tmp[100];
 
-	printf("•¶š—ñstr‚Í\"%s\"‚Å‚·B\n", str);
-	printf("ƒRƒs[‚·‚é•¶š—ñ‚ğ“ü—Í‚µ‚Ä‰º‚³‚¢F");
+	printf("æ–‡å­—åˆ—strã¯\"%s\"ã§ã™ã€‚\n", str);
+	printf("ã‚³ãƒ”ãƒ¼ã™ã‚‹æ–‡å­—åˆ—ã‚’å…¥åŠ›ã—ã¦ä¸‹ã•ã„ï¼š");
 	scanf("%s", tmp);
 
-	str_copy(str, tmp);		/* •¶š—ñtmp‚ğstr‚ÉƒRƒs[ */
+	str_copy(str, tmp);		/* æ–‡å­—åˆ—tmpã‚’strã«ã‚³ãƒ”ãƒ¼ */
 
-	printf("•¶š—ñstr‚Í\"%s\"‚Å‚·B\n", str);
+	printf("æ–‡å­—åˆ—strã¯\"%s\"ã§ã™ã€‚\n", str);
 
 	return (0);
 }

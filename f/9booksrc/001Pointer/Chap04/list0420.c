@@ -1,16 +1,16 @@
 /*
-	•¶š—ñ‚ÌÀŒ»–@
+	æ–‡å­—åˆ—ã®å®Ÿç¾æ³•
 */
 
 #include  <stdio.h>
 
 int main(void)
 {
-	char  str[] = "ABC";	/* str‚ÌŠe—v‘f‚Ì’l‚Í'A','B','C','\0' */
-	char  *ptr	= "XYZ";	/* ptr‚Í"XYZ"‚ğw‚· */
+	char  str[] = "ABC";	/* strã®å„è¦ç´ ã®å€¤ã¯'A','B','C','\0' */
+	char  *ptr	= "XYZ";	/* ptrã¯"XYZ"ã‚’æŒ‡ã™ */
 
-	printf("•¶š—ñstr‚Í\"%s\"‚Å‚·B\n", str);
-	printf("•¶š—ñptr‚Í\"%s\"‚Å‚·B\n", ptr);
+	printf("æ–‡å­—åˆ—strã¯\"%s\"ã§ã™ã€‚\n", str);
+	printf("æ–‡å­—åˆ—ptrã¯\"%s\"ã§ã™ã€‚\n", ptr);
 
 	return (0);
 }

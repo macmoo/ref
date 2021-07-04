@@ -1,5 +1,5 @@
 /*
-	ƒ|ƒCƒ“ƒ^‚Ì”z—ñ
+	?ê·½ê¹›?ê¶»ë´¹ì€±
 */
 
 #include  <stdio.h>
@@ -10,12 +10,12 @@ int main(void)
 	int	 *p[3];
 
 	p[0] = &a;	p[1] = &b;	p[2] = &c;
-	printf("&a%p  a%d\n", &a, a);
-	printf("&b%p  b%d\n", &b, b);
-	printf("&c%p  c%d\n", &c, c);
+	printf("&aê±–%p  aê±–%d\n", &a, a);
+	printf("&bê±–%p  bê±–%d\n", &b, b);
+	printf("&cê±–%p  cê±–%d\n", &c, c);
 
 	for (i = 0; i < 3; i++)
-		printf("p[%d]%p  *p[%d]%d\n", i ,p[i], i, *p[i]);
+		printf("p[%d]ê±–%p  *p[%d]ê±–%d\n", i ,p[i], i, *p[i]);
 
 	return (0);
 }

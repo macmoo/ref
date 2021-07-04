@@ -1,5 +1,5 @@
 
-/*--- strlen‚ÌŽÀŒ»—á‚` ---*/
+/*--- strlenê¶»ë ³ë™¸ì€¡? ---*/
 size_t strlen(const char *s)
 {
 	size_t	len = 0;

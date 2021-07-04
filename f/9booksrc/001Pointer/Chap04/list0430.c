@@ -1,5 +1,5 @@
 /*
-	•¶š—ñ‚ğ˜AŒ‹‚·‚éƒvƒƒOƒ‰ƒ€
+	æ–‡å­—åˆ—ã‚’é€£çµã™ã‚‹ãƒ—ãƒ­ã‚°ãƒ©ãƒ 
 */
 
 #include  <stdio.h>
@@ -9,9 +9,9 @@ int main(void)
 {
 	char  s[15] = "I love ";
 
-	strcat(s, "you.");			/* s‚É"you."‚ğ˜AŒ‹ */
+	strcat(s, "you.");			/* sã«"you."ã‚’é€£çµ */
 
-	printf("•¶š—ñs‚Í\"%s\"‚Å‚·B\n", s);
+	printf("æ–‡å­—åˆ—sã¯\"%s\"ã§ã™ã€‚\n", s);
 
 	return (0);
 }

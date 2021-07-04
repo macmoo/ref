@@ -1,10 +1,10 @@
 /*
-	sƒ|ƒCƒ“ƒ^‚É‚æ‚é•¶š—ñt‚Ì”z—ñ“à‚Ì•¶š—ñ‚ğ•\¦iŠÖ””Åj
+	ã€Šãƒã‚¤ãƒ³ã‚¿ã«ã‚ˆã‚‹æ–‡å­—åˆ—ã€‹ã®é…åˆ—å†…ã®æ–‡å­—åˆ—ã‚’è¡¨ç¤ºï¼ˆé–¢æ•°ç‰ˆï¼‰
 */
 
 #include  <stdio.h>
 
-/*--- ƒ|ƒCƒ“ƒ^‚É‚æ‚é•¶š—ñstr[n]‚ğ•\¦ ---*/
+/*--- ãƒã‚¤ãƒ³ã‚¿ã«ã‚ˆã‚‹æ–‡å­—åˆ—str[n]ã‚’è¡¨ç¤º ---*/
 void print_pname(const char *str[], int n)
 {
 	printf("str[%d] = \"%s\"\n", n, str[n]);
@@ -14,7 +14,7 @@ int main(void)
 {
 	int	  i;
 	char  *ptr[] = {"W140", "S", "500"};
-	int	  np = sizeof(ptr) / sizeof(ptr[0]);	/* ptr‚Ì—v‘f” */
+	int	  np = sizeof(ptr) / sizeof(ptr[0]);	/* ptrã®è¦ç´ æ•° */
 
 	for (i = 0; i < np; i++)
 		print_pname(ptr, i);

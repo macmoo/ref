@@ -1,4 +1,4 @@
-/*--- memcpy‚ÌŽÀŒ»—á ---*/
+/*--- memcpyê¶»ë ³ë™¸ì€¡ ---*/
 void *memcpy(void *s1, const void *s2, size_t n)
 {
 	char		*p1 = (char *)s1;

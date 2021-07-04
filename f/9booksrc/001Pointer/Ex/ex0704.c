@@ -1,34 +1,34 @@
-/* ‰‰K7-4‚Ì‰ğ“š—á */
+/* æ¼”ç¿’7-4ã®è§£ç­”ä¾‹ */
 
 #include  <stdio.h>
 #include  <stdlib.h>
 
 int main(void)
 {
-	int	  num;			/* •¶š—ñ‚ÌŒÂ” */
-	char  (*p)[15];		/* •¶š”‚Í’è”15 */
+	int	  num;			/* æ–‡å­—åˆ—ã®å€‹æ•° */
+	char  (*p)[15];		/* æ–‡å­—æ•°ã¯å®šæ•°15 */
 
-	printf("•¶š—ñ‚Í‰½ŒÂF");
+	printf("æ–‡å­—åˆ—ã¯ä½•å€‹ï¼š");
 	scanf("%d", &num);
 
 	p = (char (*)[15])malloc(num * 15);
 
 	if (p == NULL) 
-		puts("‹L‰¯ˆæ‚ÌŠm•Û‚É¸”s‚µ‚Ü‚µ‚½B");
+		puts("è¨˜æ†¶åŸŸã®ç¢ºä¿ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
 	else {
 		int	  i;
 		char  temp[100];
 
-		for (i = 0; i < num; i++) {			/* •¶š—ñ‚ğ“Ç‚İ‚Ş */
+		for (i = 0; i < num; i++) {			/* æ–‡å­—åˆ—ã‚’èª­ã¿è¾¼ã‚€ */
 			printf("p[%d] : ", i);
 			scanf("%s", temp);
 			sprintf(p[i], "%.14s", temp);
 		}
 
-		for (i = 0; i < num; i++)			/* •¶š—ñ‚ğ•\¦ */
+		for (i = 0; i < num; i++)			/* æ–‡å­—åˆ—ã‚’è¡¨ç¤º */
 			printf("p[%d] = %s\n", i, p[i]);
 
-		free(p);							/* ‹L‰¯ˆæ‚ğ‰ğ•ú */
+		free(p);							/* è¨˜æ†¶åŸŸã‚’è§£æ”¾ */
 	}
 
 	return (0);

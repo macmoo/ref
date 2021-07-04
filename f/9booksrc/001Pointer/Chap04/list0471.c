@@ -1,5 +1,5 @@
 /*
-	strtolŠÖ”‚Ì—˜—p—á
+	strtolé–¢æ•°ã®åˆ©ç”¨ä¾‹
 */
 
 #include  <errno.h>
@@ -15,27 +15,27 @@ int main(void)
 	char  str[60];
 	char  *ptr = str;
 
-	puts("®”‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B");
+	puts("æ•´æ•°ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚");
 
 	do {
-		printf("‰½i”F");	  scanf("%d", &base);
-		printf("®”’lF");	  scanf("%s", str);
+		printf("ä½•é€²æ•°ï¼š");	  scanf("%d", &base);
+		printf("æ•´æ•°å€¤ï¼š");	  scanf("%s", str);
 
 		x = strtol(str, &ptr, base);
 
 		if (errno == ERANGE)
-			puts("longŒ^‚Ì•\Œ»”ÍˆÍ‚ğ’´‚¦‚Ä‚¢‚Ü‚·B");
+			puts("longå‹ã®è¡¨ç¾ç¯„å›²ã‚’è¶…ãˆã¦ã„ã¾ã™ã€‚");
 		else {
 			if (ptr == str)
-				puts("®”‚É•ÏŠ·‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B");
+				puts("æ•´æ•°ã«å¤‰æ›ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚");
 			else {
-				printf("10i”‚Å%d‚Å‚·B\n", x);
+				printf("10é€²æ•°ã§%dã§ã™ã€‚\n", x);
 				if (ptr != &str[strlen(str)])
-					printf("%s‚Ì•”•ª‚Í•ÏŠ·‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½B\n", ptr);
+					printf("%sã®éƒ¨åˆ†ã¯å¤‰æ›ã§ãã¾ã›ã‚“ã§ã—ãŸã€‚\n", ptr);
 			}
 		}
 
-		printf("‚à‚¤ˆê“xi0|‚¢‚¢‚¦^1\‚Í‚¢jF");
+		printf("ã‚‚ã†ä¸€åº¦ï¼ˆ0ï¼ã„ã„ãˆï¼1â€•ã¯ã„ï¼‰ï¼š");
 		scanf("%d", &retry);
 
 	} while (retry == 1);

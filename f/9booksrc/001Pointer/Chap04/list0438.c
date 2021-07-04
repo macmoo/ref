@@ -1,4 +1,4 @@
-/*--- strlen‚ÌŽÀŒ»—á‚a ---*/
+/*--- strlenê¶»ë ³ë™¸ì€¡ê´¶ ---*/
 size_t strlen(const char *s)
 {
 	const char	*p = s;

@@ -1,11 +1,11 @@
 /*
-	qsortŠÖ”‚ğ—˜—p‚µ‚Ä®””z—ñ‚Ì—v‘f‚ğ’l‚Ì~‡‚Éƒ\[ƒg
+	qsorté–¢æ•°ã‚’åˆ©ç”¨ã—ã¦æ•´æ•°é…åˆ—ã®è¦ç´ ã‚’å€¤ã®é™é †ã«ã‚½ãƒ¼ãƒˆ
 */
 
 #include  <stdio.h>
 #include  <stdlib.h>
 
-/*--- intŒ^‚Ì”äŠrŠÖ”i~‡ƒ\[ƒg—pj ---*/
+/*--- intå‹ã®æ¯”è¼ƒé–¢æ•°ï¼ˆé™é †ã‚½ãƒ¼ãƒˆç”¨ï¼‰ ---*/
 int int_rcmp(const int *a, const int *b)
 {
 	if (*a < *b)
@@ -22,7 +22,7 @@ int main(void)
 	int	 x[10];
 	int	 nx = sizeof(x) / sizeof(x[0]);
 	
-	printf("%dŒÂ‚Ì®”‚ğ“ü—Í‚¹‚æB\n", nx);
+	printf("%då€‹ã®æ•´æ•°ã‚’å…¥åŠ›ã›ã‚ˆã€‚\n", nx);
 	for (i = 0; i < nx; i++) {
 		printf("x[%d] : ", i);
 		scanf("%d", &x[i]);
@@ -31,7 +31,7 @@ int main(void)
 	qsort(x, nx, sizeof(int),
 			(int (*)(const void *, const void *))int_rcmp);
 
-	puts("~‡‚Éƒ\[ƒg‚µ‚Ü‚µ‚½B");
+	puts("é™é †ã«ã‚½ãƒ¼ãƒˆã—ã¾ã—ãŸã€‚");
 	for (i = 0; i < nx; i++)
 		printf("x[%d] = %d\n", i, x[i]);
 

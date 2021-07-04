@@ -1,10 +1,10 @@
 /*
-	�s�g�v�f����3�ł���z��h�̔z��t�̗v�f�ɓY���̘a����
+	《“要素数が3である配列”の配列》の要素に添字の和を代入
 */
 
 #include  <stdio.h>
 
-/*--- �g�v�f����3�ł���z��h�̔z��̑S�v�f�ɓY���̘a���� ---*/
+/*--- “要素数が3である配列”の配列の全要素に添字の和を代入 ---*/
 void fill_avalue(int a[][3], int n)
 {
 	int	 i, j;
@@ -20,8 +20,8 @@ int main(void)
 	int	 mx[2][3];
 	int	 my[4][3];
 	
-	fill_avalue(mx, 2);		/* mx�̑S�v�f�ɓY���̘a���i�[ */
-	fill_avalue(my, 4);		/* my�̑S�v�f�ɓY���̘a���i�[ */
+	fill_avalue(mx, 2);		/* mxの全要素に添字の和を格納 */
+	fill_avalue(my, 4);		/* myの全要素に添字の和を格納 */
 
 	puts("--- mx ---");
 	for (i = 0; i < 2; i++) {

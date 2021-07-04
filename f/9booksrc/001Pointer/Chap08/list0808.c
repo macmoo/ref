@@ -1,4 +1,4 @@
-/*--- �擪�m�[�h�̍폜 ---*/
+/*--- 先頭ノードの削除 ---*/
 void DeleteNode(List *list)
 {
 	if (list->head != list->tail) {

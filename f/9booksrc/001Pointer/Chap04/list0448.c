@@ -1,5 +1,5 @@
 /*
-	strcmpŠÖ”‚ÆstrncmpŠÖ”‚Ì—˜—p—á
+	strcmpé–¢æ•°ã¨strncmpé–¢æ•°ã®åˆ©ç”¨ä¾‹
 */
 
 #include  <stdio.h>
@@ -9,11 +9,11 @@ int main(void)
 {
 	char  st[100];
 
-	puts("\"ABCDE\"‚Æ‚Ì”äŠr‚ğs‚¢‚Ü‚·B");
-	puts("\"XXXXX\"‚ÅI—¹‚µ‚Ü‚·B");
+	puts("\"ABCDE\"ã¨ã®æ¯”è¼ƒã‚’è¡Œã„ã¾ã™ã€‚");
+	puts("\"XXXXX\"ã§çµ‚äº†ã—ã¾ã™ã€‚");
 
 	while (1) {
-		printf("\n•¶š—ñstF");
+		printf("\næ–‡å­—åˆ—stï¼š");
 		scanf("%s", st);
 
 		if (strcmp(st, "XXXXX") == 0)

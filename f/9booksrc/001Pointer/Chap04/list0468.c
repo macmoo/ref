@@ -1,14 +1,14 @@
 /*
-	memcpyŠÖ”‚ÆmemmoveŠÖ”‚Ì—˜—p—á
+	memcpyé–¢æ•°ã¨memmoveé–¢æ•°ã®åˆ©ç”¨ä¾‹
 */
 
 #include  <stdio.h>
 #include  <string.h>
 
-/*--- ”z—ñb‚Ì—v‘f‚ğa‚ÉƒRƒs[ ---*/
+/*--- é…åˆ—bã®è¦ç´ ã‚’aã«ã‚³ãƒ”ãƒ¼ ---*/
 int arycpy(int a[], const int b[], int na)
 {
-	if (na <= 0)						/* na„0‚Å‚È‚¯‚ê‚Î‚È‚ç‚È‚¢ */
+	if (na <= 0)						/* naï¼0ã§ãªã‘ã‚Œã°ãªã‚‰ãªã„ */
 		return (1);
 	else {
 		memcpy(a, b, na * sizeof(int)); 
@@ -16,10 +16,10 @@ int arycpy(int a[], const int b[], int na)
 	}
 }
 
-/*--- a[idx]‚Éx‚ğ‘}“ü‚µ‚ÄˆÈ~‚Ì—v‘f‚ğˆê‚Â‚¸‚Â‚¸‚ç‚· ---*/
+/*--- a[idx]ã«xã‚’æŒ¿å…¥ã—ã¦ä»¥é™ã®è¦ç´ ã‚’ä¸€ã¤ãšã¤ãšã‚‰ã™ ---*/
 int aryins(int a[], int na, int idx, int x)
 {
-	if (idx < 0	 ||	 idx >= na)		/* 0…idxƒna‚Å‚È‚¯‚ê‚Î‚È‚ç‚È‚¢ */
+	if (idx < 0	 ||	 idx >= na)		/* 0â‰¦idxï¼œnaã§ãªã‘ã‚Œã°ãªã‚‰ãªã„ */
 		return (1);
 	else {
 		memmove(&a[idx + 1], &a[idx], (na - idx - 1) * sizeof(int)); 
@@ -28,7 +28,7 @@ int aryins(int a[], int na, int idx, int x)
 	}
 }
 
-#define	MAX		5		/* ”z—ñ‚Ì—v‘f” */
+#define	MAX		5		/* é…åˆ—ã®è¦ç´ æ•° */
 
 int main(void)
 {
@@ -36,9 +36,9 @@ int main(void)
 	int	 x[MAX] = {1, 2, 3, 4, 5};
 	int	 y[MAX] = {9, 9, 9, 9, 9};
 
-	arycpy(y, x, MAX);		/* x‚Ì‘S—v‘f‚ğy‚ÉƒRƒs[ */
+	arycpy(y, x, MAX);		/* xã®å…¨è¦ç´ ã‚’yã«ã‚³ãƒ”ãƒ¼ */
 
-	aryins(x, MAX, 2, 10);	/* x[2]‚É10‚ğ‘}“ü */
+	aryins(x, MAX, 2, 10);	/* x[2]ã«10ã‚’æŒ¿å…¥ */
 
 	puts("        x   y ");
 	puts("--------------");

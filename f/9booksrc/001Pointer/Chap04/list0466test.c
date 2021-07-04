@@ -1,11 +1,11 @@
 /*
-	memcpyŠÖ”EmemmoveŠÖ”‚Ì—˜—p—á
+	memcpyé–¢æ•°ãƒ»memmoveé–¢æ•°ã®åˆ©ç”¨ä¾‹
 */
 
 #include  <stdio.h>
 #include  <string.h>
 
-/*--- memcpy‚ÌÀŒ»—á ---*/
+/*--- memcpyã®å®Ÿç¾ä¾‹ ---*/
 void *memcpy(void *s1, const void *s2, size_t n)
 {
 	char		*p1 = (char *)s1;
@@ -19,26 +19,26 @@ void *memcpy(void *s1, const void *s2, size_t n)
 	return (s1);
 }
 
-/*--- memmove‚ÌÀŒ»—á ---*/
+/*--- memmoveã®å®Ÿç¾ä¾‹ ---*/
 void *memmove(void *s1, const void *s2, size_t n)
 {
 	char		*p1 = (char *)s1;
 	const char	*p2 = (const char *)s2;
 
 	if (p1 < p2	 &&	 p1 < p2 + n)
-		for (p1 += n, p1 += n; n > 0; n--)		/* Œã‚ë‚©‚çƒRƒs[ */
+		for (p1 += n, p1 += n; n > 0; n--)		/* å¾Œã‚ã‹ã‚‰ã‚³ãƒ”ãƒ¼ */
 			*p1-- = *p2--;
 	else
-		for ( ; n > 0; n--)						/* ‘O‚©‚çƒRƒs[ */
+		for ( ; n > 0; n--)						/* å‰ã‹ã‚‰ã‚³ãƒ”ãƒ¼ */
 			*p1++ = *p2++;
 
 	return (s1);
 }
 
-/*--- ”z—ñb‚Ì—v‘f‚ğa‚É•¡Ê ---*/
+/*--- é…åˆ—bã®è¦ç´ ã‚’aã«è¤‡å†™ ---*/
 int arycpy(int a[], const int b[], int na)
 {
-	if (na < 0)						/* naƒ0‚Å‚È‚¯‚ê‚Î‚È‚ç‚È‚¢ */
+	if (na < 0)						/* naï¼œ0ã§ãªã‘ã‚Œã°ãªã‚‰ãªã„ */
 		return (1);
 	else {
 		memcpy(a, b, na * sizeof(int)); 
@@ -46,10 +46,10 @@ int arycpy(int a[], const int b[], int na)
 	}
 }
 
-/*--- a[idx]‚Éx‚ğ‘}“ü‚µ‚ÄˆÈ~‚Ì—v‘f‚ğˆê‚Â‚¸‚Â‚¸‚ç‚· ---*/
+/*--- a[idx]ã«xã‚’æŒ¿å…¥ã—ã¦ä»¥é™ã®è¦ç´ ã‚’ä¸€ã¤ãšã¤ãšã‚‰ã™ ---*/
 int aryins(int a[], int na, int idx, int x)
 {
-	if (idx < 0	 ||	 idx >= na)		/* 0…idxƒna‚Å‚È‚¯‚ê‚Î‚È‚ç‚È‚¢ */
+	if (idx < 0	 ||	 idx >= na)		/* 0â‰¦idxï¼œnaã§ãªã‘ã‚Œã°ãªã‚‰ãªã„ */
 		return (1);
 	else {
 		memmove(&a[idx + 1], &a[idx], (na - idx - 1) * sizeof(int)); 
@@ -58,7 +58,7 @@ int aryins(int a[], int na, int idx, int x)
 	}
 }
 
-#define	MAX		5		/* ”z—ñ‚Ì—v‘f” */
+#define	MAX		5		/* é…åˆ—ã®è¦ç´ æ•° */
 
 int main(void)
 {
@@ -66,9 +66,9 @@ int main(void)
 	int	 x[MAX] = {1, 2, 3, 4, 5};
 	int	 y[MAX] = {9, 9, 9, 9, 9};
 
-	arycpy(y, x, MAX);		/* x‚Ì‘S—v‘f‚ğy‚ÉƒRƒs[ */
+	arycpy(y, x, MAX);		/* xã®å…¨è¦ç´ ã‚’yã«ã‚³ãƒ”ãƒ¼ */
 
-	aryins(x, MAX, 2, 10);	/* x[2]‚É10‚ğ‘}“ü */
+	aryins(x, MAX, 2, 10);	/* x[2]ã«10ã‚’æŒ¿å…¥ */
 
 	puts("        x   y ");
 	puts("--------------");

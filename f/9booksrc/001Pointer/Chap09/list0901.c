@@ -1,10 +1,10 @@
 /*
-	‘äŒ`‚Ì–ÊÏ‚ğ‹‚ß‚é
+	å°å½¢ã®é¢ç©ã‚’æ±‚ã‚ã‚‹
 */
 
 #include  <stdio.h>
 
-/*--- ‘äŒ`‚Ì–ÊÏ‚ğ‹‚ß‚é ---*/
+/*--- å°å½¢ã®é¢ç©ã‚’æ±‚ã‚ã‚‹ ---*/
 double trapezoid(double w1, double w2, double h)
 {
 	return ((w1 + w2) * h / 2.0);
@@ -14,12 +14,12 @@ int main(void)
 {
 	double	x1, x2, height;
 
-	puts("‘äŒ`‚Ì–ÊÏ‚ğ‹‚ß‚Ü‚·B");
-	printf("ã’êF");	scanf("%lf", &x1);
-	printf("‰º’êF");	scanf("%lf", &x2);
-	printf("‚‚³F");	scanf("%lf", &height);
+	puts("å°å½¢ã®é¢ç©ã‚’æ±‚ã‚ã¾ã™ã€‚");
+	printf("ä¸Šåº•ï¼š");	scanf("%lf", &x1);
+	printf("ä¸‹åº•ï¼š");	scanf("%lf", &x2);
+	printf("é«˜ã•ï¼š");	scanf("%lf", &height);
 
-	printf("–ÊÏ‚Í%.4f‚Å‚·B\n", trapezoid(x1, x2, height));
+	printf("é¢ç©ã¯%.4fã§ã™ã€‚\n", trapezoid(x1, x2, height));
 
 	return (0);
 }

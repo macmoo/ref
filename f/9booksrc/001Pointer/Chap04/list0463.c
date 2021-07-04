@@ -1,4 +1,4 @@
-/*--- memset‚ÌŽÀŒ»—á ---*/
+/*--- memsetê¶»ë ³ë™¸ì€¡ ---*/
 void *memset(void *s, int c, size_t n)
 {
 	const unsigned char	 uc = c;

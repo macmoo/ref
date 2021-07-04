@@ -1,5 +1,5 @@
 /*
-	•¶š—ñ‚ğ“®“I‚É¶¬
+	æ–‡å­—åˆ—ã‚’å‹•çš„ã«ç”Ÿæˆ
 */
 
 #include  <stdio.h>
@@ -11,17 +11,17 @@ int main(void)
 	char  st[128];
 	char  *pt;
 
-	printf("•¶š—ñst‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢F");
+	printf("æ–‡å­—åˆ—stã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼š");
 	scanf("%s", st);
 
-	pt = (char *)malloc(strlen(st) + 1);	/* •¶š—ñ‚ğ“®“I‚É¶¬ */
+	pt = (char *)malloc(strlen(st) + 1);	/* æ–‡å­—åˆ—ã‚’å‹•çš„ã«ç”Ÿæˆ */
 
 	if (pt) {
 		strcpy(pt, st);
-		printf("‚»‚Ì•¶š—ñ‚ÌƒNƒ[ƒ“pt‚ğì‚è‚Ü‚µ‚½B\n");
+		printf("ãã®æ–‡å­—åˆ—ã®ã‚¯ãƒ­ãƒ¼ãƒ³ptã‚’ä½œã‚Šã¾ã—ãŸã€‚\n");
 		printf("st = %s\n", st);
 		printf("pt = %s\n", pt);
-		free(pt);					/* ‹L‰¯ˆæ‚ğ‰ğ•ú */
+		free(pt);					/* è¨˜æ†¶åŸŸã‚’è§£æ”¾ */
 	}
 
 	return (0);

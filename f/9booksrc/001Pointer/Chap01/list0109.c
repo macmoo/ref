@@ -1,20 +1,20 @@
 /*
-	ƒ|ƒCƒ“ƒ^‚Ì‰Šú‰»
+	ãƒã‚¤ãƒ³ã‚¿ã®åˆæœŸåŒ–
 */
 
 #include  <stdio.h>
 
 int main(void)
 {
-	int	 nx = 100;		/* nx‚Ì’l‚Í100 */
-	int	 ny = 200;		/* ny‚Ì’l‚Í200 */
-	int	 *px = &nx;		/* px‚Ínx‚ğw‚·ƒ|ƒCƒ“ƒ^ */
-	int	 *py = &ny;		/* py‚Íny‚ğw‚·ƒ|ƒCƒ“ƒ^ */
+	int	 nx = 100;		/* nxã®å€¤ã¯100 */
+	int	 ny = 200;		/* nyã®å€¤ã¯200 */
+	int	 *px = &nx;		/* pxã¯nxã‚’æŒ‡ã™ãƒã‚¤ãƒ³ã‚¿ */
+	int	 *py = &ny;		/* pyã¯nyã‚’æŒ‡ã™ãƒã‚¤ãƒ³ã‚¿ */
 
-	printf(" nx‚Ì’l%d\n",	 nx);	/* nx‚Ì’l */
-	printf(" ny‚Ì’l%d\n",	 ny);	/* ny‚Ì’l */
-	printf("*px‚Ì’l%d\n", *px);	/* px‚ªw‚·ƒIƒuƒWƒFƒNƒg‚Ì’l */
-	printf("*py‚Ì’l%d\n", *py);	/* py‚ªw‚·ƒIƒuƒWƒFƒNƒg‚Ì’l */
+	printf(" nxã®å€¤ï¼%d\n",	 nx);	/* nxã®å€¤ */
+	printf(" nyã®å€¤ï¼%d\n",	 ny);	/* nyã®å€¤ */
+	printf("*pxã®å€¤ï¼%d\n", *px);	/* pxãŒæŒ‡ã™ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å€¤ */
+	printf("*pyã®å€¤ï¼%d\n", *py);	/* pyãŒæŒ‡ã™ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å€¤ */
 
 	return (0);
 }

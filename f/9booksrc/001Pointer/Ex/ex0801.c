@@ -1,45 +1,45 @@
 /*
-	“d˜b˜A——püŒ`ƒŠƒXƒgi•p•”‚Æ—¤ã•”j
+	é›»è©±é€£çµ¡ç”¨ç·šå½¢ãƒªã‚¹ãƒˆï¼ˆæ­¦è¡“éƒ¨ã¨é™¸ä¸Šéƒ¨ï¼‰
 */
 
 #include  <stdio.h>
 #include  <stdlib.h>
 #include  <string.h>
 
-/*--- ƒƒjƒ…[ ---*/
+/*--- ãƒ¡ãƒ‹ãƒ¥ãƒ¼ ---*/
 typedef enum {
 	Term, Insert, Append, Delete, Remove, Clear, Print, Search,
 	PutNode, InsN, InsP, ClrNode
 } Menu;
 
-/*--- ƒm[ƒh ---*/
+/*--- ãƒãƒ¼ãƒ‰ ---*/
 typedef struct __node {
-	char		   name[20];	/* –¼‘O */
-	char		   tel[16];	/* “d˜b”Ô† */
-	struct __node  *next;		/* Ÿ‚Ì‰ïˆõ‚ğw‚·ƒ|ƒCƒ“ƒ^ */
+	char		   name[20];	/* åå‰ */
+	char		   tel[16];	/* é›»è©±ç•ªå· */
+	struct __node  *next;		/* æ¬¡ã®ä¼šå“¡ã‚’æŒ‡ã™ãƒã‚¤ãƒ³ã‚¿ */
 } Node;
 
-/*--- üŒ`ƒŠƒXƒg§ŒäƒuƒƒbƒN ---*/
+/*--- ç·šå½¢ãƒªã‚¹ãƒˆåˆ¶å¾¡ãƒ–ãƒ­ãƒƒã‚¯ ---*/
 typedef struct {
-	Node  *head;				/* æ“ªƒm[ƒh‚ğw‚·ƒ|ƒCƒ“ƒ^ */
-	Node  *tail;				/* ––”öƒm[ƒh‚ğw‚·ƒ|ƒCƒ“ƒ^ */
+	Node  *head;				/* å…ˆé ­ãƒãƒ¼ãƒ‰ã‚’æŒ‡ã™ãƒã‚¤ãƒ³ã‚¿ */
+	Node  *tail;				/* æœ«å°¾ãƒãƒ¼ãƒ‰ã‚’æŒ‡ã™ãƒã‚¤ãƒ³ã‚¿ */
 } List;
 
-/*--- ˆê‚Â‚Ìƒm[ƒh‚ğŠm•Û ---*/
+/*--- ä¸€ã¤ã®ãƒãƒ¼ãƒ‰ã‚’ç¢ºä¿ ---*/
 Node *AllocNode(void)
 {
 	return ((Node *)calloc(1, sizeof(Node)));
 }
 
-/*--- üŒ`ƒŠƒXƒg§ŒäƒuƒƒbƒN‚Ì‰Šú‰» ---*/
+/*--- ç·šå½¢ãƒªã‚¹ãƒˆåˆ¶å¾¡ãƒ–ãƒ­ãƒƒã‚¯ã®åˆæœŸåŒ– ---*/
 void InitList(List *list)
 {
 	list->head = list->tail = AllocNode();
 }
-/*--- æ“ª‚Ö‚Ìƒm[ƒh‘}“ü ---*/
+/*--- å…ˆé ­ã¸ã®ãƒãƒ¼ãƒ‰æŒ¿å…¥ ---*/
 void InsertNode(List *list, const char *name, const char *tel)
 {
-	Node  *ptr = list->head;			/* ‘}“ü‘O‚Ìæ“ªƒm[ƒh‚Ö‚Ìƒ|ƒCƒ“ƒ^ */
+	Node  *ptr = list->head;			/* æŒ¿å…¥å‰ã®å…ˆé ­ãƒãƒ¼ãƒ‰ã¸ã®ãƒã‚¤ãƒ³ã‚¿ */
 
 	list->head = AllocNode();
 	strcpy(list->head->name, name);
@@ -47,10 +47,10 @@ void InsertNode(List *list, const char *name, const char *tel)
 	list->head->next = ptr;
 }
 
-/*--- ––”ö‚Ö‚Ìƒm[ƒh‘}“ü ---*/
+/*--- æœ«å°¾ã¸ã®ãƒãƒ¼ãƒ‰æŒ¿å…¥ ---*/
 void AppendNode(List *list, const char *name, const char *tel)
 {
-	Node  *ptr = list->tail;		/* ‘}“ü‘O‚Ì––”öƒm[ƒh‚Ö‚Ìƒ|ƒCƒ“ƒ^ */
+	Node  *ptr = list->tail;		/* æŒ¿å…¥å‰ã®æœ«å°¾ãƒãƒ¼ãƒ‰ã¸ã®ãƒã‚¤ãƒ³ã‚¿ */
 
 	list->tail = AllocNode();
 	strcpy(ptr->name, name);
@@ -58,19 +58,19 @@ void AppendNode(List *list, const char *name, const char *tel)
 	ptr->next = list->tail;
 }
 
-/*--- ‘Sƒm[ƒh‚ğ•\¦ ---*/
+/*--- å…¨ãƒãƒ¼ãƒ‰ã‚’è¡¨ç¤º ---*/
 void PrintList(List *list)
 {
 	Node  *ptr;
 
 	ptr = list->head;
 	while (ptr != list->tail) {
-		printf("%ss%st\n", ptr->name, ptr->tel);
+		printf("%sã€Š%sã€‹\n", ptr->name, ptr->tel);
 		ptr = ptr->next;
 	}
 }
 
-/*--- æ“ªƒm[ƒh‚Ìíœ ---*/
+/*--- å…ˆé ­ãƒãƒ¼ãƒ‰ã®å‰Šé™¤ ---*/
 void DeleteNode(List *list)
 {
 	if (list->head != list->tail) {
@@ -80,7 +80,7 @@ void DeleteNode(List *list)
 	}
 }
 
-/*--- ‘Sƒm[ƒh‚Ìíœ ---*/
+/*--- å…¨ãƒãƒ¼ãƒ‰ã®å‰Šé™¤ ---*/
 void ClearList(List *list)
 {
 	Node  *ptr = list->head;
@@ -92,7 +92,7 @@ void ClearList(List *list)
 	list->head = list->tail;
 }
 
-/*--- ––”öƒm[ƒh‚Ìíœ ---*/
+/*--- æœ«å°¾ãƒãƒ¼ãƒ‰ã®å‰Šé™¤ ---*/
 void RemoveNode(List *list)
 {
 	if (list->head != list->tail) {
@@ -112,7 +112,7 @@ void RemoveNode(List *list)
 	}
 }
 
-/*--- –¼‘O‚ªname‚Å‚ ‚éƒm[ƒh‚ğ’Tõ ---*/
+/*--- åå‰ãŒnameã§ã‚ã‚‹ãƒãƒ¼ãƒ‰ã‚’æ¢ç´¢ ---*/
 Node *SearchNode(List *list, const char *name)
 {
 	Node  *ptr;
@@ -126,13 +126,13 @@ Node *SearchNode(List *list, const char *name)
 	return (NULL);
 }
 
-/*--- p‚ªw‚·ƒm[ƒh‚ğ•\¦ ---*/
+/*--- pãŒæŒ‡ã™ãƒãƒ¼ãƒ‰ã‚’è¡¨ç¤º ---*/
 void PrintNode(Node *p)
 {
-	printf("%ss%st\n", p->name, p->tel);
+	printf("%sã€Š%sã€‹\n", p->name, p->tel);
 }
 
-/*--- p‚ªw‚·ƒm[ƒh‚Ì’¼Œã‚Éƒm[ƒh‚ğ‘}“ü ---*/
+/*--- pãŒæŒ‡ã™ãƒãƒ¼ãƒ‰ã®ç›´å¾Œã«ãƒãƒ¼ãƒ‰ã‚’æŒ¿å…¥ ---*/
 void PutNodeN(List *list, Node *p, const char *name, const char *tel)
 {
 	if (p == list->tail)
@@ -147,7 +147,7 @@ void PutNodeN(List *list, Node *p, const char *name, const char *tel)
 	}
 }
 
-/*--- p‚ªw‚·ƒm[ƒh‚Ì’¼‘O‚Éƒm[ƒh‚ğ‘}“ü ---*/
+/*--- pãŒæŒ‡ã™ãƒãƒ¼ãƒ‰ã®ç›´å‰ã«ãƒãƒ¼ãƒ‰ã‚’æŒ¿å…¥ ---*/
 void PutNodeP(List *list, Node *p, const char *name, const char *tel)
 {
 	if (p == list->head)
@@ -165,7 +165,7 @@ void PutNodeP(List *list, Node *p, const char *name, const char *tel)
 	}
 }
 
-/*--- p‚ªw‚·ƒm[ƒh‚ğíœ ---*/
+/*--- pãŒæŒ‡ã™ãƒãƒ¼ãƒ‰ã‚’å‰Šé™¤ ---*/
 void ClearNode(List *list, Node *p)
 {
 	if (p == list->head	 || list->head->next == list->tail)
@@ -181,30 +181,30 @@ void ClearNode(List *list, Node *p)
 	}
 }
 
-/*--- ƒf[ƒ^‚Ì“ü—Í ---*/
+/*--- ãƒ‡ãƒ¼ã‚¿ã®å…¥åŠ› ---*/
 Node Read(char *message)
 {
 	Node  temp;
 
-	printf("%s‚·‚éƒf[ƒ^‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B\n", message);
+	printf("%sã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚\n", message);
 
-	printf("–¼@@‘OF");	scanf("%s", temp.name);
-	printf("“d˜b”Ô†F");	scanf("%s", temp.tel);
+	printf("åã€€ã€€å‰ï¼š");	scanf("%s", temp.name);
+	printf("é›»è©±ç•ªå·ï¼š");	scanf("%s", temp.tel);
 
 	return (temp);
 }
 
-/*--- ’TõÀs ---*/
+/*--- æ¢ç´¢å®Ÿè¡Œ ---*/
 void DoSearch(List *list, Node **p)
 {
 	Node  *ptr;
 	char  name[100];
 
-	printf("’Tõ‚·‚é–¼‘OF");
+	printf("æ¢ç´¢ã™ã‚‹åå‰ï¼š");
 	scanf("%s", name);
 
 	if ((ptr = SearchNode(list, name)) == NULL) {
-		puts("Œ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B");
+		puts("è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚");
 		*p = list->head;
 	} else {
 		PrintNode(ptr);
@@ -212,46 +212,46 @@ void DoSearch(List *list, Node **p)
 	}
 }
 
-/*--- ‘€ì‘ÎÛƒŠƒXƒg‘I‘ğ ---*/
+/*--- æ“ä½œå¯¾è±¡ãƒªã‚¹ãƒˆé¸æŠ ---*/
 int SelectList(void)
 {
 	int	 ch;
 
 	do {
-		printf("<1> •p•”  <2> —¤ã•”  (0) I—¹F");
+		printf("<1> æ­¦è¡“éƒ¨  <2> é™¸ä¸Šéƒ¨  (0) çµ‚äº†ï¼š");
 		scanf("%d", &ch);
 	} while (ch < 0	 ||	 ch > 2);
 	return (ch - 1);
 }
 
-/*--- ƒƒjƒ…[‘I‘ğ ---*/
+/*--- ãƒ¡ãƒ‹ãƒ¥ãƒ¼é¸æŠ ---*/
 Menu SelectMenu(void)
 {
 	int	 ch;
 
 	do {
-		puts("( 1) æ“ª‚Éƒm[ƒh‚ğ‘}“ü   ( 2) ––”ö‚Éƒm[ƒh‚ğ‘}“ü");
-		puts("( 3) æ“ª‚Ìƒm[ƒh‚ğíœ   ( 4) ––”ö‚Ìƒm[ƒh‚ğíœ");
-		puts("( 5) ‘S‚Ä‚Ìƒm[ƒh‚ğíœ   ( 6) ‘S‚Ä‚Ìƒm[ƒh‚ğ•\¦");
-		puts("( 7) –¼‘O‚Åƒm[ƒh‚ğ’Tõ   ( 8) ’…–Úƒm[ƒh ‚ğ •\¦");
-		puts("( 9) ’…–Úƒm[ƒhŒã‚É‘}“ü   (10) ’…–Úƒm[ƒh‘O‚É‘}“ü");
-		puts("(11) ’…–Úƒm[ƒh ‚ğ íœ   ( 0) I@@@@@@@—¹");
-		printf("”Ô†F");
+		puts("( 1) å…ˆé ­ã«ãƒãƒ¼ãƒ‰ã‚’æŒ¿å…¥   ( 2) æœ«å°¾ã«ãƒãƒ¼ãƒ‰ã‚’æŒ¿å…¥");
+		puts("( 3) å…ˆé ­ã®ãƒãƒ¼ãƒ‰ã‚’å‰Šé™¤   ( 4) æœ«å°¾ã®ãƒãƒ¼ãƒ‰ã‚’å‰Šé™¤");
+		puts("( 5) å…¨ã¦ã®ãƒãƒ¼ãƒ‰ã‚’å‰Šé™¤   ( 6) å…¨ã¦ã®ãƒãƒ¼ãƒ‰ã‚’è¡¨ç¤º");
+		puts("( 7) åå‰ã§ãƒãƒ¼ãƒ‰ã‚’æ¢ç´¢   ( 8) ç€ç›®ãƒãƒ¼ãƒ‰ ã‚’ è¡¨ç¤º");
+		puts("( 9) ç€ç›®ãƒãƒ¼ãƒ‰å¾Œã«æŒ¿å…¥   (10) ç€ç›®ãƒãƒ¼ãƒ‰å‰ã«æŒ¿å…¥");
+		puts("(11) ç€ç›®ãƒãƒ¼ãƒ‰ ã‚’ å‰Šé™¤   ( 0) çµ‚ã€€ã€€ã€€ã€€ã€€ã€€ã€€äº†");
+		printf("ç•ªå·ï¼š");
 		scanf("%d", &ch);
 	} while (ch < Term	||	ch > ClrNode);
 	return ((Menu)ch);
 }
 
-/*--- ƒƒCƒ“ ---*/
+/*--- ãƒ¡ã‚¤ãƒ³ ---*/
 int main(void)
 {
 	Menu  menu;
-	List  list[2];		/* [0]c•p•”^[1]c—¤ã•”		*/
-	Node  *ptr[2];		/* @@@@@ V			*/
+	List  list[2];		/* [0]â€¦æ­¦è¡“éƒ¨ï¼[1]â€¦é™¸ä¸Šéƒ¨		*/
+	Node  *ptr[2];		/* ã€€ã€€ã€€ã€€ã€€ ã€ƒ			*/
 	int	  br;
 
-	InitList(&list[0]);			/* •p•”‚Ì“d˜b˜A—•ë‚ğ¶¬ */
-	InitList(&list[1]);			/* —¤ã•”‚Ì“d˜b˜A—•ë‚ğ¶¬ */
+	InitList(&list[0]);			/* æ­¦è¡“éƒ¨ã®é›»è©±é€£çµ¡ç°¿ã‚’ç”Ÿæˆ */
+	InitList(&list[1]);			/* é™¸ä¸Šéƒ¨ã®é›»è©±é€£çµ¡ç°¿ã‚’ç”Ÿæˆ */
 
 	ptr[0] = list[0].head;
 	ptr[1] = list[1].head;
@@ -263,10 +263,10 @@ int main(void)
 			break;
 
 		switch (menu = SelectMenu()) {
-		 case Insert: x = Read("æ“ª‚É‘}“ü");
+		 case Insert: x = Read("å…ˆé ­ã«æŒ¿å…¥");
 					  InsertNode(&list[br], x.name, x.tel);			break;
 
-		 case Append: x = Read("––”ö‚É‘}“ü");
+		 case Append: x = Read("æœ«å°¾ã«æŒ¿å…¥");
 					  AppendNode(&list[br], x.name, x.tel);			break;
 
 		 case Delete: DeleteNode(&list[br]);						break;
@@ -281,10 +281,10 @@ int main(void)
 
 		 case PutNode : PrintNode(ptr[br]);							break;
 
-		 case InsN	: x = Read("’…–Úƒm[ƒhŒã‚É‘}“ü");
+		 case InsN	: x = Read("ç€ç›®ãƒãƒ¼ãƒ‰å¾Œã«æŒ¿å…¥");
 					  PutNodeN(&list[br], ptr[br], x.name, x.tel);	break;
 
-		 case InsP	: x = Read("’…–Úƒm[ƒh‘O‚É‘}“ü");
+		 case InsP	: x = Read("ç€ç›®ãƒãƒ¼ãƒ‰å‰ã«æŒ¿å…¥");
 					  PutNodeP(&list[br], ptr[br], x.name, x.tel);	break;
 
 		 case ClrNode: ClearNode(&list[br], ptr[br]);				break;

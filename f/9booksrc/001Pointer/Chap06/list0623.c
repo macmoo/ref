@@ -1,5 +1,5 @@
 /*
-	���p�̂̃����o�ɒl��ǂݍ���
+	共用体のメンバに値を読み込む
 */
 
 #include  <stdio.h>
@@ -9,7 +9,7 @@ typedef		union {
 	double	y;
 } UXY;
 
-/*--- a�̎w���\���̂̃����o�̂����ꂩ�ɒl��ǂݍ��� ---*/
+/*--- aの指す構造体のメンバのいずれかに値を読み込む ---*/
 void getUXY(UXY *a, int sw)
 {
 	switch (sw) {
@@ -23,7 +23,7 @@ int main(void)
 	int	 s;
 	UXY	 ua;
 
-	printf("x��y�̂ǂ���ɒl����͂��܂����i0-x�^1-y�j�F");
+	printf("xとyのどちらに値を入力しますか（0-x／1-y）：");
 	scanf("%d",	 &s);
 	
 	getUXY(&ua, s);

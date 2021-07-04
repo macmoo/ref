@@ -1,5 +1,5 @@
 /*
-	\‘¢‘Ì‚ğ•Ô‚·ŠÖ”
+	æ§‹é€ ä½“ã‚’è¿”ã™é–¢æ•°
 */
 
 #include  <stdio.h>
@@ -10,7 +10,7 @@ typedef struct {
 	double	z;
 } XYZ;
 
-/*--- x, y, z‚Ì’l‚ğ‚à‚Â\‘¢‘Ì‚ğ•Ô‚· ---*/
+/*--- x, y, zã®å€¤ã‚’ã‚‚ã¤æ§‹é€ ä½“ã‚’è¿”ã™ ---*/
 XYZ XYZof(int x, long y, double z)
 {
 	XYZ	 temp;
@@ -26,14 +26,14 @@ int main(void)
 {
 	XYZ	 sa = {50, 99999999L, 3.14};
 
-	puts("  ‘ã“ü‘O  ");
+	puts("â–¡ ä»£å…¥å‰ â–¡");
 	printf("sa.x = %d\n",	sa.x);
 	printf("sa.y = %ld\n",	sa.y);
 	printf("sa.z = %.2f\n", sa.z);
 
 	sa = XYZof(0, 15, 9.99);
 
-	puts("  ‘ã“üŒã  ");
+	puts("â–¡ ä»£å…¥å¾Œ â–¡");
 	printf("sa.x = %d\n",	sa.x);
 	printf("sa.y = %ld\n",	sa.y);
 	printf("sa.z = %.2f\n",	sa.z);

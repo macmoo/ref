@@ -1,22 +1,22 @@
-/* ‰‰K9-2‚Ì‰ğ“š—á */
+/* æ¼”ç¿’9-2ã®è§£ç­”ä¾‹ */
 
 #include  <stdio.h>
 #include  <stdlib.h>
 #include  <string.h>
 
-/*--- •¶š—ñ‚Ì”z—ñin1~n2‚Ì‚QŸŒ³”z—ñj‚ğ¸‡‚Éƒ\[ƒg ---*/
+/*--- æ–‡å­—åˆ—ã®é…åˆ—ï¼ˆn1Ã—n2ã®ï¼’æ¬¡å…ƒé…åˆ—ï¼‰ã‚’æ˜‡é †ã«ã‚½ãƒ¼ãƒˆ ---*/
 void sort_2dstr(char *p, int n1, int n2)
 {
 	qsort(p, n1, n2, (int(*)(const void *, const void *))strcmp);
 }
 
-/*--- x‚¨‚æ‚Ñy‚ªw‚·•¶š—ñ‚Ì”äŠrŠÖ”ix < yj ---*/
+/*--- xãŠã‚ˆã³yãŒæŒ‡ã™æ–‡å­—åˆ—ã®æ¯”è¼ƒé–¢æ•°ï¼ˆx < yï¼‰ ---*/
 int pstrcmp(const void *x, const void *y)
 {
 	return (strcmp(*(const char **)x, *(const char **)y));
 }
 
-/*--- •¶š—ñ‚ğw‚·ƒ|ƒCƒ“ƒ^‚Ì”z—ñp‚ğ¸‡‚Éƒ\[ƒg ---*/
+/*--- æ–‡å­—åˆ—ã‚’æŒ‡ã™ãƒã‚¤ãƒ³ã‚¿ã®é…åˆ—pã‚’æ˜‡é †ã«ã‚½ãƒ¼ãƒˆ ---*/
 void sort_pvstr(char *p[], int n)
 {
 	qsort(p, n, sizeof(char *), pstrcmp);
@@ -32,7 +32,7 @@ int main(void)
 
 	sort_pvstr(p, 4);
 
-	puts("¸‡‚Éƒ\[ƒg‚µ‚Ü‚µ‚½B");
+	puts("æ˜‡é †ã«ã‚½ãƒ¼ãƒˆã—ã¾ã—ãŸã€‚");
 
 	for (i = 0; i < 4; i++)
 		printf("s[%d] = %s\n", i, s[i]);

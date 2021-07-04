@@ -4,17 +4,17 @@ using namespace	 std;
 
 void func(char x)
 {
-	cout << "func(char)‚ªŒÄ‚Ño‚³‚ê‚Ü‚µ‚½B\n";
+	cout << "func(char)ãŒå‘¼ã³å‡ºã•ã‚Œã¾ã—ãŸã€‚\n";
 }
 
 void func(int x)
 {
-	cout << "func(int)‚ªŒÄ‚Ño‚³‚ê‚Ü‚µ‚½B\n";
+	cout << "func(int)ãŒå‘¼ã³å‡ºã•ã‚Œã¾ã—ãŸã€‚\n";
 }
 
 int main(void)
 {
-	func('A');		// func(char)‚ªŒÄ‚Ño‚³‚ê‚é
+	func('A');		// func(char)ãŒå‘¼ã³å‡ºã•ã‚Œã‚‹
 
 	return (0);
 }

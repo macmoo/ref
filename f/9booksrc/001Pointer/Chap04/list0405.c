@@ -1,12 +1,12 @@
 /*
-	’·‚¢•¶Žš—ñƒŠƒeƒ‰ƒ‹‚Ì•\‹L
+	é•·ã„æ–‡å­—åˆ—ãƒªãƒ†ãƒ©ãƒ«ã®è¡¨è¨˜
 */
 
 #include  <stdio.h>
 
 int main(void)
 {
-	puts("ABCDEFGHIJKLMNOPQRSTUVWXYZ"		/* ’·‚¢•¶Žš—ñƒŠƒeƒ‰ƒ‹ */
+	puts("ABCDEFGHIJKLMNOPQRSTUVWXYZ"		/* é•·ã„æ–‡å­—åˆ—ãƒªãƒ†ãƒ©ãƒ« */
 		 "abcdefghijklmnopqrstuvwxyz");
 
 	return (0);

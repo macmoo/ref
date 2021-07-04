@@ -1,5 +1,5 @@
 /*
-	ŽÀ”’l‚ðŽw’è‚³‚ê‚½Œ…”‚Ì•¶Žš—ñ‚É•ÏŠ·
+	å®Ÿæ•°å€¤ã‚’æŒ‡å®šã•ã‚ŒãŸæ¡æ•°ã®æ–‡å­—åˆ—ã«å¤‰æ›
 */
 
 #include  <stdio.h>
@@ -10,18 +10,18 @@ int main(void)
 	double	x;
 	char	buf[200];
 
-	printf("ŽÀ”’l‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢F");
+	printf("å®Ÿæ•°å€¤ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼š");
 	scanf("%lf", &x);
 
-	printf("­‚È‚­‚Æ‚à‰½Œ…‚Ì•¶Žš—ñ‚É•ÏŠ·‚µ‚Ü‚·‚©F");
+	printf("å°‘ãªãã¨ã‚‚ä½•æ¡ã®æ–‡å­—åˆ—ã«å¤‰æ›ã—ã¾ã™ã‹ï¼š");
 	scanf("%d", &n1);
 
-	printf("‚»‚Ì‚¤‚¿¬”•”‚Í‰½Œ…‚Å‚·‚©F");
+	printf("ãã®ã†ã¡å°æ•°éƒ¨ã¯ä½•æ¡ã§ã™ã‹ï¼š");
 	scanf("%d", &n2);
 
 	sprintf(buf, "%*.*f", n1, n2, x);
 
-	printf("•ÏŠ·Œã‚Ì•¶Žš—ñ%s\n", buf);
+	printf("å¤‰æ›å¾Œã®æ–‡å­—åˆ—ï¼%s\n", buf);
 
 	return (0);
 }

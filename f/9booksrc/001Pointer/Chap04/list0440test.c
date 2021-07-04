@@ -1,11 +1,11 @@
 /*
-	strcpyŠÖ”‚ÆstrncpyŠÖ”‚Ì—˜—p—á
+	strcpyé–¢æ•°ã¨strncpyé–¢æ•°ã®åˆ©ç”¨ä¾‹
 */
 
 #include  <stdio.h>
 #include  <string.h>
 
-/*--- strcpy‚ÌÀŒ»—á ---*/
+/*--- strcpyã®å®Ÿç¾ä¾‹ ---*/
 char *strcpy(char *s1, const char *s2)
 {
 	char  *p = s1;
@@ -14,23 +14,23 @@ char *strcpy(char *s1, const char *s2)
 	return (p);
 }
 
-/*--- strncpy‚ÌÀŒ»—á ---*/
+/*--- strncpyã®å®Ÿç¾ä¾‹ ---*/
 char *strncpy(char *s1, const char *s2, size_t n)
 {
 	char  *p = s1;
 	while (n) {
 		n--;
-		if (!(*s1++ = *s2++)) break;	/* '\0'‚ğŒ©‚Â‚¯‚½‚çI—¹ */
+		if (!(*s1++ = *s2++)) break;	/* '\0'ã‚’è¦‹ã¤ã‘ãŸã‚‰çµ‚äº† */
 	}
 	while (n--)
-		*s1++ = '\0';					/* c‚è‚ğ'\0'‚Å–„‚ß‚é */
+		*s1++ = '\0';					/* æ®‹ã‚Šã‚’'\0'ã§åŸ‹ã‚ã‚‹ */
 	return (p);
 }
 
 int main(void)
 {
 	char  s1[10], s2[10], s3[10];
-	char *x = "XXXXXXXXX";	/* 9ŒÂ‚Ì'X'‚Æƒiƒ‹•¶š */
+	char *x = "XXXXXXXXX";	/* 9å€‹ã®'X'ã¨ãƒŠãƒ«æ–‡å­— */
 
 	strcpy(s1, "ABC");
 	printf("s1 = %s\n", s1);

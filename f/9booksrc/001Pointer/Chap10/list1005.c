@@ -1,11 +1,11 @@
 /*
-	警報を発する書式付き出力関数
+	隴ｦ蝣ｱ繧堤匱縺吶ｋ譖ｸ蠑丈ｻ倥″蜃ｺ蜉幃未謨ｰ
 */
 
 #include  <stdio.h>
 #include  <stdarg.h>
 
-/*--- 警報を発する書式付き出力関数 ---*/
+/*--- 隴ｦ蝣ｱ繧堤匱縺吶ｋ譖ｸ蠑丈ｻ倥″蜃ｺ蜉幃未謨ｰ ---*/
 int aprintf(const char *format, ...)
 {
 	int		 count;

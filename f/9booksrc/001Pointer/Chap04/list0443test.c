@@ -1,31 +1,31 @@
 /*
-	strcatŠÖ”‚ÆstrncatŠÖ”‚Ì—˜—p—á
+	strcaté–¢æ•°ã¨strncaté–¢æ•°ã®åˆ©ç”¨ä¾‹
 */
 
 #include  <stdio.h>
 #include  <string.h>
 
-/*--- strcat‚ÌÀŒ»—á ---*/
+/*--- strcatã®å®Ÿç¾ä¾‹ ---*/
 char *strcat(char *s1, const char *s2)
 {
 	char  *p = s1;
 
-	while (*s1) s1++;			/* s1‚ğ––”ö‚Ü‚Åi‚ß‚é */
-	while (*s1++ = *s2++) ;		/* s2‚É'\0'‚ªŒ©‚Â‚©‚é‚Ü‚ÅƒRƒs[ */
+	while (*s1) s1++;			/* s1ã‚’æœ«å°¾ã¾ã§é€²ã‚ã‚‹ */
+	while (*s1++ = *s2++) ;		/* s2ã«'\0'ãŒè¦‹ã¤ã‹ã‚‹ã¾ã§ã‚³ãƒ”ãƒ¼ */
 	return (p);
 }
 
 
-/*--- strncat‚ÌÀŒ»—á ---*/
+/*--- strncatã®å®Ÿç¾ä¾‹ ---*/
 char *strncat(char *s1, const char *s2, size_t n)
 {
 	char  *p = s1;
 
-	while (*s1) s1++;					/* s1‚ğ––”ö‚Ü‚Åi‚ß‚é */
+	while (*s1) s1++;					/* s1ã‚’æœ«å°¾ã¾ã§é€²ã‚ã‚‹ */
 	while (n--) {
-		if (!(*s1++ = *s2++)) break;	/* “r’†‚É'\0'‚ª‚ ‚ê‚ÎI—¹ */
+		if (!(*s1++ = *s2++)) break;	/* é€”ä¸­ã«'\0'ãŒã‚ã‚Œã°çµ‚äº† */
 	}
-	*s1 = '\0';							/* s1‚Ì––”ö‚É'\0'‚ğ“ü‚ê‚é */
+	*s1 = '\0';							/* s1ã®æœ«å°¾ã«'\0'ã‚’å…¥ã‚Œã‚‹ */
 	return (p);
 }
 

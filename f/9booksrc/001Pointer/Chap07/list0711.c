@@ -1,5 +1,5 @@
 /*
-	heightswidth—ñ‚Ì‚QŸŒ³”z—ñi‚à‚Ç‚«j‚ğ“®“I‚ÉŠm•Û
+	heightè¡Œwidthåˆ—ã®ï¼’æ¬¡å…ƒé…åˆ—ï¼ˆã‚‚ã©ãï¼‰ã‚’å‹•çš„ã«ç¢ºä¿
 */
 
 #include  <stdio.h>
@@ -7,16 +7,16 @@
 
 int main(void)
 {
-	int	 height, width;		/* s”‚Æ—ñ” */
+	int	 height, width;		/* è¡Œæ•°ã¨åˆ—æ•° */
 	int	 **p;
 
-	printf("s”F");	scanf("%d", &height);
-	printf("—ñ”F");	scanf("%d", &width);
+	printf("è¡Œæ•°ï¼š");	scanf("%d", &height);
+	printf("åˆ—æ•°ï¼š");	scanf("%d", &width);
 
 	p = (int **)calloc(height, sizeof(int *));
 
 	if (p == NULL) 
-		puts("‹L‰¯ˆæ‚ÌŠm•Û‚É¸”s‚µ‚Ü‚µ‚½B");
+		puts("è¨˜æ†¶åŸŸã®ç¢ºä¿ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
 	else {
 		int	 i, j;
 
@@ -26,15 +26,15 @@ int main(void)
 		for (i = 0; i < height; i++) {
 			p[i] = (int *)calloc(width, sizeof(int)); 
 			if (p[i] == NULL) {
-				puts("‹L‰¯ˆæ‚ÌŠm•Û‚É¸”s‚µ‚Ü‚µ‚½B");
+				puts("è¨˜æ†¶åŸŸã®ç¢ºä¿ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
 				goto Free;
 			}
 		}
-		for (i = 0; i < height; i++)		/* ‘S—v‘f‚É0‚ğ‘ã“ü */
+		for (i = 0; i < height; i++)		/* å…¨è¦ç´ ã«0ã‚’ä»£å…¥ */
 			for (j = 0; j < width; j++)
 				p[i][j] = 0;
 
-		for (i = 0; i < height; i++)		/* ‘S—v‘f‚Ì’l‚ğ•\¦ */
+		for (i = 0; i < height; i++)		/* å…¨è¦ç´ ã®å€¤ã‚’è¡¨ç¤º */
 			for (j = 0; j < width; j++)
 				printf("p[%d][%d] = %d\n", i, j, p[i][j]);
 Free:

@@ -1,5 +1,5 @@
 /*
-	”Ä—pƒXƒ^ƒbƒN‚Ì—˜—p—á
+	æ±ç”¨ã‚¹ã‚¿ãƒƒã‚¯ã®åˆ©ç”¨ä¾‹
 */
 
 #include  <stdio.h>
@@ -7,11 +7,11 @@
 
 int main(void)
 {
-	Stack  *s;		/* ƒXƒ^ƒbƒN */
+	Stack  *s;		/* ã‚¹ã‚¿ãƒƒã‚¯ */
 
-	/* Å‘å100ŒÂƒvƒbƒVƒ…‚Å‚«‚édoubleŒ^ƒXƒ^ƒbƒN */
+	/* æœ€å¤§100å€‹ãƒ—ãƒƒã‚·ãƒ¥ã§ãã‚‹doubleå‹ã‚¹ã‚¿ãƒƒã‚¯ */
 	if ((s = StackAlloc(sizeof(double), 100)) == NULL) {
-		puts("ƒXƒ^ƒbƒN‚Ìì¬‚É¸”s‚µ‚Ü‚µ‚½B");
+		puts("ã‚¹ã‚¿ãƒƒã‚¯ã®ä½œæˆã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
 		return (1);
 	}
 
@@ -19,27 +19,27 @@ int main(void)
 		int		m;
 		double	x;
 
-		printf("Œ»İ‚Ìƒf[ƒ^”F%d/%d\n", StackNo(s), StackSize(s));
-		printf("(1) ƒvƒbƒVƒ…@(2) ƒ|ƒbƒv@(3) ƒs[ƒN@(4) ‹ó‚É‚·‚é@(0) I—¹F");
+		printf("ç¾åœ¨ã®ãƒ‡ãƒ¼ã‚¿æ•°ï¼š%d/%d\n", StackNo(s), StackSize(s));
+		printf("(1) ãƒ—ãƒƒã‚·ãƒ¥ã€€(2) ãƒãƒƒãƒ—ã€€(3) ãƒ”ãƒ¼ã‚¯ã€€(4) ç©ºã«ã™ã‚‹ã€€(0) çµ‚äº†ï¼š");
 		scanf("%d", &m);
 
 		if (m == 0) break;
 
 		switch (m) {
-		 case 1: printf("ƒf[ƒ^F");
+		 case 1: printf("ãƒ‡ãƒ¼ã‚¿ï¼š");
 				 scanf("%lf", &x);
 				 if (StackPush(s, &x) == -1)
-					puts("ƒXƒ^ƒbƒN‚Ö‚ÌƒvƒbƒVƒ…‚É¸”s‚µ‚Ü‚µ‚½B");	break;
+					puts("ã‚¹ã‚¿ãƒƒã‚¯ã¸ã®ãƒ—ãƒƒã‚·ãƒ¥ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");	break;
 
 		 case 2: if (StackPop(s, &x) == -1)
-					puts("ƒ|ƒbƒv‚Å‚«‚Ü‚¹‚ñB");
+					puts("ãƒãƒƒãƒ—ã§ãã¾ã›ã‚“ã€‚");
 				 else
-					printf("ƒ|ƒbƒv‚µ‚½ƒf[ƒ^‚Í%f‚Å‚·B\n", x);		break;
+					printf("ãƒãƒƒãƒ—ã—ãŸãƒ‡ãƒ¼ã‚¿ã¯%fã§ã™ã€‚\n", x);		break;
 
 		 case 3: if (StackPeek(s, &x) == -1)
-					puts("ƒs[ƒN‚Å‚«‚Ü‚¹‚ñB");
+					puts("ãƒ”ãƒ¼ã‚¯ã§ãã¾ã›ã‚“ã€‚");
 				 else
-					printf("ƒs[ƒN‚µ‚½ƒf[ƒ^‚Í%f‚Å‚·B\n", x);		break;
+					printf("ãƒ”ãƒ¼ã‚¯ã—ãŸãƒ‡ãƒ¼ã‚¿ã¯%fã§ã™ã€‚\n", x);		break;
 
 		 case 4: StackClear(s);										break;
 

@@ -1,5 +1,5 @@
 /*
-	�\���̂̃����o�ɒl��������֐�
+	構造体のメンバに値を代入する関数
 */
 
 #include  <stdio.h>
@@ -10,7 +10,7 @@ typedef struct {
 	double	z;
 } XYZ;
 
-/*--- a���w���\���̂̊e�����o�ɒlx, y, z���i�[ ---*/
+/*--- aが指す構造体の各メンバに値x, y, zを格納 ---*/
 void setXYZ(XYZ *a, int x, long y, double z)
 {
 	a->x = x;

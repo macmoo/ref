@@ -1,4 +1,4 @@
-/*--- strstr‚ÌÀŒ»—á‚aF<stddef.h>‚ÌƒCƒ“ƒNƒ‹[ƒh‚ª•K—v ---*/
+/*--- strstrã®å®Ÿç¾ä¾‹ï¼¢ï¼š<stddef.h>ã®ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãŒå¿…è¦ ---*/
 char *strstr(const char *s1, const char *s2)
 {
 	const char	*p1 = s1;

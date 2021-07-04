@@ -1,17 +1,17 @@
 /*
-	strpbrkŠÖ”‚Ì—˜—p—ái‚»‚Ì‚Qj
+	strpbrké–¢æ•°ã®åˆ©ç”¨ä¾‹ï¼ˆãã®ï¼’ï¼‰
 */
 
 #include  <stdio.h>
 #include  <string.h>
 
-/*--- strpbrk‚ÌÀŒ»—áF<stddef.h>‚ÌƒCƒ“ƒNƒ‹[ƒh‚ª•K—v ---*/
+/*--- strpbrkã®å®Ÿç¾ä¾‹ï¼š<stddef.h>ã®ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãŒå¿…è¦ ---*/
 char *strpbrk(const char *s1, const char *s2)
 {
 	for ( ; *s1; s1++) {
 		const char	*t = s2;
 		for ( ; *t; t++)
-			if (*t == *s1)					/* Œ©‚Â‚¯‚½ */
+			if (*t == *s1)					/* è¦‹ã¤ã‘ãŸ */
 				return ((char *)s1);
 	}
 	return (NULL);
@@ -20,15 +20,15 @@ char *strpbrk(const char *s1, const char *s2)
 int main(void)
 {
 	char  str[80];
-	char  ultr[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";	/* ‰p‘å•¶š */
+	char  ultr[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";	/* è‹±å¤§æ–‡å­— */
 	char  *p;
 
-	printf("•¶š—ñ‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢F");
+	printf("æ–‡å­—åˆ—ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼š");
 	scanf("%s", str);
 
-	puts("‚»‚Ì•¶š—ñ‚©‚ç‰p‘å•¶š‚ğ’Šo‚µ‚Ü‚·B");
+	puts("ãã®æ–‡å­—åˆ—ã‹ã‚‰è‹±å¤§æ–‡å­—ã‚’æŠ½å‡ºã—ã¾ã™ã€‚");
 
-	p = str;						/* •¶š—ñ‚Ìæ“ª•¶š‚ğw‚· */
+	p = str;						/* æ–‡å­—åˆ—ã®å…ˆé ­æ–‡å­—ã‚’æŒ‡ã™ */
 
 	while ((p = strpbrk(p, ultr)) != NULL)
 		putchar(*p++);

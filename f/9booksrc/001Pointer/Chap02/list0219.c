@@ -1,36 +1,36 @@
 /*
-	üŒ`’Tõ
+	ç·šå½¢æ¢ç´¢
 */
 
 #include  <stdio.h>
 
-/*--- ”z—ñx‚Ìæ“ªnŒÂ‚Ì—v‘f‚©‚ç’lno‚ğüŒ`’Tõi‘æ‚P”Åj ---*/
+/*--- é…åˆ—xã®å…ˆé ­nå€‹ã®è¦ç´ ã‹ã‚‰å€¤noã‚’ç·šå½¢æ¢ç´¢ï¼ˆç¬¬ï¼‘ç‰ˆï¼‰ ---*/
 int seq_search(int *x, int n, int no)
 {
 	int	 i;
 	for (i = 0; i < n; i++)
-		if (*x++ == no)			/* ’Tõ¬Œ÷ */
+		if (*x++ == no)			/* æ¢ç´¢æˆåŠŸ */
 			return (i);
-	return (-1);				/* ’Tõ¸”s */
+	return (-1);				/* æ¢ç´¢å¤±æ•— */
 }
 
 int main(void)
 {
 	int	 i, no, idx;
 	int	 a[8];
-	int	 a_size = sizeof(a) / sizeof(a[0]);		/* ”z—ña‚Ì—v‘f” */
+	int	 a_size = sizeof(a) / sizeof(a[0]);		/* é…åˆ—aã®è¦ç´ æ•° */
 
 	for (i = 0; i < a_size; i++) {
-		printf("a[%d]F", i);		/* a[i]‚Ì“ü—Í‚ğ‘£‚· */
+		printf("a[%d]ï¼š", i);		/* a[i]ã®å…¥åŠ›ã‚’ä¿ƒã™ */
 		scanf("%d", &a[i]);
 	}
-	printf("’T‚·’l‚ÍF");
+	printf("æ¢ã™å€¤ã¯ï¼š");
 	scanf("%d", &no);
 
 	if ((idx = seq_search(a, a_size, no)) != -1)
-		printf("‚»‚Ì’l‚ğ‚à‚Â—v‘f‚Ía[%d]‚Å‚·B\n", idx);
+		printf("ãã®å€¤ã‚’ã‚‚ã¤è¦ç´ ã¯a[%d]ã§ã™ã€‚\n", idx);
 	else
-		puts("Œ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B");
+		puts("è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚");
 
 	return (0);
 }

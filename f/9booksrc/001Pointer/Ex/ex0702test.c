@@ -1,4 +1,4 @@
-/* ‰‰K7-2‚Ì‰ğ“š—á */
+/* æ¼”ç¿’7-2ã®è§£ç­”ä¾‹ */
 
 #include  <stdio.h>
 #include  <stdlib.h>
@@ -19,35 +19,35 @@ void *recalloc(void *ptr, size_t size, size_t old_size)
 
 int main(void)
 {
-	int	 no;		/* ”z—ñ‚Ì—v‘f” */
+	int	 no;		/* é…åˆ—ã®è¦ç´ æ•° */
 	int	 *p;
 
-	printf("Šm•Û‚·‚é”z—ñ‚Ì—v‘f”F");
+	printf("ç¢ºä¿ã™ã‚‹é…åˆ—ã®è¦ç´ æ•°ï¼š");
 	scanf("%d", &no);
 
-	p = (int *)calloc(no, sizeof(int));		/* ®”‚ğnoŒÂ“®“I‚ÉŠm•Û */
+	p = (int *)calloc(no, sizeof(int));		/* æ•´æ•°ã‚’noå€‹å‹•çš„ã«ç¢ºä¿ */
 
 	if (p == NULL)
-		puts("‹L‰¯ˆæ‚ÌŠm•Û‚É¸”s‚µ‚Ü‚µ‚½B");
+		puts("è¨˜æ†¶åŸŸã®ç¢ºä¿ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
 	else {
 		int	 i, n2;
 		int	 *temp;
 
-		printf("—v‘f”‚ğ‚¢‚­‚Â‚É•ÏX‚µ‚Ü‚·‚©F");
+		printf("è¦ç´ æ•°ã‚’ã„ãã¤ã«å¤‰æ›´ã—ã¾ã™ã‹ï¼š");
 		scanf("%d", &n2);
 
-		/* —v‘f”‚ğn2‚É•ÏX */
+		/* è¦ç´ æ•°ã‚’n2ã«å¤‰æ›´ */
 		temp = (int *)recalloc(p, n2 * sizeof(int), no * sizeof(int));
 
 		if (temp == NULL)
-			puts("—Ìˆæ‚Ì‘å‚«‚³‚Ì•ÏX‚É¸”s‚µ‚Ü‚µ‚½B");
+			puts("é ˜åŸŸã®å¤§ãã•ã®å¤‰æ›´ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
 		else {
 			p = temp;
 
-			for (i = 0; i < n2; i++)		/* ‘S—v‘f‚Ì’l‚ğ•\¦ */
+			for (i = 0; i < n2; i++)		/* å…¨è¦ç´ ã®å€¤ã‚’è¡¨ç¤º */
 				printf("p[%d] = %d\n", i, p[i]);
 		}
-		free(p);							/* Šm•Û‚µ‚Ä‚¢‚½—Ìˆæ‚ğ‰ğ•ú */
+		free(p);							/* ç¢ºä¿ã—ã¦ã„ãŸé ˜åŸŸã‚’è§£æ”¾ */
 	}
 	return (0);
 }

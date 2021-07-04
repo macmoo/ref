@@ -1,44 +1,44 @@
 /*
-	“d˜b˜A——püŒ`ƒŠƒXƒgiƒm[ƒh‚Ì‘}“ü‚Æ•\¦j
+	é›»è©±é€£çµ¡ç”¨ç·šå½¢ãƒªã‚¹ãƒˆï¼ˆãƒãƒ¼ãƒ‰ã®æŒ¿å…¥ã¨è¡¨ç¤ºï¼‰
 */
 
 #include  <stdio.h>
 #include  <stdlib.h>
 #include  <string.h>
 
-/*--- ƒƒjƒ…[ ---*/
+/*--- ãƒ¡ãƒ‹ãƒ¥ãƒ¼ ---*/
 typedef enum {
 	Term, Insert, Append, Delete, Remove, Clear, Print
 } Menu;
 
-/*--- ƒm[ƒh ---*/
+/*--- ãƒãƒ¼ãƒ‰ ---*/
 typedef struct __node {
-	char		   name[20];	/* –¼‘O */
-	char		   tel[16];		/* “d˜b”Ô† */
-	struct __node  *next;		/* Ÿ‚Ì‰ïˆõ‚ğw‚·ƒ|ƒCƒ“ƒ^ */
+	char		   name[20];	/* åå‰ */
+	char		   tel[16];		/* é›»è©±ç•ªå· */
+	struct __node  *next;		/* æ¬¡ã®ä¼šå“¡ã‚’æŒ‡ã™ãƒã‚¤ãƒ³ã‚¿ */
 } Node;
 
-/*--- üŒ`ƒŠƒXƒg§ŒäƒuƒƒbƒN ---*/
+/*--- ç·šå½¢ãƒªã‚¹ãƒˆåˆ¶å¾¡ãƒ–ãƒ­ãƒƒã‚¯ ---*/
 typedef struct {
-	Node  *head;				/* æ“ªƒm[ƒh‚ğw‚·ƒ|ƒCƒ“ƒ^ */
-	Node  *tail;				/* ––”öƒm[ƒh‚ğw‚·ƒ|ƒCƒ“ƒ^ */
+	Node  *head;				/* å…ˆé ­ãƒãƒ¼ãƒ‰ã‚’æŒ‡ã™ãƒã‚¤ãƒ³ã‚¿ */
+	Node  *tail;				/* æœ«å°¾ãƒãƒ¼ãƒ‰ã‚’æŒ‡ã™ãƒã‚¤ãƒ³ã‚¿ */
 } List;
 
-/*--- ˆê‚Â‚Ìƒm[ƒh‚ğŠm•Û ---*/
+/*--- ä¸€ã¤ã®ãƒãƒ¼ãƒ‰ã‚’ç¢ºä¿ ---*/
 Node *AllocNode(void)
 {
 	return ((Node *)calloc(1, sizeof(Node)));
 }
 
-/*--- üŒ`ƒŠƒXƒg§ŒäƒuƒƒbƒN‚Ì‰Šú‰» ---*/
+/*--- ç·šå½¢ãƒªã‚¹ãƒˆåˆ¶å¾¡ãƒ–ãƒ­ãƒƒã‚¯ã®åˆæœŸåŒ– ---*/
 void InitList(List *list)
 {
 	list->head = list->tail = AllocNode();
 }
-/*--- æ“ª‚Ö‚Ìƒm[ƒh‘}“ü ---*/
+/*--- å…ˆé ­ã¸ã®ãƒãƒ¼ãƒ‰æŒ¿å…¥ ---*/
 void InsertNode(List *list, const char *name, const char *tel)
 {
-	Node  *ptr = list->head;			/* ‘}“ü‘O‚Ìæ“ªƒm[ƒh‚Ö‚Ìƒ|ƒCƒ“ƒ^ */
+	Node  *ptr = list->head;			/* æŒ¿å…¥å‰ã®å…ˆé ­ãƒãƒ¼ãƒ‰ã¸ã®ãƒã‚¤ãƒ³ã‚¿ */
 
 	list->head = AllocNode();
 	strcpy(list->head->name, name);
@@ -46,10 +46,10 @@ void InsertNode(List *list, const char *name, const char *tel)
 	list->head->next = ptr;
 }
 
-/*--- ––”ö‚Ö‚Ìƒm[ƒh‘}“ü ---*/
+/*--- æœ«å°¾ã¸ã®ãƒãƒ¼ãƒ‰æŒ¿å…¥ ---*/
 void AppendNode(List *list, const char *name, const char *tel)
 {
-	Node  *ptr = list->tail;		/* ‘}“ü‘O‚Ì––”öƒm[ƒh‚Ö‚Ìƒ|ƒCƒ“ƒ^ */
+	Node  *ptr = list->tail;		/* æŒ¿å…¥å‰ã®æœ«å°¾ãƒãƒ¼ãƒ‰ã¸ã®ãƒã‚¤ãƒ³ã‚¿ */
 
 	list->tail = AllocNode();
 	strcpy(ptr->name, name);
@@ -57,19 +57,19 @@ void AppendNode(List *list, const char *name, const char *tel)
 	ptr->next = list->tail;
 }
 
-/*--- ‘Sƒm[ƒh‚ğ•\¦ ---*/
+/*--- å…¨ãƒãƒ¼ãƒ‰ã‚’è¡¨ç¤º ---*/
 void PrintList(List *list)
 {
 	Node  *ptr;
 
 	ptr = list->head;
 	while (ptr != list->tail) {
-		printf("%ss%st\n", ptr->name, ptr->tel);
+		printf("%sã€Š%sã€‹\n", ptr->name, ptr->tel);
 		ptr = ptr->next;
 	}
 }
 
-/*--- æ“ªƒm[ƒh‚Ìíœ ---*/
+/*--- å…ˆé ­ãƒãƒ¼ãƒ‰ã®å‰Šé™¤ ---*/
 void DeleteNode(List *list)
 {
 	if (list->head != list->tail) {
@@ -79,7 +79,7 @@ void DeleteNode(List *list)
 	}
 }
 
-/*--- ‘Sƒm[ƒh‚Ìíœ ---*/
+/*--- å…¨ãƒãƒ¼ãƒ‰ã®å‰Šé™¤ ---*/
 void ClearList(List *list)
 {
 	Node  *ptr = list->head;
@@ -91,7 +91,7 @@ void ClearList(List *list)
 	list->head = list->tail;
 }
 
-/*--- ––”öƒm[ƒh‚Ìíœ ---*/
+/*--- æœ«å°¾ãƒãƒ¼ãƒ‰ã®å‰Šé™¤ ---*/
 void RemoveNode(List *list)
 {
 	if (list->head != list->tail) {
@@ -111,36 +111,36 @@ void RemoveNode(List *list)
 	}
 }
 
-/*--- ƒf[ƒ^‚Ì“ü—Í ---*/
+/*--- ãƒ‡ãƒ¼ã‚¿ã®å…¥åŠ› ---*/
 Node Read(char *message)
 {
 	Node  temp;
 
-	printf("%s‚·‚éƒf[ƒ^‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B\n", message);
+	printf("%sã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚\n", message);
 
-	printf("–¼@@‘OF");	scanf("%s", temp.name);
-	printf("“d˜b”Ô†F");	scanf("%s", temp.tel);
+	printf("åã€€ã€€å‰ï¼š");	scanf("%s", temp.name);
+	printf("é›»è©±ç•ªå·ï¼š");	scanf("%s", temp.tel);
 
 	return (temp);
 }
 
-/*--- ƒƒjƒ…[‘I‘ğ ---*/
+/*--- ãƒ¡ãƒ‹ãƒ¥ãƒ¼é¸æŠ ---*/
 Menu SelectMenu(void)
 {
 	int	 ch;
 
 	do {
-		puts("(1) æ“ª‚Éƒm[ƒh‚ğ‘}“ü   (2) ––”ö‚Éƒm[ƒh‚ğ‘}“ü");
-		puts("(3) æ“ª‚Ìƒm[ƒh‚ğíœ   (4) ––”ö‚Ìƒm[ƒh‚ğíœ");
-		puts("(5) ‘S‚Ä‚Ìƒm[ƒh‚ğíœ   (6) ‘S‚Ä‚Ìƒm[ƒh‚ğ•\¦");
-		puts("(0) I@@@@@@@—¹");
-		printf("”Ô†F");
+		puts("(1) å…ˆé ­ã«ãƒãƒ¼ãƒ‰ã‚’æŒ¿å…¥   (2) æœ«å°¾ã«ãƒãƒ¼ãƒ‰ã‚’æŒ¿å…¥");
+		puts("(3) å…ˆé ­ã®ãƒãƒ¼ãƒ‰ã‚’å‰Šé™¤   (4) æœ«å°¾ã®ãƒãƒ¼ãƒ‰ã‚’å‰Šé™¤");
+		puts("(5) å…¨ã¦ã®ãƒãƒ¼ãƒ‰ã‚’å‰Šé™¤   (6) å…¨ã¦ã®ãƒãƒ¼ãƒ‰ã‚’è¡¨ç¤º");
+		puts("(0) çµ‚ã€€ã€€ã€€ã€€ã€€ã€€ã€€äº†");
+		printf("ç•ªå·ï¼š");
 		scanf("%d", &ch);
 	} while (ch < Term	||	ch > Print);
 	return ((Menu)ch);
 }
 
-/*--- ƒƒCƒ“ ---*/
+/*--- ãƒ¡ã‚¤ãƒ³ ---*/
 int main(void)
 {
 	Menu  menu;
@@ -151,9 +151,9 @@ int main(void)
 	do {
 		Node  x;
 		switch (menu = SelectMenu()) {
-		 case Insert: x = Read("æ“ª‚É‘}“ü");
+		 case Insert: x = Read("å…ˆé ­ã«æŒ¿å…¥");
 					  InsertNode(&list, x.name, x.tel);	break;
-		 case Append: x = Read("––”ö‚É‘}“ü");
+		 case Append: x = Read("æœ«å°¾ã«æŒ¿å…¥");
 					  AppendNode(&list, x.name, x.tel);	break;
 		 case Delete: DeleteNode(&list);				break;
 		 case Remove: RemoveNode(&list);				break;

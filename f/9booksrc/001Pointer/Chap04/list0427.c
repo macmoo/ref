@@ -1,5 +1,5 @@
 /*
-	�����Ԃ���������񃊃e���������L����邩�ǂ������m�F
+	同じ綴りをもつ文字列リテラルが共有されるかどうかを確認
 */
 
 #include  <stdio.h>
@@ -10,9 +10,9 @@ int main(void)
 	char  *ptr2 = "ABC";
 
 	if (ptr1 == ptr2)
-		puts("�����Ԃ�̕����񃊃e�����͋��L����Ă��܂��B");
+		puts("同じ綴りの文字列リテラルは共有されています。");
 	else 
-		puts("�����Ԃ�̕����񃊃e�����͋��L����Ă��܂���B");
+		puts("同じ綴りの文字列リテラルは共有されていません。");
 
 	return (0);
 }

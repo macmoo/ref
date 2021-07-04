@@ -1,5 +1,5 @@
 /*
-	qsortŠÖ”‚ğ—p‚¢‚Ä\‘¢‘Ì‚Ì”z—ñ‚ğƒ\[ƒg
+	qsorté–¢æ•°ã‚’ç”¨ã„ã¦æ§‹é€ ä½“ã®é…åˆ—ã‚’ã‚½ãƒ¼ãƒˆ
 */
 
 #include  <stdio.h>
@@ -7,32 +7,32 @@
 #include  <string.h>
 
 typedef struct {
-	char  name[10];		/* –¼‘O */
-	int	  height;		/* g’· */
-	int	  weight;		/* ‘Ìd */
+	char  name[10];		/* åå‰ */
+	int	  height;		/* èº«é•· */
+	int	  weight;		/* ä½“é‡ */
 } Person;
 
-/*--- PersonŒ^‚Ì”äŠrŠÖ”i–¼‘O¸‡j ---*/
+/*--- Personå‹ã®æ¯”è¼ƒé–¢æ•°ï¼ˆåå‰æ˜‡é †ï¼‰ ---*/
 int npcmp(const Person *x, const Person *y)
 {
 	return (strcmp(x->name, y->name));
 }
 
-/*--- PersonŒ^‚Ì”äŠrŠÖ”ig’·¸‡j ---*/
+/*--- Personå‹ã®æ¯”è¼ƒé–¢æ•°ï¼ˆèº«é•·æ˜‡é †ï¼‰ ---*/
 int hpcmp(const Person *x, const Person *y)
 {
 	return (x->height < y->height ?	-1 :
 			x->height > y->height ?	 1 : 0);
 }
 
-/*--- PersonŒ^‚Ì”äŠrŠÖ”i‘Ìd~‡j ---*/
+/*--- Personå‹ã®æ¯”è¼ƒé–¢æ•°ï¼ˆä½“é‡é™é †ï¼‰ ---*/
 int wdcmp(const Person *x, const Person *y)
 {
 	return (x->weight < y->weight ?	 1 :
 			x->weight > y->weight ?	-1 : 0);
 }
 
-/*--- nol•ª‚Ìƒf[ƒ^‚ğ•\¦ ---*/
+/*--- noäººåˆ†ã®ãƒ‡ãƒ¼ã‚¿ã‚’è¡¨ç¤º ---*/
 void print_person(Person x[], int no)
 {
 	int	 i;
@@ -49,27 +49,27 @@ int main(void)
 				 {"Sugiyama", 165, 50},
 				};
 
-	int	 nx = sizeof(x) / sizeof(x[0]);		/* ”z—ñx‚Ì—v‘f” */
+	int	 nx = sizeof(x) / sizeof(x[0]);		/* é…åˆ—xã®è¦ç´ æ•° */
 
-	puts("ƒ\[ƒg‘O");
+	puts("ã‚½ãƒ¼ãƒˆå‰");
 	print_person(x, nx);
 
-	/* –¼‘O¸‡‚Éƒ\[ƒg */
+	/* åå‰æ˜‡é †ã«ã‚½ãƒ¼ãƒˆ */
 	qsort(x, nx, sizeof(Person), (int (*)(const void *, const void *))npcmp);
 
-	puts("\n–¼‘O¸‡ƒ\[ƒgŒã");
+	puts("\nåå‰æ˜‡é †ã‚½ãƒ¼ãƒˆå¾Œ");
 	print_person(x, nx);
 
-	/* g’·¸‡‚Éƒ\[ƒg */
+	/* èº«é•·æ˜‡é †ã«ã‚½ãƒ¼ãƒˆ */
 	qsort(x, nx, sizeof(Person), (int (*)(const void *, const void *))hpcmp);
 
-	puts("\ng’·¸‡ƒ\[ƒgŒã");
+	puts("\nèº«é•·æ˜‡é †ã‚½ãƒ¼ãƒˆå¾Œ");
 	print_person(x, nx);
 
-	/* ‘Ìd~‡‚Éƒ\[ƒg */
+	/* ä½“é‡é™é †ã«ã‚½ãƒ¼ãƒˆ */
 	qsort(x, nx, sizeof(Person), (int (*)(const void *, const void *))wdcmp);
 
-	puts("\n‘Ìd~‡ƒ\[ƒgŒã");
+	puts("\nä½“é‡é™é †ã‚½ãƒ¼ãƒˆå¾Œ");
 	print_person(x, nx);
 
 	return (0);

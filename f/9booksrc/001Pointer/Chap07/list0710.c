@@ -1,5 +1,5 @@
 /*
-	heights3—ñ‚Ì‚QŸŒ³”z—ñ‚ğŠm•Û
+	heightè¡Œ3åˆ—ã®ï¼’æ¬¡å…ƒé…åˆ—ã‚’ç¢ºä¿
 */
 
 #include  <stdio.h>
@@ -7,24 +7,24 @@
 
 int main(void)
 {
-	int	 height;		/* s” */
-	int	 (*p)[3];		/* —ñ”‚Í’è”i‚±‚±‚Å‚Í3j */
+	int	 height;		/* è¡Œæ•° */
+	int	 (*p)[3];		/* åˆ—æ•°ã¯å®šæ•°ï¼ˆã“ã“ã§ã¯3ï¼‰ */
 
-	printf("s”F");
+	printf("è¡Œæ•°ï¼š");
 	scanf("%d", &height);
 
 	p = (int (*)[3])calloc(height * 3, sizeof(int));
 
 	if (p == NULL)
-		puts("‹L‰¯ˆæ‚ÌŠm•Û‚É¸”s‚µ‚Ü‚µ‚½B");
+		puts("è¨˜æ†¶åŸŸã®ç¢ºä¿ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
 	else {
 		int	 i, j;
 
-		for (i = 0; i < height; i++)		/* ‘S—v‘f‚É0‚ğ‘ã“ü */
+		for (i = 0; i < height; i++)		/* å…¨è¦ç´ ã«0ã‚’ä»£å…¥ */
 			for (j = 0; j < 3; j++)
 				p[i][j] = 0;
 
-		for (i = 0; i < height; i++)		/* ‘S—v‘f‚Ì’l‚ğ•\¦ */
+		for (i = 0; i < height; i++)		/* å…¨è¦ç´ ã®å€¤ã‚’è¡¨ç¤º */
 			for (j = 0; j < 3; j++)
 				printf("p[%d][%d] = %d\n", i, j, p[i][j]);
 

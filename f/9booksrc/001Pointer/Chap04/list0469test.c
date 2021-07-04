@@ -1,7 +1,7 @@
 #include  <stdio.h>
 #include  <stddef.h>
 
-/*--- memchr‚ÌŽÀŒ»—á ---*/
+/*--- memchrê¶»ë ³ë™¸ì€¡ ---*/
 void *memchr(const void *s, int c, size_t n)
 {
 	const unsigned char	 uc = c;

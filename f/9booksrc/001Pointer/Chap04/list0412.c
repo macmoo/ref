@@ -1,10 +1,10 @@
 /*
-	•¶š—ñ‚Ì’·‚³‚ğ‹‚ß‚éi‘æ‚P”Åj
+	æ–‡å­—åˆ—ã®é•·ã•ã‚’æ±‚ã‚ã‚‹ï¼ˆç¬¬ï¼‘ç‰ˆï¼‰
 */
 
 #include  <stdio.h>
 
-/*--- •¶š—ñs‚Ì’·‚³‚ğ‹‚ß‚é ---*/
+/*--- æ–‡å­—åˆ—sã®é•·ã•ã‚’æ±‚ã‚ã‚‹ ---*/
 unsigned str_length(const char s[])
 {
 	unsigned  len = 0;
@@ -18,10 +18,10 @@ int main(void)
 {
 	char  str[100];
 
-	printf("•¶š—ñ‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢F");
+	printf("æ–‡å­—åˆ—ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼š");
 	scanf("%s", str);
 
-	printf("•¶š—ñ\"%s\"‚Ì’·‚³‚Í%u‚Å‚·B\n", str, str_length(str));
+	printf("æ–‡å­—åˆ—\"%s\"ã®é•·ã•ã¯%uã§ã™ã€‚\n", str, str_length(str));
 
 	return (0);
 }

@@ -1,5 +1,5 @@
 /*
-	strcatŠÖ”‚ÆstrncatŠÖ”‚Ì—˜—p—á
+	strcaté–¢æ•°ã¨strncaté–¢æ•°ã®åˆ©ç”¨ä¾‹
 */
 
 #include  <stdio.h>

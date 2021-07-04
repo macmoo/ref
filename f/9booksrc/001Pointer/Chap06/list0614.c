@@ -1,5 +1,5 @@
 /*
-	���������ꂽ�\���̂̃����o�̒l��\���i->���Z�q�𗘗p�j
+	初期化された構造体のメンバの値を表示（->演算子を利用）
 */
 
 #include  <stdio.h>
@@ -14,9 +14,9 @@ int main(void)
 
 	struct xyz	*p = &sa;
 
-	printf("p->x = %d\n",	p->x);		/* p���w���\���̂̃����ox */
-	printf("p->y = %ld\n",	p->y);		/*	�@�@�V�@�@�@�̃����oy */
-	printf("p->z = %.2f\n",	p->z);		/*	�@�@�V�@�@�@�̃����oz */
+	printf("p->x = %d\n",	p->x);		/* pが指す構造体のメンバx */
+	printf("p->y = %ld\n",	p->y);		/*	　　〃　　　のメンバy */
+	printf("p->z = %.2f\n",	p->z);		/*	　　〃　　　のメンバz */
 
 	return (0);
 }

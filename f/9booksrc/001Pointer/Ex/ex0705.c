@@ -1,10 +1,10 @@
-/* ‰‰K7-5‚Ì‰ğ“š—á */
+/* æ¼”ç¿’7-5ã®è§£ç­”ä¾‹ */
 
 #include  <stdio.h>
 #include  <stdlib.h>
 #include  <string.h>
 
-/*--- argv‚Ì•¡»‚ğì‚é ---*/
+/*--- argvã®è¤‡è£½ã‚’ä½œã‚‹ ---*/
 int dup_argv(char ***ptr, int argc, char **argv)
 {
 	int	 i;
@@ -23,7 +23,7 @@ int dup_argv(char ***ptr, int argc, char **argv)
 	return (1);
 }
 
-/*--- argv‚ªw‚·•¶š—ñ‚Ì”z—ñ‚ğ•\¦ ---*/
+/*--- argvãŒæŒ‡ã™æ–‡å­—åˆ—ã®é…åˆ—ã‚’è¡¨ç¤º ---*/
 void print_argv(int argc, char **argv)
 {
 	int	 i = 0;
@@ -38,13 +38,13 @@ int main(int argc, char **argv)
 	char  **pt;
 
 	if (!dup_argv(&pt, argc, argv))
-		puts("‹L‰¯ˆæ‚ÌŠm•Û‚É¸”s‚µ‚Ü‚µ‚½B");
+		puts("è¨˜æ†¶åŸŸã®ç¢ºä¿ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
 	else
 		print_argv(argc, pt);
 
 	if (pt != NULL) {
 		for (i = 0; i < argc + 1; i++)
-			free(pt[i]);					/* ‹L‰¯ˆæ‚ğ‰ğ•ú */
+			free(pt[i]);					/* è¨˜æ†¶åŸŸã‚’è§£æ”¾ */
 		free(pt);
 	}
 	return (0);

@@ -1,4 +1,4 @@
-/* ‰‰K6-2‚Ì‰ğ“š—á */
+/* æ¼”ç¿’6-2ã®è§£ç­”ä¾‹ */
 
 #include  <stdio.h>
 
@@ -8,7 +8,7 @@ struct xyz {
 	double	z;
 };
 
-/*--- ƒƒ“ƒox‚Ì¸‡‚Æ‚È‚é‚æ‚¤‚Éa,b‚ğ•À‚×‚©‚¦‚é ---*/
+/*--- ãƒ¡ãƒ³ãƒxã®æ˜‡é †ã¨ãªã‚‹ã‚ˆã†ã«a,bã‚’ä¸¦ã¹ã‹ãˆã‚‹ ---*/
 void sortXYZ(struct xyz *a, struct xyz *b)
 {
 	if (a->x > b->x) {
@@ -18,7 +18,7 @@ void sortXYZ(struct xyz *a, struct xyz *b)
 	}
 }
 
-/*--- a‚Ìw‚·\‘¢‘Ì‚Ìƒƒ“ƒo‚É’l‚ğ“Ç‚İ‚Ş ---*/
+/*--- aã®æŒ‡ã™æ§‹é€ ä½“ã®ãƒ¡ãƒ³ãƒã«å€¤ã‚’èª­ã¿è¾¼ã‚€ ---*/
 void getXYZ(struct xyz *a)
 {
 	printf("x : ");	  scanf("%d",  &a->x);
@@ -30,22 +30,22 @@ int main(void)
 {
 	struct xyz	a, b;
 
-	puts("a‚ÌŠeƒƒ“ƒo‚Ì’l‚ğ‘ã“ü‚¹‚æB");
+	puts("aã®å„ãƒ¡ãƒ³ãƒã®å€¤ã‚’ä»£å…¥ã›ã‚ˆã€‚");
 	getXYZ(&a);
 
-	puts("b‚ÌŠeƒƒ“ƒo‚Ì’l‚ğ‘ã“ü‚¹‚æB");
+	puts("bã®å„ãƒ¡ãƒ³ãƒã®å€¤ã‚’ä»£å…¥ã›ã‚ˆã€‚");
 	getXYZ(&b);
 
-	puts("ƒƒ“ƒox‚Ì¸‡‚Éƒ\[ƒg‚µ‚Ü‚µ‚½B");
+	puts("ãƒ¡ãƒ³ãƒxã®æ˜‡é †ã«ã‚½ãƒ¼ãƒˆã—ã¾ã—ãŸã€‚");
 	sortXYZ(&a, &b);
 
-	printf("a.x = %d\n",	a.x);	/* ƒƒ“ƒo‚Ì’l‚ğ•\¦ */
-	printf("a.y = %ld\n",	a.y);	/* @V@ */
-	printf("a.z = %.2f\n",	a.z);	/* @V@ */
+	printf("a.x = %d\n",	a.x);	/* ãƒ¡ãƒ³ãƒã®å€¤ã‚’è¡¨ç¤º */
+	printf("a.y = %ld\n",	a.y);	/* ã€€ã€ƒã€€ */
+	printf("a.z = %.2f\n",	a.z);	/* ã€€ã€ƒã€€ */
 
-	printf("b.x = %d\n",	b.x);	/* ƒƒ“ƒo‚Ì’l‚ğ•\¦ */
-	printf("b.y = %ld\n",	b.y);	/* @V@ */
-	printf("b.z = %.2f\n",	b.z);	/* @V@ */
+	printf("b.x = %d\n",	b.x);	/* ãƒ¡ãƒ³ãƒã®å€¤ã‚’è¡¨ç¤º */
+	printf("b.y = %ld\n",	b.y);	/* ã€€ã€ƒã€€ */
+	printf("b.z = %.2f\n",	b.z);	/* ã€€ã€ƒã€€ */
 
 	return (0);
 }

@@ -1,6 +1,6 @@
-/* ‰‰K2-2‚Ì‰ð“š—áimainŠÖ”“™‚ÍÈ—ªj */
+/* æ¼”ç¿’2-2ã®è§£ç­”ä¾‹ï¼ˆmainé–¢æ•°ç­‰ã¯çœç•¥ï¼‰ */
 
-/*--- ŽÀŒ»—á‚P ---*/
+/*--- å®Ÿç¾ä¾‹ï¼‘ ---*/
 void ary_cpy(int a[], const int b[], int no)
 {
 	int	 i;
@@ -9,7 +9,7 @@ void ary_cpy(int a[], const int b[], int no)
 		a[i] = b[i];
 }
 
-/*--- ŽÀŒ»—á‚Q ---*/
+/*--- å®Ÿç¾ä¾‹ï¼’ ---*/
 void ary_cpy(int a[], const int b[], int no)
 {
 	while (no-- > 0)

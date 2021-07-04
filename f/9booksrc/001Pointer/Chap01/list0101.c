@@ -1,19 +1,19 @@
 /*
-	ƒIƒuƒWƒFƒNƒg‚Ì’l‚ÆƒAƒhƒŒƒX‚ğ•\¦
+	ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å€¤ã¨ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¡¨ç¤º
 */
 
 #include  <stdio.h>
 
 int main(void)
 {
-	int	 nx = 15;		/* nx‚ÍintŒ^ */
-	int	 ny = 73;		/* ny‚ÍintŒ^ */
+	int	 nx = 15;		/* nxã¯intå‹ */
+	int	 ny = 73;		/* nyã¯intå‹ */
 
-	printf("nx‚Ì’l%d\n", nx);				/* nx‚Ì’l‚ğ•\¦ */
-	printf("ny‚Ì’l%d\n", ny);				/* ny‚Ì’l‚ğ•\¦ */
+	printf("nxã®å€¤ï¼%d\n", nx);				/* nxã®å€¤ã‚’è¡¨ç¤º */
+	printf("nyã®å€¤ï¼%d\n", ny);				/* nyã®å€¤ã‚’è¡¨ç¤º */
 
-	printf("nx‚ÌƒAƒhƒŒƒX%p\n", &nx);		/* nx‚ÌƒAƒhƒŒƒX‚ğ•\¦ */
-	printf("ny‚ÌƒAƒhƒŒƒX%p\n", &ny);		/* ny‚ÌƒAƒhƒŒƒX‚ğ•\¦ */
+	printf("nxã®ã‚¢ãƒ‰ãƒ¬ã‚¹ï¼%p\n", &nx);		/* nxã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¡¨ç¤º */
+	printf("nyã®ã‚¢ãƒ‰ãƒ¬ã‚¹ï¼%p\n", &ny);		/* nyã®ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’è¡¨ç¤º */
 
 	return (0);
 }

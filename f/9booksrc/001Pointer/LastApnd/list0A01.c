@@ -1,11 +1,11 @@
 /*
-	”Ä—püŒ`’TõŠÖ”
+	æ±ç”¨ç·šå½¢æ¢ç´¢é–¢æ•°
 */
 
 #include  <stdlib.h>
 
-/*--- base‚ªw‚·—v‘f‚Ì‘å‚«‚³‚ªsize‚Å—v‘f”‚ªnmemb‚Ì”z—ñ‚©‚çkey‚Æˆê’v‚·‚é—v‘f‚ğ
-	  ”äŠrŠÖ”compar‚ğ—p‚¢‚ÄüŒ`’Tõ ---*/
+/*--- baseãŒæŒ‡ã™è¦ç´ ã®å¤§ãã•ãŒsizeã§è¦ç´ æ•°ãŒnmembã®é…åˆ—ã‹ã‚‰keyã¨ä¸€è‡´ã™ã‚‹è¦ç´ ã‚’
+	  æ¯”è¼ƒé–¢æ•°comparã‚’ç”¨ã„ã¦ç·šå½¢æ¢ç´¢ ---*/
 void *seqsearch(const void *key, const void *base, size_t nmemb, size_t size,
 			 	int (*compar)(const void *, const void *))
 {
@@ -14,13 +14,13 @@ void *seqsearch(const void *key, const void *base, size_t nmemb, size_t size,
 
 	for (i = 0; i < nmemb; i++)
 		if (!compar(key, (const void *)&x[i * size]))
-			return (&x[i * size]);						/* ’Tõ¬Œ÷ */
-	return (NULL);										/* ’Tõ¸”s */
+			return (&x[i * size]);						/* æ¢ç´¢æˆåŠŸ */
+	return (NULL);										/* æ¢ç´¢å¤±æ•— */
 }
 
 #include <stdio.h>
 
-/*--- intŒ^®”‚ğ”äŠr‚·‚éŠÖ” ---*/
+/*--- intå‹æ•´æ•°ã‚’æ¯”è¼ƒã™ã‚‹é–¢æ•° ---*/
 int int_cmp(const int *a, const int *b)
 {
 	if (*a < *b)
@@ -38,26 +38,26 @@ int main(void)
 	int *ptr;
 	int	 nx = sizeof(x) / sizeof(x[0]);
 
-	printf("%dŒÂ‚Ì®”‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B\n", nx);
+	printf("%då€‹ã®æ•´æ•°ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚\n", nx);
 
-	printf("x[0]F");
+	printf("x[0]ï¼š");
 	scanf("%ld", &x[0]);
 
 	for (i = 1; i < nx; i++) {
-		printf("x[%d]F", i);
+		printf("x[%d]ï¼š", i);
 		scanf("%ld", &x[i]);
 	}
 	
-	printf("’T‚·’lF");
+	printf("æ¢ã™å€¤ï¼š");
 	scanf("%ld", &ky);
 
 	ptr = seqsearch(&ky, x, nx, sizeof(int), 
 				   (int (*)(const void *, const void*))int_cmp);
 
 	if (ptr == NULL)
-		puts("\a’Tõ‚É¸”s‚µ‚Ü‚µ‚½B");
+		puts("\aæ¢ç´¢ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
 	else
-		printf("%d‚Í%d”Ô–Ú‚É‚ ‚è‚Ü‚·B\n", ky, ptr - x + 1);
+		printf("%dã¯%dç•ªç›®ã«ã‚ã‚Šã¾ã™ã€‚\n", ky, ptr - x + 1);
 
 	return (0);
 }

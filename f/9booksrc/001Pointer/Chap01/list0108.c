@@ -1,21 +1,21 @@
 /*
-	intŒ^‚Æint *Œ^‚Ì‘å‚«‚³‚ğ•\¦
+	intå‹ã¨int *å‹ã®å¤§ãã•ã‚’è¡¨ç¤º
 */
 
 #include  <stdio.h>
 
 int main(void)
 {
-	int	 nx;		/* intŒ^ */
-	int	 *pt;		/* int *Œ^ */
+	int	 nx;		/* intå‹ */
+	int	 *pt;		/* int *å‹ */
 
-	printf("int  Œ^‚Í%uƒoƒCƒg‚Å‚·B\n",	(unsigned)sizeof(int));
-	printf("int *Œ^‚Í%uƒoƒCƒg‚Å‚·B\n",	(unsigned)sizeof(int *));
+	printf("int  å‹ã¯%uãƒã‚¤ãƒˆã§ã™ã€‚\n",	(unsigned)sizeof(int));
+	printf("int *å‹ã¯%uãƒã‚¤ãƒˆã§ã™ã€‚\n",	(unsigned)sizeof(int *));
 
-	printf(" nx‚Í%uƒoƒCƒg‚Å‚·B\n",	(unsigned)sizeof(nx));
-	printf("*pt‚Í%uƒoƒCƒg‚Å‚·B\n",	(unsigned)sizeof(*pt));
-	printf(" pt‚Í%uƒoƒCƒg‚Å‚·B\n",	(unsigned)sizeof(pt));
-	printf("&nx‚Í%uƒoƒCƒg‚Å‚·B\n",	(unsigned)sizeof(&nx));
+	printf(" nxã¯%uãƒã‚¤ãƒˆã§ã™ã€‚\n",	(unsigned)sizeof(nx));
+	printf("*ptã¯%uãƒã‚¤ãƒˆã§ã™ã€‚\n",	(unsigned)sizeof(*pt));
+	printf(" ptã¯%uãƒã‚¤ãƒˆã§ã™ã€‚\n",	(unsigned)sizeof(pt));
+	printf("&nxã¯%uãƒã‚¤ãƒˆã§ã™ã€‚\n",	(unsigned)sizeof(&nx));
 
 	return (0);
 }

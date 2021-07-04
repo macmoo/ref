@@ -1,10 +1,10 @@
 /*
-	”z—ñ‚Ì‘S—v‘f‚É0‚ğ‘ã“ü
+	é…åˆ—ã®å…¨è¦ç´ ã«0ã‚’ä»£å…¥
 */
 
 #include  <stdio.h>
 
-/*--- ”z—ñx‚Ìæ“ªnŒÂ‚Ì—v‘f‚É0‚ğ‘ã“üi‘æ‚P”Åj ---*/
+/*--- é…åˆ—xã®å…ˆé ­nå€‹ã®è¦ç´ ã«0ã‚’ä»£å…¥ï¼ˆç¬¬ï¼‘ç‰ˆï¼‰ ---*/
 void fill_zero(int x[], int n)
 {
 	int	 i;
@@ -17,12 +17,12 @@ int main(void)
 {
 	int	 i;
 	int	 a[5] = {10, 20, 30, 40, 50};
-	int	 a_size = sizeof(a) / sizeof(a[0]);		/* ”z—ña‚Ì—v‘f” */
+	int	 a_size = sizeof(a) / sizeof(a[0]);		/* é…åˆ—aã®è¦ç´ æ•° */
 
 	fill_zero(a, a_size);
 
 	for (i = 0; i < a_size; i++)
-		printf("a[%d] = %d\n", i, a[i]);		/* a[i]‚Ì’l‚ğ•\¦ */
+		printf("a[%d] = %d\n", i, a[i]);		/* a[i]ã®å€¤ã‚’è¡¨ç¤º */
 
 	return (0);
 }

@@ -1,28 +1,28 @@
 /*
-	‘äŒ`Œö®‚É‚æ‚éÏ•ªi‘æ‚Q”ÅFŠÖ”‚Ö‚Ìƒ|ƒCƒ“ƒ^‚ğ—˜—pj
+	å°å½¢å…¬å¼ã«ã‚ˆã‚‹ç©åˆ†ï¼ˆç¬¬ï¼’ç‰ˆï¼šé–¢æ•°ã¸ã®ãƒã‚¤ãƒ³ã‚¿ã‚’åˆ©ç”¨ï¼‰
 */
 
 #include  <stdio.h>
 
-/*--- ŠÖ”f(x) ---*/
+/*--- é–¢æ•°f(x) ---*/
 double f(double x)
 {
 	return (x * x);
 }
 
-/*--- ŠÖ”g(x) ---*/
+/*--- é–¢æ•°g(x) ---*/
 double g(double x)
 {
 	return (x * x * x + x * x);
 }
 
-/*--- ‘äŒ`‚Ì–ÊÏ‚ğ‹‚ß‚é ---*/
+/*--- å°å½¢ã®é¢ç©ã‚’æ±‚ã‚ã‚‹ ---*/
 double trapezoid(double w1, double w2, double h)
 {
 	return ((w1 + w2) * h / 2.0);
 }
 
-/*--- fp‚ªw‚·ŠÖ”‚ğx1‚©‚çx2‚Ü‚Ån•ªŠ„‚Å‘äŒ`Œö®‚ğ—p‚¢‚ÄÏ•ª ---*/
+/*--- fpãŒæŒ‡ã™é–¢æ•°ã‚’x1ã‹ã‚‰x2ã¾ã§nåˆ†å‰²ã§å°å½¢å…¬å¼ã‚’ç”¨ã„ã¦ç©åˆ† ---*/
 double daikei(double x1, double x2, int n, double fp(double))
 {
 	int		i;
@@ -39,13 +39,13 @@ int main(void)
 	int		n;
 	double	x1, x2;
 
-	printf("ŠJ  nF");	  scanf("%lf", &x1);
-	printf("I  —¹F");	  scanf("%lf", &x2);
-	printf("•ªŠ„”F");	  scanf("%d",  &n);
+	printf("é–‹  å§‹ï¼š");	  scanf("%lf", &x1);
+	printf("çµ‚  äº†ï¼š");	  scanf("%lf", &x2);
+	printf("åˆ†å‰²æ•°ï¼š");	  scanf("%d",  &n);
 
-	printf("ŠÖ”f‚ÌÏ•ª’l%.4f\n", daikei(x1, x2, n, f));
+	printf("é–¢æ•°fã®ç©åˆ†å€¤ï¼%.4f\n", daikei(x1, x2, n, f));
 
-	printf("ŠÖ”g‚ÌÏ•ª’l%.4f\n", daikei(x1, x2, n, g));
+	printf("é–¢æ•°gã®ç©åˆ†å€¤ï¼%.4f\n", daikei(x1, x2, n, g));
 
 	return (0);
 }

@@ -1,23 +1,23 @@
 /*
-	\‘¢‘Ì‚Ìƒƒ“ƒo‚É’l‚ğ“Ç‚İ‚Ş
+	æ§‹é€ ä½“ã®ãƒ¡ãƒ³ãƒã«å€¤ã‚’èª­ã¿è¾¼ã‚€
 */
 
 #include  <stdio.h>
 
-typedef struct {		/* ‰ïˆõƒf[ƒ^ */
-	int	  no;			/* ‰ïˆõ”Ô† */
-	char  name[10];		/* @@–¼ */
+typedef struct {		/* ä¼šå“¡ãƒ‡ãƒ¼ã‚¿ */
+	int	  no;			/* ä¼šå“¡ç•ªå· */
+	char  name[10];		/* æ°ã€€ã€€å */
 } Member;
 
 int main(void)
 {
 	Member	m1;
 
-	printf("‰ïˆõ”Ô†F");	scanf("%d", &m1.no);		/* &‚Í•K—v */
-	printf("@@–¼F");	scanf("%s", &m1.name[0]);	/* &‚Í•s—v */
+	printf("ä¼šå“¡ç•ªå·ï¼š");	scanf("%d", &m1.no);		/* &ã¯å¿…è¦ */
+	printf("æ°ã€€ã€€åï¼š");	scanf("%s", &m1.name[0]);	/* &ã¯ä¸è¦ */
 
-	printf("‰ïˆõ”Ô†%d\n", m1.no);
-	printf("@@–¼%s\n", m1.name);
+	printf("ä¼šå“¡ç•ªå·ï¼%d\n", m1.no);
+	printf("æ°ã€€ã€€åï¼%s\n", m1.name);
 
 	return (0);
 }

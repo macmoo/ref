@@ -1,5 +1,5 @@
 /*
-	�����P���̋L����𓮓I�Ɋm�ہimalloc�֐��𗘗p�j
+	整数１個分の記憶域を動的に確保（malloc関数を利用）
 */
 
 #include  <stdio.h>
@@ -9,12 +9,12 @@ int main(void)
 {
 	int	 *p;
 
-	p = (int *)malloc(sizeof(int));			/* �������P���I�Ɋm�� */
+	p = (int *)malloc(sizeof(int));			/* 整数を１個動的に確保 */
 
 	if (p == NULL)
-		puts("�L����̊m�ۂɎ��s���܂����B");
+		puts("記憶域の確保に失敗しました。");
 	else
-		printf("*p�̒l��%d�ł��B\n", *p);
+		printf("*pの値は%dです。\n", *p);
 
 	return (0);
 }

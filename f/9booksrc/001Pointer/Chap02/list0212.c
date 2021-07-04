@@ -1,5 +1,5 @@
 /*
-	register•t‚«‚ÅéŒ¾‚³‚ê‚½”z—ñ‚Ì—v‘f”‚ğ•\¦i“®ì‚µ‚È‚¢j
+	registerä»˜ãã§å®£è¨€ã•ã‚ŒãŸé…åˆ—ã®è¦ç´ æ•°ã‚’è¡¨ç¤ºï¼ˆå‹•ä½œã—ãªã„ï¼‰
 */
 
 #include  <stdio.h>
@@ -8,7 +8,7 @@ int main(void)
 {
 	register int  x[5];
 
-	printf("x[0]‚Ì’l‚Í%d‚Å‚·B\n", x[0]);
+	printf("x[0]ã®å€¤ã¯%dã§ã™ã€‚\n", x[0]);
 
 	return (0);
 }

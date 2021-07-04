@@ -1,13 +1,13 @@
 /*
-	ˆø—p•„‹L†‚ğ•\¦
+	å¼•ç”¨ç¬¦è¨˜å·ã‚’è¡¨ç¤º
 */
 
 #include  <stdio.h>
 
 int main(void)
 {
-	putchar('\'');		/* '‚ğo—Í */
-	putchar('\n');		/* ‰üs‚ğo—Í */
+	putchar('\'');		/* 'ã‚’å‡ºåŠ› */
+	putchar('\n');		/* æ”¹è¡Œã‚’å‡ºåŠ› */
 
 	return (0);
 }

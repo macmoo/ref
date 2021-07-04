@@ -1,5 +1,5 @@
 /*
-	�|�C���^�̎w���ϐ��Ɏ����l��ǂݍ���ŕ\��
+	ポインタの指す変数に実数値を読み込んで表示
 */
 
 #include  <stdio.h>
@@ -7,12 +7,12 @@
 int main(void)
 {
 	double	nx;
-	double	*pt = &nx;		/* pt��nx���w�� */
+	double	*pt = &nx;		/* ptはnxを指す */
 
-	printf("�����l����͂��Ă��������F");
-	scanf("%lf", pt);		/* �ǂݍ��񂾒l��pt���w���ϐ��Ɋi�[ */
+	printf("実数値を入力してください：");
+	scanf("%lf", pt);		/* 読み込んだ値をptが指す変数に格納 */
 
-	printf("���Ȃ���%.2f�Ɠ��͂��܂����ˁB\n", *pt);
+	printf("あなたは%.2fと入力しましたね。\n", *pt);
 
 	return (0);
 }

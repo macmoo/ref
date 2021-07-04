@@ -1,16 +1,16 @@
-/*--- strtok‚ÌÀŒ»—áF<string.h>‚ÌƒCƒ“ƒNƒ‹[ƒh‚ª•K—v ---*/
+/*--- strtokã®å®Ÿç¾ä¾‹ï¼š<string.h>ã®ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãŒå¿…è¦ ---*/
 char *strtok(char *s1, const char *s2)
 {
 	char  *pbegin, *pend;
 	static char	 *save = "";
 
 	pbegin = s1 ? s1 : save;
-	pbegin += strspn(pbegin, s2);				/* strspn‚ğ—˜—p */
+	pbegin += strspn(pbegin, s2);				/* strspnã‚’åˆ©ç”¨ */
 	if (*pbegin == '\0') {
 		save = "";
 		return (NULL);
 	}
-	pend = pbegin + strcspn(pbegin, s2);		/* strcspn‚ğ—˜—p */
+	pend = pbegin + strcspn(pbegin, s2);		/* strcspnã‚’åˆ©ç”¨ */
 	if (*pend != '\0')
 		*pend++ = '\0';
 	save = pend;

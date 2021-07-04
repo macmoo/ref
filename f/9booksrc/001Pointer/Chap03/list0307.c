@@ -1,10 +1,10 @@
 /*
-	‚Qs‚R—ñ‚Ì‚QŽŸŒ³”z—ñ‚Ì‘S—v‘f‚É0‚ð‘ã“ü
+	ï¼’è¡Œï¼“åˆ—ã®ï¼’æ¬¡å…ƒé…åˆ—ã®å…¨è¦ç´ ã«0ã‚’ä»£å…¥
 */
 
 #include  <stdio.h>
 
-/*--- ‚Qs‚R—ñ‚Ì‚QŽŸŒ³”z—ñx‚Ì‘S—v‘f‚É0‚ð‘ã“ü ---*/
+/*--- ï¼’è¡Œï¼“åˆ—ã®ï¼’æ¬¡å…ƒé…åˆ—xã®å…¨è¦ç´ ã«0ã‚’ä»£å…¥ ---*/
 void fill_zero23(int x[2][3])
 {
 	int	 i, j;

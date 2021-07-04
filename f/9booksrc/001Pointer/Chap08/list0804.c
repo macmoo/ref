@@ -1,7 +1,7 @@
-/*--- ––”ö‚Ö‚Ìƒm[ƒh‘}“ü ---*/
+/*--- æœ«å°¾ã¸ã®ãƒŽãƒ¼ãƒ‰æŒ¿å…¥ ---*/
 void AppendNode(List *list, const char *name, const char *tel)
 {
-	Node  *ptr = list->tail;		/* ‘}“ü‘O‚Ì––”öƒm[ƒh‚Ö‚Ìƒ|ƒCƒ“ƒ^ */
+	Node  *ptr = list->tail;		/* æŒ¿å…¥å‰ã®æœ«å°¾ãƒŽãƒ¼ãƒ‰ã¸ã®ãƒã‚¤ãƒ³ã‚¿ */
 
 	list->tail = AllocNode();
 	strcpy(ptr->name, name);

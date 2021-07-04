@@ -1,10 +1,10 @@
 /*
-	s”z—ñ‚É‚æ‚é•¶Žš—ñt‚Ì”z—ñ“à‚Ì•¶Žš—ñ‚ð•\Ž¦
+	ã€Šé…åˆ—ã«ã‚ˆã‚‹æ–‡å­—åˆ—ã€‹ã®é…åˆ—å†…ã®æ–‡å­—åˆ—ã‚’è¡¨ç¤º
 */
 
 #include  <stdio.h>
 
-/*--- ‚QŽŸŒ³”z—ñ“à‚Ì•¶Žš‚ð‚P•¶Žš‚¸‚Â‘–¸‚µ‚Ä•\Ž¦ ---*/
+/*--- ï¼’æ¬¡å…ƒé…åˆ—å†…ã®æ–‡å­—ã‚’ï¼‘æ–‡å­—ãšã¤èµ°æŸ»ã—ã¦è¡¨ç¤º ---*/
 void print_pname(const char str[][5], int n)
 {
 	int	 i, j;

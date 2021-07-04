@@ -1,7 +1,7 @@
 #include  <string.h>
 #include  <stdlib.h>
 
-/*--- •¶š—ñs‚Ì•¡»‚ğì‚éF<string.h>,<stdlib.h>‚ÌƒCƒ“ƒNƒ‹[ƒh‚ª•K—v ---*/
+/*--- æ–‡å­—åˆ—sã®è¤‡è£½ã‚’ä½œã‚‹ï¼š<string.h>,<stdlib.h>ã®ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãŒå¿…è¦ ---*/
 char *strdup(const char *s)
 {
 	char  *p = (char *)malloc(strlen(s) + 1);

@@ -1,13 +1,13 @@
 /*
-	•¶Žš—ñƒŠƒeƒ‰ƒ‹‚ð•¶Žš—ñ‚Æ‚µ‚Ä•\Ž¦
+	æ–‡å­—åˆ—ãƒªãƒ†ãƒ©ãƒ«ã‚’æ–‡å­—åˆ—ã¨ã—ã¦è¡¨ç¤º
 */
 
 #include  <stdio.h>
 
 int main(void)
 {
-	printf("•¶Žš—ñƒŠƒeƒ‰ƒ‹\"ABCD\"\"%s\"\n",	  "ABCD");
-	printf("•¶Žš—ñƒŠƒeƒ‰ƒ‹\"AB\\0CD\"\"%s\"\n", "AB\0CD");
+	printf("æ–‡å­—åˆ—ãƒªãƒ†ãƒ©ãƒ«\"ABCD\"ï¼\"%s\"\n",	  "ABCD");
+	printf("æ–‡å­—åˆ—ãƒªãƒ†ãƒ©ãƒ«\"AB\\0CD\"ï¼\"%s\"\n", "AB\0CD");
 
 	return (0);
 }

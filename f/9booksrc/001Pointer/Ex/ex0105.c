@@ -1,23 +1,23 @@
-/* ‰‰K1-5‚Ì‰ğ“š—á */
+/* æ¼”ç¿’1-5ã®è§£ç­”ä¾‹ */
 
 #include  <stdio.h>
 
-/*--- x‚Æy‚Ì˜a‚ğ*wa‚É·‚ğ*sa‚ÉŠi”[ ---*/
+/*--- xã¨yã®å’Œã‚’*waã«å·®ã‚’*saã«æ ¼ç´ ---*/
 void sum_diff(int x, int y, int *wa, int *sa)
 {
-	*wa = x + y;						/* ˜a */
-	*sa = (x > y) ? x - y : y - x;		/* · */
+	*wa = x + y;						/* å’Œ */
+	*sa = (x > y) ? x - y : y - x;		/* å·® */
 }
 
 int main(void)
 {
 	int	 n1 = 100, n2 = 200;
-	int	 sum, diff;		/* ˜a‚Æ· */ 
+	int	 sum, diff;		/* å’Œã¨å·® */ 
 
 	sum_diff(n1, n2, &sum, &diff);
 
-	printf("x‚Æy‚Ì˜a%d\n", sum);				/* sum‚Ì’l‚ğ•\¦ */
-	printf("x‚Æy‚Ì·%d\n", diff);				/* diff‚Ì’l‚ğ•\¦ */
+	printf("xã¨yã®å’Œï¼%d\n", sum);				/* sumã®å€¤ã‚’è¡¨ç¤º */
+	printf("xã¨yã®å·®ï¼%d\n", diff);				/* diffã®å€¤ã‚’è¡¨ç¤º */
 
 	return (0);
 }

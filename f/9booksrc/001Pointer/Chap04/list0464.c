@@ -1,11 +1,11 @@
 /*
-	memsetŠÖ”‚Ì—˜—p—ái‚»‚Ì‚Pj
+	memseté–¢æ•°ã®åˆ©ç”¨ä¾‹ï¼ˆãã®ï¼‘ï¼‰
 */
 
 #include  <stdio.h>
 #include  <string.h>
 
-/*--- p‚ğæ“ª‚Æ‚µ‚ÄnƒoƒCƒg‚Ì‹L‰¯ˆæ‚Ì“à—e‚ğ16i”‚Å•\¦ ---*/
+/*--- pã‚’å…ˆé ­ã¨ã—ã¦nãƒã‚¤ãƒˆã®è¨˜æ†¶åŸŸã®å†…å®¹ã‚’16é€²æ•°ã§è¡¨ç¤º ---*/
 void put_bin(const char *p, size_t n)
 {
 	size_t	i;
@@ -20,13 +20,13 @@ int main(void)
 	int	  ns = sizeof(str);
 
 	printf("str : ");
-	put_bin(str, ns);		/* ”z—ñstr‚Ì“à—e‚ğ16i”‚Å•\¦ */
+	put_bin(str, ns);		/* é…åˆ—strã®å†…å®¹ã‚’16é€²æ•°ã§è¡¨ç¤º */
 
-	memset(str, 0, ns);		/* ”z—ñstr‚Ì‘SƒoƒCƒg‚É0‚ğ‘ã“ü */
+	memset(str, 0, ns);		/* é…åˆ—strã®å…¨ãƒã‚¤ãƒˆã«0ã‚’ä»£å…¥ */
 
-	printf("\n‘SƒoƒCƒg‚É0‚ğ‘ã“ü‚µ‚Ü‚µ‚½B\n");
+	printf("\nå…¨ãƒã‚¤ãƒˆã«0ã‚’ä»£å…¥ã—ã¾ã—ãŸã€‚\n");
 	printf("str : ");
-	put_bin(str, ns);		/* ”z—ñstr‚Ì“à—e‚ğ16i”‚Å•\¦ */
+	put_bin(str, ns);		/* é…åˆ—strã®å†…å®¹ã‚’16é€²æ•°ã§è¡¨ç¤º */
 	putchar('\n');
 
 	return (0);

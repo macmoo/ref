@@ -1,5 +1,5 @@
 /*
-	strspnŠÖ”‚ÆstrcspnŠÖ”‚Ì—˜—p—á
+	strspné–¢æ•°ã¨strcspné–¢æ•°ã®åˆ©ç”¨ä¾‹
 */
 
 #include  <stdio.h>
@@ -7,25 +7,25 @@
 
 int main(void)
 {
-	char  str[60];		/* ‚±‚Ì•¶š—ñ‚©‚ç’Tõ */
+	char  str[60];		/* ã“ã®æ–‡å­—åˆ—ã‹ã‚‰æ¢ç´¢ */
 	char  ltr[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	unsigned  n1, n2;
 
-	printf("•¶š—ñ‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢F");
+	printf("æ–‡å­—åˆ—ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ï¼š");
 	scanf("%s", str);
 
-	n1 = strspn( str, ltr);		/* æ“ª@‰pš•”‚Ì•¶š” */
-	n2 = strcspn(str, ltr);		/* æ“ª”ñ‰pš•”‚Ì•¶š” */
+	n1 = strspn( str, ltr);		/* å…ˆé ­ã€€è‹±å­—éƒ¨ã®æ–‡å­—æ•° */
+	n2 = strcspn(str, ltr);		/* å…ˆé ­éè‹±å­—éƒ¨ã®æ–‡å­—æ•° */
 
 	if (n1 == 0)
-		printf("æ“ª‚Í‰pš‚Å‚Í‚ ‚è‚Ü‚¹‚ñB\n");
+		printf("å…ˆé ­ã¯è‹±å­—ã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚\n");
 	else
-		printf("æ“ª%u•¶š‚ª‰pš‚©‚ç\¬‚³‚ê‚Ä‚¢‚Ü‚·B\n", n1);
+		printf("å…ˆé ­%uæ–‡å­—ãŒè‹±å­—ã‹ã‚‰æ§‹æˆã•ã‚Œã¦ã„ã¾ã™ã€‚\n", n1);
 
 	if (n2 == 0)
-		printf("æ“ª‚Í‰pš‚Å‚·B\n");
+		printf("å…ˆé ­ã¯è‹±å­—ã§ã™ã€‚\n");
 	else
-		printf("æ“ª%u•¶š‚É‚Í‰pš‚ÍŠÜ‚Ü‚ê‚Ä‚¢‚Ü‚¹‚ñB\n", n2);
+		printf("å…ˆé ­%uæ–‡å­—ã«ã¯è‹±å­—ã¯å«ã¾ã‚Œã¦ã„ã¾ã›ã‚“ã€‚\n", n2);
 
 	return (0);
 }

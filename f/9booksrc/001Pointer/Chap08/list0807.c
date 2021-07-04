@@ -1,4 +1,4 @@
-/*--- �擪�m�[�h�̍폜�i�ԈႢ�j ---*/
+/*--- 先頭ノードの削除（間違い） ---*/
 void DeleteNode(List *list)
 {
 	Node  *ptr = list->head->next;

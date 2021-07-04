@@ -1,29 +1,29 @@
 /*
-	“d˜b˜A—•ë—püŒ`ƒŠƒXƒgi\‘¢‘Ì‚ÆƒIƒuƒWƒFƒNƒg‚Ì¶¬j
+	é›»è©±é€£çµ¡ç°¿ç”¨ç·šå½¢ãƒªã‚¹ãƒˆï¼ˆæ§‹é€ ä½“ã¨ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®ç”Ÿæˆï¼‰
 */
 
 #include  <stdlib.h>
 
-/*--- ƒm[ƒh ---*/
+/*--- ãƒŽãƒ¼ãƒ‰ ---*/
 typedef struct __node {
-	char		   name[20];	/* –¼‘O */
-	char		   tel[16];		/* “d˜b”Ô† */
-	struct __node  *next;		/* ŽŸ‚Ìl‚ðŽw‚·ƒ|ƒCƒ“ƒ^ */
+	char		   name[20];	/* åå‰ */
+	char		   tel[16];		/* é›»è©±ç•ªå· */
+	struct __node  *next;		/* æ¬¡ã®äººã‚’æŒ‡ã™ãƒã‚¤ãƒ³ã‚¿ */
 } Node;
 
-/*--- üŒ`ƒŠƒXƒg§ŒäƒuƒƒbƒN ---*/
+/*--- ç·šå½¢ãƒªã‚¹ãƒˆåˆ¶å¾¡ãƒ–ãƒ­ãƒƒã‚¯ ---*/
 typedef struct {
-	Node  *head;				/* æ“ªƒm[ƒh‚ðŽw‚·ƒ|ƒCƒ“ƒ^ */
-	Node  *tail;				/* ––”öƒm[ƒh‚ðŽw‚·ƒ|ƒCƒ“ƒ^ */
+	Node  *head;				/* å…ˆé ­ãƒŽãƒ¼ãƒ‰ã‚’æŒ‡ã™ãƒã‚¤ãƒ³ã‚¿ */
+	Node  *tail;				/* æœ«å°¾ãƒŽãƒ¼ãƒ‰ã‚’æŒ‡ã™ãƒã‚¤ãƒ³ã‚¿ */
 } List;
 
-/*--- ˆê‚Â‚Ìƒm[ƒh‚ðŠm•Û ---*/
+/*--- ä¸€ã¤ã®ãƒŽãƒ¼ãƒ‰ã‚’ç¢ºä¿ ---*/
 Node *AllocNode(void)
 {
 	return ((Node *)calloc(1, sizeof(Node)));
 }
 
-/*--- üŒ`ƒŠƒXƒg§ŒäƒuƒƒbƒN‚Ì‰Šú‰» ---*/
+/*--- ç·šå½¢ãƒªã‚¹ãƒˆåˆ¶å¾¡ãƒ–ãƒ­ãƒƒã‚¯ã®åˆæœŸåŒ– ---*/
 void InitList(List *list)
 {
 	list->head = list->tail = AllocNode();

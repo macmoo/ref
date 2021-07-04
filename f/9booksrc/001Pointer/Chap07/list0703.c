@@ -1,5 +1,5 @@
 /*
-	NULL�𐮐��ɕϊ������l��\��
+	NULLを整数に変換した値を表示
 */
 
 #include  <stdio.h>

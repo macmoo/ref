@@ -1,16 +1,16 @@
 /*
-	ƒ|ƒCƒ“ƒ^‚Ì”z—ñ‚ÌŽó“n‚µ
+	ãƒã‚¤ãƒ³ã‚¿ã®é…åˆ—ã®å—æ¸¡ã—
 */
 
 #include  <stdio.h>
 
-/*--- ƒ|ƒCƒ“ƒ^‚Ì”z—ñ‚Ì’l‚ð•\Ž¦ ---*/
+/*--- ãƒã‚¤ãƒ³ã‚¿ã®é…åˆ—ã®å€¤ã‚’è¡¨ç¤º ---*/
 void print(int *x[], int no)
 {
 	int	 i;
 
 	for (i = 0; i < no; i++)
-		printf("x[%d]%p  *x[%d]%d\n", i ,x[i], i, *x[i]);
+		printf("x[%d]ï¼%p  *x[%d]ï¼%d\n", i ,x[i], i, *x[i]);
 }
 
 int main(void)
@@ -19,9 +19,9 @@ int main(void)
 	int	 *p[3];
 
 	p[0] = &a;	p[1] = &b;	p[2] = &c;
-	printf("&a%p  a%d\n", &a, a);
-	printf("&b%p  b%d\n", &b, b);
-	printf("&c%p  c%d\n", &c, c);
+	printf("&aï¼%p  aï¼%d\n", &a, a);
+	printf("&bï¼%p  bï¼%d\n", &b, b);
+	printf("&cï¼%p  cï¼%d\n", &c, c);
 
 	print(p, 3);
 
