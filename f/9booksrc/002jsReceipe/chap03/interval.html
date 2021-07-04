@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>オブジェクト</title>
+</head>
+<body>
+<button id="start">スタート</button>
+<button id="stop">ストップ</button>
+<div id="result"></div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  var timer;
+
+  $('#start').click(function() {
+    timer = setInterval(function() {
+      $('#result').html(new Date());
+    }, 1000);
+  });
+  $('#stop').click(function() {
+    clearInterval(timer);
+  });
+});
+</script>
+</body>
+</html>

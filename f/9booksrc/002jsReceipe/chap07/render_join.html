@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>プラグイン</title>
+</head>
+<body>
+<div id="result"></div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="js/jsrender.js"></script>
+<script>
+$(function() {
+  var books = [
+    {
+      isbn: '978-4-7981-3332-4',
+      title: '10日でおぼえるjQuery入門教室 第2版',
+      price: 3024,
+      publish: '翔泳社',
+      published: new Date('2013/10/07'),
+      authors: [
+        {
+          name: '山田祥寛',
+          role: '著'
+        },
+        {
+          name: '鈴木花子',
+          role: '監修'
+        }
+      ]
+    },
+    {
+      isbn: '978-4-7741-6296-6',
+      title: 'Windows 8開発ポケットリファレンス',
+      price: 3110,
+      publish: '技術評論社',
+      published: new Date('2014/02/19'),
+      authors: [
+        {
+          name: 'WINGSプロジェクト',
+          role: '著'
+        },
+        {
+          name: '山田祥寛',
+          role: '監修'
+        }
+      ]
+    },
+    {
+      isbn: '978-4-7741-6410-6',
+      title: 'Rails 4アプリケーションプログラミング',
+      price: 3780,
+      publish: '技術評論社',
+      published: new Date('2014/04/11'),
+      authors: [
+        {
+          name: '山田祥寛',
+          role: '著'
+        }
+      ]
+    },
+  ];
+
+  $.views.converters('date', function(value){
+    return value.getFullYear() + '年' +  (value.getMonth() + 1) + '月' + value.getDay() + '日';
+  });
+
+  $.views.tags('join', function(data){
+    var result = [];
+    for (var i = 0, len = data.length; i < len; i++) {
+      result.push(this.tagCtx.render(data[i]));
+    }
+    return result.join(this.tagCtx.props.separator);
+  });
+
+  $('#result').append($('#book').render(books));
+});
+</script>
+<script id="book" type="text/x-jsrender">
+<h3>{{:title}}</h3>
+<img src="http://www.wings.msn.to/books/{{>isbn}}/{{>isbn}}_logo.jpg"
+  align="right"/>{{>isbn}}<br />
+{{join authors separator='／'}}
+  {{>name}} {{>role}}
+{{/join}}<br />
+{{>price}}円<br />
+{{>publish}}<br />
+{{date:published}}刊行
+<hr />
+</script>
+</body>
+</html>

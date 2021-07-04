@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>関数／オブジェクト指向</title>
+</head>
+<body>
+<script>
+var scope = 'グローバル';
+
+function hoge() {
+  var scope = 'ローカル';
+
+  var literalFnc = function () { return scope; };
+  console.log(literalFnc());
+
+  var conFnc = new Function('return scope;');
+  console.log(conFnc());
+}
+
+hoge();
+</script>
+</body>
+</html>

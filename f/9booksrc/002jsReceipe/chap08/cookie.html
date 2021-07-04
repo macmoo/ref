@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>プラグイン</title>
+</head>
+<body>
+<form>
+  <label for="mail">メールアドレス：</label>
+  <input id="mail" type="text" size="50" />
+  <input id="send" type="button" value="送信" />
+</form>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script>
+$(function(){
+  if($.cookie('mail')) {
+    $('#mail').val($.cookie('mail'));
+  }
+
+  $('#send').click(function() {
+    $.cookie('mail', $('#mail').val(), { expires: 30 });
+  });
+});
+</script>
+</body>
+</html>

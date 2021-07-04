@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+<link rel="stylesheet" href="remove_class.css" />
+</head>
+<body>
+<ul>
+  <li id="spring">春の小川は さらさら行くよ</li>
+  <li id="summer">ささの葉さらさら のきばにゆれる</li>
+  <li id="autumn">こぎつねコンコン 山の中</li>
+  <li id="winter">雪やこんこ あられやこんこ</li>
+</ul>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('#autumn').addClass('highlighted bold');
+  window.alert('色付けを外します');
+  $('#autumn').removeClass('highlighted');
+});
+</script>
+</body>
+</html>

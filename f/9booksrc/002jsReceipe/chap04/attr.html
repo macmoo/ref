@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<ul>
+  <li id="cz">
+    <a href="http://codezine.jp/" rel="external">CodeZine</a></li>
+  <li id="wings">
+    <a href="http://www.wings.msn.to/" target="_self">WINGS</a></li>
+  <li id="webdeli">
+    <a href="http://www.web-deli.com/" target="_self">WebDeli</a></li>
+  <li id="mz">
+    <a href="http://moneyzine.jp/" target="_blank" rel="external">MoneyZine</a></li>
+  <li id="ez">
+    <a href="http://eczine.jp/" target="_blank" rel="external">ECZine</a></li>
+</ul>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('a[rel="external"]').attr('title', '外部サイトに移動します');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>関数／オブジェクト指向</title>
+</head>
+<body>
+<script>
+var Person = function(name, birth) {
+  var _name = name;
+  var _birth = birth;
+
+  this.getName = function() {
+    return _name;
+  };
+
+  this.getBirth = function() {
+    return _birth;
+  };
+}
+
+Person.prototype.toString = function() {
+  return 'Person: ' + this.getName() + ' ' + this.getBirth();
+};
+
+var p = new Person('山田リオ', new Date(2007, 5, 25));
+console.log(p.getName());
+console.log(p.toString());
+console.log(p._name);
+</script>
+</body>
+</html>

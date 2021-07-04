@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<div id="main">
+  <img id="pic" src="images/webdeli_logo.gif" />
+</div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  var onclick       = function(e) { $(this).css('border-color', 'Red'); }
+  var onmouseenter  = function(e) { $(this).attr('src', 'images/webdeli.gif'); }
+  var onmouseenter2 = function(e) { $(this).css('border', 'solid 5px black'); }
+  var onmouseleave  = function(e) {
+    $(this).attr('src', 'images/webdeli_logo.gif'); }
+  var onmouseleave2 = function(e) { $(this).css('border', 'none'); }
+
+  $('#main').on('click', '#pic', onclick);
+  $('#pic').on('mouseenter', onmouseenter);
+  $('#pic').on('mouseenter', onmouseenter2);
+  $('#pic').on('mouseleave', onmouseleave);
+  $('#pic').on('mouseleave', onmouseleave2);
+
+  // 特定のイベントリスナーだけを破棄
+  // $('#pic').off('mouseenter', onmouseenter);
+
+  // 第2構文で指定したイベントリスナーを破棄
+  // $('#main').off('click', '#pic');
+
+  // 指定のイベントをすべて破棄
+  // $('#pic').off('mouseleave');
+
+  // すべてのイベントリスナーを破棄
+  // $('#pic').off();
+
+  
+});
+</script>
+</body>
+</html>

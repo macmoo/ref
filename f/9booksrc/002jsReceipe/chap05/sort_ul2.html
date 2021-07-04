@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+<style type="text/css">
+li { list-style-type: none; }
+.ph { border: 1px solid Red; }
+</style>
+<body>
+<ul id="list">
+  <li id="1">1. 英会話</li>
+  <li id="2">2. 楽器</li>
+  <li id="3">3. スイミング</li>
+  <li id="4">4. 書道</li>
+  <li id="5">5. そろばん</li>
+  <li id="6">6. サッカー</li>
+  <li id="7">7. パソコン</li>
+  <li id="8">8. 空手</li>
+</ul>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('#list').sortable({
+    forcePlaceholderSize: true,
+    placeholder: 'ph'
+  });
+});
+</script>
+</body>
+</html>

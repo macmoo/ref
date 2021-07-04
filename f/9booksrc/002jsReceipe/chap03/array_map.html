@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>オブジェクト</title>
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+var data = [1, 2, 3]
+var data2 = $.map(
+  data,
+  function(value, index) {
+    return value * value;
+  });
+console.log(data2);
+</script>
+</body>
+</html>

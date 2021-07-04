@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<div class="main">
+  <img id="drag" src="./images/webdeli.gif" draggable="true" />
+</div>
+<hr />
+<div id="drop" class="dropbox"></div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('#drag').on({
+    'dragstart': function(e) {
+      e.originalEvent.dataTransfer.setData('text', e.target.id);
+      $(this).css('border', 'solid 2px Red');
+    },
+
+    'dragend': function(e) {
+      $(this).css('border', 'none');
+    }
+  });
+
+  $('#drop').on({
+    'dragenter': function(e) {
+      $(this).css('background-color', '#fc0');
+    },
+    'dragleave': function(e) {
+      $(this).css('background-color', '#ffc');
+    },
+    'dragover': function(e) {
+      e.preventDefault();
+    },
+    'drop': function(e) {
+      $(e.target).append($('#' + e.originalEvent.dataTransfer.getData('text')));
+      e.preventDefault();
+    }
+  });
+});
+</script>
+</body>
+</html>

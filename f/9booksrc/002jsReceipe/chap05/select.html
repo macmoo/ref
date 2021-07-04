@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+<link rel="stylesheet" href="select.css" />
+<body>
+<ul id="list">
+  <li>英会話 </li>
+  <li>楽器 </li>
+  <li>スイミング </li>
+  <li>書道 </li>
+  <li>そろばん </li>
+  <li>サッカー </li>
+  <li>パソコン </li>
+  <li>空手 </li>
+</ul>
+<div id="result"><div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('#list').selectable({
+    stop: function() {
+      $('#result').text($('.ui-selected').text() + 'を選択しました。');
+    }
+  });
+});
+</script>
+</body>
+</html>

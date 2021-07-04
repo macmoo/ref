@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<div id="hat">ぼうし</div>
+<ul id="coordinate">
+  <li>ジャケット</li>
+  <li>シャツ</li>
+  <li>ズボン</li>
+</ul>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('#hat').replaceWith('<p class="highlight">キャップ</p>');
+});
+</script>
+</body>
+</html>

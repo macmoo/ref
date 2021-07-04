@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>基本構文</title>
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-1.11.0.js"></script>
+<script>
+console.log($.type('wings'));
+console.log($.type(false));
+console.log($.type(10.5));
+console.log($.type(['jQuery', 'jQuery UI']));
+console.log($.type(function() { }));
+console.log($.type(new Date()));
+console.log($.type(/[0-9]{1,}/gi));
+console.log($.type({ a: 1, b: 2 }));
+console.log($.type());
+console.log($.type(Math.no_var));
+console.log($.type(null));
+</script>
+</body>
+</html>

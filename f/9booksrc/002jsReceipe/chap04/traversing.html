@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<div id="trav">
+  波平
+  <div>マスオ</div>
+  <div>サザエ</div>
+  <div id="myself">カツオ
+    <div>カツオJr.
+      <div>タマ</div>
+    </div>
+  </div>
+  <div>ワカメ</div>
+</div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('#myself')
+    .css('font-size', 'x-large')
+    .prev()
+    .css('border', 'dotted 5px')
+    .end()
+    .prevAll()
+    .css('color', 'Pink')
+    .end()
+    .next()
+    .css('background-color', 'Yellow')
+    .end()
+    .nextAll()
+    .css('border', 'solid 1px')
+    .end()
+    .siblings()
+    .css('font-style', 'italic')
+    .end()
+    .parent()
+    .css('border', 'groove 5px')
+    .end()
+    .children()
+    .css('font-size', 'small');
+});
+</script>
+</body>
+</html>

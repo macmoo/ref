@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<h2>jQuery</h2>
+<div class="desc">
+<p>jQueryとは、John Resig（ジョン・レシグ）氏によって開発されたJavaScriptライブラリで、以下のような特徴を持っています。</p>
+<ul>
+  <li>「Write Less, Do More（よりシンプルなコードで、より多くの処理を）」がモットー</li>
+  <li>基本的なDOM操作から、アニメーション機能、イベント処理、Ajax通信まで、おおよそJavaScriptによるWebサイト開発全般を幅広くサポート</li>
+  <li>Internet Explorer、Chrome、Firefox、Safari、Operaなど、主要なブラウザをサポート</li>
+  <li>サイズは32Kバイト程度を軽量（Minified版をGZIP圧縮した場合）</li>
+  <li>高機能なウィジェットを提供するjQuery UI、スマホアプリ対応のjQuery Mobileをはじめ、jQueryをベースに開発されたプラグインが豊富</li>
+</ul>
+<p>昨今では、クライアントサイドJavaScriptを扱う上でほぼ必須のライブラリとなっており、その理解は欠かせません。</p>
+</div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  var _p = $(window);
+  _p.scrollTop(80).scrollLeft(100);
+  window.alert(_p.scrollTop() + '×' + _p.scrollLeft());
+});
+</script>
+</body>
+</html>

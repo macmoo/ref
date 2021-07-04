@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+</head>
+<body>
+<img id="pic" src="images/child.jpg" title="子どもと犬" />
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('#pic')
+    .hide(5000)
+    .attr('src', 'images/baby.jpg')
+    .show(3000);
+});
+
+</script>
+</body>
+</html>

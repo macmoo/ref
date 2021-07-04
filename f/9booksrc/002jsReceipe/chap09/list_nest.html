@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>jQuery Mobile</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js">
+</script>
+<script src="./js/jquery.mobile.nestedlists.js">
+</script>
+</head>
+<body>
+<div data-role="page" data-title="jQuery Mobile">
+  <div data-role="header">
+    <h1>jQuery Mobile</h1>
+  </div>
+  <div role="main" class="ui-content">
+    <ul data-role="listview" data-child-pages="true">
+      <li>
+        コーヒー
+        <ul >
+          <li>ブルーマウンテン</li>
+          <li>キリマンジャロ</li>
+          <li>コロンビア</li>
+          <li>グァテマラ</li>
+          <li>ブラジル・サントス</li>
+        </ul>
+      </li>
+      <li >
+        紅茶
+        <ul>
+          <li>ダージリン</li>
+          <li>アッサム</li>
+          <li>セイロン</li>
+        </ul>
+      </li>
+      <li>
+        日本茶
+        <ul >
+          <li>煎茶（せんちゃ）</li>
+          <li>玉露（ぎょくろ）</li>
+          <li>抹茶（まっちゃ）</li>
+          </ul>
+        </li>
+      </ul>
+  </div>
+  <div data-role="footer">
+    Copyright 1998-2014, YAMADA.Yoshihiro
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>プラグイン</title>
+<link rel="stylesheet" href="css/zoombox.css" />
+</head>
+<body>
+<div>
+  <a href="photo/big/ham1_b.jpg"
+    title="よじ登る" class="zoombox zgallery0">
+    <img src="photo/ham1.jpg" />
+  </a>
+  <a href="photo/big/ham2_b.jpg"
+    title="ひょっこり顔だす" class="zoombox zgallery0">
+    <img src="photo/ham2.jpg" />
+  </a>
+  <a href="photo/big/ham3_b.jpg"
+    title="ドロッと出る" class="zoombox zgallery0">
+    <img src="photo/ham3.jpg" />
+  </a>
+  <a href="photo/big/ham4_b.jpg"
+    title="忍者のように" class="zoombox zgallery0">
+    <img src="photo/ham4.jpg" />
+  </a>
+  <a href="photo/big/ham5_b.jpg"
+    title="おこもり" class="zoombox zgallery0">
+    <img src="photo/ham5.jpg" />
+  </a>
+</div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="js/zoombox.js"></script>
+<script>
+$(function() {
+  $('a.zoombox').zoombox({ gallery: true });
+});
+</script>
+</body>
+</html>

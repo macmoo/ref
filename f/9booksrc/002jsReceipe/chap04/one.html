@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<h2>今日の運勢</h2>
+<input type="button" id="btn" value="うらなう" />
+<p>今日の総合点は<span id="result">－</span>点です。</p>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('#btn').one(
+    'click',
+    function() {
+      $('#result').text(Math.round(Math.random() * 100));
+    }
+  );
+});
+</script>
+</body>
+</html>

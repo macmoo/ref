@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<select id="ef">
+  <option value="blind">Blind</option>
+  <option value="bounce">Bounce</option>
+  <option value="clip">Clip</option>
+  <option value="drop">Drop</option>
+  <option value="explode">Explode</option>
+  <option value="fold">Fold</option>
+  <option value="highlight">Highlight</option>
+  <option value="puff">Puff</option>
+  <option value="pulsate">Pulsate</option>
+  <option value="scale">Scale</option>
+  <option value="shake">Shake</option>
+  <option value="size">Size</option>
+  <option value="slide">Slide</option>
+</select>
+<input id="run" type="button" value="実行" />
+<div id="square"></div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('#run').click(function() {
+    $('#square').effect($('#ef').val(), 3000);
+  });
+});
+</script>
+</body>
+</html>

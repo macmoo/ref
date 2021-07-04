@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<div id="main">
+  <div id="dragbox1" class="dragbox">きゅうり</div>
+  <div id="dragbox2" class="dragbox">きゃべつ</div>
+  <div id="dragbox3" class="dragbox">レタス</div>
+  <hr />
+  <div class="dropbox"></div>
+</div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+$('#dragbox1, #dragbox2').draggable({
+    revert: true,
+    scope: 'ok'
+  });
+  $('#dragbox3').draggable({
+    revert: true
+  });
+
+  $('.dropbox').droppable({
+    scope: 'ok',
+    drop: function(e, ui) {
+      $(this).html($(this).html() +
+        ui.draggable.text() + 'が入りました。<br />');
+    }
+  });
+});
+</script>
+</body>
+</html>

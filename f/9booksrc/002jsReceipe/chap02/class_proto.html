@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>関数／オブジェクト指向</title>
+</head>
+<body>
+<script>
+var Animal = function(name) {
+  this.name = name;
+};
+
+Animal.prototype.toString = function() {
+  return 'Animal:' + this.name;
+};
+
+var ani = new Animal('トクジロウ');
+console.log(ani.name);
+console.log(ani.toString());
+</script>
+</body>
+</html>

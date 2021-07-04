@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>関数／オブジェクト指向</title>
+</head>
+<body>
+<script>
+var Animal = function(name) {
+  this.name = name;
+  this.toString = function() {
+    return 'Animal:' + this.name;
+  }
+};
+
+var a1 = new Animal('トクジロウ');
+var a2 = new Animal('ニンザブロウ');
+a1.hoge = function() { return 'hogeメソッド' };
+
+console.log(a1.hoge());
+console.log(a2.hoge());
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+class Person
+  status: 'åíçN'
+  
+  constructor: (@name) ->
+
+  toString: ->
+    window.alert "#{@name}ÇÕ#{@status}Ç≈Ç∑ÅB"
+
+p = new Person 'éRìc'
+p.toString()

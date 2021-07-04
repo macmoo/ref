@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+</head>
+<body>
+<div id="box" style="width:100px; height:100px; background-color:Red;"></div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('#box')
+    .hide(5000)
+    .slideDown(3000);
+});
+</script>
+</body>
+</html>

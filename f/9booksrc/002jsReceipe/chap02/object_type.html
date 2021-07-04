@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>関数／オブジェクト指向</title>
+</head>
+<body>
+<script>
+var Person = function() {};
+var BusinessPerson = function() {};
+BusinessPerson.prototype = new Person();
+var bp = new BusinessPerson();
+
+console.log(bp instanceof BusinessPerson);
+console.log(bp instanceof Person);
+console.log(bp instanceof Object);
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<table>
+  <thead>
+    <th>No.</th><th>項目</th>
+  </thead>
+  <tbody id="list">
+    <tr id="1">
+      <th>1</th><td>英会話</td>
+    </tr>
+    <tr id="2">
+      <th>2</th><td>楽器</td>
+    </tr>
+    <tr id="3">
+      <th>3</th><td>スイミング</td>
+    </tr>
+    <tr id="4">
+      <th>4</th><td>書道</td>
+    </tr>
+    <tr id="5">
+      <th>5</th><td>そろばん</td>
+    </tr>
+    <tr id="6">
+      <th>6</th><td>サッカー</td>
+    </tr>
+    <tr id="7">
+      <th>7</th><td>パソコン</td>
+    </tr>
+    <tr id="8">
+      <th>8</th><td>空手</td>
+    </tr>
+  </tbody>
+</table>
+<div id="result"></div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('#list').sortable({
+    cursor: 'move',
+    opacity: 0.5,
+    update: function(e, ui) {
+      $('#result').text($('#list').sortable('toArray'));
+    }
+  });
+});
+</script>
+</body>
+</html>

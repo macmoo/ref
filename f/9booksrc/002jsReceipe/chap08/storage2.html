@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>HTML5</title>
+</head>
+<body>
+<div>氏名：<span id="result1"></span></div>
+<div>年齢：<span id="result2"></span></div>
+<div>職業：<span id="result3"></span></div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+$(function() {
+  if (localStorage) {
+    var st = localStorage;
+    var info = { name: '山田太郎', age: 30, occupation: '花屋' };
+    st.setItem('data', JSON.stringify(info));
+
+    var parsed = JSON.parse(st.getItem('data'));
+    $('#result1').html(parsed.name);
+    $('#result2').html(parsed.age);
+    $('#result3').html(parsed.occupation);
+  }
+});
+</script>
+</body>
+</html>

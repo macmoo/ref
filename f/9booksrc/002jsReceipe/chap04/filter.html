@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<div id="trav">
+<div>波平<br />
+  フネ<br />
+    <div>サザエ
+      <div>タラオ
+        <div id="fav">タマ</div>
+      </div>
+    </div>
+    <div class="student">カツオ</div>
+    <div class="student">ワカメ</div>
+  </div>
+</div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('div')
+    .css('color', 'Red')
+    .filter('#fav, .student')
+    .css('font-size', 'x-large');
+ });
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>プラグイン</title>
+</head>
+<style>
+.valid-err { color: Red;}
+</style>
+<body>
+<form id="fm">
+<label>氏名：
+  <input type="text" id="name" name="name" size="30" />
+</label><br/>
+<label>メールアドレス：
+  <input type="text" id="email" name="email" size="30" />
+</label><br/>
+<label>パスワード：
+  <input type="text" id="password" name="password" size="20" />
+</label><br/>
+<label>パスワード（確認）：
+  <input type="text" id="confirm_password" name="confirm_password" size="20" />
+</label><br/>
+<label>生年月日：
+  <input type="text" id="birthday" name="birthday" size="15" />
+</label><br/>
+<label>電話番号：
+  <input type="text" id="tel" name="tel" size="20" />
+</label><br/>
+<input type="submit" value="登録" />
+</form>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script>
+$(function() {
+  $('#fm').validate({
+    errorClass: 'valid-err',
+    rules: {
+      'name':{
+        required: true,
+        maxlength: 20
+      },
+      'email': {
+        required: true,
+        email: true
+      },
+      'password': {
+        required: true,
+        minlength: 5
+      },
+      'confirm_password': {
+        required: true,
+        equalTo: '#password'
+      },
+      'tel': { 
+        required: true
+      },
+      'birthday': { dateISO: true }
+    },
+    messages: {
+      'name': {
+        required: '氏名は必須です。',
+        maxlength: '氏名は20文字以内で入力してください。'
+      },
+      password: {
+        required: 'パスワードは必須です。',
+        minlength:  $.validator.format('パスワードは{0}文字以上で入力してください。')
+      },
+      confirm_password: {
+        required: 'パスワード（確認）は必須です。',
+        equalTo: '上のパスワードと異なります。'
+      },
+      'email': {
+        required: 'メールアドレスは必須です。',
+        email: 'メールアドレスの形式が異なります。'
+      },
+      'birthday': {
+        dateISO: '誕生日は日付形式で入力してください。'
+      },
+      'tel': { 
+        required: '電話番号は必須です。'
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>

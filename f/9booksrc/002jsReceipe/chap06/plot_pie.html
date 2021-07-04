@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>プラグイン</title>
+<link rel=stylesheet href="css/jquery.jqplot.min.css" />
+</head>
+<body>
+<div id="graph" style="width:400px; height:300px;"></div>
+<!--[if lt IE 9]>
+<script src="js/excanvas.min.js"></script>
+<![endif]-->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="js/jquery.jqplot.min.js"></script>
+<script src="js/jqplot.pieRenderer.min.js"></script>
+<script>
+$(function(){
+  var data = [[
+    ['東京', 51], ['大阪', 49], ['名古屋', 42], ['仙台', 28], ['広島', 36], ['福岡', 31]
+  ]];
+
+  $.jqplot( 'graph', data, {
+    seriesDefaults:{
+      renderer: $.jqplot.PieRenderer,
+      rendererOptions: {
+        showDataLabels: true,
+        startAngle: -90
+      }
+    },
+    legend: {show: true},
+    title: '地域別の販売台数'
+  });
+});
+</script>
+</body>
+</html>

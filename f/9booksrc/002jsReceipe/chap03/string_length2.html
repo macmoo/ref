@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>オブジェクト</title>
+</head>
+<body>
+<script>
+var str = '𠮟られて';
+var len = str.length;
+var snum = str.split(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g).length - 1;
+console.log(str.length - snum);
+</script>
+</body>
+</html>

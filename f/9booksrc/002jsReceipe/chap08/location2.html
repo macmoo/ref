@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>HTML5</title>
+</head>
+<body>
+<ul>
+  <li>経度：<span id="latitude"></span></li>
+  <li>緯度：<span id="longitude"></span></li>
+</ul>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+$(function() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      function(pos) {
+        $('#latitude').html(pos.coords.latitude);
+        $('#longitude').html(pos.coords.longitude);
+      },
+      function(pe) {
+        var errors = [
+          pe.message,
+          '位置情報の取得が許可されていません。',
+          '位置情報の取得は失敗しました。',
+          '位置情報の取得中にタイムアウトしました。'
+        ];
+        window.alert(errors[pe.code]);
+      },
+      {
+        timeout : 100,
+        maximumAge : 0,
+        enableHighAccuracy: true
+      }
+    );
+  } else {
+    window.alert('Geolocation API対応ブラウザでアクセスしてください。');
+  }
+});
+</script>
+</body>
+</html>

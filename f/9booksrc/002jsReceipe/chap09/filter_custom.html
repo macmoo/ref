@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>jQuery Mobile</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(document).on('mobileinit', function() {
+  $.mobile.filterable.prototype.options.filterCallback = function(i, search) {
+    return (('' + ($.mobile.getAttribute(this, 'filtertext') || $(this).text())).toLowerCase().indexOf(search) !== 0);
+  }
+});
+</script>
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js">
+</script>
+</head>
+<body>
+<div data-role="page" data-title="jQuery Mobile">
+  <div data-role="header">
+    <h1>jQuery Mobile</h1>
+  </div>
+  <div id="index" role="main" class="ui-content">
+    <form class="ui-filterable">
+      <input id="keywd" data-type="search" />
+    </form>
+    <ul data-role="listview" data-filter="true" data-input="#keywd">
+      <li data-filtertext="EOF End Of File">EOF</li>
+      <li data-filtertext="XML eXtensible Markup Language">XML</li>
+      <li data-filtertext="XSS Cross-Site Scripting">XSS</li>
+      <li data-filtertext="W3C World Wide Web Consortium">W3C</li>
+      <li data-filtertext="PDF Portable Document Format">PDF</li>
+    </ul>
+  </div>
+  <div data-role="footer">
+    Copyright 1998-2014, YAMADA.Yoshihiro
+  </div>
+</div>
+</body>
+</html>

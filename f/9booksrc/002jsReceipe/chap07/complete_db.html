@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+</head>
+<body>
+<form>
+<label for="keywd">キーワード</label>：
+<input id="keywd" name="keywd" type="search" size="20" maxlengh="40" />
+</form>
+<span id="details"></span>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('#keywd').autocomplete({
+    source: 'complete.php',
+    delay: 1000,
+    minLength: 2,
+    select: function(e, ui) {
+      if (ui.item) {
+        $('#details').html(ui.item.details);
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>

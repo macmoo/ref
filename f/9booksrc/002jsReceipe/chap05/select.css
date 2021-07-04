@@ -1,0 +1,23 @@
+#list {
+  list-style-type:none;
+  margin: 5px;
+  width: 150px;
+}
+
+#list li {
+  border: solid 1px #000; color: #000;
+  margin: 5px;
+  padding: 5px;
+}
+
+.ui-selectee {
+  background-color: #ffd;
+}
+
+.ui-selected {
+  background-color: #f7f;
+}
+
+.ui-selecting {
+  background-color: #fef;
+}

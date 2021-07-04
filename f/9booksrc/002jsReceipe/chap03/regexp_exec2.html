@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>オブジェクト</title>
+</head>
+<body>
+<script>
+var ex = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/gi;
+var str = 'サンプルファイルはhttp://www.wings.msn.to/から入手できます。';
+str += 'ご質問はHTTP://www.wings.msn.to/index.php/-/B-14/へお願いします！';
+while((result = ex.exec(str)) != null) {
+  console.log(ex.lastIndex + '：' + result[0]);
+  console.log('$1：' + RegExp.$1);
+  console.log('$2：' + RegExp.$2);
+  console.log('$3：' + RegExp.$3);
+  console.log('leftContext：' + RegExp.leftContext);
+  console.log('rightContext：' + RegExp.rightContext);
+  console.log('lastMatch：' + RegExp.lastMatch);
+  console.log('lastParen：' + RegExp.lastParen);
+  console.log('\n');
+}
+</script>
+</body>
+</html>

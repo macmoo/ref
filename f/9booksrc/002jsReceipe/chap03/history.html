@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>オブジェクト</title>
+</head>
+<body>
+<input id="btn" type="button" value="履歴追加" />
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  var state = 1;
+
+  $('#btn').click(function() {
+    history.pushState('state' + state, 'State' + state);
+    state++;
+  });
+
+  $(window).on('popstate', function(e) {
+    console.log(e.originalEvent.state);
+  });
+});
+</script>
+</body>
+</html>

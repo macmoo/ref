@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>関数／オブジェクト指向</title>
+</head>
+<body>
+<script>
+function getSquareArea(o_width, o_height) {
+  if (o_width === undefined) { o_width = 1; }
+  if (o_height === undefined) { o_height = 1; }
+  return o_width * o_height;
+}
+
+console.log(getSquareArea(10, 5));
+console.log(getSquareArea(10));
+console.log(getSquareArea());
+</script>
+</body>
+</html>

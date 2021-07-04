@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>HTML5</title>
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  if (HTMLVideoElement) {
+    var vd = document.createElement('video');
+    var result = vd.canPlayType('video/mp4');
+    if (result.match(/^(probably|maybe)$/)) {
+      vd.setAttribute('src', './video/baby.mp4');
+      vd.setAttribute('controls', '');
+      vd.setAttribute('width', '320');
+      vd.setAttribute('height', '180');
+      document.body.appendChild(vd);
+      vd.play();
+    }
+  }
+});
+</script>
+</body>
+</html>

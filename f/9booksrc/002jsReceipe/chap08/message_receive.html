@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>HTML5</title>
+</head>
+<body>
+<div id="result"></div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $(window).on('message', function(e) {
+    var origin = 'http://localhost';
+    if (e.originalEvent.origin === origin) {
+      $('#result').text(e.originalEvent.data);
+    }
+  });
+});
+</script>
+</body>
+</html>

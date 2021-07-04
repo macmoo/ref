@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+<style>
+.ui-menu { width: 180px; }
+</style>
+</head>
+<body>
+<ul id="menu">
+  <li><a href="top.html">
+    <span class="ui-icon ui-icon-home"></span>トップページ</a>
+  </li>
+  <li><a href="medicine.html">くすり</a>
+    <ul>
+      <li><a href="common.html">一般薬</a>
+        <ul>
+          <li><a href="cold.html">風邪薬</a>
+            <ul>
+              <li><a href="fever.html">発熱</a></li>
+              <li><a href="gullet.html">のどの痛み</a></li>
+              <li><a href="cough.html">咳／たん</a></li>
+            </ul>
+          </li>
+          <li><a href="stomach.html">胃腸薬</a>
+            <ul>
+              <li><a href="pain.html">胃痛</a></li>
+              <li><a href="heavy.html">胃もたれ</a></li>
+              <li><a href="loss.html">食欲不振</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="note.html">ビタミン剤</a>
+        <ul>
+          <li><a href="vitamin_b.html">ビタミンB</a></li>
+          <li><a href="vitamin_c.html">ビタミンC</a></li>
+          <li><a href="vitamin_e.html">ビタミンE</a></li>
+          <li><a href="calcium.html">カルシウム</a></li>
+        </ul>
+      </li>
+      <li><a href="money.html">整腸剤</a></li>
+      <li><a href="office.html">湿疹／皮膚炎</a>
+        <ul>
+          <li><a href="insect.html">虫刺され</a></li>
+          <li><a href="eczema.html">湿疹</a></li>
+          <li><a href="burn.html">やけど</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="health.html">健康食品</a>
+    <ul>
+      <li><a href="supplements.html">サプリメント</a></li>
+      <li><a href="drink.html">栄養ドリンク</a>
+        <ul>
+          <li><a href="nourishment.html">滋養強壮</a></li>
+          <li><a href="woman.html">女性用</a></li>
+          <li><a href="child.html">小児用</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#">日用品</a>
+      <ul>
+        <li><a href="tissue.html">ティッシュ</a></li>
+        <li><a href="toilet.html">トイレットペーパー</a></li>
+        <li><a href="diapers.html">おむつ</a></li>
+      </ul>
+  </li>
+  <li><a href="#">お問い合わせ</a>
+      <ul>
+        <li><a href="form.html">Webフォーム</a></li>
+        <li><a href="tel.html">電話</a></li>
+        <li><a href="fax.html">ファックス</a></li>
+      </ul>
+  </li>
+  <li class="ui-state-disabled">
+    <a href="map.html">店舗地図</a>
+  </li>
+</ul>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('#menu').menu({
+  });
+});
+</script>
+</body>
+</html>

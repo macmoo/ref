@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+<style>
+  .helper { border: 2px dotted #bbb; }
+</style>
+</head>
+<body>
+  <img src="photo/ham1.jpg" class="pic" />
+  <img src="photo/ham2.jpg" class="pic" />
+  <img src="photo/ham3.jpg" class="pic" />
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('.pic').resizable({
+    helper: "helper"
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>オブジェクト</title>
+</head>
+<body>
+<script>
+var ex1 = new RegExp('http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?','gi');
+var ex2 = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/gi;
+var str = 'サンプルファイルはhttp://www.wings.msn.to/から入手できます。';
+str += 'ご質問はHTTP://www.wings.msn.to/index.php/-/B-14/へお願いします！';
+
+console.log('コンストラクタでの結果');
+var result1 = str.match(ex1);
+for(var i = 0; i < result1.length; i++){
+  console.log(result1[i]);
+}
+console.log('リテラル表現での結果');
+var result2 = str.match(ex2);
+for(var i = 0; i < result2.length; i++){
+  console.log(result2[i]);
+}
+</script>
+</body>
+</html>

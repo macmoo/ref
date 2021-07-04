@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<form id="container">
+  <input type="button" class="add-btn" value="増やす" />
+</form>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('#container').on(
+    'click',
+    '.add-btn',
+    function() {
+      $('<input type="button" class="add-btn" value="増やす" />')
+        .appendTo('#container');
+    }
+  );
+});
+</script>
+</body>
+</html>

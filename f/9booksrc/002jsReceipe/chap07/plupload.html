@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>プラグイン</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+<link rel="stylesheet" 
+  href="js/jquery.ui.plupload/css/jquery.ui.plupload.css" />
+</head>
+<body>
+<form  method="post" action="dump.php">
+<div id="upfile"></div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script src="js/plupload.full.min.js"></script>
+<script src="js/jquery.ui.plupload/jquery.ui.plupload.js"></script>
+<script src="js/i18n/ja.js"></script>
+<script>
+$(function() {
+  $("#upfile").plupload({
+    runtimes: 'html5,flash,silverlight,html4',
+    url: 'upload.php',
+    max_file_size: '2mb',
+    filters : [
+      {title : "Image files", extensions : "jpg,gif,png"},
+      {title : "Zip files", extensions : "zip,avi"}
+        ],
+    flash_swf_url: 'js/Moxie.swf',
+    silverlight_xap_url: 'js/Moxie.xap'
+  });
+});
+</script>
+</body>
+</html>

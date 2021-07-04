@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html manifest="my.appcache">
+<head>
+<meta charset="UTF-8" />
+<title>HTML5</title>
+</head>
+<body>
+<div id="result"></div>
+<img src="./image/seal.jpg" />
+<script src="js/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  if(navigator.onLine){
+    $('#result').html('接続中');
+  } else {
+    $('#result').html('切断中');
+  }
+});
+</script>
+</body>
+</html>

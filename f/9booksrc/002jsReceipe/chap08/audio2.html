@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>HTML5</title>
+</head>
+<body>
+<input type="button" id="stop" value="停止" />
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  if (HTMLAudioElement) {
+    var ad = new Audio('./audio/chime.mp3');
+    var result = ad.canPlayType('audio/mp3');
+    if (result.match(/^(probably|maybe)$/)) {
+      ad.play();
+      ad.loop = true;
+      $('#stop').click(function(){ ad.pause(); });
+    }
+  }
+});
+</script>
+</body>
+</html>

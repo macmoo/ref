@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+</head>
+<body>
+<div id="tabs">
+  <ul>
+    <li><a href="tabs/accordion.html">アコーディオンパネル</a></li>
+    <li><a href="tabs/dialog.html">ダイアログボックス</a></li>
+    <li><a href="tabs/tooltip.html">ツールチップ</a></li>
+  </ul>
+</div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('#tabs').tabs();
+});
+</script>
+</body>
+</html>

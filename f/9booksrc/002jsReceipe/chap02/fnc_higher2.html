@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>関数／オブジェクト指向</title>
+</head>
+<body>
+<script>
+function benchmark(proc) {
+  var start = new Date();
+  proc();
+  var end = new Date();
+  return end.getTime() -  start.getTime();
+}
+
+function p() {
+    var x = 15;
+    for (var i = 0; i < 10000000; i++) {
+      x *= i;
+  }
+}
+
+console.log(benchmark(p));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+</head>
+<body>
+<input class="open" data-path="dl" type="button" value="ダウンロード" />
+<input class="open" data-path="quest" type="button" value="アンケート" />
+<input class="open" data-path="help" type="button" value="お問い合わせ" />
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('.open').click(function() {
+    var target = $(this);
+    $.get('./dialog/' + target.data('path') + '.html')
+     .done(function(data) {
+       $('<div></div>')
+         .attr('title', target.val())
+         .html(data)
+         .dialog({
+            width: 500,
+            height: 400,
+            modal: true
+          });
+    });
+  });
+});
+</script>
+</body>
+</html>

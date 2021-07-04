@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<h2>俳句コンテスト応募フォーム</h2>
+<form>
+  <label for="nam">氏名：</label><br />
+  <input type="text" id="nam" name="nam" size="30" /><br />
+  <label for="season">四季：</label><br />
+  <select id="season" name="season">
+    <option value="spring" >春</option>
+    <option value="summer">夏</option>
+    <option value="autumn">秋</option>
+    <option value="winter" >冬</option>
+  </select><br />
+  <label for="haiku">俳句：</label><br />
+  <input type="text" id="haiku" name="haiku" size="30" /><br />
+  <label for="memo">解説：</label><br />
+  <textarea id="memo" name="memo" cols="40" rows="5"></textarea><br />
+  <input type="submit" id="send" />
+</form>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('input[name="nam"]').val('加賀千代');
+  $('select').val('autumn');
+  $('input[name="haiku"]').val('朝顔に つるべとられて もらい水');
+  $('textarea').val('朝起きて、井戸に水を汲みに行くと、つるべに朝顔のツルが巻きついていた。水を汲むには、ツルを切らないといけないが、それはかわいそうなので、近くの家で水をもらうことにした。');
+  $('input[type="submit"]').val('送信');
+  console.log($('input[name="nam"]').val());
+});
+</script>
+</body>
+</html>

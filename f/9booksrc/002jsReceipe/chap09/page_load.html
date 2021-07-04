@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>jQuery Mobile</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js">
+</script>
+<script>
+$(document).on('pagebeforechange', function(e, d){
+  console.log('ページ移動の前pagebeforechange');
+});
+
+$(document).on('pagecontainerbeforeload', function(e, d){
+  console.log('ページの読み込み前pagecontainerbeforeload');
+});
+
+$(document).on('pagebeforecreate', function(e){
+  console.log('初期化処理の前pagebeforecreate');
+});
+
+$(document).on('pagecreate', function(e){
+  console.log('初期化処理の後pagecreate');
+});
+
+$(document).on('pagecontainerload', function(e){
+  console.log('ページの読み込み後pagecontainerload');
+});
+
+$(document).on('pagecontainerbeforehide', function(e){
+  console.log('古いページを非表示にする前pagecontainerbeforehide');
+});
+
+$(document).on('pagecontainerbeforeshow', function(e){
+  console.log('新しいページの表示処理前pagecontainerbeforeshow');
+});
+
+$(document).on('pageremove', function(e){
+  console.log('古いページが文書ツリーから削除された後pageremove');
+});
+
+$(document).on('pagecontainerhide', function(e){
+  console.log('古いページを非表示にした後pagecontainerhide');
+});
+
+$(document).on('pagecontainershow', function(e){
+  console.log('新しいページの表示処理の完了後pagecontainershow');
+});
+
+$(document).on('pagechange', function(e){
+  console.log('ページ切替処理の完了後pagechange');
+});
+
+$(document).on('pagecontainerloadfailed', function(e, d){
+  console.log('ページ取得失敗時pagecontainerloadfailed');
+});
+
+$(document).on('pagecontainerchangefailed', function(e, d){
+  console.log('切替先ページ取得失敗時pagecontainerchangefailed');
+});
+</script>
+</head>
+<body>
+<div data-role="page" data-title="jQuery Mobile">
+  <div data-role="header">
+    <h1>jQuery Mobile</h1>
+  </div>
+    <div id="index" role="main" class="ui-content">
+      <a href="page.html" class="ui-btn">別ページへ</a>
+    </div>
+    <div id="result"></div>
+  <div data-role="footer">
+    Copyright 1998-2014, YAMADA.Yoshihiro
+  </div>
+</div>
+</body>
+</html>

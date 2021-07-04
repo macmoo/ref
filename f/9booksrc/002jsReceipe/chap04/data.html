@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<form>
+  英語ではなんていう？:
+  <input type="button" id="b1" value="りんご" />
+  <input type="button" id="b2" value="みかん" />
+  <input type="button" id="b3" value="もも" />
+</form>
+<div>答：<span id="result">－</span></div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  var onclick = function(e) {
+    $('#result').text(e.data.answer);
+  }
+
+  $('#b1').click({ answer: 'apple' }, onclick);
+  $('#b2').click({ answer: 'orange' }, onclick);
+  $('#b3').click({ answer: 'peach' }, onclick);
+  //$('#b1').on('click', { answer: 'apple' }, onclick);
+});
+</script>
+</body>
+</html>

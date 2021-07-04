@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>オブジェクト</title>
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+var key = [ '部長', '課長', '係長', '主任' ];
+var data = [
+  { name: '山田リオ', position: '主任' },
+  { name: '鈴木奈美', position: '部長' },
+  { name: '田中博',   position: '課長' },
+  { name: '佐藤平八', position: '課長' }
+];
+
+console.log(data.sort(
+  function(m, n) {
+    return $.inArray(m.position, key) - $.inArray(n.position, key);
+  }
+));
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>基本構文</title>
+</head>
+<body>
+<script>
+var data = ['計量', 'こねる', 'まるめる', '', 'ガス抜き', '成形', '', '焼く'];
+
+for(var i = 0, len = data.length; i < len; i++) {
+  if (data[i] === '') { continue; }
+  console.log(data[i]);
+}
+</script>
+</body>
+</html>

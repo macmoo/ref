@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>プラグイン</title>
+<link rel=stylesheet href="css/jquery.jqplot.min.css" />
+</head>
+<body>
+<div id="graph" style="width:400px; height:300px;"></div>
+<!--[if lt IE 9]>
+<script src="js/excanvas.min.js"></script>
+<![endif]-->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="js/jquery.jqplot.min.js"></script>
+<script src="js/jqplot.bubbleRenderer.min.js"></script>
+<script src="js/jqplot.categoryAxisRenderer.min.js"></script>
+<script>
+$(function() {
+  var data = [
+    [29, 126, 349, '7/1'], [25, 110, 151, '7/2'],
+    [26, 120, 291, '7/3'], [27, 122, 186, '7/4'],
+    [28, 133, 384, '7/5'], [25, 133, 301, '7/6'],
+    [30, 117, 174, '7/7']
+  ];
+
+  $.jqplot( 'graph', [ data], {
+    seriesDefaults:{
+      renderer: $.jqplot.BubbleRenderer,
+        rendererOptions: {
+          bubbleGradients: true
+        },
+    },
+    title: '7月第1週アイス売上数＆来店数'
+  });
+});
+</script>
+</body>
+</html>

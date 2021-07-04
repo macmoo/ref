@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+</head>
+<body>
+<form>
+  <label for="price">定価：</label>
+  <input id="price" type="text" value="100" size="5" />
+</form>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('#price').spinner({
+    max: 1000,
+    min: 100,
+    step: 100
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>HTML5</title>
+</head>
+<body>
+<ul>
+  <li>経度：<span id="latitude"></span></li>
+  <li>緯度：<span id="longitude"></span></li>
+</ul>
+<input id="btn" type="button" value="監視をやめる" />
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  if (navigator.geolocation) {
+    var id = navigator.geolocation.watchPosition(
+      function(pos) {
+        $('#latitude').html(pos.coords.latitude);
+        $('#longitude').html(pos.coords.longitude);
+      }
+    );
+
+    $('#btn').click(function() {
+      navigator.geolocation.clearWatch(id);
+    });
+  } else {
+    window.alert('Geolocation API対応ブラウザでアクセスしてください。');
+  }
+});
+</script>
+</body>
+</html>

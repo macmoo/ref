@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<label for="name">名前：</label><br />
+<input type="text" id="name" name="name" value="山田リオ" />
+<br />
+<label for="blood">血液型：</label><br />
+<select id="blood" name="blood" multiple>
+	<option id="typeA" value="A">A型</option>
+	<option id="typeB" value="B">B型</option>
+	<option id="typeO" value="O" selected>O型</option>
+	<option id="typeAB" value="AB">AB型</option>
+</select><br />
+<label for="marriage">既婚？：</label><br />
+<input type="checkbox" id="marriage" name="marriage" value="1" checked />
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  console.log($('#name').prop('disabled'));
+  console.log($('#name').attr('disabled'));
+  console.log($('#blood').prop('multiple'));
+  console.log($('#blood').attr('multiple'));
+  console.log($('#typeO').prop('selected'));
+  console.log($('#typeO').attr('selected'));
+  console.log($('#marriage').prop('checked'));
+  console.log($('#marriage').attr('checked'));
+  console.log($('#marriage').prop('nodeType'));
+});
+</script>
+</body>
+</html>

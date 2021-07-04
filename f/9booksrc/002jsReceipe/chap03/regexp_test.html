@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>オブジェクト</title>
+</head>
+<body>
+<script>
+var ex = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/gi;
+var str1 = 'サンプルファイルはhttp://www.wings.msn.to/から入手できます。';
+var str2 = 'ご質問は「掲示板」へお願いします！';
+console.log(ex.test(str1));
+console.log(ex.test(str2));
+</script>
+</body>
+</html>

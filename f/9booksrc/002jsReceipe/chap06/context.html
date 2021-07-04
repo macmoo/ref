@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>プラグイン</title>
+<link rel="stylesheet" href="css/contextMenu.css" />
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="js/contextMenu.min.js"></script>
+<script>
+$(function() {
+  $(document).contextMenu([
+    {
+      name: 'ホーム',
+      img: 'image/wings.jpg',
+      title: 'トップページ',
+      fun: function () { window.alert('［トップへ］'); }
+    },
+    {
+      name: 'ツール集',
+      img: 'image/tool.gif',
+      title: 'ツール・ダウンロード',
+      fun: function () { window.alert('［ツール集へ］'); }
+    },
+    {
+      name: 'チュートリアル',
+      img: 'image/tutorial.gif',
+      title: 'チュートリアル記事',
+      subMenu: [
+        {
+          name: 'スタート記事',
+          title: '初心者記事',
+          img:'image/start.gif',
+          fun: function () { window.alert('［スタート記事へ］'); }
+        },
+        {
+          name: 'ツール活用の基礎知識',
+          title: '基礎固め記事',
+          img:'image/check.gif',
+          fun: function () { window.alert('［ツール活用の基礎知識へ］'); }
+        },
+        {
+          name: 'レベルアップ記事',
+          title: '応用スキル記事',
+          img:'image/advance.gif',
+          fun: function () { window.alert('［レベルアップ記事へ］'); }
+        }
+      ]
+    }
+  ], { triggerOn: 'contextmenu' });
+});
+</script>
+</body>
+</html>

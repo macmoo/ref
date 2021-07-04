@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+</head>
+<body>
+<div><img src="images/codezine.gif" class="notice"></div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  var img = $('img.notice');
+  img.height(62).width(240);
+  window.alert(img.height() + '×' + img.width());
+});
+</script>
+</body>
+</html>

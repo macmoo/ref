@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+</head>
+<body>
+<button id="dl">ダウンロード</button>
+<div id="dialog" title="書籍サンプルのダウンロード">
+  <p>ここから書籍に掲載されているサンプルのダウンロードができます。<br />
+    以下のボタンをクリックすると、ダウンロードが開始されます。
+  </p>
+  <p>なお、よろしければ、別途、アンケートにもご協力いただければ幸いです。<br />
+    今後の執筆の参考にさせていただきますので、何卒ご協力を賜りたくよろしくお願いいたします（まだ本書を読了されていない方／サンプルを試していない方は、部分的なご回答でも結構です。ご回答できる箇所のみご回答ください）。
+  </p>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('#dialog').dialog({
+    width: 500,
+    height: 400,
+    autoOpen: false,
+    modal: false,
+    show: { effect: "slide", duration: 800 },
+    hide: 1000,
+    buttons: {
+      'ダウンロード開始': function() {
+        location.href = 'http://www.wings.msn.to/index.php/-/B-11/';
+      },
+      '閉じる': function() { $(this).dialog('close'); }
+    },
+  });
+
+  $('#dl').click(function() {
+    $('#dialog').dialog('open');
+  });
+});
+</script>
+</body>
+</html>

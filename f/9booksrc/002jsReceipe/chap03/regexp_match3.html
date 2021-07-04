@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>オブジェクト</title>
+</head>
+<body>
+<script>
+var ex = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/g;
+var str = 'サンプルファイルはhttp://www.wings.msn.to/から入手できます。';
+str += 'ご質問はHTTP://www.wings.msn.to/index.php/-/B-14/へお願いします！';
+
+var result = str.match(ex);
+for (var i = 0, len = result.length; i < len; i++) {
+  console.log(result[i]);
+}
+</script>
+</body>
+</html>

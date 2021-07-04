@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>関数／オブジェクト指向</title>
+</head>
+<body>
+<script>
+var Animal = function(name) {
+  if(!(this instanceof Animal)) {
+    return new Animal(name);
+  }
+  this.name = name;
+};
+
+var ani = Animal('トクジロウ');
+console.log(ani);
+console.log(ani.name);
+</script>
+</body>
+</html>

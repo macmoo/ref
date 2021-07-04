@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+<link rel="stylesheet" href="effect_switch.css" />
+</head>
+<body>
+<input id="move" type="button" value="移動" />
+<div id="rectangle"></div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  var flag = true;
+  $('#move').click(function() {
+    if (flag) {
+      $('#rectangle').switchClass('def', 'anim', 3000);
+    } else {
+      $('#rectangle').switchClass('anim', 'def', 3000);
+    }
+    flag = !flag;
+  });
+});
+</script>
+</body>
+</html>

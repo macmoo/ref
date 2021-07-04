@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+</head>
+<body>
+<form>
+<input id="count_min" type="text" size="3" readonly />－
+<input id="count_max" type="text" size="3" readonly />
+<div id="slider"></div>
+</form>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('#slider').slider({
+    orientation: 'vertical',
+    min: 0,
+    max: 200,
+    range: true,
+    values	: [ 80, 150],
+    change: function(e, ui) {
+      $('#count_min').val(ui.values[0]);
+      $('#count_max').val(ui.values[1]);
+    },
+    create: function(e, ui) {
+      var values = $(this).slider('option', 'values')
+      $('#count_min').val(values[0]);
+      $('#count_max').val(values[1]);
+    }
+  });
+});
+</script>
+</body>
+</html>

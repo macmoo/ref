@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>HTML5</title>
+<link type="text/css" rel="stylesheet" href="site.css" />
+</head>
+<body>
+<div id="drop" class="dropbox">
+  <img id="dropped" />
+</div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('#drop').on({
+    'drop': function(e) {
+      var f = e.originalEvent.dataTransfer.files[0];
+      var reader = new FileReader();
+      $(reader).on('load', function() {
+        $('#dropped').attr('src', reader.result);
+      });
+      reader.readAsDataURL(f);
+      e.preventDefault();
+    },
+    'dragover': function(e) {
+      e.preventDefault();
+    }
+  });
+});
+</script>
+</body>
+</html>

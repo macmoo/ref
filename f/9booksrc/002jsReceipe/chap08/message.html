@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>HTML5</title>
+</head>
+<body>
+<form>
+  <input id="message" type="text" size="100" />
+  <input id="btn" type="button" value="送信" />
+</form>
+<iframe id="frm" src="http://localhost/jsrecipe/chap08/message_receive.html"
+  height="200" width="300"></iframe>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+if (window.postMessage) {
+  var target = 'http://localhost';
+
+  $('#btn').click(function() {
+    $('#frm').get(0).contentWindow.postMessage($('#message').val(), target);
+  });
+}
+</script>
+</body>
+</html>

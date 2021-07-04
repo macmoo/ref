@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+</head>
+<body>
+<div id="resizable" style="overflow: hidden;" class="ui-widget-content">
+  <p>リサイズ時の縦横比を指定します。たとえば「aspectRatio: 2 / 3」のように指定したなら、縦横比が2:3を維持するようにリサイズします。特に画像のリサイズをする際には、あらかじめオリジナルの縦横比を維持するように設定しておくことで、拡大／縮小で極端に見栄えが損なわれることがなくなるでしょう。</p>
+
+  <p>ghostパラメーターを有効にすることで、リサイズ中も半透明のリサイズイメージを表示し続けます。リサイズ後の状態をイメージしやすくなりますので、特に画像のリサイズには適しています（結果は、リストXXのもので確認してください）。</p>
+  <p>一方、helperパラメーターは、リサイズ時に表示する代替要素（＝ヘルパー）に適用するスタイルクラスを指定します。たとえば以下は、リサイズ時に薄黄色の矩形を表示する例です。</p>
+  </p>
+</div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('#resizable').resizable({
+  });
+});
+</script>
+</body>
+</html>

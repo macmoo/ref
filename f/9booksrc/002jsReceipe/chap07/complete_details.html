@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+</head>
+<body>
+<form>
+<label for="keywd">キーワード</label>：
+<input id="keywd" type="search" size="20" maxlengh="40" />
+</form>
+<span id="details"></span>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  var data = [
+    { label: 'accelerando', details: 'だんだんはやく' },
+    { label: 'accent', details: 'その音を強く奏する' },
+    { label: 'adagio', details: 'ゆるやかに、おそく' },
+    { label: 'andante', details: '歩くようなはやさで' },
+    { label: 'agitato', details: 'せきこんで' },
+    { label: 'allegro', details: '快活にはやく' },
+    { label: 'brillante', details: '輝くように' },
+    { label: 'calando', details: '消えるように' },
+    { label: 'cantabile', details: '歌うように' },
+    { label: 'capriccioso', details: '気まぐれに' },
+    { label: 'crescendo', details: 'だんだん強く' },
+    { label: 'decrescendo', details: 'だんだん弱く' },
+    { label: 'diminuendo', details: 'だんだん弱く' },
+    { label: 'dolce', details: 'かわいらしく、愛らしく' },
+    { label: 'elegante', details: '優美に' },
+    { label: 'espressivo', details: '感情をこめて' },
+    { label: 'fermata', details: 'ほどよくのばす' },
+    { label: 'forte', details: '強く' }
+  ];
+
+  $('#keywd').autocomplete({
+    source: data,
+    delay: 1000,
+    minLength: 2,
+    select: function(e, ui) {
+      if (ui.item) {
+        $('#details').html(ui.item.details);
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>

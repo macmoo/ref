@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>HTML5</title>
+</head>
+<body>
+<form>
+  <input id="target" type="text" size="7" />の中に
+  <input id="num" type="text" size="3" />の倍数は
+  <span id="result">－</span>個あります
+  <input id="btn" type="button" value="起動" />
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  if (window.Worker) {
+    var worker = new Worker('process.js');
+    $('#btn').click(function() {
+      worker.postMessage({
+        'target': $('#target').val(),
+        'num': $('#num').val()
+      })
+      $('#result').html('（計算中...）');
+    });
+
+    $(worker).on({
+      'message' : function(e) {
+        $('#result').html(e.originalEvent.data);
+      },
+      'error' : function(e) {
+        $('#result').html(e.originalEvent.message);
+      }
+    });
+  } else {
+    window.alert('Web Workers対応のブラウザーでアクセスしてください。');
+  }
+});
+</script>
+</body>
+</html>

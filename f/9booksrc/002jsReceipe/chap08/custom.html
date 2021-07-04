@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>HTML5</title>
+</head>
+<body>
+<video id="vd" src="./video/baby.mp4" autoplay loop
+  width="320" height="180"></video>
+<div>
+  音量：<input id="vol" type="range" min="0" max="1" step="0.01" value="1" />
+  <span id="vol_v">1.0</span>
+  ［消音<input id="mute" type="checkbox" />］<br />
+  速度：<input id="speed" type="range" min="0" max="2" step="0.01" value="1" />
+  <span id="speed_v">1.0</span>
+</div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  if (HTMLVideoElement) {
+    var vd = $('#vd');
+
+    $('#vol').change(function (e) {
+      vd.prop('volume', $(this).val());
+    });
+
+    $('#mute').change(function (e) {
+      vd.prop('muted', $(this).prop('checked'));
+    });
+
+    $('#speed').change(function (e) {
+      vd.prop('playbackRate', $(this).val());
+    });
+
+    $('#vd').on('volumechange', function (e) {
+      $('#vol_v').html($('#vol').val());
+    });
+
+    $('#vd').on('ratechange', function (e) {
+      $('#speed_v').html($('#speed').val());
+    });
+  }
+});
+</script>
+</body>
+</html>

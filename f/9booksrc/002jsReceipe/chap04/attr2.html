@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+</head>
+<body>
+<img id="pic1" src="images/webdeli_logo.gif">
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('#pic1').attr({
+    alt: 'ロゴ画像',
+    title: 'WebDeli - Spicy Tools, Delicious Sites'
+  })
+});
+</script>
+</body>
+</html>

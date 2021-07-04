@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<ul id="menu">
+  <li><a href="http://www.wings.mwn.to">トップページ</a></li>
+  <li><a href="http://www.wings.msn.to/index.php/-/B-13/">会社概要</a></li>
+  <li>アクセス</li>
+  <li>Q&A掲示板</li>
+  <li><a href="mailto:webmaster@wings.msn.to">お問い合わせ</a></li>
+</ul>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('#menu a:first').css('background-color', 'Yellow');
+});
+</script>
+</body>
+</html>

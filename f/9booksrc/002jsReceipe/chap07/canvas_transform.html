@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>HTML5</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<canvas id="cv" width="400" height="250">
+  ご使用の環境は、Canvas機能に対応していません。
+</canvas>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  if (HTMLCanvasElement) {
+    var cv = $('#cv').get(0);
+    var c = cv.getContext('2d');
+    for (var i = 0; i < 3; i++) { c.save(); }
+
+    $('<img>')
+      .attr('src', './image/webdeli.gif')
+      .on('load', function() {
+        c.rotate(60 * Math.PI / 180);
+        c.drawImage(this, 0, 0);
+
+        c.restore();
+        c.scale(0.45, 0.45);
+        c.drawImage(this, 80, 50);
+
+        c.restore();
+        c.translate(180, 20);
+        c.drawImage(this, 0, 0);
+
+        c.restore();
+        c.transform(1, 1, 1, -1, 0, 0);
+        c.drawImage(this, 150, 10);
+    });
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>関数／オブジェクト指向</title>
+</head>
+<body>
+<script>
+var scope = 'Global';
+function show() {
+  var scope = 'Local';
+  return scope;
+}
+
+console.log(show());
+console.log(scope);
+</script>
+</body>
+</html>

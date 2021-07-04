@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>関数／オブジェクト指向</title>
+</head>
+<body>
+<script>
+function showPanel(args) {
+  if (args.path  === undefined) {
+    throw { name: 'ArgsMissing', message: 'pathは必須です。' }; }
+  if (args.height === undefined) { args.height = 200; }
+  if (args.width  === undefined) { args.width  = 300; }
+  if (args.resizable === undefined) { args.resizable  = true; }
+  if (args.draggable  === undefined) { args.draggable  = true; }
+  if (args.modeless  === undefined) { args.width  = false; }
+  //...具体的なパネル表示のコード...
+}
+</script>
+</body>
+</html>

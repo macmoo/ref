@@ -1,0 +1,15 @@
+CACHE MANIFEST
+# revision: 1
+
+CACHE:
+cache.js
+site.css
+./image/seal.jpg
+./js/jquery-1.11.0.min.js
+
+NETWORK:
+/gallely/
+http://maps.googleapis.com
+
+FALLBACK:
+contents/ offline.html

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+</head>
+<body>
+<button id="home">トップ</button>
+<button id="next">次へ</button>
+<button id="info">お知らせ</button>
+<button id="mail">メール</button>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('#home').button({
+    icons: {
+      primary: 'ui-icon-home'
+    }
+  });
+  $('#next').button({
+    icons: {
+      secondary: 'ui-icon-circle-arrow-e'
+    }
+  });
+ $('#info').button({
+    icons: {
+      primary: 'ui-icon-info',
+      secondary: 'ui-icon-triangle-1-e'
+    }
+  });
+$('#mail').button({
+    icons: {
+      primary: 'ui-icon-mail-closed'
+    },
+    text: false
+  });
+});
+</script>
+</body>
+</html>

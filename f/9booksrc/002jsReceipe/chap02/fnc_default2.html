@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>関数／オブジェクト指向</title>
+</head>
+<body>
+<script>
+function getSquareArea(width, height) {
+  if (width === undefined) {
+    throw { name: 'ArgsMissing', message: '幅が指定されていません。' };
+  }
+  if (height === undefined) {
+    throw { name: 'ArgsMissing', message: '高さが指定されていません' };
+  }
+  return width * height;
+}
+
+try {
+  console.log(getSquareArea());
+} catch(e) {
+  console.log(e.message);
+}
+</script>
+</body>
+</html>

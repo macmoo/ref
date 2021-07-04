@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+<link rel="stylesheet" href="site.css" />
+<link rel="stylesheet" href="effect_transfer.css" />
+</head>
+<body>
+<input id="move" type="button" value="移動" />
+<div id="over"><img src="images/ham.jpg" /></div>
+<div id="under"></div>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('#move').click(function() {
+    $('#over').effect('transfer', { to: $('#under') }, 3000, function() {
+      $('#under').html($(this).html());
+      $(this).html('');
+    });
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>プラグイン</title>
+<link rel=stylesheet href="css/jquery.jqplot.min.css" />
+</head>
+<body>
+<div id="graph" style="width:400px; height:300px;"></div>
+<!--[if lt IE 9]>
+<script src="js/excanvas.min.js"></script>
+<![endif]-->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="js/jquery.jqplot.min.js"></script>
+<script src="js/jqplot.barRenderer.min.js"></script>
+<script src="js/jqplot.categoryAxisRenderer.min.js"></script>
+<script>
+$(function(){
+  var data = [
+    [['1月', 113], ['2月', 120], ['3月', 112], ['4月', 121], ['5月', 126], ['6月', 127]],
+    [['1月', 99], ['2月', 102], ['3月', 98], ['4月', 101], ['5月', 106], ['6月', 97]],
+  ];
+  $.jqplot( 'graph', data, {
+    seriesDefaults:{renderer: $.jqplot.BarRenderer},
+    series: [{label: 'A店'}, {label: 'B店'}],
+    legend: {show: true},
+    title: '2014年前期の販売台数',
+    axes: {
+      xaxis: {renderer: $.jqplot.CategoryAxisRenderer}
+    }
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<div id="drop" class="dropbox"></div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('#drop').on({
+    'drop': function(e) {
+       $(this).text(e.originalEvent.dataTransfer.getData('text'));
+       e.preventDefault();
+    },
+    'dragover': function(e) {
+      e.preventDefault();
+    }
+  });
+});
+</script>
+</body>
+</html>

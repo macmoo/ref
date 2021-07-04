@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<img id="pic1" src="images/webdeli_logo.gif" />
+<div id="detail"></div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$('#pic1').on({
+  'mouseenter': function(e) {
+    $(this).attr('src', 'images/webdeli.gif');
+  },
+  'mouseleave': function(e) {
+    $(this).attr('src', 'images/webdeli_logo.gif');
+  },
+  'click': function(e) {
+    $('#detail').html('<a href="http://www.web-deli.com/">WebDeli</a>は、Webページ作成に役立つ情報やツールがてんこ盛りです。');
+  }
+});
+</script>
+</body>
+</html>

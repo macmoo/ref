@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>HTML5</title>
+</head>
+<body>
+<form>
+  <label for="file">ファイル：</label>
+  <input id="file" name="file" type="file" />
+</form>
+<hr />
+<img id="result" />
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('#file').change(function(e) {
+    if (window.File) {
+      var input = $('#file').get(0).files[0];
+      var reader = new FileReader();
+      $(reader).on('load', function(e) {
+        $('#result').attr('src', this.result);
+      });
+      reader.readAsDataURL(input);
+    }
+  });
+});
+</script>
+</body>
+</html>

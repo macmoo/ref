@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>jQuery Mobile</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js">
+</script>
+</head>
+<body>
+<div id="home" data-role="page" data-title="jQuery Mobile">
+  <div data-role="header">
+    <h1>jQuery Mobile</h1>
+  </div>
+  <div id="home_main" role="main" class="ui-content">
+    <form>
+      <fieldset data-role="controlgroup">
+        <legend>年齢：</legend>
+          <input id="home_radio1" name="home_radio" type="radio"
+            value="teen">
+          <label for="home_radio1">未成年</label>
+          <input id="home_radio2" name="home_radio" type="radio"
+            value="20-29" checked>
+          <label for="home_radio2">20代</label>
+          <input id="home_radio3" name="home_radio" type="radio"
+            value="30-39">
+          <label for="home_radio3">30代</label>
+      </fieldset>
+
+      <fieldset data-role="controlgroup">
+          <legend>ペット：</legend>
+          <input id="home_check1" name="home_check1" type="checkbox" checked>
+          <label for="home_check1">いぬ</label>
+          <input id="home_check2" name="home_check2" type="checkbox">
+          <label for="home_check2">ねこ</label>
+          <input id="home_check3" name="home_check3" type="checkbox">
+          <label for="home_check3">その他</label>
+      </fieldset>
+    </form>
+  </div>
+  <div data-role="footer">
+    Copyright 1998-2014, YAMADA.Yoshihiro
+  </div>
+</div>
+</body>
+</html>

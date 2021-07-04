@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<p id="cz">CodeZine<br /><img src="images/codezine.gif" /></p>
+<p id="mz">MoneyZine<br /><img src="images/moneyzine.gif" /></p>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  console.log($('p').html());
+  console.log($('p').text());
+});
+</script>
+</body>
+</html>

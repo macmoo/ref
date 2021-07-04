@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>プラグイン</title>
+<link rel=stylesheet href="css/jquery.jqplot.min.css" />
+</head>
+<body>
+<div id="graph" style="width:400px; height:300px;"></div>
+<!--[if lt IE 9]>
+<script src="js/excanvas.min.js"></script>
+<![endif]-->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="js/jquery.jqplot.min.js"></script>
+<script src="js/jqplot.pointLabels.min.js"></script>
+<script>
+$(function() {
+  var data = [
+    [115.9, 20.6, '1年1組'],
+    [118.1, 21.2, '1年2組'],
+    [117.4, 22.7, '1年3組'],
+    [122.5, 24.2, '2年1組'],
+    [123.4, 25.1, '2年2組'],
+    [121.6, 23.5, '2年3組'],
+    [128.5, 26.5, '3年1組'],
+    [127.2, 25.7, '3年2組'],
+    [129.3, 27.5, '3年3組']
+  ];
+
+  $.jqplot( 'graph', [ data], {
+    seriesDefaults:{
+      showLine: false,
+      markerOptions: {size: 14},
+      pointLabels: {
+        show: true,
+        location: 'nw'
+      }
+    },
+    title: 'クラス別 身長／体重平均'
+  });
+});
+</script>
+</body>
+</html>

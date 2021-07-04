@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+</head>
+<body>
+<form method="POST" action="post.php">
+  <input type="submit" value="送信"
+    data-confirm="フォームを送信しても良いですか？" />
+</form>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$('input[data-confirm]').click(function() {
+  if (!confirm($(this).data('confirm'))) {
+    return false;
+  }
+});
+</script>
+</body>
+</html>

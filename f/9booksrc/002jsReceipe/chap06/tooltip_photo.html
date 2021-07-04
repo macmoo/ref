@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+</head>
+<body>
+<ul id="list">
+  <li><a href="#" data-photo="ham1">よじ登るハムスター</a></li>
+  <li><a href="#" data-photo="ham2">こんにちは、ハムスター</a></li>
+  <li><a href="#" data-photo="ham3">巣からはい出るハムスター</a></li>
+  <li><a href="#" data-photo="ham4">柵を横断するハムスター</a></li>
+</ul>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('#list').tooltip({
+    items: '[data-photo]',
+    content: function(){
+      var photo = $(this).data('photo');
+      return '<img src="photo/' + photo + '.jpg" />';
+    }
+  });
+});
+</script>
+</body>
+</html>

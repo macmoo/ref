@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>オブジェクト</title>
+</head>
+<body>
+<script>
+var ex = /(http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?)/gi;
+var str = 'サンプルファイルはhttp://www.wings.msn.to/から入手できます。';
+console.log(str.replace(ex, '<a href="$1">$1</a>'));
+</script>
+</body>
+</html>

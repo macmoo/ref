@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+</head>
+<body>
+  <div>
+    <button>ボタン（Element）</button>
+    <a href="http://www.wings.msn.to">アンカー</a>
+    <input type="button" value="ボタン（Input）" />
+    <input type="submit" value="サブミット" />
+    <input id="cb0" type="checkbox" class="one" />
+    <label for="cb0">チェック</label>
+  </div>
+  <hr />
+  <div class="set">
+    <input id="cb1" type="checkbox" name="c" /><label for="cb1">チェック1</label>
+    <input id="cb2" type="checkbox" name="c" /><label for="cb2">チェック2</label>
+    <input id="cb3" type="checkbox" name="c" /><label for="cb3">チェック3</label>
+  </div>
+  <hr />
+  <div class="set">
+    <input id="r1" type="radio" name="r" /><label for="r1">ラジオ1</label>
+    <input id="r2" type="radio" name="r" /><label for="r2">ラジオ2</label>
+    <input id="r3" type="radio" name="r" /><label for="r3">ラジオ3</label>
+  </div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('button').button();
+  $('a').button();
+  $('input[type="button"]').button();
+  $('input[type="submit"]').button();
+  $('input.one').button();
+  $('.set').buttonset();
+});
+</script>
+</body>
+</html>

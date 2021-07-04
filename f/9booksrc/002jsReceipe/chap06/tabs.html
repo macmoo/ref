@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+</head>
+<body>
+<div id="tabs">
+  <ul>
+    <li><a href="#accordion">アコーディオンパネル</a></li>
+    <li><a href="#dialog">ダイアログボックス</a></li>
+    <li><a href="#tooltip">ツールチップ</a></li>
+  </ul>
+  <div id="accordion">
+    <p>アコーディオンパネルとは、タイトル領域をクリックすることで、コンテンツ部分が開閉するパネルのこと。</p>
+    <p>あるコンテンツが開くと、他のコンテンツが閉じる蛇腹式の挙動がアコーディオンに似ていることから、そのように呼ばれます。</p>
+    <p>jQuery UIでアコーディオンパネルを実装するには、Accordionウィジェットを利用します。</p>
+  </div>
+  <div id="dialog">
+    <p>汎用的なダイアログボックスを実装するには、Dialogウィジェットを利用します。ダイアログのリサイズ、移動にも対応しています。</p>
+    <p>ダイアログには、文字列だけでなく、入力要素やボタンなど任意の要素を配置できますので、単なる補助情報の表示だけではなく、サブメニュー、選択などの用途などにも利用できます。</p>
+  </div>
+  <div id="tooltip">
+    <p>ツールチップを実装するには、Tooltipウィジェットを利用します。</p>
+    <p>ツールチップに表示するテキストは、title属性で表します。利用する要素に決まりはありません。また、ツールチップが関連づいていることを視覚的にも明らかにするために、サンプルでは、スタイルシートで下線を引いておきます。
+    あとは、ページ全体（document）に対して、tooltipメソッドを呼び出すことで、title属性を持つすべての要素がツールチップを表示するようになります。</p>
+  </div>
+</div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('#tabs').tabs({
+    active: 0
+  });
+});
+</script>
+</body>
+</html>

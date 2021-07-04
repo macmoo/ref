@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>関数／オブジェクト指向</title>
+</head>
+<body>
+<script>
+var Person = function() {};
+
+Person.prototype = {
+  eat : function() { console.log('もぎゅもぎゅ'); }
+};
+
+var BusinessPerson = function() {};
+BusinessPerson.prototype = new Person();
+
+BusinessPerson.prototype.work = function() { console.log('セッセ、セッセ'); }
+
+var bp = new BusinessPerson();
+bp.eat();
+bp.work();
+</script>
+</body>
+</html>

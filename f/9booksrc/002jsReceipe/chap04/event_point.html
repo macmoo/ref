@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<div id="main" style="position:absolute; margin:50px; top:30px; left:30px; width:300px; height:300px; border:solid 1px #000"></div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$('#main').on('mousemove', function(e) {
+  $(this).html('screen：' + e.screenX + '/' + e.screenY + '<br />' +
+               'page  ：' + e.pageX + '/' + e.pageY + '<br />' +
+               'client：' + e.clientX + '/' + e.clientY + '<br />' +
+               'offset：' + e.offsetX + '/' + e.offsetY + '<br />');
+               // 'offset：' + e.originalEvent.layerX + '/' + e.originalEvent.layerY + '<br />');
+});
+</script>
+</body>
+</html>

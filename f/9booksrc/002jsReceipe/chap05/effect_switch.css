@@ -1,0 +1,17 @@
+div {
+  height: 100px;
+  width: 50px;
+  background-color: #ccc;
+}
+
+.def {
+  margin-top: 0px;
+  margin-left: 0px;
+  background-color: #ccc;
+}
+
+.anim {
+  margin-top: 300px;
+  margin-left: 500px;
+  background-color: #f00;
+}

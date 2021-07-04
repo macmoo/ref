@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>プラグイン</title>
+<link rel=stylesheet href="css/jquery.jqplot.min.css" />
+</head>
+<body>
+<div id="graph" style="width:400px; height:300px;"></div>
+<!--[if lt IE 9]>
+<script src="js/excanvas.min.js"></script>
+<![endif]-->
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="js/jquery.jqplot.min.js"></script>
+<script src="js/jqplot.barRenderer.min.js"></script>
+<script src="js/jqplot.categoryAxisRenderer.min.js"></script>
+<script>
+$(function(){
+  var data = [
+    [
+      ['1月', 113], ['2月', 120], ['3月', 112],
+      ['4月', 121], ['5月', 126], ['6月', 127]
+    ],
+    [
+      ['1月', 201], ['2月', 411], ['3月', 146],
+      ['4月', 464], ['5月', 349], ['6月', 194]
+    ],
+  ];
+
+  $.jqplot( 'graph', data, {
+    series: [{
+      label: '販売台数',
+      yaxis: 'yaxis',
+      renderer: $.jqplot.BarRenderer
+    },
+    {
+      label: '来店数',
+      yaxis: 'y2axis'
+    }],
+    legend: {show: true},
+    title: '2014年前期の販売台数＆来店数',
+    axes: {
+      xaxis: { renderer: $.jqplot.CategoryAxisRenderer },
+      yaxis: {
+        label: '販売台数',
+        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+        tickOptions : { formatString : '%d台' }, 
+        max: 150,
+        min: 110
+      },
+      y2axis: {
+        label: '来店数',
+        labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+        tickOptions : {
+          formatString : '%d人',
+          showGridline: true
+        },
+        max: 500,
+        min: 100
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>

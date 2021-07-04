@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+</head>
+<body>
+<form>
+<label for="keywd">キーワード</label>：
+<input id="keywd" type="search" size="20" maxlengh="40" />
+</form>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  var data = [
+    'accelerando',
+    'accent',
+    'adagio',
+    'andante',
+    'agitato',
+    'allegro',
+    'brillante',
+    'calando',
+    'cantabile',
+    'capriccioso',
+    'crescendo',
+    'decrescendo',
+    'diminuendo',
+    'dolce',
+    'elegante',
+    'espressivo',
+    'fermata',
+    'forte'
+  ];
+  $('#keywd').autocomplete({
+    source: function(request, response) {
+      response(
+        $.grep(data, function(v){
+          return v.indexOf(request.term) === 0;
+        })
+      );
+    },
+    delay: 1000,
+    minLength: 2
+  });
+});
+</script>
+</body>
+</html>

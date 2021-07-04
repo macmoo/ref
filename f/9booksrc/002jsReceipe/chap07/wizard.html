@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>プラグイン</title>
+<link rel="stylesheet" href="wizard.css" />
+</head>
+<body>
+<form id="fm">
+<fieldset>
+  <legend>入会者情報</legend>
+  <label for="name">氏名</label>
+  <input id="name" type="text" size="30" />
+  <label for="email">メールアドレス</label>
+  <input id="email" type="text" />
+  <label for="cource">入会コース名</label>
+  <input id="cource" type="text" />
+</fieldset>
+<fieldset>
+  <legend>レッスンについて</legend>
+  <label for="purpose">入会の目的</label>
+  <input type="radio" name="purpose" value="study" />学習
+  <input type="radio" name="purpose" value="hobby" />趣味
+  <input type="radio" name="purpose" value="other" />その他
+  <label for="time">レッスン時間</label>
+  <input type="radio" name="time" value="long" />長い
+  <input type="radio" name="time" value="-" />ふつう
+  <input type="radio" name="time" value="short" />短い
+  <label for="difficulty">難易度</label>
+  <input type="radio" name="difficulty" value="easy" />かんたん
+  <input type="radio" name="difficulty" value="-" />ふつう
+  <input type="radio" name="difficulty" value="difficult" />むずかしい
+</fieldset>
+<fieldset>
+  <legend>自己評価</legend>
+  <label for="score">現在の到達度（0-100％）</label>
+  <input id="score" type="text" size="3" />％
+  <label for="memo">ご意見ご要望</label>
+  <textarea name="memo" cols="50" rows="8"></textarea>
+</fieldset>
+<p>
+  <input id="btnSend" type="button" value="送信" />
+</p>
+</form>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="js/formToWizard.js">
+</script>
+<script>
+$(function () {
+  $('#fm').formToWizard({ submitButton: 'btnSend' });
+});
+</script>
+</body>
+</html>

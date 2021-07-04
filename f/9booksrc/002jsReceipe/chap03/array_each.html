@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>オブジェクト</title>
+</head>
+<body>
+<ul id="list">
+</ul>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  var animal = [
+    { name: 'フレンチブルドッグ',
+      type: 'いぬ' },
+    { name: 'ヨークシャーテリア',
+      type: 'いぬ' },
+    { name: 'ダックスフンド',
+      type: 'いぬ' },
+    { name: 'スコティッシュ フォールド',
+      type: 'ねこ' },
+    { name: 'ポメラニアン',
+      type: 'いぬ' },
+  ];
+
+  $.each(
+    animal,
+    function(index, value) {
+      if (value.type == 'ねこ') { return false; }
+      $('<li></li>')
+        .append(value.name)
+        .appendTo('#list');
+    });
+});
+</script>
+</body>
+</html>

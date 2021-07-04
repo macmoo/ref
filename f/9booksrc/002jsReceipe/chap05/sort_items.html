@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<table>
+  <thead>
+    <th>No.</th><th>項目</th>
+  </thead>
+  <tbody id="list">
+    <tr class="nosort">
+      <th>1</th><td>英会話</td>
+    </tr>
+    <tr>
+      <th>2</th><td>楽器</td>
+    </tr>
+    <tr>
+      <th>3</th><td>スイミング</td>
+    </tr>
+    <tr>
+      <th>4</th><td>書道</td>
+    </tr>
+    <tr>
+      <th>5</th><td>そろばん</td>
+    </tr>
+    <tr>
+      <th>6</th><td>サッカー</td>
+    </tr>
+    <tr>
+      <th>7</th><td>パソコン</td>
+    </tr>
+    <tr class="nosort">
+      <th>8</th><td>空手</td>
+    </tr>
+  </tbody>
+</table>
+<div id="result"></div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $('#list').sortable({
+    items: '> tr:not(.nosort)'
+  });
+});
+</script>
+</body>
+</html>

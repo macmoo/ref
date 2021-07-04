@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>HTML5</title>
+</head>
+<body>
+<div>greet1：<span id="result1"></span></div>
+<div>greet2：<span id="result2"></span></div>
+<div>greet3：<span id="result3"></span></div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+$(function() {
+  if (localStorage) {
+    var st = localStorage;
+    st.setItem('greet1', 'おはよう');
+    st.greet2 = 'こんにちは';
+    st['greet3'] = 'こんばんは';
+    $('#result1').html(st.getItem('greet1'));
+    $('#result2').html(st.greet2);
+    $('#result3').html(st['greet3']);
+  }
+});
+</script>
+</body>
+</html>

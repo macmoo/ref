@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>オブジェクト</title>
+</head>
+<body>
+<script>
+var ex = /^[A-Za-z]{1,}/gm;
+var str = 'Helloは、こんにちは。\nByeは、さようなら。';
+var result = str.match(ex);
+for(var i = 0; i < result.length; i++){
+  console.log(result[i]);
+}
+</script>
+</body>
+</html>

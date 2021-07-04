@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>関数／オブジェクト指向</title>
+</head>
+<body>
+<script>
+var namespace = function(ns) {
+  var elems = ns.split('.');
+  var parent = window;
+
+  for (var i = 0, len = elems.length; i < len; i++) {
+    parent[elems[i]] = parent[elems[i]] || {};
+    parent = parent[elems[i]];
+  }
+
+  return parent;
+};
+
+var ns = namespace('Myapp.Recipe.Samples');
+
+ns.MyClass = function() {};
+var c = new ns.MyClass();
+console.log(c instanceof Myapp.Recipe.Samples.MyClass);
+</script>
+</body>
+</html>

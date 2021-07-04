@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery UI</title>
+<link rel="stylesheet"
+  href="http://code.jquery.com/ui/1.10.4/themes/redmond/jquery-ui.min.css" />
+<style>
+span[title] {
+  text-decoration: underline;
+  cursor: pointer;
+}
+</style>
+</head>
+<body>
+<div id="desc">
+<p>本書は、jQueryの仕組みから、<span title="便利な機能を追加できるライブラリ">プラグイン</span>の使い方、イベントの実装とカスタマイズの方法まで、わかりやすく丁寧に解説します。</p>
+<p>とくにWeb制作の現場でよく使うセレクターやメソッドを厳選しました。動きのあるリッチな<span title="ユーザーインターフェイス">UI</span>の作り方が簡単に身に付きます。</p>
+<p>また、骨組みが用意された<span title="サポートサイトからダウンロードできます">サンプルファイル</span>に対して、必要なコードだけを入力しながら、効率よく学べます。</p>
+</div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<script>
+$(function() {
+  $(document).tooltip();
+});
+</script>
+</body>
+</html>

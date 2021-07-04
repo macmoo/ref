@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>基本構文</title>
+</head>
+<body>
+<script>
+var data = [
+  ['緑茶', 'コーヒー'],
+  ['おにぎり', 'サンドイッチ'],
+  ['肉じゃが', 'からあげ'],
+  ['まんじゅう', 'ケーキ']
+]
+
+nest:
+for (var i = 0, ilen = data.length; i < ilen; i++) {
+  var tmp = data[i];
+  for (var j = 0, jlen = tmp.length; j < jlen; j++) {
+    if (tmp[j] === 'からあげ') { break nest; }
+    console.log(tmp[j]);
+  }
+  console.log('---------------------');
+}
+</script>
+</body>
+</html>

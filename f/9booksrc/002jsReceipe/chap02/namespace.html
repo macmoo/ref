@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>関数／オブジェクト指向</title>
+</head>
+<body>
+<script>
+var Wings = Wings || {};
+
+Wings.Person = function(name, birth) {
+  this.name = name;
+  this.birth = birth;
+};
+
+Wings.Person.prototype.toString = function() {
+  return this.name + ' _ _ ' + this.birth;
+}
+
+var p = new Wings.Person('山田リオ', new Date(1955, 11, 4));
+console.log(p.toString());
+</script>
+</body>
+</html>

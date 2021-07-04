@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>HTML5</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<canvas id="cv" width="400" height="250">
+  ご使用の環境は、Canvas機能に対応していません。
+</canvas>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  if (HTMLCanvasElement) {
+    var cv = $('#cv').get(0);
+    var c = cv.getContext('2d');
+    c.beginPath();
+    c.arc(200, 125, 100, 0, 2 * Math.PI, false);
+    c.stroke();
+  }
+});
+</script>
+</body>
+</html>

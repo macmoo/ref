@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<div id="outer">
+  <p>最上位</p>
+  <a id="ext" href="http://www.wings.msn.to/">サポートサイトへGo</a>
+</div>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('#ext').click(function(e) {
+    window.alert('リスナー1が発生しました。');
+    //e.stopPropagation();
+    //e.preventDefault();
+    //e.stopImmediatePropagation();
+  });
+
+  $('#ext').click(function(e) {
+    window.alert('リスナー2が発生しました。');
+  });
+
+  $('#outer').click(function(e) {
+    window.alert('リスナー3が発生しました。');
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>関数／オブジェクト指向</title>
+</head>
+<body>
+<script>
+function max(v_args) {
+  var result = Number.NEGATIVE_INFINITY;
+  for (var i = 0, len = arguments.length; i < len; i++) {
+    if (result < arguments[i]) {
+      result = arguments[i];
+    }
+  }
+  return result;
+}
+
+console.log(max(15, 78, 42, 63, 12));
+console.log(max(4, 12, 32, -5, 8));
+console.log(max(0, 18, 22, 111, 99));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>jQuery</title>
+<link rel="stylesheet" href="site.css" />
+</head>
+<body>
+<form id="fm">
+  名前：<br />
+  <input type="text" name="name" size="50" />
+</form>
+<hr />
+focus：<span id="focus">－</span><br />
+blur：<span id="blur">－</span><br />
+focusin：<span id="focusin">－</span><br />
+focusout：<span id="focusout">－</span><br />
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+$(function() {
+  $('#fm')
+    .focusin(function(e) {
+      $('#focusin').text('実行しました');
+    })
+    .focusout(function(e) {
+      $('#focusout').text('実行しました');
+    });
+
+  /* focus／blurの場合
+  $('#fm')
+    .focus(function(e) {
+      $('#focus').text('実行しました');
+    })
+    .blur(function(e) {
+      $('#blur').text('実行しました');
+    });
+  */
+});
+</script>
+</body>
+</html>
