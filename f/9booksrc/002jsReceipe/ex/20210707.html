@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <!-- HTML Tag -->
+    
+    <!-- Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // --------------------------------------------------------------
+        // 암묵적으로 false로 간주되는것
+        // 공백("")
+        // 수치0, NaN
+        // null, undefined
+        // --------------------------------------------------------------
+        var name = '';
+        name = name || 'kaku'; // name이 falsy한 값일 경우, 디폴트 값을 설정
+        console.log(name); // => kaku
+        // --------------------------------------------------------------
+        var name2 = undefined;
+        name2 = (name2 === undefined ? 'kaku2' : name2); // name이 undefined일 경우에만 디폴트치 설정
+        console.log(name2); // => kaku2
+        // --------------------------------------------------------------
+
+    </script>
+</body>
+</html>
