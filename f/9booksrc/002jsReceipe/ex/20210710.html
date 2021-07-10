@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <!-- HTML Tag -->
+    
+    <!-- Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // --------------------------------------------------------------
+        // 인수값이 설정되지 않았을때, JS는 디폴트값을 설정하지 않는다.
+        // 아래로 대응
+        // --------------------------------------------------------------
+        function getSquareArea1(o_width, o_height){
+            if ( o_width  === undefined ) { o_width  = 1; }
+            if ( o_height === undefined ) { o_height = 1; }
+            return o_width * o_height;
+        }
+        console.log(getSquareArea1(10, 5));  // 50
+        console.log(getSquareArea1(10));     // 10
+        console.log(getSquareArea1());       // 1
+        // --------------------------------------------------------------
+        // 인수 필수 체크
+        // throw명령은 임의의 형을 건넬수 있다.
+        //      최소한 밑의 코드처럼 name(예외종류), message(메시지)를 건네는 것을 추천
+        // --------------------------------------------------------------
+        function getSquareArea2(width, height){
+            if(width  === undefined) throw { name : 'ArgsMissing', message : '폭이 지정되지 않음'};
+            if(height === undefined) throw { name : 'ArgsMissing', message : '높이가 지정되지 않음'};
+            return width * height;
+        }
+        // 예외 발생하면 에러메시지 출력
+        try{
+            console.log(getSquareArea2());
+        }catch(e){
+            console.log(e.message); // 폭이 지정되지 않음
+        }
+        try{
+            console.log(getSquareArea2(10));
+        }catch(e){
+            console.log(e.message); // 높이가 지정되지 않음
+        }
+        // --------------------------------------------------------------
+        // 인수에 이름을 설정해서 건넴
+        // 장점
+        // 1. 인수의 의미가 알기 쉽다. (구별쉽다)
+        // 2. 인수의 순서를 자유롭게 변경가능
+        // 3. 모든 인수가 임의로 된다.
+        // --------------------------------------------------------------
+        // 값만 건네는 경우
+        // 인수의 생략이 안됨
+        // showPanel('content.html', 200, 300, true, false);
+        // // 이름있는 인수의 경우
+        // showPanel({
+        //     path : 'content.html',
+        //     heihgt : 200,
+        //     width : 300,
+        //     draggable : true,
+        //     modeless : false
+        // });
+        // // 생략가능
+        // // 순서변경가능
+        // showPanel({
+        //     modeless : false,
+        //     path : 'content.html'
+        // });
+        
+        // --------------------------------------------------------------
+        // 가변인수의 함수
+        // JS에서는 모든 인수정보를 arguments오브젝트에서 관리
+        // arguments은 배열과 같은 오브젝트로(배열은 아님) 모든 인수정보를 보관
+        // v_args는 편의상의 이름으로 실제 사용되지 않는다.
+        // v_args에 인수값이 설정되지 않는다.
+        // --------------------------------------------------------------
+        function max(v_args){
+            console.log(v_args); // 15, 4, 0 이 출력
+            var result = Number.NEGATIVE_INFINITY; // 초기치로 음의 무한대를 설정
+            for(var i = 0 , len = arguments.length; i < len; i++){
+                if(result < arguments[i])
+                    result  = arguments[i];
+            }
+            return result;
+        }
+        console.log(max(15, 78, 42, 63, 12));  // 78
+        console.log(max(4, 12, 32, -5, 8));    // 32
+        console.log(max(0, 18, 22, 111, 99));  // 111
+        // --------------------------------------------------------------
+        // 고정인수도 가변인수가 혼재하는 샘플
+        // --------------------------------------------------------------
+        function sprintf(format){
+            for(var i = 0, len = arguments.length; i < len; i++){
+                var pattern = new RegExp('\\{'+ (i-1) + '\\}', 'g');
+                format = format.replace(pattern, arguments[i]);
+            }
+            return format;
+        }
+        // 햄스터를 키우고 있습니다. 이름은 뽀삐입니다.
+        console.log(sprintf('{0}를 키우고 있습니다. 이름은 {1}입니다.','햄스터','뽀삐'));
+        // --------------------------------------------------------------
+        // 함수를 인수로 지정
+        // 호출된 함수안에서 호출되어지는 함수를 콜백함수라고 한다.
+        // --------------------------------------------------------------
+        function benchmark(proc){
+            var start = new Date();
+            proc();
+            var end = new Date();
+            return end.getTime() - start.getTime();
+        }
+        console.log('1 : ' + benchmark(function(){
+            var x = 15;
+            for(var i = 0; i < 100000000; i++){
+                x *= i;
+            }
+        })); // 1 : 119
+        // 위의 다른 버전
+        function p(){
+            var x = 15;
+            for(var i = 0; i < 100000000; i++){
+                x *= i;
+            }
+        }
+        console.log('2 : ' + benchmark(p)); // 2 : 119
+        // --------------------------------------------------------------
+    </script>
+</body>
+</html>
