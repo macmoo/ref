@@ -150,7 +150,7 @@
             var parent = window;
             // 이후의 이름공간을 순서대로 계층으로 등록
             for(var i = 0, len = elems.length; i < len; i++){
-                console.log(i + ' : ' + elems[i]); // 1 : Myapp 2 : Recipe 3 : Samples
+                console.log(i + ' : ' + elems[i]); // 0 : Myapp 1 : Recipe 2 : Samples
                 parent[elems[i]] = parent[elems[i]] || {};
                 parent = parent[elems[i]];
             }
