@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <!-- HTML Tag -->
+    
+    <!-- Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // --------------------------------------------------------------
+        // 클래스에 메소드 추가
+        // 프로토타입오브젝트(prototype프로퍼티)의 멤버로 추가
+        // 인스턴스가 생성될때마다 생성자 내의 멤버가 복사되기 때문에 
+        // 효율이 좋지않으므로 생성자내가 아니라 프로토타입으로 메소드를 정의
+        // 프로토타입 오브젝트를  각 인스턴스가 암묵적으로 참조한다.
+        // JS의 모든 오브젝트는 prototype프로퍼티를 갖고 있다.
+        // --------------------------------------------------------------
+        var Animal = function(name){
+            this.name = name;
+        };
+        Animal.prototype.toString = function(){
+            return 'Animal : ' + this.name;
+        };
+        var ani = new Animal('뽀삐');
+        console.log(ani.name);        // 뽀삐
+        console.log(ani.toString());  // Animal : 뽀삐
+        // --------------------------------------------------------------
+        // 인스턴스에 멤버추가
+        // --------------------------------------------------------------
+        var a1 = new Animal('a1');
+        var a2 = new Animal('a2');
+        a1.hoge = function(){return 'hoge method'}; // 직접 멤버를 추가
+
+        console.log(a1.hoge()); // hoge method
+        // console.log(a2.hoge()); // 에러. 멤버가 a1에만 추가됨.
+        // --------------------------------------------------------------
+        // 클래스에 정적멤버 추가
+        // 정적멤버 : 인스턴스를 끼지않고 호출할수 있는 멤버
+        // -> 생성자의 멤버로 등록
+        // -> 생성자.프로퍼티명 = 값
+        // -> 생성자.메소드명 = function() {};
+        // 정적멤버는 인스턴스를 갖지않기 때문에 this에 접근이 불가능하다
+        // JS는 상수를 따로 갖지 않음
+        // --------------------------------------------------------------
+        var Util = function(){};
+        Util.VERSION = '1.0.0';
+        Util.getBmi = function(weight, height){
+            return weight / (height * height);
+        };
+        console.log(Util.VERSION);
+        console.log(Util.getBmi(93, 1.74)); // 30
+        console.log(Util.getBmi(73, 1.74)); // 24
+        // --------------------------------------------------------------
+        // 클래스 계승
+        // 모든 클래스는 Object클래스를 암묵적으로 계승
+        // --------------------------------------------------------------
+        // 부모클래스
+        var Person = function(){};
+        Person.prototype = {
+            eat : function() { console.log('꺼억'); }
+        }
+        // 자식클래스
+        var BusinessPerson = function(){};
+        // 계승
+        BusinessPerson.prototype = new Person();
+
+        BusinessPerson.prototype.work = function() { console.log('일한다.'); }
+
+        var bp = new BusinessPerson();
+        bp.eat();  // 꺼억
+        bp.work(); // 일한다.
+        // --------------------------------------------------------------
+        // private멤버(클래스외부에서 접근불가)
+        // JS는 따로 갖고 있지 않다.
+        // 1. 생성자 내에 var 명령으로 정의
+        // 2. 접근가능 메소드 정의
+        //    위와 같이 "로컬변수를 참조하는 함수내 함수" => "클로져"
+        // --------------------------------------------------------------
+        var Person2 = function(name, birth){
+            // private멤버
+            var _name = name;
+            var _birth = birth;
+            // private멤버에 접근가능한 메소드
+            this.getName = function(){
+                return _name;
+            };
+            this.getBirth = function(){
+                return _birth;
+            };
+        }
+
+        Person2.prototype.toString = function(){
+            return 'Person2 : ' + this.getName() + ' ' + this.getBirth();
+        };
+
+        var p2 = new Person2('kaku', new Date(1982,10,15));
+        console.log(p2.getName());  // kaku
+        console.log(p2.toString()); // Person2 : kaku Mon Nov 15 1982 00:00:00 GMT+0900 (대한민국 표준시)
+        console.log(p2._name);      // undefined
+        // --------------------------------------------------------------
+        // 오브젝트의 형
+        // JS에는 "클래스"형의 개념이 없다.
+        // --------------------------------------------------------------
+        var Person3 = function(){};
+        var BusinessPerson3 = function(){};
+        BusinessPerson3.prototype = new Person3();
+        var bp = new BusinessPerson3();
+        // 생성원의 생성자의 판정
+        // 그 오브젝트를 생성한 생성자함수를 판정
+        // => 오브젝트변수 instanceof 생성자
+        console.log(bp instanceof BusinessPerson3); // true
+        console.log(bp instanceof Person3);         // true
+        console.log(bp instanceof Object);          // true
+        // 참조하고 있는 프로토타입을 확인
+        console.log(BusinessPerson3.prototype.isPrototypeOf(bp)); // true
+        console.log(Person3.prototype.isPrototypeOf(bp));         // true
+        console.log(Object.prototype.isPrototypeOf(bp));          // true
+        // 멤버의 유무를 판정
+        // 어떤 시점에 어떤 멤버가 존재하는 가를 체크 => in 연산자
+        var obj = { method1 : function(){}, method2 : function(){} };
+        console.log('method1' in obj); // true
+        console.log('method3' in obj); // false
+        // --------------------------------------------------------------
+        // 크래스명의 충돌을 회피
+        // 네임공간(패키지)
+        // JS에는 없는 개념
+        // --------------------------------------------------------------
+        // 빈오브젝트 = 이름공간
+        // var Wings = {};도 가능하지만 밑의 코드는 
+        // Wings가 존재하지 않을때만 새롭게 이름공간을 작성
+        var Wings = Wings || {};
+        Wings.Person = function(name, birth){
+            // 이름공간에 대해 정적멤버를 추가
+            this.name = name;
+            this.birth = birth;
+        };
+        Wings.Person.prototype.toString = function(){
+            return this.name + '_' + this.birth;
+        };
+        var p = new Wings.Person('야마다', new Date(1982,11,30));
+        console.log(p.toString()); // 야마다_Thu Dec 30 1982 00:00:00 GMT+0900 (대한민국 표준시)
+        // --------------------------------------------------------------
+        // 복잡한 구조의 이름공간
+        // --------------------------------------------------------------
+        // 이름공간을 작성하기 위한 유틸리티함수
+        var namespace = function(ns){
+            // 이름공간을 '.'로 분리
+            var elems  = ns.split('.');
+            var parent = window;
+            // 이후의 이름공간을 순서대로 계층으로 등록
+            for(var i = 0, len = elems.length; i < len; i++){
+                console.log(i + ' : ' + elems[i]); // 1 : Myapp 2 : Recipe 3 : Samples
+                parent[elems[i]] = parent[elems[i]] || {};
+                parent = parent[elems[i]];
+            }
+            return parent;
+        };
+        // Myapp.Recipe.Samples를 이름공간으로 등록
+        var ns = namespace('Myapp.Recipe.Samples');
+        // 이름공간밑에 클래스 정의
+        ns.MyClass = function(){};
+        var c = new ns.MyClass();
+        console.log(c instanceof Myapp.Recipe.Samples.MyClass); // true
+        // --------------------------------------------------------------
+    </script>
+</body>
+</html>
