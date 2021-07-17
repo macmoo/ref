@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <!-- HTML Tag -->
+
+    <!-- Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // --------------------------------------------------------------
+        // 정규표현
+        // --------------------------------------------------------------
+        // 1. 기본
+        //   ・xyz    : [xyz]라는 문자열
+        //   ・[xyz]  : x,y,z 중 1문자
+        //   ・[^xyz] : x,y,z 이외의 1문자
+        //   ・[a-z]  : a ~ z 사이의 1문자
+        //   ・x|y|z  : x,y,z 중 어느것
+        // 2. 양지정
+        //   ・x*     : 0문자 이상의 x   ('to*'는 t, to, too 에 매칭됨)
+        //   ・x?     : 0 또는 1문자의 x ('to?'는 t, to 에 매칭됨. too에는 안됨)
+        //   ・x+     : 1문자 이상의 x   ('to+'는 to, too에 매칭됨. t에는 안됨)
+        //   ・x{n}   : x와 n번 일치     ([0-9]{4}   => 숫자4글자)
+        //   ・x{n,}  : x와 n번이상 일치 ([0-9]{4,}  => 숫자4글자이상)
+        //   ・x{m,n} : x와 m ~ n번 일치 ([0-9]{2,4} => 숫자2~4글자)
+        // 3. 위치지정
+        //   ・^ : 선두와 일치
+        //   ・$ : 어미와 일치
+        // 4. 문자셋
+        //   ・.  : 임의의 한문자와 일치
+        //   ・\w : 알파벳(대/소), 숫자, 언더스코어와 일치( => [A-Za-z0-9_]와 동의어)
+        //   ・\W : 문자이외와 일치 ( => [^\w])
+        //   ・\d : 숫자와 일치     ( => [0-9])
+        //   ・\D : 숫자이외와 일치 ( => [^--9]) 
+        //   ・\n : 개행에 일치
+        //   ・\r : 캐리지리턴에 일치
+        //   ・\f : 개페이지에 일치
+        //   ・\t : 탭에 일치
+        //   ・\v : 수직탭에 일치
+        //   ・\s : 공백문자에 일치 ( => [\n\r\t\v\f])
+        //   ・\S : 공백이외의 문자에 일치
+        //   ・\～: ～에 일치
+        // --------------------------------------------------------------
+        // RegExp생성
+        // 1. 생성자
+        //    var 변수 = new RegExp(정규표현, 옵션);
+        // 2. 리터럴
+        //    var 변수 = /정규표현/옵션
+        // * 옵션
+        //   g : 문자열 전체에 매치하는가 (있으면 서브매치도 함)
+        //   i : 대소문자 구별을 무시할 것인가 (있으면 무시)
+        //   m : 개행코드를 선두/행말로 인식할것인가 (multi line mode)
+        //       멀티라인모드에서는 [^]선두, [$]문말이 행두, 행말에 매치되도록 한다.
+        // --------------------------------------------------------------
+        var ex1 = new RegExp('http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?', 'gi');
+        var ex2 = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/gi;
+        // RegExp 생성자는 [\]을 [\\]로 이스케이프
+        // 정규표현리터럴에서는 [/]를 [\/]로 이스케이프
+        // --------------------------------------------------------------
+        // 정규표현 매칭 테스트
+        // => 정규표현.test(문자열)
+        // => 문자열.search(정규표현) : 찾은 문자의 위치를 반환
+        // --------------------------------------------------------------
+        var ex   = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/gi;
+        var str1 = '샘플파일은 http://wwww.wings.msn.to/에서 입수가능';
+        var str2 = '질문은 게시판을 참조';
+        console.log(ex.test(str1)); // true
+        console.log(ex.test(str2)); // false
+        console.log(str1.search(ex)); // 6
+        console.log(str2.search(ex)); // -1
+        // --------------------------------------------------------------
+        // 문자열 검색
+        // => 문자열.match(정규표현)
+        //    매치된 문자열을 반환
+        // --------------------------------------------------------------
+        var ex3     = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/gi;
+        var str3    = '샘플파일은 http://wwww.wings.msn.to/에서 입수가능';
+        str3       += '질문은 HTTP://www.wings.msn.to/index.php/-/B-14/에 등록해주세요.';
+        var result3 = str3.match(ex3);
+        for(var i = 0, len = result3.length; i < len; i++){
+            console.log(result3[i]); 
+            // http://wwww.wings.msn.to/
+            // HTTP://www.wings.msn.to/index.php/-/B-14/
+        }
+        // --------------------------------------------------------------
+        // 옵션 g 삭제 : 글로벌검색 무효화
+        var ex4     = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/i; // <= g 삭제
+        var str4    = '샘플파일은 http://wwww.wings.msn.to/에서 입수가능';
+        str4       += '질문은 HTTP://www.wings.msn.to/index.php/-/B-14/에 등록해주세요.';
+        var result4 = str4.match(ex4);
+        for(var i = 0, len = result4.length; i < len; i++){
+            console.log(result4[i]);
+            // http://wwww.wings.msn.to/
+            // undefined
+            // msn.
+            // /
+        }
+        // --------------------------------------------------------------
+        // 옵션 i 삭제
+        var ex5     = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/g;
+        var str5    = '샘플파일은 http://wwww.wings.msn.to/에서 입수가능';
+        str5       += '질문은 HTTP://www.wings.msn.to/index.php/-/B-14/에 등록해주세요.';
+        var result5 = str5.match(ex5);
+        for(var i = 0, len = result5.length; i < len; i++){
+            console.log(result5[i]);
+            // http://wwww.wings.msn.to/
+        }
+        // --------------------------------------------------------------
+        // 복수행의 문자열을 검색
+        // --------------------------------------------------------------
+        var ex6     = /^[A-Za-z]{1,}/gm;
+        var str6    = 'Helloは、こんにちわ。\nByeは、さようなら。';
+        var result6 = str6.match(ex6);
+        for(var i = 0, len = result6.length; i < len; i++){
+            console.log(result6[i]);
+            // Hello     //  '/g'의 경우에는 이거만 나옴
+            // Bye
+        }
+        // --------------------------------------------------------------
+        // 검색결과의 상세를 취득
+        // exec메소드는 match메소드와 유사
+        // ※차이
+        // 1. 항상 하나의 매칭결과를 반환
+        // 2. 검색위치를 기억
+        //    RegExp오브젝트는 마지막 매치위치를 기억해서, 다음검색은 그 위치에서부터 검색
+        //    exec메소드가 null(검색결과가 없음)을 반환할때까지 루프돌며 모든 검색 결과를 반환
+        // --------------------------------------------------------------
+        var ex7  = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/gi;
+        var str7 = '샘플파일은 http://wwww.wings.msn.to/에서 입수가능';
+        str7    += '질문은 HTTP://www.wings.msn.to/index.php/-/B-14/에 등록해주세요.';
+        while((result7 = ex.exec(str7)) != null){
+            console.log(result7[0]);
+            // http://wwww.wings.msn.to/
+            // HTTP://www.wings.msn.to/index.php/-/B-14/
+        }
+        // --------------------------------------------------------------
+        var ex8  = /http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/gi;
+        var str8 = '샘플파일은 http://wwww.wings.msn.to/에서 입수가능';
+        str8    += '질문은 HTTP://www.wings.msn.to/index.php/-/B-14/에 등록해주세요.';
+        while((result8 = ex.exec(str8)) != null){
+            console.log(ex.lastIndex + ' : ' + result8[0]); // 검색시작위치 : 결과문자열
+            console.log('$1 : ' + RegExp.$1); // 서브매치 문자열(1번째)
+            console.log('$2 : ' + RegExp.$2); // 서브매치 문자열(2번째)
+            console.log('$3 : ' + RegExp.$3); // 서브매치 문자열(3번째)
+            console.log('leftContext  : ' + RegExp.leftContext);  // 매치문자열의 전
+            console.log('rightContext : ' + RegExp.rightContext); // 매치문자열의 후
+            console.log('lastMatch    : ' + RegExp.lastMatch);    // 마지막으로 매치된 문자열
+            console.log('lastParen    : ' + RegExp.lastParen);    // 마지막으로 부분매치된 문자열
+            console.log('\n');
+        }
+        // 31 : http://wwww.wings.msn.to/
+        // $1 : 
+        // $2 : msn.
+        // $3 : /
+        // leftContext  : 샘플파일은
+        // rightContext : 에서 입수가능질문은 HTTP://www.wings.msn.to/index.php/-/B-14/에 등록해주세요.
+        // lastMatch    : http://wwww.wings.msn.to/
+        // lastParen    : /
+        // 
+        // 83 : HTTP://www.wings.msn.to/index.php/-/B-14/
+        // $1 : 
+        // $2 : msn.
+        // $3 : /index.php/-/B-14/
+        // leftContext  : 샘플파일은 http://wwww.wings.msn.to/에서 입수가능질문은
+        // rightContext : 에 등록해주세요.
+        // lastMatch    : HTTP://www.wings.msn.to/index.php/-/B-14/
+        // lastParen    : /index.php/-/B-14/
+        // --------------------------------------------------------------
+        // 문자열 치환
+        // 대상문자열.replace(정규표현, 치환후의 문자열)
+        // 치환후의 문자열에는 특수문자 $1 ~ $9 가 이용 가능.
+        // $1 ~ $9에는 사브매치문자열이 자동저장됨
+        // 정규표현패턴 전체를 ()로 묶어서, 매치문자열 전체를 $1에 저장
+        // --------------------------------------------------------------
+        var ex9  = /(http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?)/gi;
+        var str9 = '샘플파일은 http://wwww.wings.msn.to/에서 입수가능';
+        console.log(str9.match(ex9));
+        console.log('$1 : ' + RegExp.$1);
+        // $1 : http://wwww.wings.msn.to/
+        console.log(str9.replace(ex9, '<a href="$1">$1</a>'));
+        // 샘플파일은 <a href="http://wwww.wings.msn.to/">http://wwww.wings.msn.to/</a>에서 입수가능
+        // --------------------------------------------------------------
+        // 문자열 분할
+        // 대상문자열.split(정규표현)
+        // --------------------------------------------------------------
+        console.log('----------------');
+        var ex10  = /[\s\n\t]/gi; // 반각스페이스, 개행, 탭문자
+        console.log('Wings Project'.split(ex));
+        console.log('Wings\n집필커뮤티니'.split(ex));
+        console.log('Wings	Wings Project'.split(ex)); // TAB
+        // Array [ "Wings Project" ]
+        // Array [ "Wings\n집필커뮤티니" ]
+        // Array [ "Wings\tWings Project" ]
+        // --------------------------------------------------------------
+    </script>
+</body>
+
+</html>

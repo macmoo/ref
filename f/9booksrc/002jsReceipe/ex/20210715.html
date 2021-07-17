@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <!-- HTML Tag -->
+    
+    <!-- Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // --------------------------------------------------------------
+        // 문자열검색
+        // --------------------------------------------------------------
+        var str = 'もももすももも';
+        console.log(str.indexOf('もも'));      // 0
+        console.log(str.lastIndexOf('もも'));  // 5
+        // 두번째 인수는 검색시작위치
+        console.log(str.indexOf('もも',2));    // 4
+        console.log(str.indexOf('ももかん'));  // -1
+        // --------------------------------------------------------------
+    </script>
+</body>
+</html>
