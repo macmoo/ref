@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <!-- HTML Tag -->
+    <button id='start'>시작</button>
+    <button id='stop'>종료</button>
+    <br>
+    <button id='start2'>시작Interval</button>
+    <button id='stop2'>종료Interval</button>
+    <br>
+    시간 : <div id="result"></div>
+    <br>
+    <button id='btn'>클릭</button>
+    <button id='btn2'>클릭replace</button>
+    <br>
+    <button id='btnHist'>클릭history</button>
+
+    <!-- Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // --------------------------------------------------------------
+        // 배열의 내용을 특정조건에 필터링
+        // $.grep(배열, function(value, index){
+        //    요소의 판정
+        // }[, 반전])
+        // 결과배열에 그 요소를 남기고싶으면 true, 삭제하는 경우에는 false를 반환
+        // --------------------------------------------------------------
+        var animal = ['フレンチブルドック', 'ヨークシャーテリア', 'ダックスフント', 'ポメラニアン', 'コーギ'];
+        // 8자 미만의 문자열만을 남김
+        var short = $.grep(animal, function (value, index) {
+            return (value.length < 8);
+        }, false);
+        console.log(short);
+        // Array(3) [ "ダックスフント", "ポメラニアン", "コーギ" ]
+        var short2 = $.grep(animal, function (value, index) {
+            return (value.length < 8);
+        }, true);
+        console.log(short2);
+        // Array [ "フレンチブルドック", "ヨークシャーテリア" ]
+        // --------------------------------------------------------------
+        // ※배열을 조작하는 메소드
+        // --------------------------------------------------------------
+        // [js의 메소드]----------[jQuery메소드]---[개요]-----------------
+        // forEach(fn)            $.each           배열요소를 순서대로 처리
+        // map(fn)                $.map            배열요소를 순서대로 가공
+        // filter(fn)             $.grep           배열에서 조건에 맞는 요소만 추출
+        // every(fn)              $.each           모든 배열이 지정조건에 일치하는가
+        // some(fn)               $.each           일부 배열이 지정조건에 일치하는가
+        // indexOf(e [,start])    $inArray         지정요소 e의 위치를 검색(start는 검색시작위치)
+        // *fn:[요소값],[인덱스],[배열]을 받는 콜백함수
+        // --------------------------------------------------------------
+        // 배열의 요소 검색
+        // $.inArray(검색값, 배열)
+        // 반환 => hit:위치, no hit:-1, 복수hit:처음hit
+        // --------------------------------------------------------------
+        var animal = ['フレンチブルドック', 'ヨークシャーテリア', 'ダックスフント', 'ポメラニアン', 'コーギ'];
+        console.log($.inArray('ダックスフント', animal)); // 2
+        // --------------------------------------------------------------
+        // 시각 정보
+        // new Date(날짜 시각 값)
+        // --------------------------------------------------------------
+        var dat1 = new Date();
+        var dat2 = new Date('2021/06/25 11:15:35');
+        var dat3 = new Date('Thu Jun 05 2014 10:15:01');
+        var dat4 = new Date(2015, 5, 28, 11, 37, 58, 500);
+        var dat5 = new Date(13985819353621);
+        console.log(dat1);
+        console.log(dat2);
+        console.log(dat3);
+        console.log(dat4);
+        console.log(dat5);
+        // Date Wed Jul 21 2021 00:34:11 GMT+0900 (대한민국 표준시)
+        // Date Fri Jun 25 2021 11:15:35 GMT+0900 (대한민국 표준시)
+        // Date Thu Jun 05 2014 10:15:01 GMT+0900 (대한민국 표준시)
+        // Date Sun Jun 28 2015 11:37:58 GMT+0900 (대한민국 표준시)
+        // Date Tue Mar 12 2413 06:49:13 GMT+0900 (대한민국 표준시)
+        // --------------------------------------------------------------
+        // 시각정보 개별 설정
+        // --------------------------------------------------------------
+        var local = new Date();
+        local.setFullYear(2001);
+        local.setMonth(11);
+        local.setDate(25);
+        local.setHours(11);
+        local.setMinutes(22);
+        local.setSeconds(33);
+        local.setMinutes(444);
+
+        var local2 = new Date();
+        local2.setTime(1398899807555);
+
+        console.log(local);
+        console.log(local2);
+        // Date Tue Dec 25 2001 18:24:33 GMT+0900 (대한민국 표준시)
+        // Date Thu May 01 2014 08:16:47 GMT+0900 (대한민국 표준시)
+        // --------------------------------------------------------------
+        // 시각 정보 취득
+        // --------------------------------------------------------------
+        var local3 = new Date(2014, 4, 1, 8, 16, 47, 555);
+        console.log(local3.getFullYear());
+        console.log(local3.getUTCFullYear());
+        console.log(local3.getMonth()); // 0 ~ 11의 값을 반환
+        console.log(local3.getDate());
+        console.log(local3.getDay());
+        console.log(local3.getHours());
+        console.log(local3.getMinutes());
+        console.log(local3.getSeconds());
+        console.log(local3.getMilliseconds());
+        // 2014
+        // 2014
+        // 4
+        // 1
+        // 4
+        // 8
+        // 16
+        // 47
+        // 555
+        // --------------------------------------------------------------
+        // 타임 스탬프취득
+        // parse(), UTC()
+        // --------------------------------------------------------------
+        console.log(Date.parse('2014/05/01')); // 1398870000000
+        console.log(Date.UTC(2014, 6, 2, 11, 22, 33, 565)); // 1404300153565
+
+        console.log(Date.now()); // 1626796579061 <- ie 9. 이후 동작안함
+        console.log($.now());    // 1626796579061 <-- 우선사용
+        // --------------------------------------------------------------
+        // 시각정보 문자열 변환
+        // --------------------------------------------------------------
+        var local4 = new Date(2021, 12, 11, 22, 33, 44, 555);
+        console.log(local4.toLocaleString());
+        console.log(local4.toLocaleDateString());
+        console.log(local4.toLocaleTimeString());
+        console.log(local4.toUTCString());
+        console.log(local4.toDateString());
+        console.log(local4.toTimeString());
+        // 2022. 1. 11. 오후 10:33:44
+        // 2022. 1. 11.
+        // 오후 10:33:44
+        // Tue, 11 Jan 2022 13:33:44 GMT
+        // Tue Jan 11 2022
+        // 22:33:44 GMT+0900 (대한민국 표준시)
+        // --------------------------------------------------------------
+        // 시각 가감산
+        // --------------------------------------------------------------
+        var local5 = new Date(2021, 11, 12, 22, 33, 44, 555);
+        console.log(local5.toLocaleString());
+
+        local5.setMonth(local5.getMonth() + 3);
+        console.log(local5.toLocaleString());
+
+        local5.setDate(local5.getDate() - 20);
+        console.log(local5.toLocaleString());
+        // 2021. 12. 12. 오후 10:33:44
+        // 2022. 3. 12. 오후 10:33:44
+        // 2022. 2. 20. 오후 10:33:44
+        // --------------------------------------------------------------
+        var local6 = new Date(2021, 11, 22);
+        var local7 = new Date(2021, 11, 25);
+        // 타임스탬프끼리 연산
+        var diff = (local7.getTime() - local6.getTime()) / (1000 * 60 * 60 * 24);
+        console.log(diff + '일 차이이다.'); // 3일 차이이다.
+        var diff2 = (local7.getDate() - local6.getDate());
+        console.log(diff2 + '일 차이이다.'); // 3일 차이이다.
+        // --------------------------------------------------------------
+        // 일정시간후 처리를 실행
+        // setTimeout(임의의 처리, 시간(미리초))
+        // => 임의의 처리는 문자열로 지정가능하나 해석해야하기때문에 효율이 나쁘고 취약.
+        // => 반환:타이머 식별ID
+        // clearTimeout(타이머ID) // 타이머를 정지시킴
+        // --------------------------------------------------------------
+        console.log('------------------------');
+        $(function () {
+            var timer;
+            // 개시버튼을 누르면 10초후 다이얼로그 표시
+            $('#start').click(function () {
+                timer = setTimeout(function () {
+                    window.alert(new Date());
+                }, 1000);
+            });
+
+            // 종료버튼을 누르면 타이머 정지
+            $('#stop').click(function () {
+                clearTimeout(timer);
+            });
+        });
+        // --------------------------------------------------------------
+        // 일정시간뒤 반복 실행
+        // setInterval(임의의 처리, 시간)
+        // clearInterval(타이머ID)
+        // --------------------------------------------------------------
+        $(function () {
+            var timer;
+            // 1초 단위로 시간표시를 갱신
+            $('#start2').click(function () {
+                timer = setInterval(function () {
+                    $('#result').html(new Date());
+                }, 1000);
+            });
+            // 정지
+            $('#stop2').click(function () {
+                clearInterval(timer);
+            });
+        });
+        // --------------------------------------------------------------
+        // 페이지 이동
+        // location.href
+        // location.replace() : 전페이지로 돌아갈수 없다.
+        // --------------------------------------------------------------
+        $(function(){
+            // google에 이동
+            $('#btn').click(function(){
+                location.href = 'http://google.co.kr';
+            });
+        });
+        // --------------------------------------------------------------
+        $(function(){
+            // google에 이동
+            $('#btn2').click(function(){
+                location.replace('http://daum.co.kr');
+            });
+        });
+        // --------------------------------------------------------------
+        // 이력에 현재 페이지의 상태를 저장
+        // 예:Ajax통신등으로 페이지이동없이 내용을 변경한뒤,
+        //    후에 그 시점으로 상태로 복원하는 경우
+        // history.pushState(데이터, 식별타이틀)
+        // 데이터 : 복원할 시점의 필요한 정보
+        // --------------------------------------------------------------
+        $(function(){
+            var state = 1;
+            // 버튼을 클릭하면 이력을 추가
+            $('#btnHist').click(function(){
+                history.pushState('state' + state, 'State' + state); // 복수회 가능
+            });
+            // 브라우저의 [돌아가기]버튼으로 그 시점의 상태를 로그표시
+            $(window).on('popstate', function(e){
+                console.log(e.originalEvent.state);  // state1
+            });
+        });
+        // --------------------------------------------------------------
+        // 문자열을 URI이스케이프
+        // encodeURI          <-> decodeURI
+        // encodeURIComponent <-> decodeURIComponent
+        // encodeURI은 [+][/][;][:][,][#][$][@][?][=]을 이스케이트 대상으로 한다.
+        // encodeURIComponent은 그대로 한다.
+        // escape메소드는 금지(하위호환성문제)
+        // --------------------------------------------------------------
+        var data = '+/,:;#$@?=%"&|';
+        // +/,:;#$@?=%25%22&%7C
+        console.log(encodeURI(data)); 
+        // %2B%2F%2C%3A%3B%23%24%40%3F%3D%25%22%26%7C
+        console.log(encodeURIComponent(data));
+        // --------------------------------------------------------------
+        // 오브젝트 JSON 상호변환
+        // $.parseJSON
+        // --------------------------------------------------------------
+        var str = '{ "title" : "Rails프로그래밍", "price" : "3500"}';
+        var jobj = $.parseJSON(str);
+        console.log(jobj.title);
+        // --------------------------------------------------------------
+    </script>
+</body>
+
+</html>
