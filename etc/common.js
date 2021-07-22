@@ -12,6 +12,7 @@ for (i = 0; i < coll.length; i++) {
     });
 }
 
-$('.content').click(function(){
+$('.content').click(function(this){
     alert('cliked');
+    this.style.maxHeight = null;
 });
