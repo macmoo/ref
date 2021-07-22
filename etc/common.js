@@ -11,3 +11,7 @@ for (i = 0; i < coll.length; i++) {
         }
     });
 }
+
+$('.content').click(function(){
+    alert('cliked');
+});
