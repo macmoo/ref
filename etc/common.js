@@ -11,7 +11,3 @@ for (i = 0; i < coll.length; i++) {
         }
     });
 }
-
-$('.content').click(function(this){
-    alert(this);
-});
