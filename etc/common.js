@@ -12,7 +12,8 @@ for (i = 0; i < coll.length; i++) {
     });
 }
 
-$('.content').click(function(this){
+$('.content').click(function(){
     alert('cliked');
-    this.style.maxHeight = null;
+    var content = this.nextElementSibling;
+    content.style.maxHeight = null;
 });
