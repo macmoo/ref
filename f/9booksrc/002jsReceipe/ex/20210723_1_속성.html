@@ -31,6 +31,44 @@
         <li id="ez"     ><a href="http://eczine.jp/" target="_blank" rel="external">ECZine</a></li>
     </ul>
     <!-- ############################################################# -->
+    <img id="pic1" src="..\chap04\images\webdeli_logo.gif">
+    <!-- ############################################################# -->
+    <h2>俳句コンテスト応募フォーム</h2>
+    <form>
+        <label for="nam">氏名：</label>
+        <input type="text" id="nam" name="nam" size="30" /><br />
+        <label for="season">四季：</label>
+        <select id="season" name="season">
+            <option value="spring" >春</option>
+            <option value="summer">夏</option>
+            <option value="autumn">秋</option>
+            <option value="winter" >冬</option>
+        </select><br />
+        <label for="haiku">俳句：</label>
+        <input type="text" id="haiku" name="haiku" size="30" /><br />
+        <label for="memo">解説：</label>
+        <textarea id="memo" name="memo" cols="40" rows="5"></textarea><br />
+        <input type="submit" id="send" />
+    </form>
+    <!-- ############################################################# -->
+    <p id="cz2"></p>
+    <p id="mz2"></p>
+    <!-- ############################################################# -->
+    <p id="cz3">[3] Code Ziner <img src="..\chap04\images\codezine.gif"/></p>
+    <p id="mz3">[3] Money Ziner<img src="..\chap04\images\moneyzine.gif"/></p>
+    <!-- ############################################################# -->
+    <label for="name">名前：</label>
+    <input type="text" id="name" name="name" value="山田リオ" />
+    <br />
+    <label for="blood">血液型：</label>
+    <select id="blood" name="blood" multiple>
+        <option id="typeA" value="A">A型</option>
+        <option id="typeB" value="B">B型</option>
+        <option id="typeO" value="O" selected>O型</option>
+        <option id="typeAB" value="AB">AB型</option>
+    </select><br />
+    <label for="marriage">既婚？：</label>
+    <input type="checkbox" id="marriage" name="marriage" value="1" checked />
     <!-- ############################################################# -->
     <!-- ############################################################# -->
     <!-- Script -->
@@ -38,7 +76,7 @@
     <script>
         // --------------------------------------------------------------
         // 요소의 높이, 너비를 취득/설정
-        // height, width메소드
+        // height(), width()
         // 인수〇:값설정, 인수×:값취득
         // *etc
         //  innerHeight(), innerWidth()
@@ -51,7 +89,7 @@
         });
         // --------------------------------------------------------------
         // 스크롤위치
-        // scrollTop, scrollLeft
+        // scrollTop(), scrollLeft()
         // --------------------------------------------------------------
         $(function(){
             var _p = $(window);
@@ -60,15 +98,66 @@
         });
         // --------------------------------------------------------------
         // 요소의 속성을 취득/설정
+        // attr()
+        // 인수로 해쉬값 가능
         // --------------------------------------------------------------
         $(function(){
             $('a[rel="external"]').attr('title', '외부사이트에 이동한다.');
         });
         // --------------------------------------------------------------
+        $(function(){
+            $('#pic1').attr({
+                alt:'로고화상',
+                title:'WebDeli - Spicy Tools, Delicious Sites'
+            });
+        });
         // --------------------------------------------------------------
+        // 폼 요소의 값 취득/설정
+        // val()
         // --------------------------------------------------------------
+        $(function(){
+            $('input[name="nam"]').val('kaku');
+            $('select').val('autumn');
+            $('input[name="haiku"]').val('朝顔に、つるべとられて もらい水');
+            $('textarea') .val('朝起きて、井戸に水を汲みに行くと、・・');
+            $('input[type="submit"]').val('送信');
+            console.log($('input[name="nam"]').val());
+        });
         // --------------------------------------------------------------
+        // 요소내의 텍스트를 취득/설정
+        // text(), html()
+        // 두 개의 차이점은 태그문자열을 인식여부
+        // text()는 지정된 태그문자열을 문자열 그대로 표시
+        // html()는 지정된 태그를 HTML태그로 인식
         // --------------------------------------------------------------
+        $(function(){
+            $('#cz2').html('CodeZine <br /><img src="..\chap04\images\codezine.gif"  />');
+            $('#mz2').text('MoneyZine<br /><img src="..\chap04\images\moneyzine.gif" />');
+        });
+        // --------------------------------------------------------------
+        $(function(){
+            console.log($('#cz3').html());
+            console.log($('#mz3').text());
+        });
+        // --------------------------------------------------------------
+        // 요소의 프로퍼티값을 취득/설정
+        // prop()
+        // : attr()와는 
+        // --------------------------------------------------------------
+        $(function(){
+            console.log($('#name').prop('diabled')); // undefined
+            console.log($('#name').attr('diabled')); // undefined
+
+            console.log($('#blood').prop('multiple')); // true
+            console.log($('#blood').attr('multiple')); // multiple
+            
+            console.log($('#type0').prop('selected')); // undefined
+            console.log($('#type0').attr('selected')); // undefined
+
+            console.log($('#marriage').prop('checked'));  // true
+            console.log($('#marriage').attr('checked'));  // checked
+            console.log($('#marriage').attr('noneType')); // undefined
+        });
         // --------------------------------------------------------------
     </script>
 </body>

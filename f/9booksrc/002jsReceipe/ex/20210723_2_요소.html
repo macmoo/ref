@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <!-- HTML Tag -->
+    <!-- ########################################## -->
+    <div id="trav">波平
+        <div>マスオ</div>
+        <div>サザエ</div>
+        <div id="myself">カツオ
+            <div>カツオJr.
+                <div>タマ</div>
+            </div>
+        </div>
+        <div>ワカメ</div>
+    </div>
+    <br>
+    <!-- ########################################## -->
+    <div id="trav">波平
+        <div class="fav">マスオ</div>
+        <div>サザエ</div>
+        <div id="myself2">カツオ
+            <div>カツオJr.
+                <div class="fav">タマ</div>
+            </div>
+        </div>
+        <div>ワカメ</div>
+    </div>
+    <br>
+    <!-- ########################################## -->
+    <div id="trav2">
+        <div>波平<br />
+        フネ<br />
+            <div>サザエ
+            <div>タラオ
+                <div id="fav2">タマ</div>
+            </div>
+            </div>
+            <div class="student2">カツオ</div>
+            <div class="student2">ワカメ</div>
+        </div>
+    </div>
+    <!-- ########################################## -->
+    <ul id="coordinate">
+        <li>셔츠111</li>
+    </ul>
+    <!-- ########################################## -->
+    <p id="hat">ぼうし</p>
+    <ul id="coordinate2">
+        <li>ジャケット</li>
+        <li>シャツ</li>
+        <li>ズボン</li>
+    </ul>
+    <p id="shoes2">くつ</p>
+    <!-- ########################################## -->
+    <p id="hat">ぼうし2</p>
+    <!-- ########################################## -->
+    <!-- ########################################## -->
+
+    <!-- Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // --------------------------------------------------------------
+        // 부모자식/형제간의 왕래
+        // https://github.com/macmoo/ref/blob/master/f/4etc/img/jquery2.JPG
+        // traversing메소드:jQuery오브젝트의 내용을 변화시킴
+        // end():변화시킨 jQuery오브젝트를 원상태로 돌린다.
+        // --------------------------------------------------------------
+        $(function(){
+            $('#myself') // 기준
+                    .css('font-size','x-large')
+                .prev()
+                    .css('border', 'dotted 5px')
+                    .end()
+                .prevAll()
+                    .css('color', 'Pink')
+                    .end()
+                .next()
+                    .css('background-color', 'Yellow')
+                    .end()
+                .nextAll()
+                    .css('border', 'solid 1px')
+                    .css('color', 'red')
+                    .end()
+                .siblings()
+                    .css('font-style', 'italic')
+                    .end()
+                .parent()
+                    .css('border', 'groove 5px')
+                    .end()
+                .children()
+                    .css('font-size', 'small');
+        });
+        // --------------------------------------------------------------
+        // 현재 요소를 기준으로 부속(자식) 요소를 검색
+        // find()
+        // : 검색범위를 한정하기 때문에 효율이 좋다
+        // --------------------------------------------------------------
+        $(function(){
+            $('#myself2')
+                .css('border', 'solid 1px')
+                .css('color', 'red')
+                .find('.fav')
+                .css('font-weight', 'bold')
+                .css('color', 'blue')
+        });
+        // --------------------------------------------------------------
+        // 요소세트의 내용을 특정 조건으로 필터링
+        // filter()
+        // * 필터링 메소드
+        // eq(inde)               index + 1 번째의 요소를 취득
+        // slice(start [, end])   start + 1 ~ end번째의 요소를 취득
+        // not(exp)               지정된 셀렉터와 일치하지 않는 요소를 취득
+        //  [ex] not('.student, #pet') // 클래스가 student 또는 아이디가 pet이 아닌 요소
+        // has(exp)               配下로 지정된 셀렉터와 일치하는 자식요소를 갖는 요소를 취득
+        //  [ex] has('span') // 配下에 <span>요소를 갖는 요소
+        // --------------------------------------------------------------
+        $(function(){
+            $('div')
+                .css('color', 'green')
+                .filter('#fav2, .student2')
+                .css('font-size', 'x-large')
+                .css('color',' red')
+        })
+        // --------------------------------------------------------------
+        // 새롭게 작성한 요소를 삽입
+        // insertBefore() : 요소를 삽입할 곳의 앞에 추가
+        // insertAfter()  : 요소를 삽입할 곳의 뒤에 추가
+        // prependTo()    : 요소를 삽입할 곳의 자식요소의 선두에 추가
+        // appendTo()     : 요소를 삽입할 곳의 자식요소의 맨뒤에 추가
+        // => 위 메소드들의 차이는 삽입할 위치만 다름
+        // => $('삽입할 요소').메소드('삽입할 곳을 나타내는 셀렉터')
+        // 삽입할 요소는 <로 시작해서 >로 끝나야함(<br/>은 안됨)
+        // * before(), after(), prepend(), append()
+        //   인수의 위치만 다름
+        // $('삽입할 곳을 나타내는 셀렉터').메소드('삽입할 요소')
+        // --------------------------------------------------------------
+        $(function(){
+            $('<li id="id1">자켓</li>').prependTo('#coordinate');
+            $('<li id="id2">바지</li>').appendTo('#coordinate');
+            $('<li id="id3">모자</li>').insertBefore('#coordinate');
+            $('<li id="id4">신발</li>').insertAfter('#coordinate');
+
+            $('#coordinate').css('border', 'solid 1px').css('border-color', 'red');
+            $('#id1').css('border', 'solid 1px').css('border-color', 'blue');
+            $('#id2').css('border', 'solid 1px').css('border-color', 'green');
+            $('#id3').css('border', 'solid 1px').css('border-color', 'yellow');
+            $('#id4').css('border', 'solid 1px').css('border-color', 'magenta');
+        });
+        // --------------------------------------------------------------
+        // 기존의 요소를 이동
+        // insertBefore(), insertAfter(), prependTo(), appendTo()
+        // => $('이동할 요소를 나타내는 셀렉터').메소드('삽입할 곳을 나타내는 셀렉터')
+        // --------------------------------------------------------------
+        $(function(){
+            $('#shoes2').insertBefore('#coordinate2');
+        });
+        // --------------------------------------------------------------
+        // 기존의 요소를 다른 요소로 교체
+        // replaceWith()
+        // replaceAll()
+        // 인수로 html태그나 jQ오브젝트를 지정가능
+        // --------------------------------------------------------------
+        $(function(){
+            $('#hat').replaceWith('<p class="highlight">CAP</p>');
+            $('<p class="highlight">CAP</p>').replaceAll('#hat');
+        });
+        // --------------------------------------------------------------
+        // 기존의 요소를 삭제
+        // remove()
+        // --------------------------------------------------------------
+        $(function(){
+            $('#coordinate2').remove();
+        });
+        // --------------------------------------------------------------
+        // 요소의 내용을 삭제
+        // empty()
+        // --------------------------------------------------------------
+        $(function(){
+            $('#coordinate').empty();
+        });
+        // --------------------------------------------------------------
+    </script>
+</body>
+</html>

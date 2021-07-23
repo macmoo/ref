@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- START -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- E N D -->
+<style>
+* {box-sizing: border-box}
+body {font-family: Verdana, sans-serif; margin:0}
+.mySlides {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
+</style>
+</head>
+<body>
+<div class="slideshow-container">
+    <!-- ####################################################### -->
+    <div class="mySlides fade"><img src="./f/6img/poster/Ali.Fear.Eats.the.Soul.1974.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/All.Quiet.on.the.Western.Front.1930.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/AllQuietontheWesternFront.1930.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Amagi_.goejpg.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Anatomy.of.a.Murder.1959.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Angels.with.Dirty.Faces.1938.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Anna.Karenina.1935.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Apocalypse.Now.1979.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Assault.on.Precinct.13.1976.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Attack.of.the.50.Foot.Woman.1958.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Battle.of.the.Bulge.1965.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Black.Sunday.1960.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Black.Sunday.1960_2.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Blackmail.1929.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Blade.Runner.1982.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Blood.and.Black.Lace.1964.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Body.and.Soul.2017.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Bonnie.And.Clyde.1967.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Bride.Of.Frankenstein.1935.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/BrokenBlossoms.1919.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Citizen.Kane.1941.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/City.Of.The.Living.Dead.1980.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Cool.Hand.Luke.1967.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Cruising.1980.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Crumb.1994.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Dead.of.Night.1945.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Dead.of.Night.1945_2.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Death.By.Hanging.1968.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Death.By.Hanging.1968_2.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Demon.Witch.Child.1975.pg.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Demons.1971.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Deux.jours,.une.nuit,.Two.Days.One.Night,.2014.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Dont.Look.Now.1973.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Doro.no.kawa.aka.Muddy.River.1981.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Dr.Strangelove.1964.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Dracula.1958.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Dream.No.Evil.1970.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Dressed.To.Kill,.1980.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Drunken.Angel.1948.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/eronika.Voss.1982.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Europa.Europa.1990.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Eyes.Of.Laura.Mars.1978.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Fahrenheit.451.1966.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Flowers.Of.Shanghai.1998.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/For.A.Few.Dollars.More.1965.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Forbidden.Planet.1956.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Frank.the.Bastard.2013.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Frenzy.1972.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Frenzy_2.1972.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/From.Beyond.1986.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/GalaxyofTerror.1981.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Giu.la.testa,.A.Fistful.Of.Dynamite,.1971.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Godzilla.Mothra.And.King.Ghidorah.Giant.Monsters.All-Out.Attack.2001..jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Godzilla.Vs.Destoroyah.1995.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Godzilla.Vs.Hedorah.1971.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Godzilla.VS.King.Ghidorah.1991.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Hangmen.Also.Die!,1943.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Hangmen.Also.Die!.,.1943.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Hard.Times.1975.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/He.Walked.By.Night.1948.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Hellhole.1985.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Hellmaster.1992.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Hiroshima.Mon.Amour.1959.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/HourOfTheWolf,Vargtimmen,1968.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Hud.1963.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Humanoids.from.the.Deep.1980.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/I.Walked.with.a.Zombie.1943.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/If.....jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Ikimono.no.kiroku.1955.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Il.Ferroviere.1956.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Il.Posto.1961.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Insanity.2015.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/irst.Men.in.the.Moon.1964.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Isadora.1968..jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/iwanami-.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Joe.Kidd.1972.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Journey.to.Italy.1954.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/King.Kong.1933.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/King.Kong.Vs.Godzilla.1963.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/King.Kong_2.1933.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/King.of.New.York.1990.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Klute.1971.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/L.Annee.derniere.a.Marienbad.1961.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/La.Belle.Noiseuse.1991.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/La.Dolce.Vita.1960.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Labyrinth.1986.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Le.Diable.probablement.AKA.The.Devil.Probably.1977.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/LéonMorin,Priest.1961.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Liquid.Sky.1982.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/loveletter.jpeg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/M_1931.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Macbeth.1971.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Made.in.USA.1966.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/malleus-The-Bird-With-The-Crystal-Plumage-1970.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Man.with.a.Movie.Camera.1929.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Masculin.Feminin.1966.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Masculin.feminin.1966_2.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/midnight.cowboy.1969.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Midsommar.2019.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Miles.Davis.Birth.of.the.Cool.2019.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/MilesDavis-PorgyandBess(1959)(2019).jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Mimic.1997.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Miss.Oyu.1951.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Moonfleet.1955.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Mothra.1961.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Mr_Klein1976.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/My.Beautiful.Laundrette.1985.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Mystery.Train.1989.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Night.of.the.Devils.1972.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Night.of.the.Living.Dead.1968.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Night.Tide.1961.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/No.Regrets.for.Our.Youth.1946.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Odd.Man.Out.1947.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Oliver.Twist.1948.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Once.Upon.a.Time.in.America.1984.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Once.Upon.a.Time.in.the.West.1968.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Opera.1987.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Opera.1987_2.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Ordet.1955.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Overlord.2018.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Panic.in.the.Streets.1950.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_001.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_003.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_050.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_051.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_052.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_053.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_054.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_055.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_056.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_057.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_058.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_360.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_361.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_644.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_678.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1070.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1071.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1072.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1341.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1342.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1343.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1344.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1345.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1664.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1665.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1666.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1667.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1668.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1669.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1670.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1708.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1709.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1710.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1711.PNG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1712.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1713.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1714.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1715.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1716.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1802.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1808.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1809.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1810.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1811.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1812.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_1813.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2128.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2129.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2130.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2131.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2132.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2133.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2134.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2135.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2136.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2137.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2485.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2486.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2487.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2488.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2489.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2490.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2509.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2510.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2511.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2512.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2513.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2514.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2520.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2586.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2587.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2588.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2589.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2590.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2591.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2592.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2593.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2594.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2595.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2596.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2597.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2598.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2599.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2600.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2601.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2604.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2605.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2606.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2607.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2608.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2609.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2610.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2611.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2612.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2613.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2614.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2615.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2616.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2617.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2618.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2619.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2620.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2657.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2658.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/pic_2659.JPG" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Pierrot.le.fou.1965.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Places.in.the.Heart.1984.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Point.Blank..1967_2.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Point.Blank.1967.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Prince.of.Darkness.1987.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/PumpUpTheVolume.1990.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Ran.1985.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Ran.1985_2.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Red.beard.1965.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Red.Beard.1965_2.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Robot.Carnival.1987.png" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Roma.1972.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Rope.1948.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Rosemary’s.Baby.1968.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Sabata.1969.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Sabotage.1936.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Sanjuro.1962.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Sanjuro_2.1962.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Sansho.the.Bailiff.1954.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Scanners.1981.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Scarlet.Street.1945.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Separate.Tables.1958..jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Seven.Chances.1925.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Seven.Samurai.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Seven.Thieves.1960.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Shivers.1975.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Sisters.Of.The.Gion.1936.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Soleil.Rouge.1971.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Sorcerer.1977.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Stalker.1979.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Stalker.1979_1.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Stalker.1979_2.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Star.Wars.1977.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Stray.Dog.1949..jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Street.Mobster.1972.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Sugata.Sanshiro.1943.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Suspicion.1941.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Tampopo.1985.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/TasteofCherry.1997.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Testament.of.Orpheus.1960.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Bad.Seed.1956.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Blood.Of.A.Poet.1932.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Blue.Angel.1930.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Cabinet.Of.Dr.Caligari.1920.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Collector.1965.jpeg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Collector.1965.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Confession.1970.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Deer.Hunter.1978.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Dirty.Dozen.1967.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Dragon.Missile.1976.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Exorcist.1973.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Exterminating.Angel.1962.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Five.Deadly.Venoms.1978.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Good.the.Bad.and.the.Ugly.1966.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Graduate.1967.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Grand.Budapest.Hotel.2014.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Great.Escape.1963.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Great.Silence.1968.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Hanging.Tree.Western.1959.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Innocents.1961jpg.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Killing.of.a.Chinese.Bookie.1976.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Leopard.Man.1943.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Long.Goodbye.1973.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Machine.That.Kills.Bad.People.1952.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Man.Who.Fell.To.Earth.1976.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Man.Who.Knew.Too.Much.1956.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Marriage.of.Maria.Braun.1979.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Men.1950.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Men.Who.Tread.On.The.Tiger's.Tail.1945.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Name.of.the.Rose.1986.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Pawnbroker.1964.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Pornographers.1966.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Seven.Samurai.1954.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Shining.1980.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Sicilian.Clan,.Le.Clan.Des.Siciliens.,.1969.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Silence.of.the.Lambs.1991.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Spanish.Prisoner.1997.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Spy.Who.Came.in.from.the.Cold.1965.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Tenant.1976.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Third.Man.1949.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Thomas.Crown.Affair.1968_1.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Thomas.Crown.Affair.1968_12.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.War.Wagon.1967.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/The.Yakuza.Papers.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/TheDirtyDozen.1967.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/TheHouseonSororityRow.1983.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Them!.1954.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/TheRunner.1985.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/TheWindWillCarryUs.1999.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/They.Came.from.Within.1975.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/TheYakuzaPapers.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/ThisIslandEarth.1954.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Throne.of.Blood.1957_1.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Throne.of.Blood.1957_2.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/To.Sir,.with.Love.1967.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Triumph.of.the.Will.1935.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Two-Lane.Blacktop.1971.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Ugetsu.1953.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/venom.jpeg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Village.Of.Eight.Gravestones.1977.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Village.Of.The.Eight.Tombs.1977jpg.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Weekend.1967.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Wild.Strawberries.1957.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Winter.Light.1963.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Woman.in.the.Dunes.1964.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Yojimbo.1961.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/취우.1956.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/3.10.to.Yuma.1957.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/7samurai.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/20,000.Leagues.Under.The.Sea.1954..jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/24Frames.2016.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/2001-ASpaceOdyssey.1968.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/A.Brighter.Summer.Day.1991.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/A.Fistful.of.Dollars.1964.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/A.Fistful.Of.Dollars_2.1964.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/After.Hours.1985.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/poster/Akira.Kurosawas.Dreams.1990.jpg" style="width:100%"></div>
+    <!-- ####################################################### -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    if (n > slides.length) {slideIndex = 1}    
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";  
+    dots[slideIndex-1].className += " active";
+}
+</script>
+
+</head>
+
+<body>
+</body>
+    <script>
+        $(function () {
+            $("#topMenu").load("0hed.html");
+        });
+    </script>
+</html>
