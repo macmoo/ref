@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <!-- HTML Tag -->
+    <!-- ############################################################# -->
+    <div><img class="org" src="..\chap04\images\codezine.gif"></div><br>
+    <div><img class="notice" src="..\chap04\images\codezine.gif"></div>
+    <input type="text" class="lblNotice" readonly/>
+    <!-- ############################################################# -->
+    <h2>jQuery</h2>
+    <div class="desc">
+        <p>jQueryとは、John Resig（ジョン・レシグ）氏によって開発されたJavaScriptライブラリで、以下のような特徴を持っています。</p>
+            <ul>
+                <li>「Write Less, Do More（よりシンプルなコードで、より多くの処理を）」がモットー</li>
+                <li>基本的なDOM操作から、アニメーション機能、イベント処理、Ajax通信まで、おおよそJavaScriptによるWebサイト開発全般を幅広くサポート</li>
+                <li>Internet Explorer、Chrome、Firefox、Safari、Operaなど、主要なブラウザをサポート</li>
+                <li>サイズは32Kバイト程度を軽量（Minified版をGZIP圧縮した場合）</li>
+                <li>高機能なウィジェットを提供するjQuery UI、スマホアプリ対応のjQuery Mobileをはじめ、jQueryをベースに開発されたプラグインが豊富</li>
+            </ul>
+        <p>昨今では、クライアントサイドJavaScriptを扱う上でほぼ必須のライブラリとなっており、その理解は欠かせません。</p>
+    </div>
+    <input type="text" class="lblScroll" readonly/>
+    <!-- ############################################################# -->
+    <ul>
+        <li id="cz"     ><a href="http://codezine.jp/" rel="external">CodeZine</a></li>
+        <li id="wings"  ><a href="http://www.wings.msn.to/" target="_self">WINGS</a></li>
+        <li id="webdeli"><a href="http://www.web-deli.com/" target="_self">WebDeli</a></li>
+        <li id="mz"     ><a href="http://moneyzine.jp/" target="_blank" rel="external">MoneyZine</a></li>
+        <li id="ez"     ><a href="http://eczine.jp/" target="_blank" rel="external">ECZine</a></li>
+    </ul>
+    <!-- ############################################################# -->
+    <!-- ############################################################# -->
+    <!-- ############################################################# -->
+    <!-- Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // --------------------------------------------------------------
+        // 요소의 높이, 너비를 취득/설정
+        // height, width메소드
+        // 인수〇:값설정, 인수×:값취득
+        // *etc
+        //  innerHeight(), innerWidth()
+        //  outerHeight([flag]), outerWidth([flag])
+        // --------------------------------------------------------------
+        $(function(){
+            var img = $('img.notice');
+            img.height(62).width(240);
+            $('.lblNotice').val(img.height() + ' X ' + img.width());
+        });
+        // --------------------------------------------------------------
+        // 스크롤위치
+        // scrollTop, scrollLeft
+        // --------------------------------------------------------------
+        $(function(){
+            var _p = $(window);
+            _p.scrollTop(80).scrollLeft(100);
+            $('.lblScroll').val(_p.scrollTop() + ' X ' + _p.scrollLeft());
+        });
+        // --------------------------------------------------------------
+        // 요소의 속성을 취득/설정
+        // --------------------------------------------------------------
+        $(function(){
+            $('a[rel="external"]').attr('title', '외부사이트에 이동한다.');
+        });
+        // --------------------------------------------------------------
+        // --------------------------------------------------------------
+        // --------------------------------------------------------------
+        // --------------------------------------------------------------
+        // --------------------------------------------------------------
+        // --------------------------------------------------------------
+    </script>
+</body>
+</html>

@@ -12,6 +12,7 @@ for (i = 0; i < coll.length; i++) {
     });
 
     coll[i].nextElementSibling.addEventListener("click", function () {
+        this.classList.toggle("active");
         if (this.style.maxHeight) {
             this.style.maxHeight = null;
         } else {

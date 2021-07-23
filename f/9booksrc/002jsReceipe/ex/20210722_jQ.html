@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8" />
+    <style>
+        .highlighted{
+            background-color: #ff6;
+            color:red;
+        }
+    </style>
 </head>
 <body>
     <!-- HTML Tag -->
+    <!-- ############################################################# -->
     <ul id="menu">
         <li><a href=-"http://google.co.kr">구글</a></li>
         <li><a href=-"http://daum.co.kr">다음</a></li>
         <li>access</li>
         <li>QA게시판</li>
-        <li>QA게시판</li>
         <li><a href="mailto:hscrollhooli@gmail.com">문의</a></li>
     </ul>
+    <!-- ############################################################# -->
+    <ul>
+        <li id="spring">春の小川は さらさら行くよ</li>
+        <li id="summer">ささの葉さらさら のきばにゆれる</li>
+        <li id="autumn">こぎつねコンコン 山の中</li>
+        <li id="winter">雪やこんこ あられやこんこ</li>
+        <li id="spring2">どこかで春が 生まれてる</li>
+    </ul>
+    <button id="add"   >add</button>
+    <button id="remove">remove</button>
+    <!-- ############################################################# -->
     <!-- Script -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- CDN에서 jquery의 임포트에 실패할 경우, 로컬js파일로 대체 -->
@@ -32,21 +49,49 @@
         });
         // --------------------------------------------------------------
         // $()함수의 인수는 selector식(CSS의 셀렉터를 확장한 것)이다.
+        // $()함수의 반환값은 jQuery오브젝트
+        // jQuery오브젝트는 셀렉터식에 의해 취득한 요소(군)을 보존함과 함께 
+        //   이것들을 조작하기 위한 기능을 갖는 오브젝트이다.
         // --------------------------------------------------------------
-        
+        // https://github.com/macmoo/ref/blob/master/f/4etc/img/jquery1.JPG
         // --------------------------------------------------------------
+        // 셀렉터 채용 순서 (성능개선)
         // --------------------------------------------------------------
+        // 1. #id , element(요소명 취들)
+        //    getElementById, getElementByTagName으로 변환
+        // 2. .class(class속성으로 취득)
+        //    getElementByClassName
+        // 3. 1,2,4 이외의 셀렉터
+        //    querySelectorAll
+        // 4. jQuery확장셀렉터
+        //    jQuery가 항상 독자의 해석을 하기때문에 항상 저속이다
         // --------------------------------------------------------------
+        // getElementById(id)           : 지정된 ID의 요소를 취득
+        // getElementByTagName(name)    : 지정된 태그명의 요소를 취득
+        // getElementByClassName(class) : 지정된 class속성의 요소를 취득
+        // querySelector(selector)      : 지정된 셀렉터식에 일치하는 첫요소를 취득
+        // querySelectorAll(selector)   : 지정된 셀렉터식에 일치하는 요소군을 취득
         // --------------------------------------------------------------
+        // 문서 로드완료후 코드를 실행
+        // <script>요소를 문서의 맨마지막으로 이동하면 문제는 해결되나 비추천
+        // => $(function(){..}로 감싼 코드는, 페이지가 모두 로드된 후에 실행된다.
         // --------------------------------------------------------------
+        // 요소의 스타일을 변경
         // --------------------------------------------------------------
+        $(function(){
+            $('#autumn').css('background-color','#ff6')
+        });
         // --------------------------------------------------------------
+        // 스타일 클래스를 설정/해제
+        // addClass
         // --------------------------------------------------------------
-        // --------------------------------------------------------------
-        // --------------------------------------------------------------
+        $('#add').click(function(){
+            $('#spring2').addClass('highlighted');
+        });
+        $('#remove').click(function(){
+            $('#spring2').removeClass('highlighted');
+        });
         // --------------------------------------------------------------
     </script>
-
- 
 </body>
 </html>
