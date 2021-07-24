@@ -494,18 +494,5 @@ function showSlides(n) {
         $(function () {
             $("#topMenu").load("0hed.html");
         });
-        var xBefore;
-        var xAfter;
-        $('div > img')
-            .mousedown(function(){
-                var e = window.event;
-                xBefore = e.clientY;
-            })
-            .mouseup(function(){
-                var e = window.event;
-                xAfter = e.clientY;
-                alert('before : ' + xBefore + ', after : ' + xAfter);
-            });
-
     </script>
 </html>
