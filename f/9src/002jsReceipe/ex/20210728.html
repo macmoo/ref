@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+</head>
+<br>
+    <link rel="stylesheet" href="../chap04/site.css" />
+    <!-- HTML Tag -->
+    <!-- ######################################################## -->
+    <div id="outer">outer
+        <p id="inner">inner</p>
+    </div>
+    <br/>
+    <!-- ######################################################## -->
+    <div id="outer" class="out1">outer
+        <p id="inner" >inner</p>
+    </div>
+    <!-- ######################################################## -->
+    <div id="result"></div>
+    <div id="result2"></div>
+    <!-- ######################################################## -->
+    <form id="fm">
+        이름:<br/>
+        <input type="text" name="name" size="50"/>
+    </form>
+    focusout : <span id="focusout">---</span><br/>
+    focusin  : <span id="focusin">----</span><br/>
+    <!-- ######################################################## -->
+    <form id="fm2">
+        이름:<br/>
+        <input type="text" name="name" size="50"/>
+    </form>
+    focus    : <span id="focus">------</span><br/>
+    blur     : <span id="blur">-------</span><br/>
+    <!-- ######################################################## -->
+    <img id="pic1" src="..\chap04\images\webdeli_logo.gif" />
+    <!-- ######################################################## -->
+    <!-- Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // --------------------------------------------------------------
+        // 이벤트
+        // https://github.com/macmoo/ref/blob/master/f/4etc/img/jquery3.jpg
+        // --------------------------------------------------------------
+        // mouseenter/mouseleave : 대상요소에 대해서만 이벤트가 발생
+        // mouseover/mouseout :  안쪽 요소에 입출입할때도 이벤트가 발생
+        // focusin/focusout도 위와 유사 
+        // focus/blur : 텍스트박스에서 발생한 이벤트는 바깥족 요소에 전파하지 않음
+        // --------------------------------------------------------------
+        $(function(){
+            $('#outer')
+                // 영역에 들어감
+                .mouseenter(function(e){
+                    $('#result').html($('#result').html() + 'mouseenter : ' + e.target.id + '<br/>');
+                })
+                // 영역에서 벗어남
+                .mouseleave(function(e){
+                    $('#result').html($('#result').html() + 'mouseleave : ' + e.target.id + '<br/>');
+                })
+        });
+        // --------------------------------------------------------------
+        $(function(){
+            $('.out1')
+                .mouseover(function(e){
+                    $('#result2').html($('#result2').html() + 'mouseover : ' + e.target.id + '<br/>');
+                })
+                .mouseout(function(e){
+                    $('#result2').html($('#result2').html() + 'mouseover : ' + e.target.id + '<br/>');
+                })
+        });
+        // --------------------------------------------------------------
+        $(function(){
+            $('#fm')
+                .focusin(function(e){
+                    $('#focusin').text('실행했다');
+                })
+                .focusout(function(e){
+                    $('#focusout').text('실행했다');
+                })
+        });
+        // --------------------------------------------------------------
+        $(function(){
+            $('#fm2')
+                .focus(function(e){
+                    $('#focus').text('실행했다');
+                })
+                .blur(function(e){
+                    $('#blur').text('실행했다');
+                })
+        });
+        // --------------------------------------------------------------
+        // mouseenter/mouseleave를 한번에 설정
+        // => hover
+        // --------------------------------------------------------------
+        $(function(){
+            $('#pic1').hover(
+                // mouseenter
+                function(e){
+                    $(this).attr('src', '../chap04/images/webdeli.gif');
+                },
+                // mouseleave
+                function(e){
+                    $(this).attr('src', '../chap04/images/webdeli_logo.gif');
+                });
+        });
+        // --------------------------------------------------------------
+    </script>
+</body>
+</html>
