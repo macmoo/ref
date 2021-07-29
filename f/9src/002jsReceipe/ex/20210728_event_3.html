@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <!-- HTML Tag -->
+    <!-- ########################################################## -->
+    <h2>오늘의 운세</h2>
+    <input type="button" id="btn" value="うらなう" />
+    <p>오늘의 총점은<span id="result">----</span>점이다.</p>
+    <!-- ########################################################## -->
+    <form>
+        <input type="button" class="photo" value="マイベスト画像"   data-path="best"/>
+        <input type="button" class="photo" value="最新画像"         data-path="newest"/>
+        <input type="button" class="photo" value="よく見られる画像"  data-path="fav"/>
+    </form>
+    <img id="imgResult" src="../chap04/images/default.jpg" />
+    <!-- ########################################################## -->
+    <!-- ########################################################## -->
+    <!-- ########################################################## -->
+    <!-- Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // --------------------------------------------------------------
+        // 첫 클릭시에 처리를 실행
+        // => one메소드
+        // --------------------------------------------------------------
+        $(function(){
+            $('#btn').one(
+                'click' // 검출할 이벤트
+                , function(){
+                    $('#result').text(Math.round(Math.random() * 100));
+                }
+            )
+        });
+        // --------------------------------------------------------------
+        // jQuery의 표준외의 이벤트를 포착
+        // => on메소드
+        // $(...).on('이벤트명', function(e){ 이벤트 처리 })
+        // --------------------------------------------------------------
+        $(function(){
+            // 버튼클릭으로 data-photo속성에 지정한 이미지를 표시
+            $('.photo').click(function(){
+                $('#imgResult').attr('src', '../chap04/images/' + $(this).data('path') + '.jpg');
+            });
+            // 지정된 이미지가 없으면 error.gif를 표시
+            $('#imgResult').on('error',function(){
+                $(this).attr('src', '../chap04/images/error.jpg');
+            });
+        });
+        // --------------------------------------------------------------
+    </script>
+</body>
+</html>

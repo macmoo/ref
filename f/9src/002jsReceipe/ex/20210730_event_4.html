@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <!-- HTML Tag -->
+    <!-- ########################################################## -->
+    <form id="container">
+        <input type="button" class="add-btn" value="増やす" />
+    </form>
+    <!-- ########################################################## -->
+    <br/>
+    <br/>
+    <img id="pic1" src="../chap04/images/webdeli_logo.gif" />
+    <div id="detail"></div>
+    <!-- ########################################################## -->
+    <!-- ########################################################## -->
+    <!-- Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // --------------------------------------------------------------
+        // 아직 없는 요소에 이벤트를 등록
+        // $('셀렉터').on('이벤트명', '자식셀렉터', function(e){ 처리 })
+        // => 셀렉터 밑의 자식셀렉터에 지정된 요소에 이벤트가 발생했을때 지정처리를 한다.
+        //    개별로 이벤트를 등록할 때보다 성능이 좋다.(2)가 성능이 더 좋다
+        //   (1) $('#tbl td').on('click', function(e){});
+        //   (2) $('#tbl').on('click', 'td', function(e){});
+        // --------------------------------------------------------------
+        $(function(){
+            $('#container').on(
+                'click'       // 이벤트
+                , '.add-btn'   // 監視する配下の要素
+                , function(){ // 클릭할 때 마다 버튼이 증식
+                    $('<input type="button" class="add-btn" value="増やす" />').appendTo('#container');
+                }
+            );
+        });
+        // --------------------------------------------------------------
+        // 복수의 이벤트 리스너를 한번에 등록
+        // => on메소드에 "이벤트명:값"형식의 해쉬로 건넴
+        // --------------------------------------------------------------
+        $('#pic1').on({
+            // 마우스 포인터가 그림에 올라 갔을때
+            'mouseenter' : function(e){
+                $(this).attr('src','../chap04/images/webdeli.gif');
+            },
+            // 그림에서 벗어날때
+            'mouseleave' : function(e){
+                $(this).attr('src', '../chap04/images/webdeli_logo.gif');
+            },
+            // 그림을 클릭
+            'click' : function(e){
+                $('#detail').html('<a href="http://google.com" /> GOOGLE</a>');
+            }
+        });
+        // --------------------------------------------------------------
+    </script>
+</body>
+</html>
