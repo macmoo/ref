@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <!-- HTML Tag -->
+    <!-- ########################################################## -->
+    <div id="main">
+        <img id="pic" src="../chap04/images/webdeli_logo.gif" />
+    </div>
+    <!-- ########################################################## -->
+    <div id="main2" style="position:absolute; margin:50px; top:30px; left:30px; width:300px; height:300px; border:solid 1px red; background-color: yellow;">
+    </div>
+    <!-- ########################################################## -->
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <form>
+        키도브 입력:
+        <input type="text" id="which" size="10"/>
+    </form>
+    <p>입력한 키보드:<span id="key">---</span></p>
+    <!-- ########################################################## -->
+    <form>
+        영어로 뭐라 하냐?
+        <input type="button" id="b1" value="사과" />
+        <input type="button" id="b2" value="귤" />
+        <input type="button" id="b3" value="복숭아" />
+    </form>
+    <div>답:<span id="result">----</span></div>
+    <!-- ########################################################## -->
+    <!-- 독자 데이터 속성-->
+    <form method="POST" action="">
+        <input type="submit" value="송신" data-confirm="폼을 송신해도 되겠나?" />
+    </form>
+    <!-- ########################################################## -->
+    <div id="outer">
+        <p>최상위</p>
+        <a id="ext" href="http://www.google.com">구글</a>
+    </div>
+    <!-- ########################################################## -->
+    <!-- Script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // --------------------------------------------------------------
+        // 특정 이벤트 처리를 무효화
+        // off메소드
+        // off(셀렉터).off([이벤트명 [, 자식셀렉터] [, 이벤트리스너]])
+        // --------------------------------------------------------------
+        $(function(){xr
+            // 이벤트 리스너를 등록
+            var onclick       = function(e) { $(this).css('border-color', 'Red'); }
+            var onmouseenter  = function(e) { $(this).attr('src', '../chap04/images/webdeli.gif'); }
+            var onmouseenter2 = function(e) { $(this).css('border', 'solid 5px black'); }
+            var onmouseleave  = function(e) { $(this).attr('src', '../chap04/images/webdeli_logo.gif'); }
+            var onmouseleave2 = function(e) { $(this).css('border', 'none'); }
+
+            $('#main').on('click', '#pic', onclick);
+            $('#pic' ).on('mouseenter', onmouseenter);
+            $('#pic' ).on('mouseenter', onmouseenter2);
+            $('#pic' ).on('mouseleave', onmouseleave);
+            $('#pic' ).on('mouseleave', onmouseleave2);
+
+            // 특정이벤트 리스너를 파기
+            // $('#pic').off('mouseenter', onmouseenter);
+
+            // 제2구문으로 지정한 이벤트 리스너를 파기
+            // $('#main').off('click', '#pic');
+
+            // 지정의 이벤트를 모두 파기
+            // $('#pic').off('mouseleave');
+
+            // 모든 이벤트 리스너를 파기
+            $('#pic').off();
+        });
+        // --------------------------------------------------------------
+        // 이벤트 발생시 마우스 정보
+        // 모든 이벤트리스너는 인수로 이벤트오브젝트를 수취한다.
+        // ---------------------------------
+        // 프로퍼티  개요
+        // screenX  스크린상의 x좌표
+        // screenY  스크린상의 y좌표
+        // pageX    페이지상의 x좌표
+        // pageY    페이지상의 y좌표
+        // clientX  표시영역상의 x좌표
+        // clientY  표시영역상의 y좌표
+        // offsetX  요소영역상의 x좌표
+        // offsetY  요소영역상의 y좌표
+        // --------------------------------------------------------------
+        $('#main2').on('mousemove', function(e){
+            $(this).html(
+                'screen : ' + e.screenX + '/' + e.screenY + ' <br />' + 
+                'page   : ' + e.pageX   + '/' + e.pageY   + ' <br />' + 
+                'client : ' + e.clientX + '/' + e.clientY + ' <br />' + 
+                'offset : ' + e.offsetX + '/' + e.offsetY + ' <br />' );
+        });
+        // --------------------------------------------------------------
+        // 이벤트발생시의 키정보를 취득
+        // ---------------------------------
+        // 프로퍼티   개요
+        // altKey    [alt]키를 눌렀나
+        // ctrlKey   [ctrl]키를 눌렀나
+        // shiftKey  [shift]키를 눌렀나
+        // which     키코드의 종류
+        // --------------------------------------------------------------
+        $(function(){
+            $('#which').keydown(function(e){
+                $('#key').text(e.which);
+            });
+        });
+        // --------------------------------------------------------------
+        $(function(){
+            var onclick = function(e){
+                $('#result').text(e.data.answer);
+            }
+            $('#b1').click({answer : 'apple' }, onclick);
+            $('#b2').click({answer : 'orange'}, onclick);
+            $('#b3').click({answer : 'peach' }, onclick);
+        });
+        // --------------------------------------------------------------
+        // javascript를 控えめに (Unobtrusive Javascript)
+        // 파라메터 정보는 data-xxxxx속성으로 나타내는 것이 기본.
+        // data-xxxxx속성에 지정된 값은 data메소드로 취득 가능.
+        // 인수로는 "data-"를 제외한 xxxxx부분만을 지정
+        // $(....).data(이름)
+        // --------------------------------------------------------------
+        $('input[data-confirm]').click(function(){
+            if(!confirm($(this).data('confirm'))){
+                return false;
+            }
+        });
+        // --------------------------------------------------------------
+        // 이벤트 처리를 캔슬
+        // --------------------------
+        // 메소드                     bubbling     別のリスナー    디폴트동작
+        // stopPropagation            정지         X              X
+        // stopImmediatePropagation   정지         정지           X
+        // preventDefault             X            X              정지
+        // --------------------------
+        // 이벤트의 버블링
+        // => 문서트리의 밑의 계층에서 발생한 이벤트가 윗 계층에 전파해 가는 것
+        //    "stopImmediatePropagation"메소드는 같은 요소에 등록된 
+        //    다른 리스너의 실행도 정지시킨다.
+        //    "preventDefault"메소드는 브라우저의 기본 동작을 정지시킴
+        // --------------------------------------------------------------
+        $(function(){
+            $('#ext').click(function(e){
+                window.alert('리스너1가 발생했습니다.');
+                
+                e.stopPropagation();
+                // 리스너1 -> 2 -> 페이지이동
+
+                // e.preventDefault();
+                // 리스너1 -> 2 -> 3
+
+                // e.stopImmediatePropagation();
+                // 리스너1 -> 페이지이동
+            });
+
+            $('#ext').click(function(e){
+                window.alert('리스너2가 발생했습니다.');
+            });
+
+            $('#outer').click(function(e){
+                window.alert('리스너3가 발생했습니다.');
+            });
+        });
+        
+        // --------------------------------------------------------------
+    </script>
+</body>
+</html>
