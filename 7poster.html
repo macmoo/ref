@@ -534,14 +534,13 @@ img {vertical-align: middle;}
 
 <script>
 var slideIndex = 1;
-var prevIdx;
+var idx;
 showSlides(slideIndex);
 
 function plusSlides(n) {
-    //.showSlides(slideIndex += n);
-    prevIdx = Math.floor(Math.random() * 412);
-    console.log("0:"+prevIdx);
-    showSlides(prevIdx += n);
+    slideIndex = Math.floor(Math.random() * 413);
+    showSlides(slideIndex += n);
+    console.log("0:"+idx);
 }
 
 function showSlides(n) {
@@ -564,12 +563,12 @@ function showSlides(n) {
     //     dots[i].className = dots[i].className.replace(" active", "");
     // }
 
-    // slides[slideIndex-1].style.display = "block"; 
+    slides[slideIndex-1].style.display = "block"; 
     
-    if(prevIdx !== undefined && !isNaN(previdx)){
-        console.log("3HERE:"+prevIdx);
-        slides[prevIdx].style.display = "block";
-    }
+    // if(prevIdx !== undefined && !isNaN(previdx)){
+    //     console.log("3HERE:"+prevIdx);
+    //     slides[prevIdx].style.display = "block";
+    // }
     prevIdx = i;
     // dots[slideIndex-1].className += " active";
 }
