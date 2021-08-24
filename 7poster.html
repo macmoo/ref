@@ -540,7 +540,7 @@ showSlides(slideIndex);
 function plusSlides(n) {
     // showSlides(slideIndex += n);
     prevIdx = Math.floor(Math.random() * 412);
-    Console.log("0:"+prevIdx);
+    console.log("0:"+prevIdx);
     showSlides(prevIdx);
 }
 
@@ -548,8 +548,8 @@ function showSlides(n) {
     var i;
     var slides = document.getElementsByClassName("mySlides");
     // var dots   = document.getElementsByClassName("dot");
-    Console.log("1:"+slides.length);
-    Console.log("2:"+n);
+    console.log("1:"+slides.length);
+    console.log("2:"+n);
 
     if (n > slides.length) {
         slideIndex = 1
