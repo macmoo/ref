@@ -540,15 +540,11 @@ showSlides(slideIndex);
 function plusSlides(n) {
     slideIndex = Math.floor(Math.random() * 413);
     showSlides(slideIndex += n);
-    console.log("0:"+idx);
 }
 
 function showSlides(n) {
     var i;
     var slides = document.getElementsByClassName("mySlides");
-    // var dots   = document.getElementsByClassName("dot");
-    console.log("1:"+slides.length);
-    console.log("2:"+n);
 
     if (n > slides.length) {
         slideIndex = 1
@@ -559,18 +555,8 @@ function showSlides(n) {
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";  
     }
-    // for (i = 0; i < dots.length; i++) {
-    //     dots[i].className = dots[i].className.replace(" active", "");
-    // }
 
     slides[slideIndex-1].style.display = "block"; 
-    
-    // if(prevIdx !== undefined && !isNaN(previdx)){
-    //     console.log("3HERE:"+prevIdx);
-    //     slides[prevIdx].style.display = "block";
-    // }
-    prevIdx = i;
-    // dots[slideIndex-1].className += " active";
 }
 </script>
 
