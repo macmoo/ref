@@ -564,10 +564,13 @@ function showSlides(n) {
     //     dots[i].className = dots[i].className.replace(" active", "");
     // }
 
-    slides[slideIndex-1].style.display = "block";  
-    // if(prevIdx !== undefined && !isNaN(previdx)){
-    //     slides[prevIdx].style.display = "block";  
-    // }
+    // slides[slideIndex-1].style.display = "block"; 
+    
+    if(prevIdx !== undefined && !isNaN(previdx)){
+        console.log("3HERE:"+prevIdx);
+        slides[prevIdx].style.display = "block";
+    }
+    prevIdx = i;
     // dots[slideIndex-1].className += " active";
 }
 </script>
