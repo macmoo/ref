@@ -538,10 +538,10 @@ var prevIdx;
 showSlides(slideIndex);
 
 function plusSlides(n) {
-    showSlides(slideIndex += n);
+    //.showSlides(slideIndex += n);
     prevIdx = Math.floor(Math.random() * 412);
     console.log("0:"+prevIdx);
-    // showSlides(prevIdx);
+    showSlides(prevIdx += n);
 }
 
 function showSlides(n) {
