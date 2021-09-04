@@ -21,7 +21,7 @@ img {vertical-align: middle;}
 }
 
 /* Next & previous buttons */
-.prev, .next {
+.next {
   cursor: pointer;
   position: absolute;
   top: 45%;
@@ -39,12 +39,12 @@ img {vertical-align: middle;}
 /* Position the "next button" to the right */
 .next {
   /* right: 0; */
-  top: 55%;
+  top: 90%;
   border-radius: 3px 0 0 3px;
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
+.next:hover {
   background-color: rgba(0,0,0,0.8);
 }
 
@@ -104,7 +104,7 @@ img {vertical-align: middle;}
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
+  .next,.text {font-size: 11px}
 }
 </style>
 </head>
@@ -527,7 +527,7 @@ img {vertical-align: middle;}
     <!-- 412 --><div class="mySlides fade"><img src="./f/6img/poster/Bitter.Rice.1949.jpg" style="width:100%"></div>
     <!-- 413 --><div class="mySlides fade"><img src="./f/6img/poster/Black.Friday.1940.jpg" style="width:100%"></div>
     <!-- ####################################################### -->
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a> -->
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>
 <br>
