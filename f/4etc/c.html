@@ -263,7 +263,32 @@ printf("\n");
 auto it = v.begin();
 cout << typeid(it).name() << endl;</code></pre>
     <!-- ############################### -->
-    <pre><code class="c"></code></pre>
+    <pre><code class="c">// 문자열과 포인터
+char* str1 = "Hello_1";
+char  str2[] = "Hello_2";
+
+printf("str1 : %s\n", str1);
+printf("str2 : %s\n", str2);
+
+for (char* p = str1; *p != '\0'; p++)
+    printf("%c ", *p);
+printf("\n");
+
+for (char* p = str2; *p != '\0'; p++)
+    printf("%c ", *p);
+printf("\n");</code></pre>
+    <!-- ############################### -->
+    <pre><code class="c">// - 참조(주소를 나타내는 변수)
+//   반드시 초기화가 필요 => 포인터보다 안전히 사용가능
+int	 n;
+char ch;
+
+scanf("%d %c", &n, &ch);
+printf("[%d], [%c]\n", n, ch);
+
+int& m = n; // 참조
+m = 0;
+printf("n : [%d], m : [%d]\n", n, m); // 0, 0</code></pre>
     <!-- ############################### -->
     <pre><code class="c"></code></pre>
     <!-- ############################### -->
@@ -296,6 +321,32 @@ cout << typeid(it).name() << endl;</code></pre>
     <pre><code class="c"></code></pre>
     <!-- ############################### -->
     <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    
+
 </body>
 
 </html>
