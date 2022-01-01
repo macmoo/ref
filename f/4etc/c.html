@@ -266,15 +266,99 @@ int main(void)
     return 0;
 }</code></pre>
     <!-- ############################### -->
-    <pre><code class="c"></code></pre>
+    <pre><code class="c">// 난수생성/중복제거
+int value[MAX_COUNT];
+srand((unsigned int)time(NULL));
+for (int i = 0; i < MAX_COUNT; i++)
+{
+    value[i] = rand() % MAX_NUM + 1;
+    for (int j = 0; j < i; j++)
+    {
+        if (value[j] == value[i])
+        {
+            i--;
+            break;
+        }
+    }
+}</code></pre>
+    <!-- ############################### -->    <pre><code class="c">    clock_t t_start;clock_t t_end; 
+t_start = clock();
+quickSort(value, 0, cnt - 1);
+t_end = clock();
+float time_elapsed = (float)(t_end-t_start)/CLOCKS_PER_SEC;
+printf("걸린 시간:%f\n", time_elapsed);</code></pre>
     <!-- ############################### -->
-    <pre><code class="c"></code></pre>
+    <pre><code class="c">// 선택정렬
+void selectionSort(int value[], int count)
+{
+    int i = 0, j = 0;
+    int min = 0, temp = 0;
+
+    for (i = 0; i < count - 1; i++)
+    {
+        min = i;
+        for (j = i + 1; j < count; j++)
+        {
+            if (value[j] < value[i])
+            {
+                temp        = value[i];
+                value[i]    = value[j];
+                value[j]    = temp;
+            }
+
+        }
+        printf("Step-%d : [", i + 1);
+        printArrayForSelectionSort(value, count);
+    }
+}</code></pre>
     <!-- ############################### -->
-    <pre><code class="c"></code></pre>
+    <pre><code class="c">// 퀵정렬
+void quickSort(int value[], int start, int end)
+{
+    int pivot = 0;
+    if (start < end)
+    {
+        pivot = partitionQuickSort(value, start, end);
+        quickSort(value, start,pivot - 1);
+        quickSort(value, pivot, end);
+    }
+}
+
+int partitionQuickSort(int value[], int start, int end)
+{
+    int pivot = end;
+    int right = end;
+    int left = start;
+    int temp = 0;
+
+    while (left < right)
+    {
+        while ((value[left] < value[pivot]) && (left < right))
+        {
+            left++;
+        }
+        while ((value[right] >= value[pivot]) && (left < right))
+        {
+            right--;
+        }
+        if (left < right)
+        {
+            temp = value[left];
+            value[left] = value[right];
+            value[right] = temp;
+        }
+    }
+    temp = value[pivot];
+    value[pivot] = value[right];
+    value[right] = temp;
+
+    return right;
+}</code></pre>
     <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
+    <pre><code class="c">unsigned char d = 3;
+// 1비트를 뺌 (~0x01 = FFFFFFFE)
+d = d & ~0x01; 
+printf("d : %08X\n", d); // d : 00000002</code></pre>
     <!-- ############################### -->
     <pre><code class="c"></code></pre>
     <!-- ############################### -->
