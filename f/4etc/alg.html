@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<head>
+    <title></title>
+    <!-- START -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../etc/androidstudio.css">
+    <link rel="stylesheet" type="text/css" href="../../etc/custom.css">
+    <script type="text/javascript" src="../../etc/highlight.min.js"></script>
+    <script type="text/javascript" src="../../etc/highlightjs-line-numbers.min.js"></script>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script>hljs.initLineNumbersOnLoad();</script>
+    <!-- E N D -->
+</head>
+
+<body>
+    <!-- ############################### -->
+    <pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;Windows.h&gt;
+// ------------------------------------------
+int mdays[][12] ={
+    {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
+    {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31},
+};
+// ------------------------------------------
+int is_leap(int year)
+{
+    return (year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0);
+}
+// ------------------------------------------
+int day_of_year(int y, int m, int d)
+{
+    int    i;
+    int days = d;
+    for(i = 0; i < m; i++)
+    {
+           days += mdays[is_leap(y)][i-1];
+    }
+    return days;
+}
+// ------------------------------------------
+int main(void)
+{
+    int year, month, day;
+    int retry;
+    do
+    {
+        printf("년 : "); scanf_s("%d", &year);
+        printf("월 : "); scanf_s("%d", &month);
+        printf("일 : "); scanf_s("%d", &day);
+
+        printf("년내에 %d일째 입니다.\n", day_of_year(year, month, day));
+        printf("다시?(1..YES/0..NO : ");
+        scanf_s("%d", &retry);
+    } while(retry == 1);
+    system("pause");
+    return 0;
+}
+// ------------------------------------------</code></pre>
+    <!-- ############################### -->
+    <pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+// "do{ } while();" 가 세트
+// (호출시의 swap에 맨뒤에 ;가 있으니 중복됨 그래서 define에선 생략)
+#define swap(type, x, y) do { type t = x; x = y; y = t; } while(0)
+// n개의 배열a의 요소를 반전
+void arr_reverse(int a[], int n)
+{
+    int i;
+    for (i = 0; i < n/2; i++)
+        swap(int, a[i], a[n - i - 1]);
+}
+
+int main(void)
+{
+    int i;
+    int* arr;
+    int num;
+
+    printf("요소수 :");
+    scanf("%d", &num);
+
+    arr = calloc(num, sizeof(int));
+    for (i = 0; i < num; i++)
+    {
+        printf("arr[%d]:", i);
+        scanf("%d", &arr[i]);
+    }
+
+    arr_reverse(arr, num); // 반전
+
+    printf("-- 출력 --\n");
+    for (i = 0; i < num; i++)
+        printf("arr[%d]:%d\n", i, arr[i]);
+
+    free(arr);
+    return 0;
+}</code></pre>
+    <!-- ############################### -->
+    <pre><code class="c">// 진수변환
+#include &lt;stdio.h&gt;
+// x : 정수값
+// n : 변환할 지수 
+// d : 변환결과
+int card_conv(unsigned x, int n, char d[])
+{
+    char    dchar[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    int     digits = 0; // 변환후의 글자수
+
+    if (x == 0)
+        d[digits++] = dchar[0];
+    else
+        while (x) {
+            d[digits++] = dchar[x % n];
+            x /= n;
+        }
+    return digits;
+}
+
+int main(void)
+{
+    int         i;
+    unsigned    no;         // 변환할 정수
+    int         cd;         // 기수
+    int         dno;        // 변환후의 글자수
+    char        cno[512];   // 변화후의 숫자를 보관할 변수
+    int         retry;
+
+    puts("10진수를 기수변환한다.");
+    printf("변환할 정수 : ");
+    scanf("%d", &no);
+    do {
+        do {
+            printf("변환할 진수 ( 2 - 36 ) :");
+            scanf("%d", &cd);
+        } while (cd < 2 || cd > 36);
+
+        printf("%d를 %d진수로 변환 \n", no, cd);
+        dno = card_conv(no, cd, cno);
+
+        printf("%d진수로는 ", cd);
+        for(i = dno - 1; i >= 0 ; i--)
+            printf("%c", cno[i]);
+        printf("이다.\n\n");
+        printf("한번더? Yes(1)/No(0)");
+        scanf("%d", &retry);
+    } while (retry == 1);
+    return 0;
+}</code></pre>
+
+    <!-- ############################### -->
+    <pre><code class="c">// 선택정렬
+void selectionSort(int value[], int count)
+{
+    int i = 0, j = 0;
+    int min = 0, temp = 0;
+
+    for (i = 0; i < count - 1; i++)
+    {
+        min = i;
+        for (j = i + 1; j < count; j++)
+        {
+            if (value[j] < value[i])
+            {
+                temp        = value[i];
+                value[i]    = value[j];
+                value[j]    = temp;
+            }
+
+        }
+        printf("Step-%d : [", i + 1);
+        printArrayForSelectionSort(value, count);
+    }
+}</code></pre>
+    <!-- ############################### -->
+    <pre><code class="c">// 퀵정렬
+void quickSort(int value[], int start, int end)
+{
+    int pivot = 0;
+    if (start < end)
+    {
+        pivot = partitionQuickSort(value, start, end);
+        quickSort(value, start,pivot - 1);
+        quickSort(value, pivot, end);
+    }
+}
+
+int partitionQuickSort(int value[], int start, int end)
+{
+    int pivot = end;
+    int right = end;
+    int left = start;
+    int temp = 0;
+
+    while (left < right)
+    {
+        while ((value[left] < value[pivot]) && (left < right))
+        {
+            left++;
+        }
+        while ((value[right] >= value[pivot]) && (left < right))
+        {
+            right--;
+        }
+        if (left < right)
+        {
+            temp = value[left];
+            value[left] = value[right];
+            value[right] = temp;
+        }
+    }
+    temp = value[pivot];
+    value[pivot] = value[right];
+    value[right] = temp;
+
+    return right;
+}</code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+    <!-- ############################### -->
+    <pre><code class="c"></code></pre>
+</body>
+
+</html>
