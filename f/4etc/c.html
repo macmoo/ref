@@ -15,8 +15,8 @@
 </head>
 
 <body>
-    <!-- ############################### -->
-    <pre><code class="c">#ifdef _MSC_VER
+<!-- ############################### -->
+<pre><code class="c">#ifdef _MSC_VER
 #define _CRT_SECURE_NO_WARNINGS
 #endif
 #include &lt;stdio.h&gt;
@@ -41,8 +41,8 @@ int main()
     return 0;
 }</code>
 </pre>
-    <!-- ############################### -->
-    <pre><code class="c">#include &lt;stdio.h&gt;
+<!-- ############################### -->
+<pre><code class="c">#include &lt;stdio.h&gt;
 
 int main()
 {
@@ -57,8 +57,8 @@ int main()
     return 0;
 }</code>
 </pre>
-    <!-- ############################### -->
-    <pre><code class="c">#include &lt;stdio.h&gt;
+<!-- ############################### -->
+<pre><code class="c">#include &lt;stdio.h&gt;
 
 // calloc사용
 int main()
@@ -75,8 +75,8 @@ int main()
     }
 
 }</code></pre>
-    <!-- ############################### -->
-    <pre><code class="c">#include &lt;stdio.h&gt;
+<!-- ############################### -->
+<pre><code class="c">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 int main(void)
 {
@@ -106,8 +106,8 @@ int main(void)
     }
     return 0;
 }</code></pre>
-    <!-- ############################### -->
-    <pre><code class="c">#include &lt;stdio.h&gt;
+<!-- ############################### -->
+<pre><code class="c">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 int maxOf(const int a[], int n)
 {
@@ -139,8 +139,8 @@ int main(void)
     free(a);
     return 0;
 }</code></pre>
-    <!-- ############################### -->
-    <pre><code class="c">#include &lt;stdio.h&gt;
+<!-- ############################### -->
+<pre><code class="c">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;time.h&gt;
 int maxOf(const int a[], int n)
@@ -174,8 +174,8 @@ int main(void)
     free(height);
     return 0;
 }</code></pre>
-    <!-- ############################### -->
-    <pre><code class="c">#include &lt;stdio.h&gt;
+<!-- ############################### -->
+<pre><code class="c">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 // "do{ } while();" 가 세트
 // (호출시의 swap에 맨뒤에 ;가 있으니 중복됨 그래서 define에선 생략)
@@ -213,8 +213,8 @@ int main(void)
     free(arr);
     return 0;
 }</code></pre>
-    <!-- ############################### -->
-    <pre><code class="c">// 난수생성/중복제거
+<!-- ############################### -->
+<pre><code class="c">// 난수생성/중복제거
 int value[MAX_COUNT];
 srand((unsigned int)time(NULL));
 for (int i = 0; i < MAX_COUNT; i++)
@@ -229,30 +229,30 @@ for (int i = 0; i < MAX_COUNT; i++)
         }
     }
 }</code></pre>
-    <!-- ############################### -->
-    <pre><code class="c">clock_t t_start;clock_t t_end; 
+<!-- ############################### -->
+<pre><code class="c">clock_t t_start;clock_t t_end; 
 t_start = clock();
 quickSort(value, 0, cnt - 1);
 t_end = clock();
 float time_elapsed = (float)(t_end-t_start)/CLOCKS_PER_SEC;
 printf("걸린 시간:%f\n", time_elapsed);</code></pre>
-    <!-- ############################### -->
-    <pre><code class="c">unsigned char d = 3;
+<!-- ############################### -->
+<pre><code class="c">unsigned char d = 3;
 // 1비트를 뺌 (~0x01 = FFFFFFFE)
 d = d & ~0x01; 
 printf("d : %08X\n", d); // d : 00000002</code></pre>
-    <!-- ############################### -->
-    <pre><code class="c">	x = 0xFFFF0000;
+<!-- ############################### -->
+<pre><code class="c">	x = 0xFFFF0000;
 y = 0x0000FFFF;
-z = x | y;
+z = x | y; // z => 0xFFFFFFFF
 printf("x : %08X, y : %08X, z : %08X\n", x, y, z);
 // 모든 비트가 '1' => '-1'과 비교하면 계산이 빠르다.
 if (z == (unsigned int)-1)
     puts("All Bits are 1");
 else
     puts("Not");</code></pre>
-    <!-- ############################### -->
-    <pre><code class="c">vector<int> v;
+<!-- ############################### -->
+<pre><code class="c">vector<int> v;
 for (int i = 0; i < 10; i++)
     v.push_back(i);
 
@@ -262,9 +262,9 @@ printf("\n");
 
 auto it = v.begin();
 cout << typeid(it).name() << endl;</code></pre>
-    <!-- ############################### -->
-    <pre><code class="c">// 문자열과 포인터
-char* str1 = "Hello_1";
+<!-- ############################### -->
+<pre><code class="c">// 문자열과 포인터
+char* str1   = "Hello_1";
 char  str2[] = "Hello_2";
 
 printf("str1 : %s\n", str1);
@@ -277,10 +277,10 @@ printf("\n");
 for (char* p = str2; *p != '\0'; p++)
     printf("%c ", *p);
 printf("\n");</code></pre>
-    <!-- ############################### -->
-    <pre><code class="c">// - 참조(주소를 나타내는 변수)
+<!-- ############################### -->
+<pre><code class="c">// - 참조(주소를 나타내는 변수)
 //   반드시 초기화가 필요 => 포인터보다 안전히 사용가능
-int	 n;
+int  n;
 char ch;
 
 scanf("%d %c", &n, &ch);
@@ -289,63 +289,268 @@ printf("[%d], [%c]\n", n, ch);
 int& m = n; // 참조
 m = 0;
 printf("n : [%d], m : [%d]\n", n, m); // 0, 0</code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    <!-- ############################### -->
-    <pre><code class="c"></code></pre>
-    
+<!-- ############################### -->
+<pre><code class="c">// 구조체
+// struct POINT { int x, y; };
+int    n;
+POINT  pt = { 10, 20 };
+POINT* p  = &pt;
+printf("point : %d %d\n", pt.x, pt.y);
+
+n = pt.x;    printf("n : %d\n", n); // 10
+n = (*p).x;  printf("n : %d\n", n); // 10
+n = p->x;    printf("n : %d\n", n); // 10</code></pre>
+<!-- ############################### -->
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include  &lt;string&gt;
+#include  &lt;iostream&gt;
+#include  &lt;sstream&gt;
+using namespace std;
+
+// 구조체
+struct POINT { int x, y; };
+
+// 클래스
+class Person {
+private:
+    string	_name;
+    int		_age;
+public:
+    Person(string name, int age) {
+        _name = name;
+        _age  = age;
+    }
+    string ToString() {
+        stringstream s;
+        s << _name << "(" << _age << ")";
+        return s.str();
+    }
+};
+void func(POINT* pt) {
+    printf("point : %d %d\n", pt->x, pt->y);
+    (*pt).x = 33;
+    pt->y = 44;
+}
+int main(void) {
+    POINT pt = { 10,20 };
+    func(&pt); // 10 20
+    func(&pt); // 33 44
+ 
+    Person* me = new Person("medusa", 999);
+    cout << me->ToString() << endl;
+    return 0;
+}</code></pre>
+<!-- ############################### -->
+<pre><code class="c">Person* me = new Person("medusa", 999);
+cout << me->ToString() << endl;
+
+// [->*]연산자
+// 포인터로 멤버포인터를 습득
+string (Person::*to_s)() = &Person::ToString;
+cout << (me->*to_s)() << endl;</code></pre>
+<!-- ############################### -->
+<pre><code class="c">// 스코프 연산자(::)
+::x; // 전역변수 x에 접근
+</code></pre>
+<!-- ############################### -->
+<pre><code class="c">// 파일오픈
+// #include <ctype.h>
+FILE* fp;
+int   ch;
+
+if ((fp = fopen("test.txt", "r")) == NULL) {
+	printf("파일 오픈 실패\n");
+	return 0;
+}
+
+while ((ch = fgetc(fp)) != EOF)
+	printf("[%c]", ch);
+fclose(fp);</code></pre>
+<!-- ############################### -->
+<pre><code class="c">// Collection
+int ary[] = { 0,1,2,3,4,5,6,7,8,9 };
+for (auto x : ary)
+	printf("%i, ", x);
+printf("\n");
+
+vector<int> vec;
+for (int i = 0; i < 10; i++)
+	vec.push_back(i);
+
+    // use iterator
+for (auto it : vec)
+	printf("%i, ", it);
+printf("\n");</code></pre>
+<!-- ############################### -->
+<pre><code class="c">// -------------------
+// no088.cpp
+// -------------------
+static int	x;
+int			y;
+void func2(void);
+
+void func(void)
+{
+	static int z = 0;
+	z++;
+	printf("func z : %d\n", z);
+}
+
+int main(void)
+{
+	x = 1;
+	y = 2;
+	printf("main => x : %d, y : %d\n", x, y); // x:1, y:2
+	func();  // x:1
+	func();  // x:2
+	func();  // x:3
+	func2(); // y:10
+	printf("main => x : %d, y : %d\n", x, y); // x:1, y:10
+}
+// -------------------
+// no088_sub.cpp
+// -------------------
+void func2(void)
+{
+	// no088.cpp 파일에 정의된 변수y를 참조
+	extern int y;
+	y = 10;
+	printf("func2 => y : %d\n", y);
+}
+</code></pre>
+<!-- ############################### -->
+<pre><code class="c">// enum
+enum COLOR {
+	white = 0,
+	red, blue, yellow,
+	black = 10,
+	green, pink,
+};
+
+int main(void)
+{
+	enum COLOR x;
+	x = red;
+	printf("main x     : %d, red   : %d\n", x, red);
+	printf("main black : %d, green : %d\n", black, green);
+
+	printf("size : %d\n", (int)sizeof(x)); // 4
+	printf("type name : %s\n", typeid(x).name()); // enum COLOR
+
+	return 0;
+}</code></pre>
+<!-- ############################### -->
+<pre><code class="c">// -------------------
+// 구조체
+// -------------------
+struct point {
+	int		x, y, z;
+	char	name[10];
+	struct  point* next;
+};
+
+int main(void)
+{
+	point	top;
+	struct	point* p;
+
+	top.x = top.y = 0;
+	strcpy(top.name, "top");
+	top.next = NULL;
+
+	p = &top;
+
+	for (int i = 1; i <= 5; i++)
+	{
+		p->next = (struct point*)malloc(sizeof(struct point));
+		p = p->next;
+		p->x = i;
+		p->y = i;
+		sprintf(p->name, "num_%d", i);
+		p->next = NULL;
+	}
+
+	for (p = &top; p != NULL; p = p->next)
+		printf("x:%d, y:%d, name:%s\n", p->x, p->y, p->name);
+	// x : 0, y : 0, name : top
+	// x : 1, y : 1, name : num_1
+	// x : 2, y : 2, name : num_2
+	// x : 3, y : 3, name : num_3
+	// x : 4, y : 4, name : num_4
+	// x : 5, y : 5, name : num_5
+
+	for (p = &top; p != NULL; )
+	{
+		struct point* q = p->next;
+		free(p);
+		p = q;
+	}
+}
+</code></pre>
+<!-- ############################### -->
+<pre><code class="c">// -------------------
+// UNION
+// -------------------
+union ipaddr {
+	unsigned long ip;
+	struct _num {
+		unsigned char ip1, ip2, ip3, ip4;
+	} n;
+};
+
+int main(void)
+{
+	union ipaddr addr;
+
+	addr.n.ip1 = 1;
+	addr.n.ip2 = 2;
+	addr.n.ip3 = 3;
+	addr.n.ip4 = 4;
+
+	printf("ip : %d.%d.%d.%d\n", addr.n.ip1, addr.n.ip2, addr.n.ip3, addr.n.ip4);
+	printf("ip : %08X\n", addr.ip);
+	printf("size : %d\n", (int)sizeof(addr));
+	// ip: 1.2.3.4
+	// ip : 04030201
+	// size : 4
+} </code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+
 
 </body>
 
