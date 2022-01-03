@@ -242,7 +242,7 @@ printf("걸린 시간:%f\n", time_elapsed);</code></pre>
 d = d & ~0x01; 
 printf("d : %08X\n", d); // d : 00000002</code></pre>
 <!-- ############################### -->
-<pre><code class="c">	x = 0xFFFF0000;
+<pre><code class="c">    x = 0xFFFF0000;
 y = 0x0000FFFF;
 z = x | y; // z => 0xFFFFFFFF
 printf("x : %08X, y : %08X, z : %08X\n", x, y, z);
@@ -313,8 +313,8 @@ struct POINT { int x, y; };
 // 클래스
 class Person {
 private:
-    string	_name;
-    int		_age;
+    string    _name;
+    int        _age;
 public:
     Person(string name, int age) {
         _name = name;
@@ -359,132 +359,132 @@ FILE* fp;
 int   ch;
 
 if ((fp = fopen("test.txt", "r")) == NULL) {
-	printf("파일 오픈 실패\n");
-	return 0;
+    printf("파일 오픈 실패\n");
+    return 0;
 }
 
 while ((ch = fgetc(fp)) != EOF)
-	printf("[%c]", ch);
+    printf("[%c]", ch);
 fclose(fp);</code></pre>
 <!-- ############################### -->
 <pre><code class="c">// Collection
 int ary[] = { 0,1,2,3,4,5,6,7,8,9 };
 for (auto x : ary)
-	printf("%i, ", x);
+    printf("%i, ", x);
 printf("\n");
 
 vector<int> vec;
 for (int i = 0; i < 10; i++)
-	vec.push_back(i);
+    vec.push_back(i);
 
     // use iterator
 for (auto it : vec)
-	printf("%i, ", it);
+    printf("%i, ", it);
 printf("\n");</code></pre>
 <!-- ############################### -->
 <pre><code class="c">// -------------------
 // no088.cpp
 // -------------------
-static int	x;
-int			y;
+static int    x;
+int            y;
 void func2(void);
 
 void func(void)
 {
-	static int z = 0;
-	z++;
-	printf("func z : %d\n", z);
+    static int z = 0;
+    z++;
+    printf("func z : %d\n", z);
 }
 
 int main(void)
 {
-	x = 1;
-	y = 2;
-	printf("main => x : %d, y : %d\n", x, y); // x:1, y:2
-	func();  // x:1
-	func();  // x:2
-	func();  // x:3
-	func2(); // y:10
-	printf("main => x : %d, y : %d\n", x, y); // x:1, y:10
+    x = 1;
+    y = 2;
+    printf("main => x : %d, y : %d\n", x, y); // x:1, y:2
+    func();  // x:1
+    func();  // x:2
+    func();  // x:3
+    func2(); // y:10
+    printf("main => x : %d, y : %d\n", x, y); // x:1, y:10
 }
 // -------------------
 // no088_sub.cpp
 // -------------------
 void func2(void)
 {
-	// no088.cpp 파일에 정의된 변수y를 참조
-	extern int y;
-	y = 10;
-	printf("func2 => y : %d\n", y);
+    // no088.cpp 파일에 정의된 변수y를 참조
+    extern int y;
+    y = 10;
+    printf("func2 => y : %d\n", y);
 }
 </code></pre>
 <!-- ############################### -->
 <pre><code class="c">// enum
 enum COLOR {
-	white = 0,
-	red, blue, yellow,
-	black = 10,
-	green, pink,
+    white = 0,
+    red, blue, yellow,
+    black = 10,
+    green, pink,
 };
 
 int main(void)
 {
-	enum COLOR x;
-	x = red;
-	printf("main x     : %d, red   : %d\n", x, red);
-	printf("main black : %d, green : %d\n", black, green);
+    enum COLOR x;
+    x = red;
+    printf("main x     : %d, red   : %d\n", x, red);
+    printf("main black : %d, green : %d\n", black, green);
 
-	printf("size : %d\n", (int)sizeof(x)); // 4
-	printf("type name : %s\n", typeid(x).name()); // enum COLOR
+    printf("size : %d\n", (int)sizeof(x)); // 4
+    printf("type name : %s\n", typeid(x).name()); // enum COLOR
 
-	return 0;
+    return 0;
 }</code></pre>
 <!-- ############################### -->
 <pre><code class="c">// -------------------
 // 구조체
 // -------------------
 struct point {
-	int		x, y, z;
-	char	name[10];
-	struct  point* next;
+    int        x, y, z;
+    char    name[10];
+    struct  point* next;
 };
 
 int main(void)
 {
-	point	top;
-	struct	point* p;
+    point    top;
+    struct    point* p;
 
-	top.x = top.y = 0;
-	strcpy(top.name, "top");
-	top.next = NULL;
+    top.x = top.y = 0;
+    strcpy(top.name, "top");
+    top.next = NULL;
 
-	p = &top;
+    p = &top;
 
-	for (int i = 1; i <= 5; i++)
-	{
-		p->next = (struct point*)malloc(sizeof(struct point));
-		p = p->next;
-		p->x = i;
-		p->y = i;
-		sprintf(p->name, "num_%d", i);
-		p->next = NULL;
-	}
+    for (int i = 1; i <= 5; i++)
+    {
+        p->next = (struct point*)malloc(sizeof(struct point));
+        p = p->next;
+        p->x = i;
+        p->y = i;
+        sprintf(p->name, "num_%d", i);
+        p->next = NULL;
+    }
 
-	for (p = &top; p != NULL; p = p->next)
-		printf("x:%d, y:%d, name:%s\n", p->x, p->y, p->name);
-	// x : 0, y : 0, name : top
-	// x : 1, y : 1, name : num_1
-	// x : 2, y : 2, name : num_2
-	// x : 3, y : 3, name : num_3
-	// x : 4, y : 4, name : num_4
-	// x : 5, y : 5, name : num_5
+    for (p = &top; p != NULL; p = p->next)
+        printf("x:%d, y:%d, name:%s\n", p->x, p->y, p->name);
+    // x : 0, y : 0, name : top
+    // x : 1, y : 1, name : num_1
+    // x : 2, y : 2, name : num_2
+    // x : 3, y : 3, name : num_3
+    // x : 4, y : 4, name : num_4
+    // x : 5, y : 5, name : num_5
 
-	for (p = &top; p != NULL; )
-	{
-		struct point* q = p->next;
-		free(p);
-		p = q;
-	}
+    for (p = &top; p != NULL; )
+    {
+        struct point* q = p->next;
+        free(p);
+        p = q;
+    }
 }
 </code></pre>
 <!-- ############################### -->
@@ -492,66 +492,139 @@ int main(void)
 // UNION
 // -------------------
 union ipaddr {
-	unsigned long ip;
-	struct _num {
-		unsigned char ip1, ip2, ip3, ip4;
-	} n;
+    unsigned long ip;
+    struct _num {
+        unsigned char ip1, ip2, ip3, ip4;
+    } n;
 };
 
 int main(void)
 {
-	union ipaddr addr;
+    union ipaddr addr;
 
-	addr.n.ip1 = 1;
-	addr.n.ip2 = 2;
-	addr.n.ip3 = 3;
-	addr.n.ip4 = 4;
+    addr.n.ip1 = 1;
+    addr.n.ip2 = 2;
+    addr.n.ip3 = 3;
+    addr.n.ip4 = 4;
 
-	printf("ip : %d.%d.%d.%d\n", addr.n.ip1, addr.n.ip2, addr.n.ip3, addr.n.ip4);
-	printf("ip : %08X\n", addr.ip);
-	printf("size : %d\n", (int)sizeof(addr));
-	// ip: 1.2.3.4
-	// ip : 04030201
-	// size : 4
+    printf("ip : %d.%d.%d.%d\n", addr.n.ip1, addr.n.ip2, addr.n.ip3, addr.n.ip4);
+    printf("ip : %08X\n", addr.ip);
+    printf("size : %d\n", (int)sizeof(addr));
+    // ip: 1.2.3.4
+    // ip : 04030201
+    // size : 4
 } </code></pre>
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
-<!-- ############################### -->
-<pre><code class="c"></code></pre>
-<!-- ############################### -->
-<pre><code class="c"></code></pre>
-<!-- ############################### -->
-<pre><code class="c"></code></pre>
-<!-- ############################### -->
-<pre><code class="c"></code></pre>
-<!-- ############################### -->
-<pre><code class="c"></code></pre>
-<!-- ############################### -->
-<pre><code class="c"></code></pre>
-<!-- ############################### -->
-<pre><code class="c"></code></pre>
-<!-- ############################### -->
-<pre><code class="c"></code></pre>
-<!-- ############################### -->
-<pre><code class="c"></code></pre>
-<!-- ############################### -->
-<pre><code class="c"></code></pre>
-<!-- ############################### -->
-<pre><code class="c"></code></pre>
-<!-- ############################### -->
-<pre><code class="c"></code></pre>
-<!-- ############################### -->
-<pre><code class="c"></code></pre>
-<!-- ############################### -->
-<pre><code class="c"></code></pre>
-<!-- ############################### -->
-<pre><code class="c"></code></pre>
-<!-- ############################### -->
-<pre><code class="c"></code></pre>
-<!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c">// -------------------
+// typedef
+// 함수포인터
+// -------------------
+typedef unsigned int UINT;
+typedef struct {
+    int x;
+    int y;
+} POINT;
 
+// int형을 인수로 갖는 함수 포인터
+typedef void FUNC(int);
+
+void func(int x){
+    printf("func x:%d\n", x);
+}
+
+int main(void) {
+    POINT    pt;
+    FUNC*    f;
+    void    (*f2)(int); // FUNC형과 같다
+
+    pt.x = pt.y = 0;
+    printf("pt.x : %d, pt.y : %d\n", pt.x, pt.y);
+    
+    f = func;
+    f(pt.x);
+    f2 = func;
+    f2(pt.x);
+}</code></pre>
+<!-- ############################### -->
+<pre><code class="c">// -------------------
+// static_cast<형>(변환할 변수)
+// : 암묵적인 형변환이 될때에만 캐스트한다
+// -------------------
+class Base{};
+class Sub:public Base{};
+class Other{};
+
+int main(void)
+{
+    int        v = 0;
+    long    d = static_cast<long>(v); // 캐스트가능
+    char    c = static_cast<long>(v); // 캐스트가능
+    // int*    p = static_cast<int*>(v); // 캐스트불가
+
+    Base*    sub        = new Sub();
+    Other*    other    = new Other();
+    Sub*    s1        = static_cast<Sub*>(sub);   // 캐스트가능
+    // Sub*    s2        = static_cast<Sub*>(other); // 캐스트불가
+
+    delete sub;
+    delete other;
+}</code></pre>
+<!-- ############################### -->
+<pre><code class="c">// -------------------
+// const_cast<형>(변환할 변수)
+// : const로 수식된 형을 const만을 뗀다
+// -------------------
+int main(void)
+{
+    const char* str = "Hello C/C++";
+    
+    // char* s = str; // 이대로는 캐스트안됨
+    char* s = const_cast<char*>(str);
+}</code></pre>
+<!-- ############################### -->
+<pre><code class="c">// -------------------
+// reinterpret_cast<형>(변환할 변수)
+// : static_cast로는 캐스트되지 않는 형변환을
+//   강제로 캐스트. 괄호형변환과 같다
+// -------------------
+int main(void)
+{
+	long v = 0;
+
+	// int* p = static_cast<int*>(v);    // 캐스트불가
+	int* p = reinterpret_cast<int*>(v);  // 캐스트가능
+
+	// long x = static_cast<long>(&v);   // 캐스트불가
+	long x = reinterpret_cast<long>(&v); // 캐스트가능
+}</code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
 
 </body>
-
 </html>
