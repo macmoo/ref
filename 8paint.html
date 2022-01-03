@@ -113,10 +113,9 @@ img {vertical-align: middle;}
 <div id="posy"></div>
 <div class="slideshow-container">
     <!-- ####################################################### -->
-    <div class="mySlides fade"><img src="./f/6img/paint/top0001.jpg" style="width:100%"></div>
-    <div class="mySlides fade"><img src="./f/6img/paint/20210727.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/paint/00001.jpg" style="width:100%"></div>
+    <div class="mySlides fade"><img src="./f/6img/paint/00002.jpg" style="width:100%"></div>
     <!-- ####################################################### -->
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>
 <br>
@@ -132,17 +131,18 @@ function plusSlides(n) {
 function showSlides(n) {
     var i;
     var slides = document.getElementsByClassName("mySlides");
-    var dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {slideIndex = 1}    
-    if (n < 1) {slideIndex = slides.length}
+
+    if (n > slides.length) {
+        slideIndex = 1
+    }
+    if (n < 1) {
+        slideIndex = slides.length
+    }
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";  
     }
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-    slides[slideIndex-1].style.display = "block";  
-    dots[slideIndex-1].className += " active";
+
+    slides[slideIndex-1].style.display = "block"; 
 }
 </script>
 
