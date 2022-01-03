@@ -598,9 +598,94 @@ int main(void)
 	long x = reinterpret_cast<long>(&v); // 캐스트가능
 }</code></pre>
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c">// -------------------
+// dynamic_cast<형>(변환할 변수)
+// : 실행시 캐스트가 가능한지를 체크한다.
+//   dynamic_cast를 사용할 때는 가상함수가 1개 이상 필요.
+// -------------------
+class Base {
+public:
+	virtual void func(){ printf("Base::func()\n"); }
+};
+
+class Sub :public Base {
+public:
+	virtual void func2(){ printf("Sub::func2()\n"); }
+};
+
+class Other{};
+
+int main(void){
+	Base*  sub   = new Sub();
+	Base*  base  = new Base();
+	Other* other = new Other();
+
+	Sub* s1 = static_cast<Sub*>(sub);   // 캐스트 가능
+	Sub* b1 = static_cast<Sub*>(base);  // 캐스트 가능?
+	// Sub* o1 = static_cast<Sub*>(other); // 캐스트 불가
+	s1->func();
+	s1->func2();
+	b1->func();
+	// b1->func2(); // 실행시 ERROR
+
+	puts("---------------------");
+	Sub* s2 = dynamic_cast<Sub*>(sub);  // 캐스트 가능
+	Sub* b2 = dynamic_cast<Sub*>(base); // 캐스트 가능?
+	// Sub* o1 = dynamic_cast<Sub*>(other); // 캐스트 불가
+	s2->func();
+	s2->func2();
+	// b2->func();  // 실행시 ERROR
+	// b2->func2(); // 실행시 ERROR
+
+	// Base::func()
+	// Sub::func2()
+	// Base::func()
+	// -------------------- -
+	// Base::func()
+	// Sub::func2()
+}</code></pre>
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c">// -------------------
+// 참조
+// -------------------
+// 참조를 사용
+void calc(int x, int& y)
+{
+	y += x;
+}
+// 포인터를 사용
+void calc(int x, int* y)
+{
+	*y +=x;
+}
+
+int main(void)
+{
+	int x, y, i;
+	
+	// 참조버전
+	x = y = 1;
+	for (i = 0; i < 10; i++)
+	{
+		calc(x, y);
+		printf("%d,", y);
+		x = y;
+	}
+	printf("\n");
+
+	// 포인터버전
+	x = y = 1;
+	for (i = 0; i < 10; i++)
+	{
+		calc(x, &y);
+		printf("%d,", y);
+		x = y;
+	}
+	printf("\n");
+	
+	// 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024,
+	// 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024,
+}</code></pre>
 <!-- ############################### -->
 <pre><code class="c"></code></pre>
 <!-- ############################### -->
