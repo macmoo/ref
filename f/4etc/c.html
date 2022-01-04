@@ -687,11 +687,127 @@ int main(void)
 	// 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024,
 }</code></pre>
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c">// 파일 단위 스코프 관리
+// -------------------
+// extern:프로그램 어디서든 참조가능
+// static:다른 파일로부터 참조되는 걸 방지
+// 함수를 static으로하면 그 파일에서만 이용 가능 
+// -------------------
+// no103.cpp
+// -------------------
+static int x;
+int y;
+void func2(void);
+
+void func(void)
+{
+	static int z = 0;
+	z++;
+	printf("func  z:%d\n", z);
+}
+
+int main(void)
+{
+	x = 1;
+	y = 2;
+	printf("main  x:%d, y:%d\n", x, y);
+	func();
+	func();
+	func();
+	func2();
+	func2();
+	printf("main  x:%d, y:%d\n", x, y);
+}
+// -------------------
+// no103_sub.cpp
+// -------------------
+static int x = 0; // 정의가능
+extern int y;     // 참조가능
+
+void func2(void)
+{
+	y = 10;
+	printf("func2 x:%d, y:%d\n", x, y);
+}
+// main  x:1, y:2
+// func  z:1
+// func  z:2
+// func  z:3
+// func2 x:0, y:10
+// func2 x:0, y:10
+// main  x:1, y:10
+</code></pre>
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c">// -------------------
+// 람다식
+// [캡쳐리스트](인수)반환값의 형{ 함수의 본체 }
+// include list
+// -------------------
+int main(void)
+{
+	list<int> lst;
+	for (int i = 0; i < 10; i++)
+		lst.push_back(10-i);
+
+	cout << "lst: ";
+	for(auto it : lst)
+		cout << it << ",";
+	cout << endl;
+
+	// sort
+	lst.sort( [](int x, int y){ return x < y; });
+	cout << "lst: ";
+	for (auto it : lst)
+		cout << it << ",";
+	cout << endl;
+	
+	// reverse
+	lst.sort( [](int x, int y){ return x > y; });
+	cout << "lst: ";
+	for (auto it : lst)
+		cout << it << ",";
+	cout << endl;
+
+    // lst: 10,9,8,7,6,5,4,3,2,1,
+    // lst: 1,2,3,4,5,6,7,8,9,10,
+    // lst: 10,9,8,7,6,5,4,3,2,1,
+	return 0;
+}</code></pre>
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c">// -------------------
+// 람다식(캡쳐리스트) 
+// 1) 명시적으로 캡쳐할 변수를 지정
+//    [&ans](int x, int y){ ans = x + y; }
+// 2) 클래스의 this포인터를 이용
+//    [this](){ return this->func(); }
+// 캡쳐기술 방법
+// []     : 캡쳐안함
+// [&]    : 모든 변수를 캡쳐함(변경가능)
+// [=]    : 모든 변수를 복사해서 캡쳐함(변경불가능)
+// [&n]   : 지정한 변수를 캡쳐함(변경가능)
+// [n]    : 지정한 변수를 복사해서 캡쳐함(변경불가능)
+// [this] : 클래스의 this포인터를 참조
+// -------------------
+int main(void)
+{
+	list<int> lst;
+	for(int i = 0; i < 10; i++)
+		lst.push_back(10-i);
+	cout << "lst:";
+	for(auto it : lst)
+		cout << it << ",";
+	cout << endl;
+
+	// sum
+	int sum = 0;
+	// for_each => include algorithm
+	for_each(lst.begin(), lst.end(), [&sum](int x){ sum += x; });
+	cout << "sum : " << sum << endl;
+	return 0; 
+
+	// lst:10, 9, 8, 7, 6, 5, 4, 3, 2, 1,
+	// sum : 55
+}</code></pre>
 <!-- ############################### -->
 <pre><code class="c"></code></pre>
 <!-- ############################### -->
