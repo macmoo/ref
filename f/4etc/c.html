@@ -809,13 +809,103 @@ int main(void)
 	// sum : 55
 }</code></pre>
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c">// -------------------
+// 람다식의 재이용
+// -------------------
+int main(void)
+{
+	list<int> lst;
+	for(int i = 0; i < 10; i++)
+		lst.push_back(10-i);
+	cout << "main lst:";
+	for(auto it : lst)
+		cout << it << ",";
+	cout << endl;
+
+	// 람다함수
+	auto func1 = [](int x, int y){ return x < y; };
+	auto func2 = [](int x, int y){ return x > y; };
+	auto print = [](list<int> &l){ 
+		cout << "func lst:";
+		for (auto it : l)
+			cout << it << ",";
+		cout << endl;
+	};
+
+	// sort
+	lst.sort(func1);
+	print(lst);
+	// reverse
+	lst.sort(func2);
+	print(lst);
+
+	// main lst : 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,
+	// func lst : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+	// func lst : 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,
+}</code></pre>
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c"><// -------------------
+// 프리프로세서
+// #define
+// -------------------
+#define DEBUG // 정의만 해둠
+#define LANG_C    1
+#define LANG_CPP  2
+#define LANG_JAVA 3
+
+int main(void)
+{
+#ifdef DEBUG
+	printf("debug message\n");
+#endif
+	printf("language c++:%d\n", LANG_CPP);
+	
+// debug message
+// language c++:2
+}/code></pre>
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c">// -------------------
+// #define 인수가 있는 매크로
+// 매크로함수는 코드에 전개되기 때문에 
+// 실행시에는 스택을 소비하지 않는다.
+// -------------------
+#define ISZERO(_x) ((_x == 0)?1:0)
+
+int main(void)
+{
+	int x = 0;
+	printf("x is zero?:%d\n", ISZERO(x));
+// x is zero?:1
+}</code></pre>
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c">// -------------------
+// 내부변수를 사용하는 매크로
+// #define 매크로명{...}
+// C++에서는 매크로함수보다는 함수template이 더 적절하다
+// -------------------
+#define PRINT(_max)            \
+{                              \
+	int i;                     \
+	for(i = 0; i < _max; i++)  \
+		printf("[%d]", i);     \
+}                              \
+
+template <class T> void PR(T max)
+{
+	int i;
+	for(i = 0; i < max; i++)
+		printf("[%d]", i);
+}
+
+int main(void)
+{
+	PRINT(10);
+	puts("");
+	PR(5);
+// [0] [1] [2] [3] [4] [5] [6] [7] [8] [9]
+// [0] [1] [2] [3] [4]
+}
+</code></pre>
 <!-- ############################### -->
 <pre><code class="c"></code></pre>
 <!-- ############################### -->
