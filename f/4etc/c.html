@@ -907,6 +907,70 @@ int main(void)
 }
 </code></pre>
 <!-- ############################### -->
+<pre><code class="c">// -------------------
+// 매크로함수의 인수를 그대로 몬자열로 변환가능
+// #define MACRO(_x) #_x
+// -------------------
+#define PRINT(_n) printf("name:%s\n", #_n)
+
+int main(void)
+{
+	PRINT(kaku tensai); // name:kaku tensai
+}
+</code></pre>
+<!-- ############################### -->
+<pre><code class="c">// -------------------
+// 매크로함수의 인수를 다른 문자열과 붙일수 있다
+// #define MACRO(_x, _y) _x##_y
+// -------------------
+#define LANG(_x) LANG_##_x
+
+enum {
+	LANG_C = 0,
+	LANG_CPP,
+	LANG_JAVA
+};
+
+int main(void)
+{
+	printf("lang:%d\n", LANG(CPP));
+	printf("etc :%s\n", __FILE__);
+	printf("etc :%d\n", __LINE__);
+// lang:1
+// etc : D : \200.dev\201.src\01.cpp\_Index_500\_Index_500\no112.cpp
+// etc : 18
+}</code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
+<pre><code class="c"></code></pre>
+<!-- ############################### -->
 <pre><code class="c"></code></pre>
 <!-- ############################### -->
 <pre><code class="c"></code></pre>
