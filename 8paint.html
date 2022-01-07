@@ -126,6 +126,10 @@ img {vertical-align: middle;}
     <div class="mySlides fade next" onclick="plusSlides(1)"><img src="./f/6img/paint/00011.jpg" style="width:100%"></div>
     <div class="mySlides fade next" onclick="plusSlides(1)"><img src="./f/6img/paint/00012.jpg" style="width:100%"></div>
     <div class="mySlides fade next" onclick="plusSlides(1)"><img src="./f/6img/paint/00013.jpg" style="width:100%"></div>
+    <div class="mySlides fade next" onclick="plusSlides(1)"><img src="./f/6img/paint/00014.jpg" style="width:100%"></div>
+    <div class="mySlides fade next" onclick="plusSlides(1)"><img src="./f/6img/paint/00015.jpg" style="width:100%"></div>
+    <div class="mySlides fade next" onclick="plusSlides(1)"><img src="./f/6img/paint/00016.jpg" style="width:100%"></div>
+    <div class="mySlides fade next" onclick="plusSlides(1)"><img src="./f/6img/paint/00017.jpg" style="width:100%"></div>
     <!-- ####################################################### -->
 </div>
 <br>
@@ -135,6 +139,7 @@ var slideIndex = 1;
 showSlides(slideIndex);
 
 function plusSlides(n) {
+  slideIndex = Math.floor(Math.random() * 17); // ★
   showSlides(slideIndex += n);
 }
 
