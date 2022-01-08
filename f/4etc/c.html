@@ -936,26 +936,183 @@ int main(void)
 	printf("lang:%d\n", LANG(CPP));
 	printf("etc :%s\n", __FILE__);
 	printf("etc :%d\n", __LINE__);
-// lang:1
-// etc : D : \200.dev\201.src\01.cpp\_Index_500\_Index_500\no112.cpp
-// etc : 18
+// lang : 1
+// etc  : D : \200.dev\201.src\01.cpp\_Index_500\_Index_500\no112.cpp
+// etc  : 18
 }</code></pre>
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c">// -------------------
+// 심볼이 정의되어 있는지 체크
+// 심볼이 정의되어 있으면 true
+// #ifdef SYMBOL
+//  ......
+// #endif
+// 
+// * 컴파일러에 인수로써 지정가능
+//   cl /DDEBUG
+// -------------------
+#define DEBUG
+
+int main(void)
+{
+#ifdef DEBUG
+	printf("debug mode\n");
+#else
+	printf("release mode\n");
+#endif
+}
+// debug mode</code></pre>
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c">// -------------------
+// 심볼이 정의되어 있지않는지 체크
+// 심볼이 정의되어 있으면 false
+// #ifndef SYMBOL
+//   ....
+// #endif
+// -------------------
+#define DEBUG
+
+int main(void)
+{
+#ifndef DEBUG
+	printf("release mode\n");
+#else
+	printf("debug mode\n");
+#endif
+}
+// debug mode
+</code></pre>
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c">// -------------------
+// 심볼의 값을 체크
+// #if SYMBOL ==0
+//   ....
+// #endif
+// 
+// * 컴파일러에 인수로 지정
+//   cl /DVERSION=3
+// -------------------
+#define VERSION 3
+int main(void)
+{
+#if VERSION >= 3
+	printf("version %d\n", VERSION);
+#else
+	printf("sorry\n");
+#endif
+}
+// version 3</code></pre>
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c">// -------------------
+// 이미 정의되어 있는 심볼을
+// "미정의"로 무효화
+// #undef SYMBOL
+// -------------------
+#define DEBUG
+
+void main(void)
+{
+#undef DEBUG // 무효화
+// or
+#ifdef DEBUG
+#undef DEBUG // 무효화
+#endif
+
+#ifdef DEBUG
+	printf("debug mode\n");
+#else
+	printf("release mode\n");
+#endif
+}
+// release mode</code></pre>
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c">// -------------------
+// 컴파일러를 제어
+// #pragma pack(n)
+// => 구조체의 패딩(바이트수)을 조절
+// -------------------
+#pragma pack(1)
+
+struct S
+{
+	int    i;
+	short  sh;
+	double d;
+};
+
+void main(void)
+{
+	printf("sizeof int   :%d\n", (int)sizeof(int));
+	printf("sizeof short :%d\n", (int)sizeof(short));
+	printf("sizeof double:%d\n", (int)sizeof(double));
+	printf("sizeof S     :%d\n", (int)sizeof(S));
+	// sizeof int    : 4
+	// sizeof short  : 2
+	// sizeof double : 8
+	// #pragma pack(1) 없으면 16
+	// #pragma pack(1) 있으면 14
+}
+</code></pre>
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c">// -------------------
+// 컴파일을 중지
+// 심볼이 미정의일때 컴파일을 중지
+// #error 메시지
+// -------------------
+#define VERSION 1
+
+#if VERSION < 3
+#error "Version error. need ver.3"
+#endif
+
+void main(void)
+{
+	printf("version : %d\n", VERSION);
+}
+// 오류(활성)	E0035	#error 지시문: "Version error. need ver.3"
+// 오류	C1189	#error:  "Version error. need ver.3"
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c">// -------------------
+// * 이미 정의된 심볼
+// C++        : __cplusplus
+// VISUAL C++ : _MSC_VER
+// gcc        : __GNUC__
+// linux환경  : __linux__
+// window환경 : _WIN32
+// * 예
+// #ifdef __cplusplus
+//   ....
+// #endif
+// -------------------
+void main(void)
+{
+#ifdef __cplusplus
+	printf("c++ compiler\n");
+#else
+	printf("c compiler\n");
+#endif
+}
+// c++ compiler</code></pre>
 <!-- ############################### -->
-<pre><code class="c"></code></pre>
+<pre><code class="c">// -------------------
+// 파일명취득
+// __FILE__
+// => 컴파일시에 치환됨
+// -------------------
+void main(void)
+{
+	printf("파일명:%s\n", __FILE__);
+	// 파일명:D:\200.dev\201.src\01.cpp\_Index_500\_Index_500\no120.cpp
+
+	// 확장자 제거
+	char file[] = __FILE__;
+	*strrchr(file, '.') = '\0'; // include string
+	// strrchr
+	// :  Returns a pointer to the last occurrence of character in the C string str.
+	printf("file : %s\n", file);
+// 파일명:D:\200.dev\201.src\01.cpp\_Index_500\_Index_500\no120.cpp
+// file : D:\200.dev\201.src\01.cpp\_Index_500\_Index_500\no120
+}</code></pre>
 <!-- ############################### -->
 <pre><code class="c"></code></pre>
 <!-- ############################### -->
