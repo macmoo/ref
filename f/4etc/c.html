@@ -589,13 +589,13 @@ int main(void)
 // -------------------
 int main(void)
 {
-	long v = 0;
+    long v = 0;
 
-	// int* p = static_cast<int*>(v);    // 캐스트불가
-	int* p = reinterpret_cast<int*>(v);  // 캐스트가능
+    // int* p = static_cast<int*>(v);    // 캐스트불가
+    int* p = reinterpret_cast<int*>(v);  // 캐스트가능
 
-	// long x = static_cast<long>(&v);   // 캐스트불가
-	long x = reinterpret_cast<long>(&v); // 캐스트가능
+    // long x = static_cast<long>(&v);   // 캐스트불가
+    long x = reinterpret_cast<long>(&v); // 캐스트가능
 }</code></pre>
 <!-- ############################### -->
 <pre><code class="c">// -------------------
@@ -605,44 +605,44 @@ int main(void)
 // -------------------
 class Base {
 public:
-	virtual void func(){ printf("Base::func()\n"); }
+    virtual void func(){ printf("Base::func()\n"); }
 };
 
 class Sub :public Base {
 public:
-	virtual void func2(){ printf("Sub::func2()\n"); }
+    virtual void func2(){ printf("Sub::func2()\n"); }
 };
 
 class Other{};
 
 int main(void){
-	Base*  sub   = new Sub();
-	Base*  base  = new Base();
-	Other* other = new Other();
+    Base*  sub   = new Sub();
+    Base*  base  = new Base();
+    Other* other = new Other();
 
-	Sub* s1 = static_cast<Sub*>(sub);   // 캐스트 가능
-	Sub* b1 = static_cast<Sub*>(base);  // 캐스트 가능?
-	// Sub* o1 = static_cast<Sub*>(other); // 캐스트 불가
-	s1->func();
-	s1->func2();
-	b1->func();
-	// b1->func2(); // 실행시 ERROR
+    Sub* s1 = static_cast<Sub*>(sub);   // 캐스트 가능
+    Sub* b1 = static_cast<Sub*>(base);  // 캐스트 가능?
+    // Sub* o1 = static_cast<Sub*>(other); // 캐스트 불가
+    s1->func();
+    s1->func2();
+    b1->func();
+    // b1->func2(); // 실행시 ERROR
 
-	puts("---------------------");
-	Sub* s2 = dynamic_cast<Sub*>(sub);  // 캐스트 가능
-	Sub* b2 = dynamic_cast<Sub*>(base); // 캐스트 가능?
-	// Sub* o1 = dynamic_cast<Sub*>(other); // 캐스트 불가
-	s2->func();
-	s2->func2();
-	// b2->func();  // 실행시 ERROR
-	// b2->func2(); // 실행시 ERROR
+    puts("---------------------");
+    Sub* s2 = dynamic_cast<Sub*>(sub);  // 캐스트 가능
+    Sub* b2 = dynamic_cast<Sub*>(base); // 캐스트 가능?
+    // Sub* o1 = dynamic_cast<Sub*>(other); // 캐스트 불가
+    s2->func();
+    s2->func2();
+    // b2->func();  // 실행시 ERROR
+    // b2->func2(); // 실행시 ERROR
 
-	// Base::func()
-	// Sub::func2()
-	// Base::func()
-	// -------------------- -
-	// Base::func()
-	// Sub::func2()
+    // Base::func()
+    // Sub::func2()
+    // Base::func()
+    // -------------------- -
+    // Base::func()
+    // Sub::func2()
 }</code></pre>
 <!-- ############################### -->
 <pre><code class="c">// -------------------
@@ -651,40 +651,40 @@ int main(void){
 // 참조를 사용
 void calc(int x, int& y)
 {
-	y += x;
+    y += x;
 }
 // 포인터를 사용
 void calc(int x, int* y)
 {
-	*y +=x;
+    *y +=x;
 }
 
 int main(void)
 {
-	int x, y, i;
-	
-	// 참조버전
-	x = y = 1;
-	for (i = 0; i < 10; i++)
-	{
-		calc(x, y);
-		printf("%d,", y);
-		x = y;
-	}
-	printf("\n");
+    int x, y, i;
+    
+    // 참조버전
+    x = y = 1;
+    for (i = 0; i < 10; i++)
+    {
+        calc(x, y);
+        printf("%d,", y);
+        x = y;
+    }
+    printf("\n");
 
-	// 포인터버전
-	x = y = 1;
-	for (i = 0; i < 10; i++)
-	{
-		calc(x, &y);
-		printf("%d,", y);
-		x = y;
-	}
-	printf("\n");
-	
-	// 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024,
-	// 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024,
+    // 포인터버전
+    x = y = 1;
+    for (i = 0; i < 10; i++)
+    {
+        calc(x, &y);
+        printf("%d,", y);
+        x = y;
+    }
+    printf("\n");
+    
+    // 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024,
+    // 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024,
 }</code></pre>
 <!-- ############################### -->
 <pre><code class="c">// 파일 단위 스코프 관리
@@ -701,22 +701,22 @@ void func2(void);
 
 void func(void)
 {
-	static int z = 0;
-	z++;
-	printf("func  z:%d\n", z);
+    static int z = 0;
+    z++;
+    printf("func  z:%d\n", z);
 }
 
 int main(void)
 {
-	x = 1;
-	y = 2;
-	printf("main  x:%d, y:%d\n", x, y);
-	func();
-	func();
-	func();
-	func2();
-	func2();
-	printf("main  x:%d, y:%d\n", x, y);
+    x = 1;
+    y = 2;
+    printf("main  x:%d, y:%d\n", x, y);
+    func();
+    func();
+    func();
+    func2();
+    func2();
+    printf("main  x:%d, y:%d\n", x, y);
 }
 // -------------------
 // no103_sub.cpp
@@ -726,8 +726,8 @@ extern int y;     // 참조가능
 
 void func2(void)
 {
-	y = 10;
-	printf("func2 x:%d, y:%d\n", x, y);
+    y = 10;
+    printf("func2 x:%d, y:%d\n", x, y);
 }
 // main  x:1, y:2
 // func  z:1
@@ -745,33 +745,33 @@ void func2(void)
 // -------------------
 int main(void)
 {
-	list<int> lst;
-	for (int i = 0; i < 10; i++)
-		lst.push_back(10-i);
+    list<int> lst;
+    for (int i = 0; i < 10; i++)
+        lst.push_back(10-i);
 
-	cout << "lst: ";
-	for(auto it : lst)
-		cout << it << ",";
-	cout << endl;
+    cout << "lst: ";
+    for(auto it : lst)
+        cout << it << ",";
+    cout << endl;
 
-	// sort
-	lst.sort( [](int x, int y){ return x < y; });
-	cout << "lst: ";
-	for (auto it : lst)
-		cout << it << ",";
-	cout << endl;
-	
-	// reverse
-	lst.sort( [](int x, int y){ return x > y; });
-	cout << "lst: ";
-	for (auto it : lst)
-		cout << it << ",";
-	cout << endl;
+    // sort
+    lst.sort( [](int x, int y){ return x < y; });
+    cout << "lst: ";
+    for (auto it : lst)
+        cout << it << ",";
+    cout << endl;
+    
+    // reverse
+    lst.sort( [](int x, int y){ return x > y; });
+    cout << "lst: ";
+    for (auto it : lst)
+        cout << it << ",";
+    cout << endl;
 
     // lst: 10,9,8,7,6,5,4,3,2,1,
     // lst: 1,2,3,4,5,6,7,8,9,10,
     // lst: 10,9,8,7,6,5,4,3,2,1,
-	return 0;
+    return 0;
 }</code></pre>
 <!-- ############################### -->
 <pre><code class="c">// -------------------
@@ -790,23 +790,23 @@ int main(void)
 // -------------------
 int main(void)
 {
-	list<int> lst;
-	for(int i = 0; i < 10; i++)
-		lst.push_back(10-i);
-	cout << "lst:";
-	for(auto it : lst)
-		cout << it << ",";
-	cout << endl;
+    list<int> lst;
+    for(int i = 0; i < 10; i++)
+        lst.push_back(10-i);
+    cout << "lst:";
+    for(auto it : lst)
+        cout << it << ",";
+    cout << endl;
 
-	// sum
-	int sum = 0;
-	// for_each => include algorithm
-	for_each(lst.begin(), lst.end(), [&sum](int x){ sum += x; });
-	cout << "sum : " << sum << endl;
-	return 0; 
+    // sum
+    int sum = 0;
+    // for_each => include algorithm
+    for_each(lst.begin(), lst.end(), [&sum](int x){ sum += x; });
+    cout << "sum : " << sum << endl;
+    return 0; 
 
-	// lst:10, 9, 8, 7, 6, 5, 4, 3, 2, 1,
-	// sum : 55
+    // lst:10, 9, 8, 7, 6, 5, 4, 3, 2, 1,
+    // sum : 55
 }</code></pre>
 <!-- ############################### -->
 <pre><code class="c">// -------------------
@@ -814,34 +814,34 @@ int main(void)
 // -------------------
 int main(void)
 {
-	list<int> lst;
-	for(int i = 0; i < 10; i++)
-		lst.push_back(10-i);
-	cout << "main lst:";
-	for(auto it : lst)
-		cout << it << ",";
-	cout << endl;
+    list<int> lst;
+    for(int i = 0; i < 10; i++)
+        lst.push_back(10-i);
+    cout << "main lst:";
+    for(auto it : lst)
+        cout << it << ",";
+    cout << endl;
 
-	// 람다함수
-	auto func1 = [](int x, int y){ return x < y; };
-	auto func2 = [](int x, int y){ return x > y; };
-	auto print = [](list<int> &l){ 
-		cout << "func lst:";
-		for (auto it : l)
-			cout << it << ",";
-		cout << endl;
-	};
+    // 람다함수
+    auto func1 = [](int x, int y){ return x < y; };
+    auto func2 = [](int x, int y){ return x > y; };
+    auto print = [](list<int> &l){ 
+        cout << "func lst:";
+        for (auto it : l)
+            cout << it << ",";
+        cout << endl;
+    };
 
-	// sort
-	lst.sort(func1);
-	print(lst);
-	// reverse
-	lst.sort(func2);
-	print(lst);
+    // sort
+    lst.sort(func1);
+    print(lst);
+    // reverse
+    lst.sort(func2);
+    print(lst);
 
-	// main lst : 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,
-	// func lst : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-	// func lst : 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,
+    // main lst : 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,
+    // func lst : 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+    // func lst : 10, 9, 8, 7, 6, 5, 4, 3, 2, 1,
 }</code></pre>
 <!-- ############################### -->
 <pre><code class="c"><// -------------------
@@ -856,10 +856,10 @@ int main(void)
 int main(void)
 {
 #ifdef DEBUG
-	printf("debug message\n");
+    printf("debug message\n");
 #endif
-	printf("language c++:%d\n", LANG_CPP);
-	
+    printf("language c++:%d\n", LANG_CPP);
+    
 // debug message
 // language c++:2
 }/code></pre>
@@ -873,8 +873,8 @@ int main(void)
 
 int main(void)
 {
-	int x = 0;
-	printf("x is zero?:%d\n", ISZERO(x));
+    int x = 0;
+    printf("x is zero?:%d\n", ISZERO(x));
 // x is zero?:1
 }</code></pre>
 <!-- ############################### -->
@@ -885,23 +885,23 @@ int main(void)
 // -------------------
 #define PRINT(_max)            \
 {                              \
-	int i;                     \
-	for(i = 0; i < _max; i++)  \
-		printf("[%d]", i);     \
+    int i;                     \
+    for(i = 0; i < _max; i++)  \
+        printf("[%d]", i);     \
 }                              \
 
 template <class T> void PR(T max)
 {
-	int i;
-	for(i = 0; i < max; i++)
-		printf("[%d]", i);
+    int i;
+    for(i = 0; i < max; i++)
+        printf("[%d]", i);
 }
 
 int main(void)
 {
-	PRINT(10);
-	puts("");
-	PR(5);
+    PRINT(10);
+    puts("");
+    PR(5);
 // [0] [1] [2] [3] [4] [5] [6] [7] [8] [9]
 // [0] [1] [2] [3] [4]
 }
@@ -915,7 +915,7 @@ int main(void)
 
 int main(void)
 {
-	PRINT(kaku tensai); // name:kaku tensai
+    PRINT(kaku tensai); // name:kaku tensai
 }
 </code></pre>
 <!-- ############################### -->
@@ -926,16 +926,16 @@ int main(void)
 #define LANG(_x) LANG_##_x
 
 enum {
-	LANG_C = 0,
-	LANG_CPP,
-	LANG_JAVA
+    LANG_C = 0,
+    LANG_CPP,
+    LANG_JAVA
 };
 
 int main(void)
 {
-	printf("lang:%d\n", LANG(CPP));
-	printf("etc :%s\n", __FILE__);
-	printf("etc :%d\n", __LINE__);
+    printf("lang:%d\n", LANG(CPP));
+    printf("etc :%s\n", __FILE__);
+    printf("etc :%d\n", __LINE__);
 // lang : 1
 // etc  : D : \200.dev\201.src\01.cpp\_Index_500\_Index_500\no112.cpp
 // etc  : 18
@@ -956,9 +956,9 @@ int main(void)
 int main(void)
 {
 #ifdef DEBUG
-	printf("debug mode\n");
+    printf("debug mode\n");
 #else
-	printf("release mode\n");
+    printf("release mode\n");
 #endif
 }
 // debug mode</code></pre>
@@ -975,9 +975,9 @@ int main(void)
 int main(void)
 {
 #ifndef DEBUG
-	printf("release mode\n");
+    printf("release mode\n");
 #else
-	printf("debug mode\n");
+    printf("debug mode\n");
 #endif
 }
 // debug mode
@@ -996,9 +996,9 @@ int main(void)
 int main(void)
 {
 #if VERSION >= 3
-	printf("version %d\n", VERSION);
+    printf("version %d\n", VERSION);
 #else
-	printf("sorry\n");
+    printf("sorry\n");
 #endif
 }
 // version 3</code></pre>
@@ -1019,9 +1019,9 @@ void main(void)
 #endif
 
 #ifdef DEBUG
-	printf("debug mode\n");
+    printf("debug mode\n");
 #else
-	printf("release mode\n");
+    printf("release mode\n");
 #endif
 }
 // release mode</code></pre>
@@ -1035,22 +1035,22 @@ void main(void)
 
 struct S
 {
-	int    i;
-	short  sh;
-	double d;
+    int    i;
+    short  sh;
+    double d;
 };
 
 void main(void)
 {
-	printf("sizeof int   :%d\n", (int)sizeof(int));
-	printf("sizeof short :%d\n", (int)sizeof(short));
-	printf("sizeof double:%d\n", (int)sizeof(double));
-	printf("sizeof S     :%d\n", (int)sizeof(S));
-	// sizeof int    : 4
-	// sizeof short  : 2
-	// sizeof double : 8
-	// #pragma pack(1) 없으면 16
-	// #pragma pack(1) 있으면 14
+    printf("sizeof int   :%d\n", (int)sizeof(int));
+    printf("sizeof short :%d\n", (int)sizeof(short));
+    printf("sizeof double:%d\n", (int)sizeof(double));
+    printf("sizeof S     :%d\n", (int)sizeof(S));
+    // sizeof int    : 4
+    // sizeof short  : 2
+    // sizeof double : 8
+    // #pragma pack(1) 없으면 16
+    // #pragma pack(1) 있으면 14
 }
 </code></pre>
 <!-- ############################### -->
@@ -1061,16 +1061,16 @@ void main(void)
 // -------------------
 #define VERSION 1
 
-#if VERSION < 3
+#if VERSION &lt; 3
 #error "Version error. need ver.3"
 #endif
 
 void main(void)
 {
-	printf("version : %d\n", VERSION);
+    printf("version : %d\n", VERSION);
 }
-// 오류(활성)	E0035	#error 지시문: "Version error. need ver.3"
-// 오류	C1189	#error:  "Version error. need ver.3"
+// 오류(활성)    E0035    #error 지시문: "Version error. need ver.3"
+// 오류    C1189    #error:  "Version error. need ver.3"
 <!-- ############################### -->
 <pre><code class="c">// -------------------
 // * 이미 정의된 심볼
@@ -1087,9 +1087,9 @@ void main(void)
 void main(void)
 {
 #ifdef __cplusplus
-	printf("c++ compiler\n");
+    printf("c++ compiler\n");
 #else
-	printf("c compiler\n");
+    printf("c compiler\n");
 #endif
 }
 // c++ compiler</code></pre>
@@ -1101,15 +1101,15 @@ void main(void)
 // -------------------
 void main(void)
 {
-	printf("파일명:%s\n", __FILE__);
-	// 파일명:D:\200.dev\201.src\01.cpp\_Index_500\_Index_500\no120.cpp
+    printf("파일명:%s\n", __FILE__);
+    // 파일명:D:\200.dev\201.src\01.cpp\_Index_500\_Index_500\no120.cpp
 
-	// 확장자 제거
-	char file[] = __FILE__;
-	*strrchr(file, '.') = '\0'; // include string
-	// strrchr
-	// :  Returns a pointer to the last occurrence of character in the C string str.
-	printf("file : %s\n", file);
+    // 확장자 제거
+    char file[] = __FILE__;
+    *strrchr(file, '.') = '\0'; // include string
+    // strrchr
+    // :  Returns a pointer to the last occurrence of character in the C string str.
+    printf("file : %s\n", file);
 // 파일명:D:\200.dev\201.src\01.cpp\_Index_500\_Index_500\no120.cpp
 // file : D:\200.dev\201.src\01.cpp\_Index_500\_Index_500\no120
 }</code></pre>
