@@ -124,9 +124,39 @@ if(obj3 instanceof Object)
 // -----------------------------------
 </code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>
+<pre><code class="java">// -----------------------------------
+// 캐스트
+// - 업캐스트 : 보다 추상적인 형으로 변환
+// - 다운캐스트: 보다 구체적인 형으로 변환
+// 괄호필요, 실패시 ClassCastException
+// -----------------------------------
+// 업캐스트
+ArrayList<String> aList = new ArrayList<>();
+// ArrayList는 List인터페이스를 구현하고 있기때문에 OK
+List<String> bList = aList;
+// ---------------
+// 다운캐스트
+List<String> a = new ArrayList<>();
+ArrayList<String> b = (ArrayList<String>) a;
+// LinkedList<String> c = (LinkedList<String>)a; // 예외발생
+// ---------------
+// 클래스오브젝트의 cast()로 다운캐스트
+Object obj = Integer.valueOf(1);
+Integer i = Integer.class.cast(obj);</code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>
+<pre><code class="java">// -----------------------------------
+// 래퍼클래스
+// 컬렉션에는 오브젝트만 넣을수 있다. 기본형은 안됨
+// 오토박싱:기본형에서 래퍼클래스로의 자동변환
+// 언박싱 :래퍼클래스에서 기본형으로의 자동변환
+// -----------------------------------
+List<Integer> list = new ArrayList<>();
+int i = 0;
+list.add(i);         // 오토박싱
+int j = list.get(0); // 언박싱
+// remove() 주의(그밖에도 있다)
+list.remove(0); // 0번째 요소 삭제
+list.remove(Integer.valueOf(0)); // 값이 0인 요소를 삭제</code></pre>
 <!-- ############################################# -->
 <pre><code class="java"></code></pre>
 <!-- ############################################# -->
