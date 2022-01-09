@@ -17,30 +17,51 @@
 <body>
 <!-- ############################################# -->
 <pre><code class="java">// -----------------------------------
-    // static멤버를 임포트
-    // -----------------------------------
-    // 임포트 안함
-    double a = 3.214;
-    double r = 1.23;
-    long   value = Math.round(a);
-    double area  = r * r * Math.PI;
-    System.out.println("a:"+ a); // a:3.214
-    System.out.println("r:"+ r); // r:1.23
-    // 임포트 함
-	// import static java.lang.Math.round;
-	// import static java.lang.Math.PI;
-	double a = 3.214;
-	double r = 1.23;
-	long   value = round(a);
-	double area  = r * r * PI;
-	System.out.println("a:"+ a); // a:3.214
-	System.out.println("r:"+ r); // r:1.23</code></pre>
+//
+// Java 逆引きレシピ 第２版
+// - 基本
+//
+// -----------------------------------
+</code></pre>
 <!-- ############################################# -->
 <pre><code class="java">// -----------------------------------
-    // 수치 리터럴(7이후)
-    // -----------------------------------
-    int a = 100_000_000;
-    System.out.println("a:"+a);</code></pre>
+// static멤버를 임포트
+// -----------------------------------
+// 임포트 안함
+double a = 3.214;
+double r = 1.23;
+long   value = Math.round(a);
+double area  = r * r * Math.PI;
+System.out.println("a:"+ a); // a:3.214
+System.out.println("r:"+ r); // r:1.23
+// 임포트 함
+// import static java.lang.Math.round;
+// import static java.lang.Math.PI;
+double a = 3.214;
+double r = 1.23;
+long   value = round(a);
+double area  = r * r * PI;
+System.out.println("a:"+ a); // a:3.214
+System.out.println("r:"+ r); // r:1.23</code></pre>
+<!-- ############################################# -->
+<pre><code class="java">// -----------------------------------
+// 리터럴
+// -----------------------------------
+int oct = 040;
+int hex = 0x20;
+int bin = 0b0100000;
+int    a = 100_000_000; // 수치 리터럴(7이후)
+float  b = 3.14f;
+double c = 3.14;  // f가 없으면 디폴트로 double
+double d = 3.14d;
+
+System.out.println("oct : " + oct); // oct:32
+System.out.println("hex : " + hex); // hex:32
+System.out.println("bin : " + bin); // bin:32
+System.out.println("a   : " + a);   // a:100000000
+System.out.println("b   : " + b);   // b:3.14
+System.out.println("c   : " + c);   // c:3.14
+System.out.println("d   : " + d);   // d:3.14</code></pre>
 <!-- ############################################# -->
 <pre><code class="java"></code></pre>
 <!-- ############################################# -->
