@@ -63,7 +63,38 @@ System.out.println("b   : " + b);   // b:3.14
 System.out.println("c   : " + c);   // c:3.14
 System.out.println("d   : " + d);   // d:3.14</code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>
+<pre><code class="java">// -----------------------------------
+// 비트연산
+// 비트연산/시프트연산의 결과는 반드시 int가 된다.
+// 좌변, 우변중 한쪽이 long일 경우에는 결과도 long이 된다.
+// -----------------------------------
+// 2진수표기로 int형 생성
+int a = Integer.parseInt("000000000000000000000000000100", 2);
+int b = Integer.parseInt("000000000000000000000000000101", 2);
+System.out.println(Integer.toBinaryString(a));   // 100
+System.out.println(Integer.toBinaryString(b));   // 101
+int and = a & b;
+System.out.println(Integer.toBinaryString(and)); // 100
+int or = a | b;
+System.out.println(Integer.toBinaryString(or));  // 101
+int xor = a ^ b;
+System.out.println(Integer.toBinaryString(xor)); // 1
+int not = ~a;
+System.out.println(Integer.toBinaryString(not));
+// 11111111111111111111111111111011
+// 시프트연산자
+// >>  왼쪽은 시프트전의 최위비트로 채운다.
+// >>> 왼쪽은 0으로 채운다.
+int left1 = a << 1;
+System.out.println(Integer.toBinaryString(left1));  // 1000
+int left2 = a << 2;
+System.out.println(Integer.toBinaryString(left2));  // 10000
+int right1 = b >> 1;
+System.out.println(Integer.toBinaryString(right1)); // 10
+int right2 = b >>> 1;
+System.out.println(Integer.toBinaryString(right2)); // 10
+int right3 = b >> 2;
+System.out.println(Integer.toBinaryString(right3)); // 1</code></pre>
 <!-- ############################################# -->
 <pre><code class="java"></code></pre>
 <!-- ############################################# -->
