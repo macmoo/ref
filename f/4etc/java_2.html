@@ -96,7 +96,33 @@ System.out.println(Integer.toBinaryString(right2)); // 10
 int right3 = b >> 2;
 System.out.println(Integer.toBinaryString(right3)); // 1</code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>
+<pre><code class="java">// -----------------------------------
+// 오브젝트의 형을 조사
+// instanceof 연산자
+// -----------------------------------
+Object obj1 = "abc";
+Object obj2 = new ArrayList<>();;
+Object obj3 = null;
+
+if(obj1 instanceof String) {
+    String str = (String)obj1;
+    System.out.println(str);
+}
+
+// ArrayList는 List의 実装클래스이기때문에 true
+if(obj2 instanceof List)
+    System.out.println("List");
+
+// obj3는 null이기때문에 false를 반환
+if(obj3 instanceof Object)
+    System.out.println("Object");
+
+// -----------------------------------
+// 결과:
+// abc
+// List
+// -----------------------------------
+</code></pre>
 <!-- ############################################# -->
 <pre><code class="java"></code></pre>
 <!-- ############################################# -->
