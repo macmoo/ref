@@ -159,7 +159,143 @@ int j = list.get(0); // 언박싱
 list.remove(0); // 0번째 요소 삭제
 list.remove(Integer.valueOf(0)); // 값이 0인 요소를 삭제</code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>
+<pre><code class="java">// -----------------------------------
+// Optional
+// - java8에서 도입된 콘테이너클래스
+// - 존재하는지 아닌지 알수없는 값을 표현하기 위함.
+// - 값이 존재하지 않는 가능성이 있음을 명시되고, 에러방지가 가능
+// - 기본형의 Optional이 존재
+// OptionalInt, OptionalLong, OptionalDouble
+// 래퍼형으로의 변환을 피할수 있기때문에 Optional보다 효율적이다.
+// -----------------------------------
+// 값을 갖는 Optional오브젝트
+// of()에 null을 건네면 예외가 throw된다.
+Optional<String> exist = Optional.of("123");
+// 값을 가지지 않는 빈 Optional오브젝트
+Optional<String> empty = Optional.empty();
+// 값이 null이 아닐 경우에는 값을 갖는 Optional
+// 값이 null일 경우에는 빈 Optional을 생성
+String valEmpty = "";
+String valNull  = null;
+String valStr   = "Test String";
+Optional<String> optionalEmpty = Optional.ofNullable(valEmpty);
+Optional<String> optionalNull  = Optional.ofNullable(valNull);
+Optional<String> optionalStr   = Optional.ofNullable(valStr);
+System.out.println(exist); // Optional[123]
+System.out.println(empty); // Optional.empty
+System.out.println(optionalEmpty); // Optional[]
+System.out.println(optionalNull);  // Optional.empty
+System.out.println(optionalStr);   // Optional[Test String]
+// -----------------------------------
+// Optional에서는 get()로 값 취득 가능
+// 값이 존재하지 않으면 NoSuchElementException발생
+// 그래서, 값의 존재여부를 알수 없을때는
+// orElse()이나 orElseGet()로 값이 존재하지 않을경우 디폴트값을 지정하거나
+// orElseThrow()로 임의의 예외를 throw가능
+// -----------------------------------
+try {
+    String val = optionalEmpty.get();
+    System.out.println("예외발생 X");
+} catch (NoSuchElementException e) {
+    System.out.println("예외발생 O");
+    System.out.println(e.getMessage());
+}
+// => 예외발생 X
+try {
+    String val = optionalNull.get();
+    System.out.println("예외발생 X");
+} catch (NoSuchElementException e) {
+    System.out.println("예외발생 O");
+    System.out.println(e.getMessage());
+}
+// => 예외발생 O
+// No value present
+// 값이 존재하지 않을때, 문자열을 반환
+String val1 = optionalEmpty.orElse("A");
+String val2 = optionalNull.orElse("B");
+String val3 = optionalStr.orElse("C");
+System.out.println("[" + val1 + "]"); // []
+System.out.println("[" + val2 + "]"); // [B]
+System.out.println("[" + val3 + "]"); // [Test String]
+// 값이 존재하지 않을때, 람다식결과를 반환
+String val4 = optionalNull.orElseGet(() -> {
+    return new SimpleDateFormat("yyyyMMdd").format(new Date());
+});
+System.out.println("[" + val4 + "]"); // [20220110]
+// 값이 존재하지 않을때, 예외발생
+try {
+    String val5 = optionalNull.orElseThrow(() -> new Exception("값이 없다"));
+    System.out.println("예외발생 X");
+} catch (Exception e) {
+    System.out.println("예외발생 O");
+    System.out.println(e.getMessage());
+}
+// => 예외발생 O
+// 값이 없다
+// -----------------------------------
+// 값이 있을 경우에만 처리함
+// 값의 존재 체크후 처리
+if (optionalEmpty.isPresent()) {
+    System.out.println("값 있음 : [" + optionalEmpty.get() + "]");
+} else {
+    System.out.println("값 없음");
+}
+// => 값 있음 : []
+if (optionalNull.isPresent()) {
+    System.out.println("값 있음 : [" + optionalEmpty.get() + "]");
+} else {
+    System.out.println("값 없음");
+}
+// => 값 없음
+// 값이 있을때만 람디식처리
+optionalEmpty.ifPresent(s -> {
+    System.out.println("처리[" + s + "]");
+}); // 처리[]
+optionalNull.ifPresent(s -> {
+    System.out.println("처리[" + s + "]"); // 출력안됨
+});
+// -----------------------------------
+// filter()
+// Optional의 값이 지정한 조건을 만족하지 않는 경우,
+// 빈Optional로 변환한다.
+// => Optional의 값이 특정조건을 만족하는 경우에만 처리.
+// -----------------------------------
+// Optional 생성
+String val6 = "1234567890";
+Optional<String> opt6 = Optional.ofNullable(val6);
+// 값이 10자 이생일 경우에만 처리함.
+opt6.filter(s -> s.length() >= 10).ifPresent(s -> {
+    System.out.println("처리:[" + s + "]");
+});
+// => 처리:[1234567890]
+// -----------------------------------
+// map()
+// Optional의 값을 변환한, 새로운 Optional오브젝트를 생성.
+// 인수의 람다식이 null일경우, 빈Optional을 반환
+String val7 = "abcde";
+Optional<String> opt7 = Optional.ofNullable(val7);
+// 값을 대문자로 변환
+Optional<String> map7 = opt7.map(s -> s.toUpperCase());
+System.out.println(map7); // Optional[ABCDE]
+System.out.println(map7.get()); // ABCDE
+// -----------------------------------
+// flatMap()
+// 인수로 건네는 람다식은 Optional을 반환
+// 빈Optional에대한 flatMap()은 map()과 같이 람다식을 실행하지 않고
+// 빈Optional을 반환.
+Optional<String> userName = Optional.ofNullable("sa");
+Optional<String> password = Optional.ofNullable("sa");
+boolean isValid = userName.flatMap(u -> {
+    return password.map(p -> {
+        return u.equals("sa") && p.equals("sa");
+    });
+}).orElse(false);
+
+if(isValid)
+    System.out.println("true");
+else
+    System.out.println("false");
+// => true</code></pre>
 <!-- ############################################# -->
 <pre><code class="java"></code></pre>
 <!-- ############################################# -->
