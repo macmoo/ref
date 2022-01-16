@@ -44,7 +44,34 @@ const myName2 = "이름2";
 // myName2 = "이름3"; // 에러
 
 alert(myName1);
-alert(myName2);</code></pre>
+alert(myName2);
+// ----------------------------
+let currentDate = new Date();
+let myFunc = () => console.log('함수다');
+
+alert(currentDate);
+myFunc();
+
+let myVar;    // 초기값 미설정
+alert(myVar); // undefined
+
+// ----------------------------
+// const
+// 초기값의 생략이 불가능
+// 값의 재설정이 불가능으로, 값의 변경이 불가능한 것은 아님
+// 배열이나 오브젝트의 변경을 막으려면 Object#freeze()를 이용
+const myArr = ['문','홍','안'];
+console.log(myArr); // Array(3) [ "문", "홍", "안" ]
+
+myArr[0] = '이';
+console.log(myArr); // Array(3) [ "이", "홍", "안" ]
+
+const myObj = {id:20, name:'한국'};
+console.log(myObj); // Object { id: 20, name: "한국" }
+
+myObj.name = '캐나다';
+console.log(myObj); // Object { id: 20, name: "캐나다" }
+</code></pre>
 <!-- ############################################# -->
 <pre><code class="html">&lt;!--  --&gt;</code></pre>
 <!-- ############################################# -->
