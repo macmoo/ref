@@ -54,7 +54,6 @@ myFunc();
 
 let myVar;    // 초기값 미설정
 alert(myVar); // undefined
-
 // ----------------------------
 // const
 // 초기값의 생략이 불가능
@@ -71,40 +70,71 @@ console.log(myObj); // Object { id: 20, name: "한국" }
 
 myObj.name = '캐나다';
 console.log(myObj); // Object { id: 20, name: "캐나다" }
-</code></pre>
+// ----------------------------
+// == 와 === 의 차이
+// ==  : 형이 달라도 같은 것으로 판단
+// === : 형이 다르면 다른 것으로 판단
+// != , !== 도 같다
+console.log(10 ==  '10'); // true
+console.log(10 === '10'); // false</code></pre>
 <!-- ############################################# -->
-<pre><code class="html">&lt;!--  --&gt;</code></pre>
+<pre><code class="java">// ----------------------------
+// 애로우함수 (=>)
+// (인수) => { 처리내용 }
+// 장점
+// 1. 함수를 간결하게 작성가능
+// 2. this를 속박가능
+// ----------------------------
+// 함수의 정의
+const calcSum = (a,b,c) => {
+    const result = a + b + c;
+    return result;
+};
+console.log(calcSum(10,20,30)); // 60
+// ----------------------------
+// 인수가 1개일 경우, ()생략가능
+// 인수가 0개이거나 2개 이상일 경우, ()생략불가
+// ----------------------------
+const myFunc1 = (a) => {
+    return a + 2;
+};
+const myFunc2 = a => {
+    return a + 3;    
+};
+console.log(myFunc1(10)); // 12
+console.log(myFunc2(10)); // 13
+// 애로우함수내의 처리가 1행일 경우,
+// {}와 return을 생략가능
+const myFunc3 = (a) => a + 4;
+console.log(myFunc3(10)); // 14</code></pre>
 <!-- ############################################# -->
-<pre><code class="html">&lt;!--  --&gt;</code></pre>
+<pre><code class="java"></code></pre>
 <!-- ############################################# -->
-<pre><code class="html">&lt;!--  --&gt;</code></pre>
+<pre><code class="java"></code></pre>
 <!-- ############################################# -->
-<pre><code class="html">&lt;!--  --&gt;</code></pre>
+<pre><code class="java"></code></pre>
 <!-- ############################################# -->
-<pre><code class="html">&lt;!--  --&gt;</code></pre>
+<pre><code class="java"></code></pre>
 <!-- ############################################# -->
-<pre><code class="html">&lt;!--  --&gt;</code></pre>
+<pre><code class="java"></code></pre>
 <!-- ############################################# -->
-<pre><code class="html">&lt;!--  --&gt;</code></pre>
+<pre><code class="java"></code></pre>
 <!-- ############################################# -->
-<pre><code class="html">&lt;!--  --&gt;</code></pre>
+<pre><code class="java"></code></pre>
 <!-- ############################################# -->
-<pre><code class="html">&lt;!--  --&gt;</code></pre>
+<pre><code class="java"></code></pre>
 <!-- ############################################# -->
-<pre><code class="html">&lt;!--  --&gt;</code></pre>
+<pre><code class="java"></code></pre>
 <!-- ############################################# -->
-<pre><code class="html">&lt;!--  --&gt;</code></pre>
+<pre><code class="java"></code></pre>
 <!-- ############################################# -->
-<pre><code class="html">&lt;!--  --&gt;</code></pre>
+<pre><code class="java"></code></pre>
 <!-- ############################################# -->
-<pre><code class="html">&lt;!--  --&gt;</code></pre>
+<pre><code class="java"></code></pre>
 <!-- ############################################# -->
-<pre><code class="html">&lt;!--  --&gt;</code></pre>
+<pre><code class="java"></code></pre>
 <!-- ############################################# -->
-<pre><code class="html">&lt;!--  --&gt;</code></pre>
-<!-- ############################################# -->
-<pre><code class="html">&lt;!--  --&gt;</code></pre>
-<!-- ############################################# -->
+<pre><code class="java"></code></pre>
 
 
 
