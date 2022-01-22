@@ -1,35 +1,20 @@
 // ----------------------------
-// 함수의 인수에 초기값 설정
-// 1. function myFunc(인수1, 인수2=초기값2, 인수3=초기값3){}
-// 2. (인수1, 인수2=초기값2, 인수3=초기값3) => {}
-// 초기값이 설정된 인수를 생략가능
+// 안전한 난수
+// crypto.getRandomValues(형붙인 배열); // 리턴:난수배열
 // ----------------------------
-function myFunc1(price, tax = 0.08){
-    const result = price + price * tax;
-    return result;
-}
-console.log(myFunc1(100));       // 108
-console.log(myFunc1(100, 0.02)); // 102
+//랜덤정수(부호없는16비트)가 10개들어간 배열을 생성
+const randomArr = crypto.getRandomValues(new Uint16Array(10));
+console.log(randomArr);
+// Uint16Array(10) [ 30106, 64439, 30547, 1975, 9450, 62468, 27533, 27756, 63786, 36283 ]
+// 배열을 이어 난수를 생성
+const random16 = randomArr.join('');
+console.log(random16);
+// 301066443930547197594506246827533277566378636283
 // ----------------------------
-// 함수에 임의의 개수의 인수를 건넴
-// "...인수" 残余引数（rest parameters）
-// 건네진 인수는 배열로 저장됨
-// 1. function 함수명(...인수){}
-// 2. (...인수) => {}
-// 3. 인수[인덱스]
-// ----------------------------
-function calcSum(...prices){
-    console.log(prices[0]); // 10, 5
-    let result = 0;
-    for(const value of prices)
-        result += value;
-    return result;
-}
-console.log(calcSum(10,20));    // 30
-console.log(calcSum(5,10,20));  // 35
-// ----------------------------
-// ----------------------------
-// ----------------------------
+// 부호없는 32비트 난수생성
+const random32 = crypto.getRandomValues(new Uint32Array(10)).join('');
+console.log(random32);
+// 382979343515709866573468246670218395933328989172757469039542220903590269873746935950855881383786406
 // ----------------------------
 // ----------------------------
 // ----------------------------

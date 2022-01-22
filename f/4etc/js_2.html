@@ -108,15 +108,110 @@ console.log(myFunc2(10)); // 13
 const myFunc3 = (a) => a + 4;
 console.log(myFunc3(10)); // 14</code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>
+<pre><code class="java">// ----------------------------
+// 함수의 인수에 초기값 설정
+// 1. function myFunc(인수1, 인수2=초기값2, 인수3=초기값3){}
+// 2. (인수1, 인수2=초기값2, 인수3=초기값3) => {}
+// 초기값이 설정된 인수를 생략가능
+// ----------------------------
+function myFunc1(price, tax = 0.08){
+    const result = price + price * tax;
+    return result;
+}
+console.log(myFunc1(100));       // 108
+console.log(myFunc1(100, 0.02)); // 102
+// ----------------------------
+// 함수에 임의의 개수의 인수를 건넴
+// "...인수" 残余引数（rest parameters）
+// 건네진 인수는 배열로 저장됨
+// 1. function 함수명(...인수){}
+// 2. (...인수) => {}
+// 3. 인수[인덱스]
+// ----------------------------
+function calcSum(...prices){
+    console.log(prices[0]); // 10, 5
+    let result = 0;
+    for(const value of prices)
+        result += value;
+    return result;
+}
+console.log(calcSum(10,20));    // 30
+console.log(calcSum(5,10,20));  // 35</code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>
+<pre><code class="java">// ----------------------------
+// iphone인지 확인
+const isIOS = navigator.userAgent.includes('iPhone');
+console.log(isIOS); // false or true
+// ----------------------------
+// 문자열에 'vas'가 포함되는지 아닌지 확인
+const flg = 'Javascript'.includes('vas');
+console.log(flg);   // true</code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>
+<pre><code class="java">// ----------------------------
+// 수치
+// NaN : 수치이 아님.  부정한 계산결과
+// ----------------------------
+// 1.7976931348623157e+308
+console.log(Number.MAX_VALUE);
+// 5e-324
+console.log(Number.MIN_VALUE);
+// 9007199254740991
+console.log(Number.MAX_SAFE_INTEGER);
+// -9007199254740991
+console.log(Number.MIN_SAFE_INTEGER);
+// Infinity  (양의 무한의 값)
+console.log(Number.POSITIVE_INFINITY);
+// -Infinity (음의 무한의 값)
+console.log(Number.NEGATIVE_INFINITY);</code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>
+<pre><code class="java">// ----------------------------
+// 장방향 그라데이션
+const rectangle = document.querySelector('.rectangle');
+
+// 버튼이벤트
+document.querySelector('.button').addEventListener('click', onClickButton);
+
+function onClickButton(){
+    // 0~359랜덤숫자 생성
+    const randomHue        = Math.trunc(Math.random() * 360);
+
+    // 그라데이션 시작, 종료 색 설정
+    const randomColorStart = `hsl(${randomHue     }, 100%, 50%)`;
+    const randomColorEnd   = `hsl(${randomHue + 40}, 100%, 50%)`;
+
+    // 장방형의 그라데이션용 변수(--start, --end)을 변경
+    rectangle.style.setProperty('--start', randomColorStart);
+    rectangle.style.setProperty('--end'  , randomColorEnd);
+}
+// ----------------------------
+// css
+.rectangle {
+    width :300px;
+    height:300px;
+    /* height:calc(100% - 50px); */
+    --start: hsl(0  , 100%, 50%);
+    --end  : hsl(322, 100%, 50%);
+    background-image: linear-gradient(-135deg, var(--start), VAR(--end));
+}</code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>
+<pre><code class="java">// ----------------------------
+// 안전한 난수
+// crypto.getRandomValues(형붙인 배열); // 리턴:난수배열
+// ----------------------------
+//랜덤정수(부호없는16비트)가 10개들어간 배열을 생성
+const randomArr = crypto.getRandomValues(new Uint16Array(10));
+console.log(randomArr);
+// Uint16Array(10) [ 30106, 64439, 30547, 1975, 9450, 62468, 27533, 27756, 63786, 36283 ]
+// 배열을 이어 난수를 생성
+const random16 = randomArr.join('');
+console.log(random16);
+// 301066443930547197594506246827533277566378636283
+// ----------------------------
+// 부호없는 32비트 난수생성
+const random32 = crypto.getRandomValues(new Uint32Array(10)).join('');
+console.log(random32);
+// 382979343515709866573468246670218395933328989172757469039542220903590269873746935950855881383786406
+// ----------------------------</code></pre>
 <!-- ############################################# -->
 <pre><code class="java"></code></pre>
 <!-- ############################################# -->
