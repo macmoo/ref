@@ -459,7 +459,184 @@ public void outer(String message) {
     message = "hoge";
 }</code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>
+<pre><code class="java">// ----------------------------
+// 문자열
+// ----------------------------
+// 길이
+console.log("string".length); // 6
+console.log(Array.from('string2').length); // 7
+// ----------------------------
+// 문자열양끝 공백, 탭, 개행 제거
+console.log(" str ing ".trim()); // "str ing"
+// ----------------------------
+// 문자열 검색(검색결과없으면 -1을 반환)
+// 대소문자 구분함, 인덱스를 반환
+// - 대상문자열.indexOf(검색할 문자열, [검색개시 인덱스])
+// - 대상문자열.lastIndexOf(검색할 문자열, [검색개시 인덱스])
+// - 대상문자열.search(정규표현)
+const str = 'Javascript를 배우자.';
+const s1 = str.search(/Javascript/);
+const s2 = str.search(/HTML/);
+console.log(s1); // 0 : hit
+console.log(s2); // -1 : no hit
+// ----------------------------
+// 문자열이 포함되어 있는가. (참/거짓을 리턴)
+// - 대상문자열.includes(검색할 문자열, [검색개시 인덱스])
+// 문자열로 시작하는가, 끝나는가
+// - 대상문자열.startsWith(검색할 문자열, [검색개시 인덱스])
+// - 대상문자열.endsWith(검색할 문자열, [검색개시 인덱스])
+const a1 = str.includes("script");
+const a2 = str.startsWith("javascript");
+const a3 = str.endsWith("배우자.");
+console.log(a1); // true
+console.log(a2); // false
+console.log(a3); // true
+// ----------------------------
+// 문자추출
+// 문자열.charAt(인덱스)
+console.log("string".charAt(3)); // i
+console.log("string".charAt());  // s
+// 문자열.slice(시작인덱스, [종료인덱스])
+// 문자열.substring(시작인덱스, [종료인덱스])
+// 종료인덱스를 생략하면 문자열끝까지
+// slice()음수지정가능(뒤에서부터 추출)
+// slice()와 substring()은 시작idx가 종료idx보다 
+// 클경우의 처리가 다름. (시작idx, 종료idx를 바꿔서 처리)
+const str2 = "kwak no1";
+console.log(str2.slice(2,4));       // ak
+console.log(str2.substring(2,4));   // ak
+console.log(str2.slice(0));         // kwak no1
+console.log(str2.substring(0));     // kwak no1
+console.log(str2.slice(1, -1));     // wak no
+console.log(str2.substring(1, -1)); // k
+console.log(str2.slice(3, 1));      // <empty string>
+console.log(str2.substring(3, 1));  // wa
+// ----------------------------
+// 문자열.substr(시작인덱스, [취득문자수])
+// @deprecated
+console.log(str2.substr(1, 3));  // wak
+// ----------------------------
+// 문자열치환
+// 문자열1/정규펴현을 문자열2로 바꿈
+// 대상문자열.replace(문자열1, 문자열2)
+// 대상문자열.replace(정규표현, 문자열2)
+const phone = '111-2222-3333';
+console.log(phone.replace(/-/g, '')); // 11122223333
+// ----------------------------
+// * 버튼의 디폴트 이벤트 무효화
+// document.querySelector('#submitBtn')
+//        .addEventListener('click'
+//        , (event)=>{ event.defaultPrevented(); });
+// ----------------------------
+// 문자열분할
+// 문자열.split([구분문자], [분할수])
+// 문자열.split([정규표현], [분할수])
+// 빈문자로 분할하면 한글자씩 들어간 배열이 리턴
+// 인수를 생략하면 하나의 전체문자열이 들어간 배열 리턴
+// ----------------------------
+// 문자열결합
+// 문자열1+문자열2+문자열3
+// `${문자열1}${문자열2}${문자열3}`
+// ----------------------------
+// 문자열변환
+// 대 - 소문자
+// 문자열.toLowerCase()
+// 문자열.toUpperCase()
+// ----------------------------
+// 정규표현
+// "/패턴/"형식으로 사용
+// -----------
+// 패턴     의미
+// x        x라는 1문자    
+// xyx      xyz라는 문자열
+// [xyz]    xyz중 1문자
+// [a-z]    a~z중 1문자
+// [^xyz]   xyz이외의 1문자
+// [^a-z]   a~z이외의 1문자
+// abc|xyz  abc 또는 xyz라는 문자열
+// {숫자}   반복횟수
+// ^x       첫문자가 x
+// x$       마지막 문자가 x
+// .        개행문자를 제외한 1문자
+// x*       x가 0개 이상 반복
+// \        다음문자를 이스케이프함
+// \d       숫자     => [0~9]
+// \D       숫자이외 => [^0~9]
+// \w       영문자, 언더스코어 => [A-Za-z0-9_]
+// \s       스페이스, 탭, 개행문자등의 공백문자
+// \S       공백이외의 문자 => [^\s]
+// \t       수평탭
+// \n       개행문자
+// -----------
+// 조건에 매치하는 문자열 검색
+// /패턴/.test(문자열)
+console.log(/J/.test('Javasscript'));     // true
+console.log(/^iP/.test('iPhone'));        // true
+console.log(/iP$/.test('iPhone'));        // false
+// 숫자포함
+console.log(/\d/.test('iPh4one'));        // true
+// a가 0회 이상 반복
+console.log(/java.*/.test('javascript'));  // true
+console.log(/java.*/.test('javasscript')); // true
+console.log(/\d+-\d+-\d+/.test('090-1234-5678'));    // true
+// 0에서 시작해서 10혹은 11자의 숫자인가 확인
+console.log(/^[0][0-9]{9,10}$/.test('01234567890')); // true
+// ----------------------------
+// 소수점 표현
+// 수치.toFixed([문자수]); // 소수점이하를 지정한 문자수로 한다.
+// 수치.toPrecision([문자수]); // 지정문자수를 精度로 한다.
+console.log((0.3333).toFixed(2)); // 0.33
+console.log((0.3353).toFixed(2)); // 0.34
+console.log((123.456).toFixed(3)); // 123.456
+// ------------
+console.log((0.3333).toPrecision(2)); // 0.33
+console.log((0.3353).toPrecision(2)); // 0.34
+console.log((123.456).toPrecision(3)); // 123
+// 精度4에 의해 0이 매꿔짐
+console.log((10).toPrecision(4)); // 10.00
+// ----------------------------
+const sndElem  = document.querySelector('.second');
+// 3초후가 골
+const goalTime = new Date().getTime() + 3 * 1000;
+update();
+function update(){
+    // 현재시작
+    const currentTime = new Date().getTime();
+    // 남은시간
+    const leftTime = goalTime - currentTime;
+    if(leftTime < 0) return;
+    // 초를 표시.소수점(미리초는 2자만)
+    sndElem.innerText = (leftTime/1000).toFixed(2);
+    // ★ 다음 프레임에서 다시 update를 실행
+    requestAnimationFrame(update);
+}
+// ----------------------------
+// 문자열 반복
+// 문자열.padStart(반복할 길이, [추가할 문자열])
+// 문자열.padEnd(반복할 길이, [추가할 문자열])
+console.log('5'.padStart(2, '0'));  //  05
+console.log('ff'.padEnd(6, '0'));   //  ff0000
+console.log('ff'.padEnd(6));        // "ff    "
+console.log('123'.padStart(3,'0')); // 123
+function zeroPadding(num){
+    return String(num).padStart(2, '0');
+}
+// ----------------------------
+// 문자열을 URI인코드
+// encodeURIComponent()는 다음 문자도 이스케이프함
+// / ? & = + : @ $ ; , #
+var uri1 = encodeURI('http://www.한글.com/주소.html');
+console.log(uri1);
+// http://www.%ED%95%9C%EA%B8%80.com/%EC%A3%BC%EC%86%8C.html
+var uri2 = encodeURIComponent('http://www.한글.com/주소.html');
+console.log(uri2);
+// http%3A%2F%2Fwww.%ED%95%9C%EA%B8%80.com%2F%EC%A3%BC%EC%86%8C.html
+// 디코드
+console.log(decodeURI(uri1));
+// http://www.한글.com/주소.html
+console.log(decodeURIComponent(uri2));
+// http://www.한글.com/주소.html
+// ----------------------------</code></pre>
 <!-- ############################################# -->
 <pre><code class="java"></code></pre>
 <!-- ############################################# -->
