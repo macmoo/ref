@@ -460,9 +460,110 @@ public void outer(String message) {
     message = "hoge";
 }</code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>
+<pre><code class="java">// -----------------------------------
+// java.util.function패키지
+// : 범용함수인터페이스가 준비되어있다.
+// 1개 혹은 2개의 인수를 받아 처리하는 람다식이라면 이 인터페이스가 사용가능.
+// 패키지내 함수인터페이스
+// 인터페이스명 메소드명 설명
+// 1) Function<T, R> R apply(T) 1개의 인수를 받아 결과를 반환하는 함수
+// 2) BiFunction<T, U, R> R apply(T, U) 2개의 인수를 받아 결과를 반환하는 함수
+// 3) UnaryOperator<T> T apply(T) 단항연산자
+// 4) BinaryOperator<T> T apply(T, T) 이항연산자
+// 5) Predicate<T> boolean test(T) 1개의 인수를 받는 조건식
+// 6) BiPredicate<T, U> boolean test(T, U) 2개의 인수를 받는 조건식
+// 7) Supplier<T> T get() 인수를 받지않고 공급만 하는 함수
+// 8) Consumer<T> void accept(T) 1개의 인수를 받아 처리하는 함수(반환값없음)
+// 9) BiConsumer<T, U> void accept(T, U) 2개의 인수를 받아 처리하는 함수(반환값없음)
+// -----------------------------------
+Function<String, Date> toDate = s -> {
+    try {
+        return new SimpleDateFormat("yyyy/MM/dd").parse(s);
+    } catch (ParseException ex) {
+        return null;
+    }
+};
+// 함수를 직접 호출할때는 apply()를 사용
+System.out.println(toDate.apply("2013/09/28"));
+// -----------------------------------
+// 문자열을 대문자로 변환하는 함수
+UnaryOperator<String> toUpper = s -> s.toUpperCase();
+String s = toUpper.apply("java");
+System.out.println(s); // JAVA
+// -----------------------------------
+Consumer<Date> print = date -> {
+    String s2 = new SimpleDateFormat("yyyy/MM/dd").format(date);
+    System.out.println(s2);
+};
+print.accept(new Date()); // 2022/01/30
+// -----------------------------------
+// 문자열이 "Java"로 시작하는가 아닌가를 조사하는 함수
+Predicate<String> condition = s3 -> s3.startsWith("Java");
+boolean result = condition.test("JavaScript");
+System.out.println(result); // true
+ // -----------------------------------
+// 독자적인 함수형인터페이스를 정의
+// @FunctionalInterface // <= 함수형 인터페이스임을 지정
+// public interface TriFunction {
+// public int apply(int a, int b, int c);
+// }
+// 사용
+TriFunction func = (a,b,c) -> a + b+ c;
+System.out.println(func.apply(1,2,3)); // 6
+// -----------------------------------
+// 메소드의 인수로 함수형 인터페이스를 수취
+// 함수형IF를 수취하는 메소드
+// public DBManager {
+// 	public static void exceute(Consumer<Connection> consumer) throws SQLException{
+// 		try(Connection conn = getConnection()){
+// 			try {
+// 				consumer.accept(con); // 함수형IF호출
+// 				conn.commit();
+// 			}catch(Exception ex) {
+// 				conn.rollback();
+// 				throw ex;
+// 			}
+// 		}
+// 	}
+// }
+// 호출
+// DBManager.execute((conn) -> {
+// 	// ... 처리
+// });
+// -----------------------------------
+// 람다식 대신 메소드를 건네기
+// 인수와 반환값의 형이 같다면, 람다식대신에 메소드참조를 쓸수 있다.
+// - 메소드참조
+//   1) static메소드의 경우
+//      클래스명::static메소드명
+//   2) 인스턴스메소드의 경우
+//      인스턴스명::인스턴스메소드명
+// - 컬렉션의 요소에 대한 조작을 람다식과 메소드참조를 써서 기술하면 아래와 같다.
+List<String> list = Arrays.asList("java", "scala", "groovy");
+// 람다식을 이용해 기술
+list.forEach((a1) -> System.out.println(a1));
+// 메소드참조를 이용해 기술
+list.forEach(System.out::println);
+// -----------------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>
+<pre><code class="java">// -----------------------------------
+// 문자열 연결
+// "+"연결은 새로운 String생성
+// => 컴파일시 1개의 문자열로 최적화되기때문에 효율이 나쁘다고만 볼수없다.
+//    주의) 변수+리터럴, 변수간의 +.
+// StringBuffer, StringBuilder의 차이
+// => StringBuilder는 스레드동기화 처리가 되지 않는 대신에 StringBuffer보다 고속으로 처리됨
+//    복수의 스레드에서 조작될 가능성이 있는 경우에는 StringBuilder대신에 StringBuffer를 쓴다.
+// String#join()
+// => 배열(가변인수도 가능)이나 리스트의 요소를 지정된 문자로 연결가능
+// 가변장인수	
+String str1 = String.join("-","java","recipe", "is", "Great");
+System.out.println(str1); // java-recipe-is-Great
+// 리스트
+List<String> list2 = Arrays.asList("Java", "8", "is", "Great!");
+String str2 = String.join(" ", list2);
+System.out.println(str2); // Java 8 is Great!
+// -----------------------------------</code></pre>
 <!-- ############################################# -->
 <pre><code class="java"></code></pre>
 <!-- ############################################# -->
