@@ -565,7 +565,60 @@ String str2 = String.join(" ", list2);
 System.out.println(str2); // Java 8 is Great!
 // -----------------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>
+<pre><code class="java">// -----------------------------------
+// 문자열의 길이
+// Unicode에는 서로게이트페어라는 2바이트 이상의 바이트수로
+// 1글자를 표시하는 문자가 존재한다.
+String str = "丈";
+int len1 = str.length();
+// 서로레이트글자가 포함되어있을경울 아래 메소드를 사용.
+int len2 = str.codePointCount(0, str.length());
+System.out.println(len1); // 1
+System.out.println(len2); // 1
+// 문자열의 바이트 길이를 조사
+// => 일단 바이트배열로 변환후, 배열의 길이를 조사
+String str2 = "こんにちは、世界";
+// 문자열의 바이트길이(Windows-31J의 경우)
+int sjisLen = str2.getBytes(Charset.forName("Windows-31J")).length;
+// 문자열의 바이트길이(UTF-8의 경우)
+int utf8Len = str2.getBytes(StandardCharsets.UTF_8).length;
+System.out.println(sjisLen); // 16
+System.out.println(utf8Len); // 24
+// -----------------------------------
+// 문자열 일부 추출
+String abc1 = "ABCDEFGH";
+System.out.println(abc1.substring(5)); // FGH
+System.out.println(abc1.substring(2, 5)); // CDE
+// -----------------------------------
+// 문자열 분할
+// 2번째인수는 분할수
+String abc2 = "A,B,C,";
+// 콤마분할
+String[] result1 = abc2.split(","); // [A][B][C]
+// 위와 같다
+String[] result4 = abc2.split(",", 0); // [A][B][C]
+// 콤마로 2개로 분할
+String[] result2 = abc2.split(",", 2); // [A][B,C,]
+// 콤마로 4개로 분할
+String[] result3 = abc2.split(",", 4); // [A][B][C][]
+// 분할수 제한없음(어미의 공백문자를 포함)
+String[] result5 = abc2.split(",", -1); // [A][B][C][]
+// -----------------------------------
+// 문자열 비교
+String src1 = "Hello";
+System.out.println(src1.equals("Hello")); // true
+System.out.println(src1.equalsIgnoreCase("hello")); // true
+// -----------------------------------
+// 문자열 치환
+String src2 = "Hello World";
+System.out.println(src2.replace("World", "Univ")); // Hello Univ
+System.out.println(src2.replace('o', 'F')); // HellF WFrld
+// -----------------------------------
+// 문자열 조사
+System.out.println(src2.startsWith("Hello")); // true
+System.out.println(src2.startsWith("World")); // false
+System.out.println(src2.endsWith("World")); // true
+// -----------------------------------</code></pre>
 <!-- ############################################# -->
 <pre><code class="java"></code></pre>
 <!-- ############################################# -->
