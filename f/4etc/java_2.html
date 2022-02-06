@@ -620,7 +620,104 @@ System.out.println(src2.startsWith("World")); // false
 System.out.println(src2.endsWith("World")); // true
 // -----------------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>
+<pre><code class="java">// -----------------------------------
+// 문자열 포함확인
+String str1 = "Hello World. World is Wonderful.";
+// "World" 최초 등장 인덱스
+System.out.println(str1.indexOf("World")); // 6
+// "World" 8문자 이후 등장 인덱스
+System.out.println(str1.indexOf("World", 7)); // 13
+// 검색결과 없음
+System.out.println(str1.indexOf("Java")); // -1
+// 뒤에서 처음 검색
+System.out.println(str1.lastIndexOf("World")); // 13
+// 12문자 전에 마지막에 등장하는 인덱스
+System.out.println(str1.lastIndexOf("World", 12)); // 6
+// -----------------------------------
+// 대/소문자 변환
+System.out.println(str1.toUpperCase());
+// => HELLO WORLD. WORLD IS WONDERFUL.
+System.out.println(str1.toLowerCase());
+// => hello world. world is wonderful.
+// -----------------------------------
+// String#trim()
+String str2 = "   World  . ";
+System.out.println(str2.trim()); // [World .]
+// -----------------------------------
+// String#format()
+// 서식----분류-------설명
+// b/B 진리값 boolean형을 지정
+// h/H 16진수 16진수를 지정
+// s/S 문자열 문자열을 지정
+// c/C 문자 문자를 지정
+// d 정수 10진정수
+// o 정수 8진정수
+// x/X 정수 16진정수
+// e/E 부동소수점 부동소수점 10진정수
+// f 부동소수점 10진정수
+// g/G 부동소수점 사사오입후 설정
+// a/A 부동소수점 지수
+// t/T 일시/시각 문자앞에 지정
+// B 날짜 로케일고유의 월이름(January)
+// A 날짜 로케일고유의 요일이름(Sunday)
+// Y 날짜 년
+// m 날짜 월
+// d 날짜 일
+// k 시각 24시간의 시
+// l 시각 12시간의 시
+// M 시각 분
+// S 시각 초
+// % 퍼센트 퍼센트표시
+// n 개행 개행문자를 표시
+// -----------------------------------
+String str3 = "String";
+boolean b = true;
+int i = 127;
+Date now = new Date();
+System.out.println(String.format("서식:%s", str3));
+// => 서식:String
+System.out.println(String.format("서식:%B", b));
+// => 서식:TRUE
+System.out.println(String.format("서식:%d %o %x %05d", i, i, i, i));
+// => 서식:127 177 7f 00127
+System.out.println(String.format("서식:%4$e %3$f %2$g %1$a", 127.01, 127.02, 127.03, 127.04));
+// => 서식:1.270400e+02 127.030000 127.020 0x1.fc0a3d70a3d71p6
+System.out.println(String.format("서식:%tY년 %<tB %<td일 %<tk시 %<tM분 %<tS초", now));
+// => 서식:2022년 2월 06일 17시 18분 27초
+// -----------------------------------
+// 문자코드 변환
+// 변화하려면 바이트배열로 변화할 필요가 있다.
+// 이때 문자코드를 지정하는 하거나,
+// Charset오브젝트로 지정하는 2가지 방법이 있다.
+// 명칭-----------설명
+// UTF-8         8비트 유니코드
+// UTF-16        16비트 유니코드
+// UTF-16BE      16비트 유니코드 빅엔디언
+// UTF-16LE      16비트 유니코드 리틀엔디언
+// Shift_JIS     일본어 문자 인코드
+// windows-31j   윈도우계 OS의 표준문자 인코드 
+// EUC-JP        유닉스/리눅스에서 많이 쓰이는 일본어 문자인코드
+// ISO-2022-JP   인터넷, 이메일등에서 많이 쓰이는 일본어 문자인코드
+try {
+    // 문자코드 지정
+    byte[] b1 = "こんにちわ、世界".getBytes("UTF8");
+} catch(UnsupportedEncodingException e) {
+    e.printStackTrace();
+}
+// Charset이용
+Charset cs = Charset.forName("UTF-8");
+byte[] b2 = "こんにちわ、世界".getBytes(cs);
+// StandardCharsets문자코드를 지정
+byte[] b3 = "こんにちわ、世界".getBytes(StandardCharsets.UTF_8);
+// -----------------------------------
+// 문자열을 수치로 변환
+// Integer#parseInt()
+// Long#parseLong()
+// Double#parseDouble()
+// => 변화안되는 문자일경우 , NumberFormatException 발생
+// 수치를 문자열로 변환
+// String#valueOf()
+// -----------------------------------</code></pre>
 <!-- ############################################# -->
 <pre><code class="java"></code></pre>
 <!-- ############################################# -->
