@@ -719,7 +719,46 @@ byte[] b3 = "こんにちわ、世界".getBytes(StandardCharsets.UTF_8);
 // String#valueOf()
 // -----------------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>
+<pre><code class="java">		// -----------------------------------
+// java.util.regex.Pattern
+// => 정규표현을 문자열로 지정하고, 정규표현자체를 나타내는 클래스
+// java.util.regex.Matcher
+// => 컴파일후의 Pattern오브젝트를 받아, 검색결과를 받는 클래스
+// *Pattern클래스는 compile()로 생성.
+// compile()의 두번째 인수
+// => CASE_INSENSITIVE
+// :대/소문자 구별하지 않는 매칭
+// => UNICODE_CASE
+// :Unicode준거한 대소문자 구별하지않는 매칭
+// => MULTILINE
+// :복수행모드
+// => DOTALL
+// :.은 행말기호를 포함하는 임의의 문자에 매칭
+// => UNIX_LINES
+// :Unix라인모드
+// => COMMENTS
+// :패턴내에 공백과 코멘트를 사용가능하도록 함.
+// *문자열이 정규표현과 일치하는지 조사는 Matcher#matches().
+// 정규표현
+Pattern pattern = Pattern.compile(".*many.*");
+// Matcher오브젝트를 취득
+Matcher matcher = pattern.matcher("Java Recipe has many Recipes!!");
+// 일치하는지 조사
+boolean result = matcher.matches();
+System.out.println(result); // true
+// ------------
+// 이스케이프
+// [INFO]로 시작하는지 조사
+String  str1 = "[INFO]info message";
+Pattern ptn1 = Pattern.compile("^\\[INFO\\]");
+Matcher mat1 = ptn1.matcher(str1);
+boolean ret1 = mat1.find();
+System.out.println(ret1); // true
+Pattern ptn2 = Pattern.compile("^\\Q[INFO\\E]");
+Matcher mat2 = ptn2.matcher(str1);
+boolean ret2 = mat2.find();
+System.out.println(ret2); // true	
+// -----------------------------------</code></pre>
 <!-- ############################################# -->
 <pre><code class="java"></code></pre>
 <!-- ############################################# -->
