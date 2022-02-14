@@ -779,9 +779,66 @@ console.log(Object.isFrozen(arr1)); // true
 // - Object.preventExtensions() : 프러퍼티의 추가만 금지, 삭제/변경가능.
 // ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// * 데이터형
+// 1) 기본형
+//    - Boolean, String, Number
+//      Undefined : 값이 미정을 나타내는 형 
+//      Null      : 값이 존재하지 않음을 나타내는 형
+//      Symbol    : 심볼형
+//    - immutable
+//    - call by value
+// 2) 오브젝트형
+//    - Object : 오브젝트형(기본형이외의 모든형(Array, Object, Date등))
+//    - mutable
+//    - call by ref
+// ----------------------------
+// * 데이터형 조사
+// typeof 값
+// ----------------------------
+// * 인스턴스조사
+// 값 instanceof 오브젝트
+// ----------------------------
+// * 형변환
+// Boolean(값)
+// String(값)
+// Number(값)
+// parseInt(문자열)
+// parseFloat(문자열)
+// ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+const date    = new Date();
+const year    = date.getFullYear();
+const month   = date.getMonth() + 1;
+const day     = date.getDate();
+const h       = date.getHours();
+const m       = date.getMinutes();
+const s       = date.getSeconds();
+const dayList = ['일','월','화','수','목','금','통'];
+const week    = dayList[date.getDay()];
+// ----------------------------
+document.querySelector(".log1").innerHTML = 
+    `지금은 ${year}년 ${month}월 ${day}일 ${week}요일 `
+    + `${h}시 ${m}분 ${s} 초이다.`;
+// 지금은 2022년 2월 14일 월요일 21시 16분 57 초이다.
+// ----------------------------
+const locale    = date.toLocaleString();
+const localDate = date.toLocaleDateString();
+const localTime = date.toLocaleTimeString();
+// ----------------------------
+document.querySelector(".log2").innerHTML = 
+    `${locale}<br/>`
+    + `${localDate}<br/>`
+    + `${localTime}`;
+// 2022. 2. 14. 오후 9:16:57
+// 2022. 2. 14.
+// 오후 9:16:57
+// ----------------------------
+const num1 = Date.parse('2022/02/14');
+console.log(num1);           // 1644764400000
+console.log(date.getTime()); // 1644841858431
+// ----------------------------</code></pre>
 <!-- ############################################# -->
 <pre><code class="javascript"></code></pre>
 <!-- ############################################# -->
