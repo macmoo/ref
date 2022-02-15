@@ -840,9 +840,145 @@ console.log(num1);           // 1644764400000
 console.log(date.getTime()); // 1644841858431
 // ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+const date1 = new Date('2022/02/15 01:02:03');
+const date2 = new Date('Tue Feb 15 2022 01:02:03');
+const date3 = new Date(2022, 02, 15, 01, 02, 03);
+console.log(date1); // Tue Mar 15 2022 01:02:03 GMT+0900 (대한민국 표준시)
+console.log(date2); // Tue Mar 15 2022 01:02:03 GMT+0900 (대한민국 표준시)
+console.log(date3); // Tue Mar 15 2022 01:02:03 GMT+0900 (대한민국 표준시)
+// ----------------------------
+const date4 = new Date('2022/02/15 01:02:03');
+date4.setMonth(date4.getMonth() -1); // 한달전
+console.log(date4.toLocaleDateString()); // 2022. 1. 15.
+date4.setDate(date4.getDate() + 5);  // 5일 뒤
+console.log(date4.toLocaleDateString()); // 2022. 1. 20.
+// ----------------------------
+const dateA = new Date('2022/02/15');
+const dateB = new Date('2022/03/15');
+const diffM = dateB.getTime() - dateA.getTime();
+const diffD = diffM / (24 * 60 * 60 * 1000);
+console.log(`차이 : ${diffD}일`); // 차이 : 28일
+// ----------------------------
+const dateC = new Date('2022/02/15 01:02:03');
+const dateD = new Date('2022/02/15 03:02:03');
+const diffM2 = dateD.getTime() - dateC.getTime();
+const diffD2 = diffM2 / (60 * 60 * 1000); // 60 * 1000 => 분
+console.log(`차이 : ${diffD2}시간`); // 차이 : 2시간
+// ----------------------------
+// - setInterval() : 일정한 시간 간격으로 작업을 수행하기 위해서 사용합니다.
+//   clearInterval 함수를 사용하여 중지할 수 있습니다. 주의할 점은 일정한 시간 
+//   간격으로 실행되는 작업이 그 시간 간격보다 오래걸릴 경우 문제가 발생할 수 있습니다.
+// - setTimeout()  : 일정한 시간 후에 작업을 한번 실행합니다. 보통 재귀적 호출을 
+//   사용하여 작업을 반복합니다. 기본적으로 setInterval 과는 달리 지정된 시간을 
+//   기다린후 작업을 수행하고, 다시 일정한 시간을 기다린후 작업을 수행하는 방식입니다.
+//   지정된 시간 사이에 작업 시간이 추가 되는 것입니다. clearTimeout() 을 사용해서 
+//   작업을 중지합니다.
+// - clearInterval(), clearTimeout() : 이 실행중인 작업을 중지시키는 것은 아닙니다. 
+//   지정된 작업은 모두 실행되고 다음 작업 스케쥴이 중지 되는 것입니다.
+// ----------------------------
+const oldT = Date.now();
+setInterval(() => {
+    const curT = Date.now();
+    const diff = curT - oldT;
+    const sec  = Math.floor(diff / 1000);
+    document.querySelector(".sec1").innerHTML = `${sec}초경과`;
+}, 1000);
+// ----------------------------
+// 카운트다운
+const totalT  = 10000;
+const oldT2   = Date.now();
+const timerId = setInterval(() => {
+    const curT = Date.now();
+    const diff = curT - oldT2;
+    const remainMSec = totalT - diff;
+    const remainSec  = Math.ceil(remainMSec/ 1000);
+
+    let label = `남은시간 : ${remainSec}`;
+
+    // 남은시간이 0이하면
+    if(remainMSec <= 0){
+        // 타이머 종료
+        clearInterval(timerId);
+        // 타이머 종료 메시지
+        label = '종료';
+    }
+    // 화면에 표시
+    document.querySelector('.sec2').innerHTML = label;
+}, 1000);
+// ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// 아날로그 시계
+// ----------------------------
+setInterval(()=>{
+    const now = new Date();
+    const h = now.getHours();   // 시간 0 ~ 23
+    const m = now.getMinutes(); // 분   0 ~ 59
+    const s = now.getSeconds(); // 초   0 ~ 59
+
+    // 단침 : 단침은 시간뿐만 아니라 분도 각도에 고려해야함
+    const degH = h * ( 360 / 12 ) + m * ( 360 / 12 / 60);
+    // 분침
+    const degM = m * ( 360 / 60 );
+    // 초침
+    const degS = s * ( 360 / 60 );
+
+    const elemH = document.querySelector('.lineHour');
+    const elemM = document.querySelector('.lineMin');
+    const elemS = document.querySelector('.lineSec');
+
+    elemH.style.transform = `rotate(${degH}deg)`;
+    elemM.style.transform = `rotate(${degM}deg)`;
+    elemS.style.transform = `rotate(${degS}deg)`;
+}, 50);
+// ----------------------------
+// HTML
+<div class="clock">
+    <div class="lineHour"></div>
+    <div class="lineMin" ></div>
+    <div class="lineSec" ></div>
+</div>
+// ----------------------------
+<style>
+    .clock{
+        border-radius: 50%;
+        border : 3px solid red;
+        width : 400px;
+        height : 400px;
+        background-color : rgba(255, 255, 255, 0.1);
+        position : relative;
+    }
+    .lineHour {
+        width : 10px;
+        height : 150px;
+        background: blue;
+        position: absolute;
+        top: calc(50% - 150px);
+        left: calc(50% - 5px);
+        transform-origin: bottom;
+    }
+    .lineMin{
+        width: 4px;
+        height: 200px;
+        background: black;
+        position: absolute;
+        top: calc(50% - 200px);
+        left: calc(50% - 2px);
+        transform-origin: bottom;
+    }
+    .lineSec{
+        width: 2px;
+        height: 200px;
+        background:  #cccccc;
+        position: absolute;
+        top: calc(50% -200px);
+        left: calc(50% - 1px);
+        transform-origin: bottom;
+    }
+</style>
+// ----------------------------
+</code></pre>
 <!-- ############################################# -->
 <pre><code class="javascript"></code></pre>
 
