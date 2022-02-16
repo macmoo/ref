@@ -980,6 +980,141 @@ setInterval(()=>{
 // ----------------------------
 </code></pre>
 <!-- ############################################# -->
+<pre><code class="javascript">// ----------------------------
+// window객체이기때문에 window생략가능
+// window.alert('');
+// alert('');
+// ----------------------------
+// confirm() 
+// : 확인 다이얼로그, return T/F
+// ----------------------------
+// 문자입력프롬프트
+// prompt(메시지내용, 입력란에 표시할 초기값)
+// : return 문자열
+// : 닫을 때까지 브라우저 조작안됨
+// const str1 = prompt('Q', 'input answer');
+// console.log(str1);
+// ----------------------------
+// 브라우저 사이즈 조사
+// : 단위는 px, 읽기전용
+// : 변화는 resize이벤트를 참조
+const w = window.innerWidth;
+const h = window.innerHeight;
+console.log(w);
+console.log(h);
+window.addEventListener('resize', resizeHandler);
+
+function resizeHandler(event){
+    const w1 = innerWidth;
+    const h1 = innerHeight;
+    document.querySelector('.val_w').innerHTML = `너비:${w1}px`;
+    document.querySelector('.val_h').innerHTML = `높이:${h1}px`;
+}
+// ----------------------------
+// 디바이스의 pixel비를 초사
+const dpr = window.devicePixelRatio;
+console.log(dpr); // 1.5
+// 캔버스 논리적인 크기
+const can_w = 200;
+const can_h = 200;
+// 캔버스 사이즈 조절
+const canvas = document.querySelector('#myCanvas');
+canvas.width  = can_w * dpr;
+canvas.height = can_h * dpr;
+canvas.style.width  = can_w + 'px';
+canvas.style.height = can_h + 'px';
+
+const context = canvas.getContext('2d');
+// 스케일 설정
+context.scale(dpr, dpr);
+// 원
+context.fillStyle = 'red';
+context.arc(can_w / 2, can_h / 2, 100, 0, 2 * Math.PI);
+context.fill();
+
+// 로그표시
+document.querySelector('.canv_log').innerHTML = `現在のデバイスピクセル比は ${dpr} です`;
+// ---------------------------
+// 터치 가능 조사
+// window.ontouchstart
+// : 터치시작이벤트
+// navigator.pointerEnabled
+// : 포인터 사용가능 조사
+// navigator.maxTouchPoints
+// : 포인터 최대치
+const isSupported = !!(
+    'ontouchstart' in window || // ios & android
+    (navigator.pointerEnabled && navigator.maxTouchPoints > 0) // IE11+
+);
+console.log(isSupported); // false
+// ---------------------------
+
+</code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript"></code></pre>
+<!-- ############################################# -->
 <pre><code class="javascript"></code></pre>
 
 
