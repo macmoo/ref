@@ -1140,9 +1140,65 @@ window.addEventListener('offline', ()=>{
 });
 // ---------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// 이벤트
+// 이벤트타겟.addEventListener(이벤트명, 리스너, [옵션])
+// : 이벤트리스너는 이벤트타겟에 이벤트가 발생했을 때의 처리를 말함
+// ----------------------------
+// 방법1
+const button = document.querySelector('.clsBtn');
+button.addEventListener('click', () => { console.log('1234'); });
+// 방법2
+button.addEventListener('click', function() { console.log('1234'); });
+// 방법3
+button.addEventListener('click', funcOnclick);
+function funcOnclick() { console.log('1234')}; 
+// ----------------------------
+// 이벤트 정보참조
+button.addEventListener('click', (e) => { 
+    console.log(e.target); // 이벤트가 발생한 요소 참조`
+    console.log(e.target.outerHTML); 
+});
+// ----------------------------
+// 옵션
+// capture : capture phase를 취득할 것인가 => 참/거짓
+// once    : 리스너를 한번만 호출할 것인가 => 참/거짓
+// passive : 패시브이벤트인가 아닌가 => 참/거짓
+const opt = { once : true };
+document.querySelector('.clsBtn2')
+        .addEventListener('click', () => { console.log('1234'); }, opt);
+// ----------------------------
+// 이벤트 삭제
+// - 함수명을 기재(애로우함수는 불가능)
+// - addEventListener()의 인수도 같은 인수를 지정
+const button3 = document.querySelector('.clsBtn3');
+button3.addEventListener('click', funcOnclick3);
+// 10초후 이벤트 리스너 삭제
+setTimeout(() => { button3.removeEventListener('click', funcOnclick3);}, 10000);
+function funcOnclick3() { console.log('3333')}; 
+// ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// 페이지가 표시될 때 처리
+// - DOMContentLoaded : HTML문서 해석 완료시
+// - load             : 모든 리소스의 읽기 완료시
+// js의 DOM요소의 조작은 HTML문서의 읽기와 해석이 완료되 후에 가능
+// 이 타이밍에 발생하는 것이 DOMContentLoaded이벤트
+window.addEventListener('DOMContentLoaded', () => {
+    // .box요소의 개수
+    const boxNum = document.querySelectorAll('.box').length;
+    console.log(`box의 개수는 ${boxNum}개이다.`);
+});
+// load이벤트는 페이지내의 모든 리소스의 읽기가 끝난후에 발생.
+// 그때문에 DOMContentLoaded보다도 타이밍이 늦다.
+// 페이지를 표시할때 요소를 조작하고 싶다면 'DOMContentLoaded"가 적절
+// ----------------------------
+// js의 defer는 스크립트가 HTML해석종료후에 실행됨.
+// 이것은 'DOMContentLoaded'발생전.
+// 때문에 'defer'를 설정했다면, 'DOMContentLoaded'는 불필요.
+// defer : HTML해석완료후에 js스크립트를 실행-->
+// &lt;script src="002.js" defer /&gt;
+// ----------------------------</code></pre>
 <!-- ############################################# -->
 <pre><code class="javascript"></code></pre>
 <!-- ############################################# -->
