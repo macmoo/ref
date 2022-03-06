@@ -1526,7 +1526,198 @@ body {
 }
 // ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// - HTML상의 각 요소에의 접근구조는 
+//   DOM이라는 인터페이스에 정의되어 있다.
+//   DOM에서는 HTML문서르 트리구조로 취급함.
+// - 트리의 각 구성요소를 노드라고 함.
+//   JS의 Node오브젝트로 취급.
+// - HTML문서 전체는 document로 취득가능하고 
+//   그 자체가 큰 Node오브젝트가된다.
+// - 요소노드는 Element오브젝트로 취급함.
+//   Element오브젝트는 Node오브젝트를 계승.
+// ----------------------------
+// - 셀렉터로 요소를 취득
+// document.querySelector(셀렉터명)
+// #ID명, .클래스명, :nth-child(번호)등으로 지정
+// 일치하는 요소가 복수개 있을때는 최초의 요소가 반환.
+const logElement = document.querySelector('#log');
+logElement.innerHTML = 'こんにちは';
+// ----------------------------
+// - ID로 요소 취득
+//   document.getElementById(ID)
+//   인수로 ID만 지정가능.
+// ----------------------------
+// - 셀렉터명에 해당하는 요소를 한번에 취득
+//   document.querySelectorAll(셀렉터명)
+//   요소의 배열(Nodelist)를 반환
+// 各.box要素に対してループ
+document.querySelectorAll('.box').forEach((targetBox) => {
+    // .box要素をクリックしたときの処理
+    targetBox.addEventListener('click', () => {
+        // クリックされた.box要素のテキストを表示
+        alert(`${targetBox.textContent}がクリックされました`);
+    });
+});
+// ----------------------------
+// - 클래스명과 일치하는 요소 취득
+//   document.getElementByClassName(클래스명)
+//   요소의 배열(HTML Collection)반환
+// ----------------------------
+// - &lt;HTML&gt;요소와 &lt;body&gt;요소를 취득
+//   document.documentElement : 루트요소(html요소)
+//   document.head : head요소
+//                   head내에 script태그나 link태그를 삽입등에 사용
+//   document.body : body요소
+const themeChangeButton =
+    document.querySelector('.theme-change-button');
+
+// テーマ変更ボタンをクリックしたときの処理
+themeChangeButton.addEventListener('click', () => {
+    // body要素のクラスの「theme-dark」を切り替える
+    document.body.classList.toggle('theme-dark');
+});
+// ----------
+// CSS 
+// body {
+//     font-size: 20px;
+//     color: #2f3b4c;
+//     background-color: #f9f9f9;
+//     transition: 300ms all ease-out;
+// }
+// 
+// body.theme-dark {
+//     background-color: #1e1e1e;
+//     color: #fff;
+// }
+// 
+// body:before {
+//     background-image: none;
+// }
+// 
+// .theme-change-button {
+//     font-size: 12px;
+//     width: auto;
+//     color: initial;
+//     background-color: white;
+//     position: fixed;
+//     top: 10px;
+//     right: 10px;
+//     margin-bottom: 10px;
+//     padding: 10px;
+//     cursor: pointer;
+// }
+// 
+// body.theme-dark .theme-change-button {
+//     background-color: #1e1e1e;
+//     color: #fff;
+// }
+// 
+// h1 {
+//     font-size: 26px;
+//     line-height: 1.5;
+//     border-bottom: 1px solid #2f3b4c;
+//     text-align: left;
+//     transition: 300ms border-bottom-color ease-out;
+// }
+// 
+// body.theme-dark h1 {
+//     border-bottom-color: white;
+// }
+// 
+// main {
+//     height: auto;
+//     background-color: transparent;
+//     border-radius: 0;
+//     max-width: 900px;
+// }
+// ----------------------------
+// - 자식요소, 전후요소, 부모요소를 취득
+//   부모노드.children
+//   부모노드.firstElementChild
+//   부모노드.lastElementChild   : 맨마지막 자식노드
+//   노드.nextFlementSibling     : 다음(동생) 노드
+//   노드.previousFlementSibling : 이전(형) 노드
+//   자식노드.parentNode         : 부모도느
+const parentElement = document.querySelector('#parent');
+console.log(parentElement.children);
+// ----------------------------
+// - 부모요소의 어미에 요소를 추가
+//   부모노드.appendChild(자식노드)
+const container = document.querySelector('.container');
+const myBox = document.querySelector('#myBox');
+// 3秒後に#myBox要素を.container要素の末尾に追加する
+setTimeout(() => {
+    container.appendChild(myBox);
+}, 3000);
+// ----------------------------
+// - 지정요소의 앞에 요소를 추가
+//   부모노드.insertBefore(자식노드, 앞요소)
+const container = document.querySelector('.container');
+const myBox1 = document.querySelector('#myBox1');
+const myBox2 = document.querySelector('#myBox2');
+const box2 = document.querySelector('#box2');
+// 3秒後に#myBox1要素を.containerの先頭に追加する
+setTimeout(() => {
+    container.insertBefore(myBox1, container.firstElementChild);
+}, 3000);
+// 4秒後に#myBox2要素を#box2要素の前に追加する
+setTimeout(() => {
+    container.insertBefore(myBox2, box2);
+}, 4000);
+// ----------------------------
+// - HTML코드를 요소로 삽입
+//   부모요소.insertAdjacentHTML(삽입위치, 문자열)
+//   : 'beforebegin' => 부모요소의 직전
+//   : 'afterbegin'  => 부모요소내의 선두
+//   : 'beforeend'   => 부모요소내의 말미
+//   : 'afterend'    => 부모요소의 직후
+const container = document.querySelector('.container');
+// 挿入する.new-box要素
+const newBox1 = `<div class="new-box box">.new-box要素 - 1</div>`;
+const newBox2 = `<div class="new-box box">.new-box要素 - 2</div>`;
+const newBox3 = `<div class="new-box box">.new-box要素 - 3</div>`;
+const newBox4 = `<div class="new-box box">.new-box要素 - 4</div>`;
+
+setTimeout(() => {
+	// .container要素内先頭に.new-box要素を追加する
+	container.insertAdjacentHTML('beforebegin', newBox1);
+	container.insertAdjacentHTML('afterbegin', newBox2);
+	container.insertAdjacentHTML('beforeend' , newBox3);
+	// .container要素の直後に.new-box要素を追加する
+		container.insertAdjacentHTML('afterend', newBox4);
+}, 3000);
+// ----------
+// HTML
+// &lt;!-- beforebegin --&gt;
+// &lt;div class="container"&gt;
+// &lt;!-- afterbegin --&gt;
+//   &lt;div class="box"&gt;子要素1&lt;/div&gt;
+//   &lt;div class="box"&gt;子要素2&lt;/div&gt;
+//   &lt;!-- beforeend --&gt;
+// &lt;/div&gt;
+// &lt;!-- afterend --&gt;
+// ----------------------------
+// - 요소를 동적으로 삭제
+//   부모노드.removeChild(자식노드)
+// 3秒後に処理を行う
+setTimeout(() => {
+    const parentElement = document.querySelector('#parent');
+    const childElement = document.querySelector('#child');
+    // #child要素を取り除く
+    parentElement.removeChild(childElement);
+}, 3000);
+// ----------------------------
+// - 자기자신의 요소를 삭제
+//   노드.remove()
+//   : 삭제하고 싶은 요소에 대해 처리를 실시
+// 3秒後に処理を行う
+setTimeout(() => {
+    const childElement = document.querySelector('#child');
+    // #child要素を取り除く
+    childElement.remove();
+}, 3000);
+// ----------------------------</code></pre>
 <!-- ############################################# -->
 <pre><code class="javascript"></code></pre>
 <!-- ############################################# -->
