@@ -1719,7 +1719,193 @@ setTimeout(() => {
 }, 3000);
 // ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// - 요소를 생성
+//   document.createElement('태그명', 옵션)
+// create-modal-buttonをクリックしたときの処理
+document
+    .querySelector('#create-modal-button')
+    .addEventListener('click', displayModalWindow);
+
+/** モーダルウインドウを表示する */
+function displayModalWindow() {
+    // モーダルウインドウを生成する
+    const modalElement = document.createElement('div');
+    // modalクラスを付与する
+    modalElement.classList.add('modal');
+
+    // モーダルウインドウの内部要素を生成する
+    const innerElement = document.createElement('div');
+    innerElement.classList.add('inner');
+    innerElement.innerHTML = `
+        <p>モーダルウインドウの中身です</p>
+        <div class="character"></div>
+    `;
+    // モーダルウインドウに内部要素を配置する
+    modalElement.appendChild(innerElement);
+    // body要素にモーダルウインドウを配置する
+    document.body.appendChild(modalElement);
+
+    // 内部要素をクリックしたらモーダルウインドウを削除する処理
+    innerElement.addEventListener('click', () => {
+        closeModalWindow(modalElement);
+    });
+}
+
+/** モーダルウインドウを閉じる */
+function closeModalWindow(modalElement) {
+    document.body.removeChild(modalElement);
+}
+// ----------
+// CSS
+@import url(../../common/css/base_photo.css);
+body {
+    background-size: cover;
+    background: url("../common/bg_nature.jpg") center;
+}
+
+.modal {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal .inner {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 10px;
+    display: block;
+    width: 960px;
+    height: 540px;
+    border-radius: 5px;
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    max-width: 600px;
+    max-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #333;
+    font-size: 1.5rem;
+    animation: fadeInAnimation 200ms ease-out;
+}
+
+@keyframes fadeInAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+// ----------------------------
+// - 요소를 복제
+//   노드.cloneNode([진위값])
+//   인수에 true를 넣으면 자식노드도 복제
+setTimeout(() => {
+    // #myBox要素を子ノードも含めて複製
+    const clonedBox = document.querySelector('#myBox').cloneNode(true);
+    document.querySelector('.container').appendChild(clonedBox);
+}, 3000);
+// ----------------------------
+// - 요소를 다른 요소로 치환
+//   부모노드.replaceChild(신노드, 구노드)
+//   치환된 노드를 리턴
+//   신노드와 구노드를 교체
+//   교체대상이 자식노드가 아닐경우 에러발생
+setTimeout(() => {
+    // コンテナ
+    const container = document.querySelector('.container');
+    // 旧ボックス要素
+    const oldBox = document.querySelector('.old-box');
+    // 新ボックス要素。div要素を作り、「新ボックス」というテキストノードを追加する
+    const newBox = document.createElement('div');
+    newBox.textContent = '新ボックス';
+    // new-box, boxというCSSクラスを追加する
+    newBox.classList.add('new-box', 'box');
+    // 新旧ボックスを入れ替える
+    container.replaceChild(newBox, oldBox);
+    }, 3000);
+// ----------------------------
+// - 신노드를 구노드와 교체
+//   구노드.replaceWith(신노드)
+//   리턴값없음
+setTimeout(() => {
+    // 旧ボックス要素
+    const oldBox = document.querySelector('.old-box');
+    // 新ボックス要素。div要素を作り、「新ボックス」というテキストノードを追加する
+    const newBox = document.createElement('div');
+    newBox.textContent = '新ボックス';
+    // new-box, boxというCSSクラスを追加する
+    newBox.classList.add('new-box', 'box');
+    // 新旧ボックスを入れ替える
+    oldBox.replaceWith(newBox);
+    }, 3000);
+// ----------
+// CSS
+.container {
+    display: flex;
+    border: 2px dotted #fff;
+    padding: 10px;
+}
+
+.container .new-box {
+    border: 4px solid #d03939;
+}
+// ----------------------------
+// - 요소내의 텍스트 취득/치환
+//   노드.textContent
+//   Node오브젝트의 프로퍼티
+//   텍스트내의 HTML태그는 무시됨
+const weatherElement = document.querySelector('#weather');
+
+// 3秒後に#weatherの中身を書き換える
+setTimeout(() => {
+    weatherElement.textContent = '気温は24℃の予想です。';
+}, 3000);
+// ----------------------------
+// - 요소내의 HTML을 취득/변경
+//   요소.innerHTML
+//   Element오브젝트의 프로퍼티
+//   텍스트 뿐만 아니라 태그도 변경할 경우 사용
+const weatherElement = document.querySelector('#weather');
+
+// 3秒後に#weatherの中身を書き換える
+setTimeout(() => {
+    weatherElement.innerHTML = '気温は<strong>-3℃</strong>の予想です。';
+}, 3000);
+// ----------------------------
+// - 요소(자기자신포함)의 HTML을 취득/변경
+//   요소.outerHTML
+//   innerHTML과 달리 자신도 대상에 포함
+// a要素を一括取得する
+const aElementList = document.querySelectorAll('a');
+
+// 各a要素について処理する
+aElementList.forEach((element) => {
+    // aタグにtarget属性が存在しなかったらreturn
+    if (element.hasAttribute('target') === false) {
+        return;
+    }
+    // target属性_blankではなかったらreturn
+    if (element.getAttribute('target') !== '_blank') {
+        return;
+    }
+    // rel属性にnoopenerを付与する
+    element.setAttribute('rel', 'noopener');
+});</code></pre>
 <!-- ############################################# -->
 <pre><code class="javascript"></code></pre>
 <!-- ############################################# -->
