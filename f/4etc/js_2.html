@@ -1907,7 +1907,186 @@ aElementList.forEach((element) => {
     element.setAttribute('rel', 'noopener');
 });</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// - 155
+// - 요소의 속성을 취득/변경
+//   요소.getAttribute(속성명, 값)
+//   요소.setAttribute(속성명)
+//   요소.hasAttribute(속성명)
+const anchorElem = document.querySelector("#anchor");
+console.log(anchorElem.getAttribute('href'));
+
+const imageElem = document.querySelector("#image");
+imageElem.setAttribute('src','test2.jpg');
+// ----------------------------
+// - [ref="noopener"]
+//   [target="_blank"]가 설정되어 있는 a태그로 윈도우를 열면,
+//   열린 윈도우에서 window.opener를 사용해서 원래의 윈도우를 
+//   조작가능해짐. 위험을 동반하기 때문에 noopener를 사용.
+// a要素を一括取得する
+const aElementList = document.querySelectorAll('a');
+
+// 各a要素について処理する
+aElementList.forEach((element) => {
+    // aタグにtarget属性が存在しなかったらreturn
+    if (element.hasAttribute('target') === false) {
+        return;
+    }
+
+    // target属性_blankではなかったらreturn
+    if (element.getAttribute('target') !== '_blank') {
+        return;
+    }
+
+    // rel属性にnoopenerを付与する
+    element.setAttribute('rel', 'noopener');
+});
+// ----------------------------
+// - 요소의 클래스 속성의 추가/삭제
+//   요소.classList.add(클래스1, 클래스2, ...)
+//   요소.classList.remove(클래스1, 클래스2, ...)
+//   요소.classList.contains(클래스)
+const box = document.querySelector('#box');
+console.log(box.classList.contains('red'));
+// ----------------------------
+// - 요소의 클래스의 유무를 전환(동적으로 붙였다가 뗌)
+//   요소.classList.toggle(클래스)
+//   클래스가 설정되어 있다면 추가, 아니면 삭제를 토글
+setInterval(()=>{
+    box.classList.toggle('red');
+});
+// ----------
+// .button要素すべてについて処理をする
+document.querySelectorAll('.button').forEach((button) => {
+    // .button要素をクリックしたときの処理を設定する
+    button.addEventListener('click', () => {
+        // .button要素の次の要素のクラスを切り替える
+        button.nextElementSibling.classList.toggle('show');
+    });
+});
+// ----------
+// CSS
+// @import url(../../common/css/base_photo.css);
+// body {
+//     background-size: cover;
+//     background: url('../common/bg_snow.jpg') center;
+// }
+// 
+// h1 {
+//     -webkit-text-stroke: 1px white;
+//     text-stroke: 1px white;
+//     font-weight: bold;
+// }
+// 
+// main {
+//     padding: 10px;
+// }
+// 
+// .section-wrapper {
+//     display: flex;
+// }
+// 
+// section {
+//     width: calc(100% / 3);
+//     padding-left: 5px;
+//     padding-right: 5px;
+//     box-sizing: border-box;
+// }
+// 
+// .button {
+//     width: 100%;
+//     text-transform: none;
+//     height: 40px;
+//     line-height: 40px;
+//     font-size: 20px;
+//     background-color: #2673a6;
+// }
+// 
+// .button:hover {
+//     background-color: #2688bc;
+// }
+// 
+// .button:active {
+//     background-color: #265c8f;
+// }
+// 
+// .button + .content {
+//     display: none;
+//     font-size: 20px;
+//     margin-top: 10px;
+//     border: 1px solid white;
+//     background: rgba(0, 0, 0, 0.7);
+//     border-radius: 2px;
+//     padding: 10px;
+//     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3) inset;
+//     text-align: left;
+//     color: white;
+// }
+// 
+// .button + .content.show {
+//     display: block;
+// }
+// 
+// .button + .content h2 {
+//     font-size: 22px;
+// }
+// 
+// .button + .content dt {
+//     margin-bottom: 10px;
+// }
+// 
+// .button + .content dl,
+// .button + .content dt,
+// .button + .content dd {
+//     margin: 0;
+// }
+// ----------------------------
+// - 스타일을 변경
+//   요소.style.프로퍼티명
+//   CSS의 케밥케이스가 아닌 카멜케이스
+//   인라인스타일도 같은 취급
+//   인라인스타일이 우선순위가 높다
+const information = document.querySelector('#information');
+
+// colorプロパティーの変更
+information.style.color = 'white';
+// font-sizeプロパティーの変更
+information.style.fontSize = '70px';
+// font-weightプロパティーの変更
+information.style.fontWeight = '600';
+
+const strokeColor = '#c52b84';
+// -webkit-text-strokeプロパティーの変更
+information.style.webkitTextStroke = `2px ${strokeColor}`;
+// text-strokeプロパティーの変更
+information.style.textStroke = `2px ${strokeColor}`;
+// text-shadowプロパティーの変更
+information.style.textShadow = `7px 7px 0 #bf3384`;
+// ----------------------------
+// - 스타일을 취득
+//   getComputedStyle(요소).프로퍼티명
+// ----------
+// HTML
+// &lt;div id="box" class="red"&gt;&lt;/div&gt;
+// ----------
+// CSS
+// #box {
+//     width: 100px;
+//     height: 100px;
+// }
+// .red {
+//     background-color: #ff2bc2;
+// }
+// .blue {
+//     background-color: #2b85ff;
+// }
+// ----------
+const box = document.querySelector('#box');
+console.log(getComputedStyle(box).width);
+// width値を取得する。100px
+console.log(getComputedStyle(box).backgroundColor);
+// background-colorを取得する。rgb(255, 43, 194)
+// ----------------------------</code></pre>
 <!-- ############################################# -->
 <pre><code class="javascript"></code></pre>
 <!-- ############################################# -->
