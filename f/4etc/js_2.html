@@ -2474,9 +2474,680 @@ function handleSubmit(event) {
 }
 // ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// - js에서 CSS Transitions, CSS Animations사용
+//   CSS Transitions와 CSS Animations은 셀렉터의 상태변환에
+//   반응해서 발생. 예) class지정에 임의의 클래스명의 존재유무가 
+//   변하는 것이 트리거로 작동해서 발생
+// ----------
+// - CSS Transitions의 종료시에 처리
+//   transitionend 이벤트
+//   CSS의 Transition완료후에 발생
+// ----------
+// HTML
+// &lt;div class="target"&gt;&lt;/div&gt;
+// 
+// &lt;div class="ui"&gt;
+//   &lt;button&gt;
+//     トランジションを確認する
+//   &lt;/button&gt;
+// 
+//   &lt;div class="log"&gt;ログ表示エリア&lt;/div&gt;
+// &lt;/div&gt;
+// ----------
+// CSS
+// button {
+//     background-color: rgba(0, 0, 0, 0.1);
+//     padding: 10px;
+//     color: #fff;
+//     cursor: pointer;
+//   }
+//   
+//   .target {
+//     width: 100px;
+//     height: 100px;
+//     display: block;
+//     position: absolute;
+//     background: white;
+//     top: 150px;
+//     transition: all 2s;
+//   }
+//   
+//   .target.state-show {
+//     width: 400px;
+//   }
+//   
+//   .centering {
+//     position: relative;
+//   }
+//   
+//   .ui {
+//     position: absolute;
+//     bottom: 100px;
+//   }
+//   
+//   .log {
+//     border: 1px solid white;
+//     padding: 0 0.5em;
+//   }
+// ----------
+// JS
+const button = document.querySelector('button');
+button.addEventListener('click', handleClick);
+
+function handleClick() {
+    const element = document.querySelector('.target');
+    if (element.classList.contains('state-show') === false) {
+        element.classList.add('state-show');
+    } else {
+        element.classList.remove('state-show');
+    }
+}
+
+// CSS Transition のイベント
+document.querySelector('.target')
+        .addEventListener('transitionend', (event) => {
+    document.querySelector('.log').innerHTML = 
+        'transitionend 発生 : ' + new Date().toLocaleTimeString();
+});
+// ----------------------------
+// - CSS Animations의 종료시에 처리
+//   animationstart 이벤트
+//   animationiteration 이벤트 : 애니메이션에서 반복이 발생했을 때의 이벤트
+//   animationend 이벤트
+// ----------
+// HTML
+// &lt;div class="rect"&gt;
+// &lt;/div&gt;
+// 
+// &lt;div class="ui"&gt;
+//   &lt;label&gt;
+//     &lt;input type="checkbox" id="checkbox"/&gt;
+//     アニメーションを確認する
+//   &lt;/label&gt;
+// 
+//   &lt;div class="log"&gt;ログ表示エリア&lt;/div&gt;
+// &lt;/div&gt;
+// ----------
+// CSS
+// .rect {
+//     display: block;
+//     position: absolute;
+//     background-size: contain;
+//     top: 150px;
+//     
+//     width: 100px;
+//     height: 100px;
+//     background: url('images/loading.svg');
+// }
+// 
+// .rect.state-show {
+//   animation: infinite 1s rotate linear;
+// }
+// 
+// @keyframes rotate {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     transform: rotate(360deg);
+//   }
+// }
+// 
+// .centering {
+//   position: relative;
+// }
+// 
+// .ui {
+//   position: absolute;
+//   bottom: 100px;
+// }
+// ----------
+// JS
+document.querySelector('#checkbox').addEventListener('change', (event) => {
+    const element = document.querySelector('.rect');
+    if (element.classList.contains('state-show') === true) {
+        element.classList.remove('state-show');
+    } else {
+        element.classList.add('state-show');
+    }
+});
+const targetEl = document.querySelector('.rect');
+targetEl.addEventListener('animationstart', (event) => {
+    document.querySelector('.log').innerHTML = 'animationstart 発生 : ' + new Date().toLocaleTimeString();
+});
+targetEl.addEventListener('animationiteration', (event) => {
+    document.querySelector('.log').innerHTML = 'animationiteration 発生 : ' + new Date().toLocaleTimeString();
+});
+targetEl.addEventListener('animationend', (event) => {
+    document.querySelector('.log').innerHTML = 'animationend 発生 : ' + new Date().toLocaleTimeString();
+});
+// ----------------------------
+// - 애니메이션을 위해 WEB Animations API를 사용
+//   자유도 높은 애니메이션
+//   js메인으로 모션을 작성
+//   요소.animate(오브젝트, 오브젝트)
+//   CSS Transitions와 CSS Animations의 경우에는 CSS에 모션을
+//   사전에 등록할 필요가 있음.
+//   WEB Animations API는 js만으로 관리 가능하고 종료시의 판정이 쉽다.
+//   1번인수로 시작값과 종료값을 포함하는 오브젝트를, 
+//   2번인수에는 애니메이션의 속성을 포함하는 오브젝트를 지정.
+// ----------
+// HTML
+// &lt;!-- Web Animations API未対応ブラウザーのためのPolyfill --&gt;
+// &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/web-animations/2.3.1/web-animations.min.js" defer&gt;&lt;/script&gt;
+// &lt;script src="main.js" defer&gt;&lt;/script&gt;
+// ----------
+// CSS
+// body {
+//     margin: 0;
+//     padding: 0;
+//     display: flex;
+//     justify-content: center;
+//     overflow: hidden;
+// }
+// .container {
+//     position: relative;
+//     width: 940px;
+//     height: 520px;
+//     background: rgba(0, 0, 0, 0.5);
+// }
+// .rect {
+//     width: 100px;
+//     height: 100px;
+//     display: block;
+//     position: absolute;
+//     background: white;
+//     top: 200px;
+// }
+// ----------
+// JS
+// 要素を取得
+const element = document.querySelector('.rect');
+element.animate(
+    {
+        transform: [
+            'translateX(0px) rotate(0deg)', // 開始値
+            'translateX(800px) rotate(360deg)' // 終了値
+        ]
+    },
+    {
+        duration: 3000, // ミリ秒指定
+        iterations: Infinity, // 繰り返し回数
+        direction: 'normal', // 繰り返し挙動
+        easing: 'ease' // 加減速種類
+    }
+);
+// ----------------------------
+// - 요소의 크기 변경
+//   CSS의 transform프로퍼티
+//   API의 scale()
+// ----------
+// - CSSTransitions으로 구현
+// ----------
+// CSS
+// .rect {
+//   width: 50px;
+//   height: 50px;
+//   display: block;
+//   position: absolute;
+//   background: white;
+//   top: 150px;
+//   transition: all 0.5s;
+// }
+// 
+// .rect.state-show {
+//   transform: scale(4);
+// }
+// 
+// .centering {
+//   position: relative;
+// }
+// 
+// .ui {
+//   position: absolute;
+//   bottom: 100px;
+// }
+// ----------
+// JS
+document.querySelector('#checkbox').addEventListener('change', (event) => {
+    const element = document.querySelector('.rect');
+    if (element.classList.contains('state-show') === true) {
+        element.classList.remove('state-show');
+    } else {
+        element.classList.add('state-show');
+    }
+});
+// ----------------------------
+// - Web API로 구현
+// ----------
+// CSS
+// .rect {
+//   width: 50px;
+//   height: 50px;
+//   display: block;
+//   position: absolute;
+//   background: white;
+//   top: 150px;
+// }
+// 
+// .centering {
+//   position: relative;
+// }
+// 
+// .ui {
+//   position: absolute;
+//   bottom: 100px;
+// }
+// ----------
+// JS
+document.querySelector('#checkbox').addEventListener('change', (event) => {
+    const element = document.querySelector('.rect');
+    if (event.target.checked === true) {
+        element.animate(
+        {
+            transform: [
+                'scale(1)', // 開始値
+                'scale(5)' // 終了値
+            ]
+        },
+        {
+          duration: 500, // ミリ秒指定
+          fill: 'forwards', // 終了時にプロパティーを保つ
+          easing: 'ease' // 加減速種類
+        }
+    );
+    } else {
+        element.animate(
+        {
+            transform: [
+                'scale(5)', // 開始値
+                'scale(1)' // 終了値
+            ]
+        },
+        {
+          duration: 500, // ミリ秒指定
+          fill: 'forwards', // 終了時にプロパティーを保つ
+          easing: 'ease' // 加減速種類
+        }
+        );
+    }
+});
+// ----------------------------
+// - 요소를 이동
+//   CSS의 translate():요소의 수직,수평이동 가능
+// ----------
+// - CSSTransitions으로 구현
+// ----------
+// HTML
+// &lt;div class="rect"&gt;&lt;/div&gt;
+// ----------
+// CSS
+// .rect {
+//   width: 100px;
+//   height: 100px;
+//   display: block;
+//   position: absolute;
+//   background: white;
+//   top: 150px;
+//   transition: all 3s;
+// }
+// 
+// .rect.state-show {
+//   transform: translate(300px, 0px);
+// }
+// 
+// .centering {
+//   position: relative;
+// }
+// 
+// .ui {
+//   position: absolute;
+//   bottom: 100px;
+// }
+// ----------
+// JS
+document.querySelector('#checkbox').addEventListener('change', (event) => {
+    const element = document.querySelector('.rect');
+    if (element.classList.contains('state-show') === true) {
+        element.classList.remove('state-show');
+    } else {
+        element.classList.add('state-show');
+    }
+});
+// ----------
+// - Web API로 구현
+// ----------
+// CSS
+// .rect {
+//   width: 100px;
+//   height: 100px;
+//   display: block;
+//   position: absolute;
+//   background: white;
+//   top: 150px;
+// }
+// 
+// .centering {
+//   position: relative;
+// }
+// 
+// .ui {
+//   position: absolute;
+//   bottom: 100px;
+// }
+// ----------
+// JS
+document.querySelector('#checkbox').addEventListener('change', (event) => {
+    const element = document.querySelector('.rect');
+    if (event.target.checked === true) {
+        element.animate(
+            {
+                transform: [
+                    'translateX(0px)', // 開始値
+                    'translateX(300px)' // 終了値
+                ]
+            },
+            {
+                duration: 3000, // ミリ秒指定
+                fill: 'forwards', // 終了時にプロパティーを保つ
+                easing: 'ease' // 加減速種類
+            }
+        );
+    } else {
+        element.animate(
+            {
+                transform: [
+                    'translateX(300px)', // 開始値
+                    'translateX(0px)' // 終了値
+                ]
+            },
+            {
+                duration: 3000, // ミリ秒指定
+                fill: 'forwards', // 終了時にプロパティーを保つ
+                easing: 'ease' // 加減速種類
+            }
+        );
+    }
+}); 
+// ----------------------------
+// - 요소의 투명도를 변경
+//   CSS의 opacity프로퍼티 1:불투명, 0:완전투명
+// ----------
+// - CSSTransitions으로 구현
+// ----------
+// CSS
+// .rect.state-show {
+//     opacity: 0.5;
+// }
+// ----------
+// JS
+document.querySelector('#checkbox').addEventListener('change', (event) => {
+    const element = document.querySelector('.rect');
+    if (element.classList.contains('state-show') === true) {
+        element.classList.remove('state-show');
+    } else {
+        element.classList.add('state-show');
+    }
+});
+// ----------
+// - Web API로 구현
+// ----------
+// JS
+document.querySelector('#checkbox').addEventListener('change', (event) => {
+    const element = document.querySelector('.rect');
+    if (event.target.checked === true) {
+        element.animate(
+            {
+                opacity: [
+                    1.0, // 開始値
+                    0.5 // 終了値
+                ]
+            },
+            {
+                duration: 500, // ミリ秒指定
+                fill: 'forwards', // 終了時にプロパティーを保つ
+                easing: 'ease' // 加減速種類
+            }
+        );
+    } else {
+        element.animate(
+            {
+                opacity: [
+                    0.5, // 開始値
+                    1.0 // 終了値
+                ]
+            },
+            {
+                duration: 500, // ミリ秒指定
+                fill: 'forwards', // 終了時にプロパティーを保つ
+                easing: 'ease' // 加減速種類
+            }
+        );
+    }
+});
+// ----------------------------
+// - 요소의 명도를 변화
+//   CSS의 filter프로퍼티에 brightness(숫자)를 사용
+//   숫자 > 100% => 밝게
+//   숫자 < 100% => 어둡게
+// ----------
+// - CSSTransitions으로 구현
+// ----------
+// CSS
+// .rect {
+//     display: block;
+//     position: absolute;
+//     top: 50px;
+//     filter: brightness(100%);
+//     transition: all 0.5s;
+// }
+// 
+// .rect.state-show {
+//     filter: brightness(300%);
+// }
+// ----------
+// JS
+document.querySelector('#checkbox').addEventListener('change', (event) => {
+    const element = document.querySelector('.rect');
+    if (element.classList.contains('state-show') === true) {
+        element.classList.remove('state-show');
+    } else {
+        element.classList.add('state-show');
+    }
+});
+// ----------
+// - Web API로 구현
+// ----------
+// JS
+document.querySelector('#checkbox').addEventListener('change', (event) => {
+    const element = document.querySelector('.rect');
+    if (event.target.checked === true) {
+        element.animate(
+            {
+                filter: [
+                    'brightness(100%)', // 開始値
+                    'brightness(300%)' // 終了値
+                ]
+            },
+            {
+                duration: 500, // ミリ秒指定
+                fill: 'forwards', // 終了時にプロパティーを保つ
+                easing: 'ease' // 加減速種類
+            }
+        );
+    } else {
+        element.animate(
+            {
+                filter: [
+                    'brightness(300%)', // 開始値
+                    'brightness(100%)' // 終了値
+                ]
+            },
+            {
+                duration: 500, // ミリ秒指定
+                fill: 'forwards', // 終了時にプロパティーを保つ
+                easing: 'ease' // 加減速種類
+            }
+        );
+    }
+});
+// ----------------------------
+// - 요소의 채도를 변경
+//   CSS의 filter프로퍼티에 grayscale(숫자)를 사용
+//   숫자 = 0%   => 통상
+//   숫자 = 100% => 모노크로
+// ----------
+// - CSSTransitions으로 구현
+// ----------
+// CSS
+// .rect {
+//     display: block;
+//     position: absolute;
+//     top: 50px;
+//     filter: grayscale(0%);
+//     transition: all 0.5s;
+// }
+// .rect.state-show {
+//     filter: grayscale(100%);
+// }
+// ----------
+// JS
+document.querySelector('#checkbox').addEventListener('change', (event) => {
+    const element = document.querySelector('.rect');
+    if (element.classList.contains('state-show') === true) {
+        element.classList.remove('state-show');
+    } else {
+        element.classList.add('state-show');
+    }
+});
+// ----------
+// - Web API로 구현
+// ----------
+// JS
+document.querySelector('#checkbox').addEventListener('change', (event) => {
+    const element = document.querySelector('.rect');
+    if (event.target.checked === true) {
+        element.animate(
+            {
+                filter: [
+                    'grayscale(0%)', // 開始値
+                    'grayscale(100%)' // 終了値
+                ]
+            },
+            {
+                duration: 500, // ミリ秒指定
+                fill: 'forwards', // 終了時にプロパティーを保つ
+                easing: 'ease' // 加減速種類
+            }
+        );
+    } else {
+        element.animate(
+            {
+                filter: [
+                    'grayscale(100%)', // 開始値
+                    'grayscale(0%)' // 終了値
+                ]
+            },
+            {
+                duration: 500, // ミリ秒指定
+                fill: 'forwards', // 終了時にプロパティーを保つ
+                easing: 'ease' // 加減速種類
+            }
+        );
+    }
+);
+// ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// - requestAnimationFrame()을 사용
+//   requestAnimationFrame(함수)
+//   시간경과로 호출할 함수를 등록
+//   화면을 다시 그리기전에 함수호추를 요구하는 명령
+//   읿반적인 디스플레이는 1초에 60회 화면을 갱신 => 약 16미리초
+//   setTimeout(), setInterval()에서 이것보다 작은 시간을 지정해도
+//   화면에 표시되지 않는 쓸모없는 처리가 발생할 가능성이 있다.
+//   웹애니메이션에서는 requestAnimationFrame()를 사용하는 것으로 보다
+//   부드럽고 효율적으로 표시가 가능.
+//   requestAnimationFrame()은 한번만 호출됨
+//   cancelAnimationFrame()로 호출을 캔슬
+//   requestID라는 ID(수치)를 반환.
+tick();
+var requestId = 0; 
+function tick(){
+    requestId = requestAnimationFrame(tick);
+    // 애니메이션 처리를 기술
+    console.log(requestId);
+}
+cancelAnimationFrame(requestId);
+// ----------------------------
+// var
+// var name = 'bathingape' => OK
+// var name = 'javascript' => OK
+// ----------
+// let 과 const 의 차이점:immutable
+// let 은 변수에 재할당이 가능
+// const는 변수 재선언, 변수 재할당 모두 불가능
+// ----------------------------
+// 호이스팅(Hoisting)이란, var 선언문이나 function 선언문 등을 
+// 해당 스코프의 선두로 옮긴 것처럼 동작하는 특성을 말한다.
+// var 로 선언된 변수와는 달리 let 로 선언된 변수를 선언문 이전에 
+// 참조하면 참조 에러(ReferenceError)가 발생
+// => 변수 선언에는 기본적으로 const를 사용하고, 
+//    재할당이 필요한 경우에 한정해 let 을 사용하는 것이 좋다.
+// const 를 사용하면 의도치 않은 재할당을 방지해 주기 때문에 보다 안전.
+// 재할당이 필요한 경우에 한정해 let 을 사용.  변수의 스코프는 최대한 좁게.
+// 재할당이 필요 없는 상수와 객체에는 const로.
+// ----------------------------
+// - requestAnimationFrame()으로 HTML요소를 움직이게 함
+//   요소의 style속성을 사용.
+//   style속성의 대부분을 단위를 필요로 하기 때문에 주의.
+// ----------
+// HTML
+// &lt;div class="stoker"&gt;
+// 👻
+// &lt;/div&gt;
+// ----------
+// CSS
+// .stoker {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   will-change: transform;
+//   font-size: 5rem;
+// }
+// ----------
+// JS
+// マウスストーカーの要素を取得
+const el = document.querySelector('.stoker');
+
+// マウス座標
+let mouseX = 0;
+let mouseY = 0;
+// ストーカーの座標
+let currentX = 0;
+let currentY = 0;
+// マウス移動時
+document.body.addEventListener('mousemove', (event) => {
+    // マウス座標を保存
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+});
+
+tick();
+function tick() {
+    // アニメーションフレームを指定
+    requestAnimationFrame(tick);
+
+    // マウス座標を遅延してストーカーの座標へ反映する
+    currentX += (mouseX - currentX) * 0.1;
+    currentY += (mouseY - currentY) * 0.1;
+
+    // ストーカーの要素へ反映
+    el.style.transform = `translate(${currentX}px, ${currentY}px)`;
+}
+// ----------------------------
+</code></pre>
 <!-- ############################################# -->
 <pre><code class="javascript"></code></pre>
 <!-- ############################################# -->
