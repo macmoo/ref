@@ -3149,7 +3149,356 @@ function tick() {
 // ----------------------------
 </code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// - 191
+// - 화상을 스크립트로 읽기
+//   src
+//   HTML내에 img요소를 배치하고, 참조시 src속성에 문자열을 대입.
+//   임의의 타이밍에 화상을 읽기 가능.
+// ----------
+// HTML
+// ----------
+// &lt;img id="myImageA" /&gt;
+// &lt;img id="myImageB" /&gt;
+// ----------
+// JS
+// ----------
+const imgA = document.querySelector('#myImageA');
+imgA.src = 'images/photo_a.jpg';
+
+const imgB = document.querySelector('#myImageB');
+imgB.src = 'images/photo_b.jpg';
+// ----------------------------
+// - 화상읽기 완료후에 처리실시
+//   onload
+// ----------
+// HTML
+// ----------
+// &lt;img id="myImage" width="640" height="426"/&gt;
+// ----------
+// CSS
+// ----------
+// img.loading {
+//     background-color: black;
+//     background-image: url("images/loading.gif");
+//     background-position: center;
+//     background-repeat: no-repeat;
+// }
+// ----------
+// JS
+// ----------
+const img = document.querySelector('#myImage');
+img.onload = () => {
+    // 画像の読み込み完了後の処理
+    img.classList.remove('loading');
+};
+img.src = 'images/photo.jpg';
+img.classList.add('loading');
+// ----------------------------
+// - 웹페이지내의 화상의 읽기를 지연시킴
+//   DOMContentLoaded이벤트발생시에 img요소를 검색해서,
+//   data-src속성의 값을 Map에 저장한 후에 클리어한다.
+//   다음에 필요해시점에 Map에서 src속성을 가져온다.   
+// ----------------------------
+// ----------
+// HTML
+// ----------
+// &lt;p&gt;
+//    &lt;img data-src="images/photo_a.jpg" width="320" height="214"/&gt;
+//    &lt;img data-src="images/photo_b.jpg" width="320" height="214"/&gt;
+// &lt;/p&gt;
+// &lt;button class="btn"&gt;読み込む&lt;/button&gt;
+// ----------
+// JS
+// ----------
+// 保存用にMapを用意
+const srcMap = new Map();
+window.addEventListener('DOMContentLoaded', () => {
+    // img要素を一括で参照
+    const imgs = document.querySelectorAll('img');
+    imgs.forEach((img) => {
+        // 各img要素のdata-src属性をMapに保存
+        srcMap.set(img, img.dataset.src);
+        // 遅延読み込みのため空にしておく
+        img.removeAttribute('src');
+    });
+});
+
+const btn = document.querySelector('.btn');
+btn.addEventListener('click', () => {
+     // img要素を一括で参照
+    const imgs = document.querySelectorAll('img');
+    imgs.forEach((img) => {
+        // 保存していたMapからsrcを割り当てる
+        const source = srcMap.get(img);
+        img.src = source;
+    });
+});
+// ----------------------------
+// - Base64의 화상을 표시
+//   Base64의 화상은 문자열로 화상을 관리가능.
+//   Base64화상의 문자열을 src속성에 대입
+//   Base64문자열은 선두가 
+//   [data:image/jpeg;base64]나 
+//   [data:image/png;base64]로 되어있다.
+// ----------
+// HTML
+// ----------
+// &lt;img id="myImage" /&gt;
+// ----------
+// JS
+// ----------
+const img = document.querySelector('#myImage');
+img.src = 'data:image/jpeg;base64,/9j/4AAQSkZJR......';
+// ----------------------------
+// - 스크립트로 img요소를 추가
+//   new image() => img요소의 인스턴스를 생성
+//   document.createElement('img')도 같은 역할
+//   document.body.appendChild()로 추가.
+// ----------
+// HTML
+// ----------
+// &lt;div class="container"&gt;&lt;/div&gt;
+// ----------
+// CSS// 
+// ----------
+// .container {
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: space-between;
+// }
+// .container img {
+//     width: 250px;
+//     height: 180px;
+// }
+// ----------
+// JS
+// ----------
+// 挿入したい要素の参照を取得
+const container = document.querySelector('.container');
+for (let i = 0; i < 10; i++) {
+    // Imageオブジェクトを作る
+    const img = document.createElement('img');
+    // src属性にファイルパスを指定
+    img.src = `images/photo-${i}.jpg`;
+    // 要素に挿入する
+    container.appendChild(img);
+}
+// ----------------------------
+// - 음성사용
+//   src      : 리소스지정
+//   controls : 컨트롤바 표시
+//   loop     : 루프지정
+//   preload  : 프리로드 종류를 지정
+//    => auto     : 자동
+//    => metadata : 메타데이터만을 읽음
+//    => none     : 자동읽기안함
+// ----------
+// HTML
+// ----------
+// &lt;h2&gt;コントロールあり&lt;/h2&gt;
+// &lt;audio src="music.mp3" controls&gt;&lt;/audio&gt;
+// &lt;h2&gt;プリロードなし&lt;/h2&gt;
+// &lt;audio src="music.mp3" controls preload="none"&gt;&lt;/audio&gt;
+// &lt;h2&gt;ループ再生&lt;/h2&gt;
+// &lt;audio src="music.mp3" controls loop&gt;&lt;/audio&gt;
+// ----------------------------
+// - 음성을 js로 제어
+//   play()  : 반환값 promise
+//   pause()
+// - 음성의 재생위치 변경
+//   currentTime : 재생헤드의 값, 읽기쓰기 가능, 초
+//   duration    : 음성의 길이, 읽기전용, 초
+//   음성의 메타정보를 전부읽기전까진 길이는 취득안됨
+//   그래서 loadedmetadata이벤트를 감시 => 메타정보의 읽기완료를 나타냄 
+// - 음성의 볼륨조절
+//   volume : 0.0 ~ 1.0
+//   muted  : 뮤트인지 아닌지
+// ----------
+// HTML
+// ----------
+// &lt;audio id="myAudio" src="assets/music.mp3" controls&gt;&lt;/audio&gt;
+// &lt;/div&gt;
+// &lt;div&gt;
+//     &lt;button id="btnPlay"&gt;再生&lt;/button&gt;
+//     &lt;button id="btnPause"&gt;停止&lt;/button&gt;
+//     &lt;button id="btnSkip"&gt;半分飛ぶ&lt;/button&gt;
+//     &lt;button id="btnVMin"&gt;볼륨Min&lt;/button&gt;
+//     &lt;button id="btnVMax"&gt;볼륨Max&lt;/button&gt;
+//     &lt;button id="btnMute"&gt;MUTE&lt;/button&gt; 
+// &lt;/div&gt;
+// ----------
+// CSS
+// ----------
+// button {
+//     background-color: rgba(0, 0, 0, 0.1);
+//     padding: 10px;
+//     color: #fff;
+//     cursor: pointer;
+// }
+// ----------
+// JS
+// ----------
+const audio = document.querySelector('#myAudio');
+audio.addEventListener('loadedmetadata', () => {
+    console.log(audio.duration); // 音声の長さ(秒) => 60.048
+});
+document.querySelector('#btnPlay').addEventListener('click', () => {
+    audio.play();
+});
+document.querySelector('#btnPause').addEventListener('click', () => {
+    audio.pause();
+});
+document.querySelector('#btnSkip').addEventListener('click', () => {
+    audio.currentTime = 30;
+});
+document.querySelector('#btnVMin').addEventListener('click', () => {
+    audio.volume = 0.0;
+});
+document.querySelector('#btnVMax').addEventListener('click', () => {
+    audio.volume = 1.0;
+});
+document.querySelector('#btnMute').addEventListener('click', () => {
+    audio.muted = true;
+});
+// ----------------------------
+// - 음성읽기 (Web Audio API)
+//   동시에 복수의 파일 재생
+//   사운드비쥬얼라이저 작성
+//   오디오정보를 서버에 전송
+// ----------
+// HTML 
+// ----------
+// &lt;button onclick="loadAndPlay()"&gt;再生する&lt;/button&gt;
+// &lt;button onclick="stop()"&gt;停止する&lt;/button&gt;
+// ----------   
+// JS
+// ----------
+loadAndPlay();
+
+let source;
+
+// 再生させたいとき
+async function loadAndPlay() {
+    const context = new AudioContext();
+
+    // サウンドファイルを読み込む
+    const data = await fetch('assets/music.mp3');
+    // ArrayBuffer として扱う
+    const buffer = await data.arrayBuffer();
+    // オーディオデータとして変換する
+    const decodedBuffer = await context.decodeAudioData(buffer);
+
+    // ソースを作成
+    source = context.createBufferSource();
+    // ソースにオーディオデータを割り当てる
+    source.buffer = decodedBuffer;
+    // スピーカーをつなげる
+    source.connect(context.destination);
+    // 再生を開始する
+    source.start(0);
+}
+
+// 停止させたいとき
+function stop() {
+    // 再生を停止する
+    source.stop();
+}
+// ----------------------------
+// - 동영상을 재생
+//   src
+//   controls
+//   autoplay
+//   loop
+//   preload
+//    => auto     : 자동
+//    => metadata : 메타데이터만을 읽음
+//    => none     : 자동읽기안함
+//   playsinline : 인라인 재생을 지정, 동영상에 웹페이지에 묻어서 재생
+//   width, height 지정이 없으면 동영상 사이즈에 맞춰짐
+//   poster : 썸네일지정
+// ----------
+// HTML
+// ----------
+// &lt;video src="sample.mp4" controls autoplay loop preload="auto"&gt;&lt;/video&gt;
+// &lt;video src="sample.mp4" autoplay playsinline muted&gt;&lt;/video&gt;
+// &lt;video src="sample.mp4" poster="photo.jpg"&gt;&lt;/video&gt;
+// ----------------------------
+// - 동영상을 JS로 제어
+//   play()
+//   pause()
+// ----------
+// JS
+// ----------
+const video = document.querySelector('#myVideo');
+document.querySelector('#btnPlay').addEventListener('click', () => {
+    video.play();
+});
+document.querySelector('#btnPause').addEventListener('click', () => {
+    video.pause();
+});
+// ----------------------------
+// - 카메라사용
+//   getUserMedia()
+//   video요소의 srcObject속성에 웹카메라의 스트림을 지정해서 표시.
+//   video요소에 autoplay속성을 지정. 지정안하면 브라우저에 따라 지연됨.
+// ----------
+// HTML
+// ----------
+// &lt;button onclick="loadAndPlay()"&gt;再生する&lt;/button&gt;
+// &lt;button onclick="stop()"&gt;停止する&lt;/button&gt;
+// &lt;video id="myVideo" width="640" height="480" autoplay&gt;&lt;/video&gt;
+// ----------
+// CSS
+// ----------
+// button {
+//     margin-bottom: 10px;
+//     background-color: rgba(0, 0, 0, 0.1);
+//     padding: 10px;
+//     color: #fff;
+//     cursor: pointer;
+// }
+// #log {
+//     font-size: 48px;
+// }
+// #myVideo {
+//     filter: grayscale(100);
+// }
+// ----------
+// JS
+// ----------
+let stream;
+
+async function loadAndPlay() {
+    const video = document.getElementById('myVideo');
+    stream = await getDeviceStream({
+        video: { width: 640, height: 320 },
+        audio: false
+    });
+    video.srcObject = stream;
+}
+
+function stop() {
+    const video = document.getElementById('myVideo');
+    const tracks = stream.getTracks();
+
+    tracks.forEach((track) => {
+        track.stop();
+    });
+
+    video.srcObject = null;
+}
+
+function getDeviceStream(option) {
+    if ('getUserMedia' in navigator.mediaDevices) {
+        return navigator.mediaDevices.getUserMedia(option);
+    } else {
+        return new Promise(function(resolve, reject) {
+        navigator.getUserMedia(option, resolve, reject);
+        });
+    }
+}
+// ----------------------------</code></pre>
 <!-- ############################################# -->
 <pre><code class="javascript"></code></pre>
 <!-- ############################################# -->
