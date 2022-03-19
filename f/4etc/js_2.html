@@ -3500,9 +3500,578 @@ function getDeviceStream(option) {
 }
 // ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// - 204
+// - SVG 
+//  : 스케러블 벡터 그래픽
+//    DOM으로써 조작가능
+//    2차원의 그래픽을 XML로 기술하기 위한 언어.
+// ----------
+// HTML에 직접기술
+// ----------
+// &lt;svg xmlns="http://www.w3.org/2000/svg"
+// viewbox="0 0 540 540" 
+// width="500"
+// height="500"&gt;
+// &lt;path fill-opacity="0"
+//      stroke="#999999"
+//      d="M25, 349
+//         c57, -84, 138, -176, 228, -166
+//         c111, 11, 120, 200, 260, 81"&gt;
+// &lt;/svg&gt;
+// ----------------------------
+// - SVG동적생성
+//   document.createElementNS('http://www.w3.org/2000/svg', SVG요소명)
+//   HTML과 SVG는 엄밀히 이름공간이 다르기 때문에 1번 인수처럼 지정해야함.
+// ----------
+// HTML
+// ----------
+// &lt;main class="centering"&gt;
+// &lt;div&gt;
+//   &lt;svg viewBox="0 0 200 200"
+//        width="200" 
+//        height="200"
+//        id="mySvg"&gt;
+//   &lt;/svg&gt;Z
+// &lt;/div&gt;
+// &lt;/main&gt;
+// ----------
+// JS
+// ----------
+const myCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+
+myCircle.setAttribute('cx', '100');
+myCircle.setAttribute('cy', '100');
+myCircle.setAttribute('r', '100');
+myCircle.setAttribute('fill', '#FFFF8D');
+
+const mySvg = document.querySelector('#mySvg');
+mySvg.appendChild(myCircle);
+// ----------------------------
+// - SVG요소의 스타일변경
+//   요소.setAttribute(속성명, 값)
+// ----------
+// HTML
+// ----------
+// &lt;svg viewBox="0 0 200 200"
+//            width="200" height="200"&gt;
+//         &lt;circle id="myCircle1"
+//                 cx="100" 
+//                 cy="100"
+//                 stroke-width="2"
+//                 stroke="#FFFFFF"
+//         /&gt;
+// &lt;/svg&gt;
+// ----------
+// JS
+// ----------
+const circle1 = document.querySelector('#myCircle1');
+circle1.setAttribute('r', '100'); // 半径を指定
+circle1.setAttribute('fill', '#FFFF8D'); // 塗りの色を指定
+circle1.setAttribute('fill-opacity', '0.5'); // 塗りの透明度を指定
+// ----------------------------
+// - SVG요소를 마우스로 조작
+// ----------
+// JS
+// ----------
+const circle = document.querySelector('#myCircle');
+circle.addEventListener('click', (event) => {
+    alert('クリックされました');
+});
+// ----------------------------
+// - SVG요소에 애니메이션 추가
+//   requestAnimationFrame()사용
+// ----------
+// HTML
+// ----------
+// &lt;svg viewBox="0 0 200 200"
+// width="200" height="200"&gt;
+// &lt;circle id="myCircle"
+//      cx="100" cy="100"
+//      r="95"
+//      fill="#BBDEFB"/&gt;
+// &lt;/svg&gt;
+// ----------
+// JS
+// ----------
+const myCircle = document.querySelector('#myCircle');
+let time = 0;
+
+animate();
+
+function animate() {
+    // 時間で変化
+    time += 0.1;
+    // 色を変化
+    myCircle.style.fill = `hsl(0, 100%, ${time}%)`;
+    // 目標値に達するまで繰り返す
+    if (time < 50) {
+        requestAnimationFrame(animate);
+    }
+}
+// ----------------------------
+// - SVG로 그림 그래픽을 다운로드하게 함
+//   document.querySelector()로 선택
+//   -> outerHTML프로퍼티로 문자열을 취득.
+// ----------
+// JS
+// ----------
+// 保存ボタンをクリックしたときの処理
+document.querySelector('#btnSave').addEventListener('click', saveFile);
+// ファイルとして保存
+function saveFile() {
+    // ファイル名
+    const fileName = `mySvg.svg`;
+    // SVG要素を取得
+    const content = document.querySelector('#mySvg').outerHTML;
+    // データを準備
+    const dataUrl = 'data:image/svg+xml,\n' + encodeURIComponent(content);
+
+    // BOMの文字化け対策
+    const bom = new Uint8Array([0xef, 0xbb, 0xbf]);
+    const blob = new Blob([bom, content], { type: 'text/plain' });
+
+    if (window.navigator.msSaveBlob) {
+        // for IE
+        window.navigator.msSaveBlob(blob, fileName);
+    } else if (window.URL && window.URL.createObjectURL) {
+        // for Firefox, Chrome, Safari
+        const a = document.createElement('a');
+        a.download = fileName;
+        a.href = window.URL.createObjectURL(blob);
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    } else {
+        // for Safari
+        window.open(dataUrl, '_blank');
+    }
+}
+// ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// - 캔버스요소 취급
+//   canvas.getContext('2d') => 캔버스로부터 명령군을 취득
+//   context.fillRect(x,y,폭,높이) => 지정영역을 채색
+//   캔버스는 비트맵베이스의 그래픽
+//   일러스트등의 그래픽스 => SVG
+//   이미지 가공등 => canvas 적합
+// ----------
+// HTML
+// ----------
+// &lt;main class="centering"&gt;
+//   &lt;canvas id="my-canvas"
+//              width="400"
+//              height="400"&gt;
+//   &lt;/canvas&gt;
+// &lt;/main&gt;
+// ----------
+// JS
+// ----------
+// キャンバス要素の参照を取得
+const canvas = document.querySelector('#my-canvas');
+// コンテキストを取得
+const context = canvas.getContext('2d');
+// 図形を描く
+context.fillRect(0, 0, 100, 100);
+// ----------------------------
+// - 캔버스 색칠과 선
+//   context.fillStyle프로퍼티
+//   context.strokeRect(x,y,폭,높이) => 경계선을 그림
+//   context.fillRect(x,y,폭,높이) => 색칠
+//   fillRect()를 실행하기 전에는 fillStyle를 설정할 필요가 있다. 순서에 주의
+// ----------
+// - 색칠
+// ----------
+// キャンバス要素の参照を取得
+const canvas = document.querySelector('#my-canvas');
+// コンテキストを取得
+const context = canvas.getContext('2d');
+// 塗りの色を指定
+context.fillStyle = 'red';
+// 矩形を描く
+context.fillRect(0, 0, 100, 100);
+// ----------
+// - 선
+// ----------
+// キャンバス要素の参照を取得
+const canvas = document.querySelector('#my-canvas');
+// コンテキストを取得
+const context = canvas.getContext('2d');
+// 線の幅を指定
+context.lineWidth = 3;
+// 選の色を指定
+context.strokeStyle = 'red';
+// 矩形を線で描く
+context.strokeRect(0, 0, 100, 100);
+// ----------------------------
+// - 캔버스에 이미지 출력
+//   context.drawImage(image,dx,dy)
+//   화상은 Image오브젝트를 사용해서 그림.
+//   Image오브젝트의 읽기가 끝나지 않으면 캔버스에 그리지 않기
+//   때문에, 그리기전에 onload로 읽기를 사전에 끝냄.
+// ----------
+// JS
+// ----------
+// キャンバス要素の参照を取得
+const canvas = document.querySelector('#my-canvas');
+// コンテキストを取得
+const context = canvas.getContext('2d');
+
+// Imageインスタンスを作成
+const img = new Image();
+// 画像読み込み後の処理
+img.onload = () => {
+    // コンテキストを通してcanvasに描く
+    context.drawImage(img, 0, 0);
+};
+// 画像を読み込みを開始する
+img.src = 'sample.jpg';
+// ----------------------------
+// - 캔버스의 화소정보 취득
+//   context.getImageData(dx, dy, width, height)
+//   => 지정영역의 픽셀정보를 취득
+//      리턴:ImageData오브젝트
+// ----------
+// JS
+// ----------
+// キャンバス要素の参照を取得
+const canvas = document.querySelector('#my-canvas');
+// コンテキストを取得
+const context = canvas.getContext('2d');
+// 塗りの色を指定
+context.fillStyle = 'red';
+// 矩形を描く
+context.fillRect(0, 0, 100, 100);
+// 画素情報を得る
+const imageData = context.getImageData(0, 0, 100, 100);
+console.log(imageData.data); // 画素配列
+// ----------------------------
+// - 화상의 RGBA값 취득
+//   getImageData()
+//   마우스의 좌표취득 -> 좌표의 RGBA값 취득
+// ----------
+// JS
+// ----------
+// キャンバス要素の参照を取得
+const canvas = document.querySelector('#my-canvas');
+// コンテキストを取得
+const context = canvas.getContext('2d');
+// Imageインスタンスを作成
+const img = new Image();
+// 画像読み込み後の処理
+img.onload = () => {
+    // コンテキストを通してcanvasに描く
+    context.drawImage(img, 0, 0);
+};
+// 画像を読み込みを開始する
+img.src = 'sample.jpg';
+
+// マウスが動いたとき
+canvas.addEventListener('mousemove', (event) => {
+    // マウスの座標を取得
+    const x = event.layerX;
+    const y = event.layerY;
+    // ImageDataを取得
+    const imageData = context.getImageData(x, y, 1, 1);
+    // 画素配列を取得
+    const data = imageData.data;
+    const r = data[0]; // 赤
+    const g = data[1]; // 緑
+    const b = data[2]; // 青
+    const a = data[3]; // アルファ
+    // 文字列として色情報を扱う
+    const color = `rgba(${r}, ${g}, ${b}, ${a})`;
+
+    const el = document.querySelector('.log');
+    // 背景色に指定
+    el.style.background = color;
+    // 文字として指定
+    el.textContent = color;
+});
+// ----------------------------
+// - 캔버스의 화상을 가공
+//   context.putImageData(이미지데이터)
+// ----------
+// JS
+// ----------
+// キャンバス要素の参照を取得
+const canvas1 = document.querySelector('#canvas-original');
+// コンテキストを取得
+const context1 = canvas1.getContext('2d');
+// Imageインスタンスを作成
+const img = new Image();
+// 画像読み込み後の処理
+img.onload = () => {
+    // コンテキストを通してcanvasに描く
+    context1.drawImage(img, 0, 0);
+
+    // 画素情報を得る
+    const imageData = context1.getImageData(0, 0, 150, 150);
+    const data = imageData.data;
+
+    const monoImageData = new ImageData(150, 150);
+
+    const monoArr = monoImageData.data;
+    for (let i = 0; i < data.length / 4; i += 1) {
+        // 画素情報を取得
+        const r = data[i * 4 + 0];
+        const g = data[i * 4 + 1];
+        const b = data[i * 4 + 2];
+        const a = data[i * 4 + 3];
+
+        // 平均値を求める（簡易的な計算のため）
+        const color = (r + g + b) / 3;
+
+        // 新しい配列に色を指定
+        monoArr[i * 4 + 0] = color;
+        monoArr[i * 4 + 1] = color;
+        monoArr[i * 4 + 2] = color;
+        monoArr[i * 4 + 3] = a;
+    }
+
+    // キャンバス要素の参照を取得
+    const canvas2 = document.querySelector('#canvas-effected');
+    // コンテキストを取得
+    const context2 = canvas2.getContext('2d');
+    // コンテキストに新しい画素情報を割り当てる
+    context2.putImageData(monoImageData, 0, 0);
+};
+// 画像を読み込みを開始する
+img.src = 'sample.jpg';
+// ----------------------------
+// - 캔버스의 화상을 DataURL으로 취득
+//   canvas.toDataURL()
+//   DB에 화상을 문자열로 저장할때등.
+// ----------
+// JS
+// ----------
+// キャンバス要素の参照を取得
+const canvas = document.querySelector('#my-canvas');
+// コンテキストを取得
+const context = canvas.getContext('2d');
+context.fillStyle = 'red';
+context.fillRect(0, 0, 100, 100);
+context.fillStyle = 'green';
+context.fillRect(25, 25, 50, 50);
+
+// Base64の文字列を得る
+const data = canvas.toDataURL();
+console.log(data);
+
+// img要素に代入する
+const img = document.querySelector('#my-img');
+img.src = data;
+// ----------------------------
+// - PNG/JPEG등 다른 형식의 DataURL을 취득
+//   canvas.toDataURL([형식])
+//   JPEG은 배경색이 검정이 되어 투과되지 않음 주의.
+//   PNG는 화질의 열화가 없다.
+// ----------
+// HTML
+// ----------
+// &lt;main class="centering"&gt;
+// &lt;div class="header"&gt;
+//   &lt;p&gt;Save as Image File&lt;/p&gt;
+//   &lt;button id="btnJpeg"&gt;JPEG&lt;/button&gt;
+//   &lt;button id="btnPng"&gt;PNG&lt;/button&gt;
+//   &lt;button id="btnWebp"&gt;WebP&lt;/button&gt;
+// &lt;/div&gt;
+// &lt;div class="hGroup"&gt;
+//   &lt;div&gt;
+//     canvas要素&lt;br/&gt;
+//     &lt;canvas id='myCanvas'
+//             width="300"
+//             height="300"&gt;
+//     &lt;/canvas&gt;
+//   &lt;/div&gt;
+// 
+//   &lt;div&gt;
+//     img要素&lt;br/&gt;
+//     &lt;img id='myImg'
+//          width="300"
+//          height="300"/&gt;
+//   &lt;/div&gt;
+// &lt;/div&gt;
+// &lt;/main&gt;
+// ----------
+// CSS
+// ----------
+// .header button {
+//     background-color: rgba(0, 0, 0, 0.1);
+//     padding: 10px;
+//     color: #fff;
+//     cursor: pointer;
+//     display: inline-block;
+//     width: 200px;
+// }
+//   
+// .hGroup {
+//     display: flex;
+//     justify-content: center;
+// }
+// ----------
+// JS
+// ----------
+const STAGE_W = 300; // 幅
+const STAGE_H = 300; // 高さ
+const CENTER_X = STAGE_W / 2; // 中心X座標
+const CENTER_Y = STAGE_H / 2; // 中心Y座標
+const MAX = 150; // ループ回数
+
+// 変数の初期化
+const canvas = document.getElementById('myCanvas');
+const context = canvas.getContext('2d');
+let n = 0; // カウント
+
+// アニメーションを開始
+tick();
+
+function tick() {
+    // 描画をリセット
+    context.clearRect(0, 0, STAGE_W, STAGE_H);
+
+    // 変数
+    let oldX = CENTER_X;
+    let oldY = CENTER_Y;
+
+    // 模様を描く
+    for (let i = 0; i < MAX; i++) {
+        context.beginPath();
+        context.lineWidth = 1;
+        context.strokeStyle = 'hsl(' + ((i / MAX) * 360 + n * 4000) + ', 100%, 50%)';
+        context.moveTo(oldX, oldY);
+        context.lineTo((oldX = CENTER_X + i * Math.cos(i + i * n)), (oldY = CENTER_Y + i * Math.sin(i + i * n)));
+        context.stroke();
+    }
+
+    // カウントを更新
+    n += 0.00025;
+
+    requestAnimationFrame(tick);
+}
+
+// JPEG 画像を取得
+const btnJpeg = document.querySelector('#btnJpeg');
+btnJpeg.addEventListener('click', () => {
+    const data = canvas.toDataURL('image/jpeg');
+    cloneToImage(data);
+});
+
+// PNG 画像を取得
+const btnPng = document.querySelector('#btnPng');
+btnPng.addEventListener('click', () => {
+    const data = canvas.toDataURL('image/png');
+    cloneToImage(data);
+});
+
+// WebP 画像を取得
+const btnWebp = document.querySelector('#btnWebp');
+btnWebp.addEventListener('click', () => {
+    const data = canvas.toDataURL('image/webp');
+    cloneToImage(data);
+});
+
+// img要素にDataURLの文字列を代入
+function cloneToImage(data) {
+    document.querySelector('#myImg').src = data;
+}
+// ----------------------------
+// - 캔버스에서 그린것을 다운로드할 때
+//   new Blob(배열, 옵션)
+//   a요소 이용.
+//   화상을 toDataURL()로 Base64문자열로 취득
+//   바이너리취급하기때문에 Blob오브젝트로 변환.
+// ----------
+// JS
+// ----------
+// キャンバス要素の参照を取得
+const canvas1 = document.querySelector('#canvas-original');
+// コンテキストを取得
+const context1 = canvas1.getContext('2d');
+// Imageインスタンスを作成
+const img = new Image();
+// 画像読み込み後の処理
+img.onload = () => {
+    // コンテキストを通してcanvasに描く
+    context1.drawImage(img, 0, 0);
+
+    // 画素情報を得る
+    const imageData = context1.getImageData(0, 0, 150, 150);
+    const data = imageData.data;
+
+    const monoImageData = new ImageData(150, 150);
+
+    const monoArr = monoImageData.data;
+    for (let i = 0; i < data.length / 4; i += 1) {
+        // 画素情報を取得
+        const r = data[i * 4 + 0];
+        const g = data[i * 4 + 1];
+        const b = data[i * 4 + 2];
+        const a = data[i * 4 + 3];
+
+        // 平均値を求める（簡易的な計算のため）
+        const color = (r + g + b) / 3;
+
+        // 新しい配列に色を指定
+        monoArr[i * 4 + 0] = color;
+        monoArr[i * 4 + 1] = color;
+        monoArr[i * 4 + 2] = color;
+        monoArr[i * 4 + 3] = a;
+    }
+
+    // キャンバス要素の参照を取得
+    const canvas2 = document.querySelector('#canvas-effected');
+    // コンテキストを取得
+    const context2 = canvas2.getContext('2d');
+    // コンテキストに新しい画素情報を割り当てる
+    context2.putImageData(monoImageData, 0, 0);
+};
+// 画像を読み込みを開始する
+img.src = 'sample.jpg';
+
+const btnDownload = document.querySelector('#btnDownload');
+btnDownload.addEventListener('click', () => {
+    // キャンバス要素の参照を取得
+    const canvas2 = document.querySelector('#canvas-effected');
+
+    // ファイルの種類とファイル名を指定
+    const mimeType = 'image/png';
+    const fileName = 'download.png';
+
+    // Base64文字列を取得
+    const base64 = canvas2.toDataURL(mimeType);
+
+    // Base64文字列からUint8Arrayに変換
+    const bin = atob(base64.replace(/^.*,/, ''));
+    const buffer = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) {
+        buffer[i] = bin.charCodeAt(i);
+    }
+
+    // Blobを作成
+    const blob = new Blob([buffer.buffer], {
+        type: mimeType
+    });
+
+    // 画像をダウンロードする
+    if (window.navigator.msSaveBlob) {
+        // for IE
+        window.navigator.msSaveBlob(blob, fileName);
+    } else if (window.URL && window.URL.createObjectURL) {
+        // for Firefox, Chrome, Safari
+        const a = document.createElement('a');
+        a.download = fileName;
+        a.href = window.URL.createObjectURL(blob);
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    } else {
+        // for Other
+        window.open(base64, '_blank');
+    }
+});
+// ----------------------------</code></pre>
 <!-- ############################################# -->
 <pre><code class="javascript"></code></pre>
 <!-- ############################################# -->
