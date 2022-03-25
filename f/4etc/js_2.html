@@ -4073,15 +4073,791 @@ btnDownload.addEventListener('click', () => {
 });
 // ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// - 13장
+//   처리 실행 타이밍 제어
+// ----------------------------
+// - 일정시간 후 처리
+//   setTimeout(함수, 미리초)
+//   => 지정 미리초 후에 함수를 호출
+//      타이머ID(수치)를 반환
+//   setTimeout함수는 한번만 호출된다.
+//   1. setTimer(timer1, 1000);
+//      function timer() {} 
+//   2. setTimer(function(){}, 1000);
+//   3. setTimer(()=>{}, 1000); 
+//   => 2는 this의 스코프가 바뀌는 경우가 있어 프로퍼티에 접근이 잘되지
+//      않을수 있기때문에 this의 스코프가 변하지 않는 애로우함수를 이용할 것.
+// ----------
+// JS
+// ----------
+console.log('起動時の時刻', new Date().toLocaleTimeString());
+
+setTimeout(() => {
+    // 任意の処理
+    console.log('setTimeout後の時刻', new Date().toLocaleTimeString());
+}, 1000); // 1000ミリ秒後に実行
+// ----------------------------
+// - 일정시간 후의 처리를 해제
+//   clearTimeout(타이머ID)
+// ----------
+// ----------
+// JS
+// ----------
+const timerId = setTimeout(() => {
+    // 任意の処理
+}, 1000);
+clearTimeout(timerId); // 해제
+// ----------------------------
+// - 일정시간 단위로 처리를 실시
+//   setInterval(함수, 미리초)
+//   웹페이지가 열려있으면 계속 실행됨.
+// ----------
+// JS
+// ----------
+console.log('起動時の時刻', new Date().toLocaleTimeString());
+setInterval(() => {
+    // 任意の処理
+    console.log('setIntervalでの時刻', new Date().toLocaleTimeString());
+}, 1000); // 1000ミリ秒後に実行
+// ----------------------------
+// - 해제
+//   clearInterval(타이머ID)
+// ----------
+// JS
+// ----------
+const intervalId = setInterval(timer1, 1000);
+let count = 0;
+
+function timer1() {
+    count += 1;
+    console.log('setIntervalでの時刻', new Date().toLocaleTimeString());
+    if(count === 3) {
+        clearInterval(intervalId);
+    }
+}
+// ----------------------------
+// - 비동기처리를 하는 Promise사용
+//   new Promise(함수)
+//   => Promise인스턴스를 작성
+//   Promise인스턴스.then(함수)
+//   => 성공했을시의 콜백함수를 호출
+//      Promise반환
+//   : Promise오브젝트는 비동기처리를 다루는 기능.
+//     Promise생성자의 인수로 비동기처리를 원하는 함수를 지정.
+//     이 함수안에서 비동기처리의 완료로서 resolve()가 호출되는 것을 기다림.
+//     then()을 써서, resolve()가 실행된 후에 계속할 처리를 기술.
+// ----------
+// JS
+// ----------
+const promise = new Promise((resolve) => {
+	setTimeout(()=>{
+		// resolve()를 부르면 Promise처리는 완료
+		console.log('resolve()직전');
+		resolve();
+	}, 1000);
+});
+
+// then()로 뒤에오는 처리를 기술
+promise.then(()=>{
+	console.log('다음 처리');
+});
+// ----------
+// JS
+// ----------
+const promise = new Promise((resolve) => {
+	setTimeout(()=>{
+		// resolve()는 인수로 임의의 값 설정 가능.
+		// 여기서 설정한 값이 then()안의 처리에서 사용가능.
+		resolve('orange');
+	}, 1000);
+});
+
+// then()로 뒤에오는 처리를 기술
+promise.then((value)=>{
+	console.log(value);
+});
+// ----------------------------
+// - Promise의 처리 성공, 실패시 처리실행
+//   Promise인스턴스.catch(함수)
+//   => 실패시의 콜백함수를 호출
+//   Promise에서 실패시의 처리를 하고싶으면, 생성자의 인수에 
+//   reject를 포함하는 함수를 지정.
+//   reject가 실행될때에는 catch()가 호출된다.
+// ----------
+// JS
+// ----------
+const promise = new Promise((resolve, rejct) => {
+	if(flag === true){
+		resolve('orange');
+	}else{
+		reject('apple');
+	}
+});
+promise.then((value)=>{
+	console.log(value);
+});
+promise.catch((value)=>{
+	console.log(value);
+});
+// => 위의 코드를 메소드 체인으로 변경
+new Promise((resolve, rejct) => {
+	if(flag === true){
+		resolve('orange');
+	}else{
+		reject('apple');
+	}
+}).then((value)=>{
+	console.log(value);
+}).catch((value)=>{
+	console.log(value);
+});
+// ----------------------------
+// - Promise로 병행처리
+//   all()
+//   복수의 처리를 동시에 실행시켜, 모두 완료되었을때 다음 처리를
+//   하기위해서는 Promise.all()를 사용.
+// ----------
+// JS
+// ----------
+// 配列を作成
+const arrFunc = [];
+for (let i = 0; i < 5; i++) {
+	const func = (resolve) => {
+		console.log(`処理${i}を開始`, new Date().toLocaleTimeString());
+		// 0〜2秒ぐらいで遅延
+		const delayMsec = 2000 * Math.random();
+
+		// 遅延処理
+		setTimeout(() => {
+			console.log(`処理${i}が完了`, new Date().toLocaleTimeString());
+			resolve();
+		}, delayMsec);
+	};
+	// 配列に保存
+	arrFunc.push(func);
+}
+
+console.log(arrFunc);
+
+// 関数を含めた配列を、Promiseの配列に変換
+const arrPromise = arrFunc.map((func) => new Promise(func));
+
+console.log(arrPromise);
+
+// 並列処理を実行
+Promise.all(arrPromise).then(() => {
+	console.log('すべての処理が完了しました');
+});
+// ----------------------------
+// - Promise를 직렬처리
+//   1. Promise만으로 구현하는 방법
+//   2. await(), async()를 사용하는 방법
+//   => 2가 코드가 간결해짐
+// ----------
+// JS - 1. Promise만으로 구현
+// ----------
+Promise.resolve()
+	.then(
+		() =>
+		new Promise((resolve) => {
+			setTimeout(() => {
+			console.log('1つめのPromise', new Date().toLocaleTimeString());
+			resolve();
+			}, 1000);
+		})
+	)
+	.then(
+		() =>
+		new Promise((resolve) => {
+			setTimeout(() => {
+			console.log('2つめのPromise', new Date().toLocaleTimeString());
+			resolve();
+			}, 1000);
+		})
+);
+// ----------
+// JS - 2. await(), async()로 구현
+// ----------
+start();
+
+async function start() {
+	await new Promise((resolve) => {
+		setTimeout(() => {
+			console.log('1つめのPromise', new Date().toLocaleTimeString());
+			resolve();
+		}, 1000);
+	});
+
+	await new Promise((resolve) => {
+		setTimeout(() => {
+			console.log('2つめのPromise', new Date().toLocaleTimeString());
+			resolve();
+		}, 1000);
+	});
+}
+// ----------------------------
+// - Promise로 동적으로 직렬처리
+//   복수의 비동기처리를 순서대로 처리해, 모든 처리의 완료를 기다리고 싶을때.
+//   Promise는 인스턴스화한 순간에 함수가 실행되기 때문에 Promise실행직전까지
+//   인스턴스를 만들지 않는게 포인트.
+// ----------
+// JS
+// ----------
+// 配列を作成
+const listFunctions = [];
+
+// 動的に関数を追加
+for (let i = 0; i < 5; i++) {
+	// 1秒後に処理をする非同期関数を作成
+	const func = (resolve) => {
+		// setTimeoutで遅延処理
+		setTimeout(() => {
+			console.log(`関数${i}が完了しました`, new Date().toLocaleTimeString());
+			resolve(); // Promiseを完了
+		}, 1000);
+	};
+	// 配列に保存
+	listFunctions.push(func);
+}
+// 配列の中身を出力
+console.log(listFunctions); // 結果: [ [Function: func], ...
+
+execute();
+
+async function execute() {
+	// 非同期処理を順番に実行
+	for (let i = 0; i < listFunctions.length; i++) {
+		const func = listFunctions[i];
+		await new Promise(func);
+	}
+}
+// ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// - 14장 : 다양한 데이터 송수신방법
+// ----------------------------
+// - JSON 파스
+//   JSON문자열을 js오브젝트로 전개하고 싶을때
+//   네트워크에서 읽어들인 JSON문자열을 다루고 싶을때
+//   JSON.parse(문자열)
+//   => JSON형식의 문자열을 JSON오브젝트로 변환
+// ----------
+// JS
+// ----------
+const jsonString = `{"students":40,"grade":4,"name":"1반"}`;
+
+const data = JSON.parse(jsonString);
+
+console.log(data);
+console.log(data.students);
+console.log(data.grade);
+console.log(data.name);
+// ----------------------------
+// - 오브젝트를 JSON으로 변환
+//   JSON.stringfy(obj)
+// ----------
+// JS
+// ----------zn
+const jsonObj = {a:1000, b:"안녕"};
+const str = JSON.stringify(jsonObj);
+console.log(str);
+// ----------------------------
+// - JSON변환시에 인덴트를 부여
+//   JSON.stringfy(obj, null, ' ')
+// ----------
+// JS
+// ----------
+const str2 = JSON.stringify(jsonObj, null, '   ');
+console.log(str2);
+// ----------------------------
+// - JSON변환룰 커스터마이즈
+//   JSON.stringfy(obj, replacer)
+//   => 오브젝트의 일부데이트를 변환해서 JSON문자열로 변환
+// ----------
+// JS
+// ----------
+const replacer = (key, value) => {
+	// 수치이면 무시
+	if(typeof value === 'number'){
+		return undefined;;
+	}
+	return value;
+};
+
+const obj  = {pref:'tokyo', orange:100, flag:true, apple:300};
+const str3 = JSON.stringify(obj, replacer, '  ');
+console.log(str3);
+// => 
+// {
+// 	 "pref": "tokyo",
+// 	 "flag": true
+// }
+// ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// - fetch()로 텍스트읽기
+//   fetch(URL) => URL로부터 데이터를 취득
+//   외부파일을 간단히 수신가능.
+//   프로그램상에서는 데이터의 다운로드가 끝나는 시간을 알수없기때문에
+//   비동기처리로 구현. Promise.then()을 사용.
+//   읽어들인 데이터를 해석할 필요가 있는데 텍스트의 경우, text()사용
+// ----------
+// 1. Promise만으로 구현한경우
+// ----------
+fetch('sample.txt') // 1. 데이터취득
+.then((data)=>data.text()) // 2. 텍스트데이트로써 해석
+.then((text)=>{console.log(text);}); // 3. 해석결과로 처리
+// ----------
+// 2. await, async을 사용한 경우
+// ----------
+async function load(){
+	const data2 = await fetch('sample.txt'); // 1
+	const text2 = await data2.text(); // 2
+	console.log(text2);
+}
+// ----------------------------
+// - fetch()로 JSON읽기
+//   1. fetch()로 데이터읽기
+//   2. json()로 JSON포맷으로 해석
+// ----------
+// JSON
+// ----------
+{
+	"name": "別所分校",
+	"classes": [
+		{
+			"students": 40,
+			"grade": 4,
+			"name": "C組"
+		},
+		{
+			"students": 20,
+			"grade": 2,
+			"name": "B組"
+		}
+	]
+}
+// ----------
+// JS - 1. Promise만으로 구현
+// ----------
+fetch('samle.json')
+.then((data) => data.json())
+.then((obj) => {console.log(obj));}
+// ----------
+// JS - 2. await, async을 사용한 경우
+// ----------
+const btn = document.querySelector('button'); // ボタン要素を取得
+btn.addEventListener('click', () => {
+	// ボタンをクリックしたとき
+	async function load() {
+		// ファイルを読み込む
+		const data = await fetch('sample.json');
+		// JSONとして解析
+		const obj = await data.json();
+		console.log(obj); // 結果: {name: "別所分校", classes: Array(2)}
+		// テキストを出力
+		document.querySelector('#log').innerHTML = JSON.stringify(obj, null, '  ');
+	}
+	load();
+});
+// ----------------------------
+// - fetch()로 XML읽기
+//   => JSON은 변환후 바로 참조가 가능하기 때문에 코드량이 적다. 
+// ----------------------------
+// XML
+// ----------
+// &lt;data version="1"&gt;
+//     &lt;orange&gt;1&lt;/orange&gt;
+//     &lt;apple&gt;2&lt;/apple&gt;
+// &lt;/data&gt;
+// ----------
+// JS - 1. Promise만으로 구현
+// ----------
+fetch('sample.xml')
+.then((response) => response.text())
+.then((str) => new DOMParser().parseFromString(str, 'application/xml'))
+.then((xml) => {
+	console.log(xml);
+	console.log(xml.querySelector('orange').innerHTML);
+})
+// ----------
+// JS - 2. await, async을 사용한 경우
+// ----------
+const btn = document.querySelector('button'); // ボタン要素を取得
+btn.addEventListener('click', () => {
+	// ボタンをクリックしたとき
+	async function load() {
+		// ファイルを読み込む
+		const response = await fetch('sample.xml');
+		// テキストとして解析
+		const text = await response.text();
+		// XMLとして解析
+		const xml = new DOMParser().parseFromString(text, 'application/xml');
+
+		console.log(xml); // 結果: #document
+		// テキストを出力
+		document.querySelector('#log').textContent = text;
+	}
+	load();
+});
+// ----------------------------
+// - fetch()로 바이너리읽기
+//   blob()
+//   바이너리는 웹의 3D데이터나 화상해석분야등에서 쓰인다.
+// ----------
+// JS - 1. Promise만으로 구현
+// ----------
+fetch('sample.jpg')
+.then((res) => res.blob())
+.then((blob) => {
+	const image = new Image();
+	image.src   = URL.createObjectURL(blob);
+	document.body.appendChild(image);
+});
+// ----------
+// JS - 2. await, async을 사용한 경우
+// ----------
+const btn = document.querySelector('button'); // ボタン要素を取得
+btn.addEventListener('click', () => {
+	// ボタンをクリックしたとき
+	async function load() {
+		// データを読み込む
+		const res = await fetch('./sample.jpg');
+		// blob として解析する
+		const blob = await res.blob();
+
+		// img 要素を作る
+		const image = new Image();
+		// blob を src 属性に代入
+		image.src = URL.createObjectURL(blob);
+		// 画面に表示する
+		document.querySelector('#log').appendChild(image);
+	}
+	load();
+});
+// ----------------------------
+// - fetch()로 데이터를 송신
+//   웹서버에 데이터를 넘기고 싶을때는 fetch()를 사용.
+//   데이터송신방법: GET , POST 2종류
+//   GET는 SEO(검색엔진최적화)와 상성이 좋다. but 개인정보 노출
+//   POST는 https일 경우 제3자가 내용을 볼수 없다.
+//   POST는 헤더, 보디 정보를 지정해야 함.
+// ----------
+// - JSON포맷으로 송신
+// ----------
+const obj = {hello:'world'};
+
+const data = {
+	method  : 'POST',
+	headers : {'Content-Type':'application/json'},
+	body    : JSON.stringify(obj)
+};
+
+fetch('./new', data)
+	.then((res) => res.text())
+	.then(console.log);
+// ----------
+// PHP
+// ----------
+// <?php
+// 		$json_string = file_get_contents('php://input');
+// 		// 문자열을 JSON데이터로 변환
+// 		$obj = json_decode($json_string);
+// 		echo $obj -> {"hello")};
+// ?>
+// ----------
+// - Form방식으로 송신(multipart/form-data방식)
+//   PHP쪽에서 받기 편하다.
+//   키/값의 조합으로 송신데이터 정의가능.
+//   주로 화상이나 첨부파일등을 서버에 업로드 할때 쓰이는 포맷.
+//   Content-Type는 자동적으로 설정되기 때문에 코드에서 명시적 지정하면 안됨.
+// ----------
+const body = new FormData();
+body.set('hello', 'world');
+
+const data = {
+	method  : 'POST',
+	body    : body
+};
+
+fetch('./new', data)
+	.then((res) => res.text())
+	.then(console.log);
+// ----------
+// PHP
+// ----------
+// <?php
+// 		echo $_POST["hello"];
+// ?>
+// ----------
+// - Form방식으로 송신(application/x-www-form-unlencoded방식)
+//   [키1=값1&키2=값2&...]형식으로 서버에 송신.
+//   일본어같은 멀티바이트문자는 사용안되기때문에 URL인코드를 해서 서버에 송신.
+// 	 URLSearchParams인스턴스를 작성, set()로 키/값을 설정.
+//   Content-Type를 명시적으로 지정[application/x-www-form-unlencoded; charset=utf-8]
+const param = new URLSearchParams();
+param.set('hello', 'world');
+
+const data = {
+	method  : 'POST',
+	headers : { 
+		'Content-Type':'application/x-www-form-unlencoded; charset=utf-8'
+	},	
+	body    : param
+};
+
+fetch('./new.php', data)
+	.then((res) => res.text())
+	.then(console.log);
+// ----------
+// PHP
+// ----------
+// <?php
+// 		echo $_POST["hello"];
+// ?>
+// ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// - XMLHttpRequest로 텍스트 읽어들임
+//   오래된 브라우저로 데이터송신시.
+//   fetch()보다 오래전부터 이용. 보다 저레벨 제어가 가능.
+//   : new XMLHttpRequest() => 인스턴스 생성
+//     open(메소드, url) => 리쿼스트를 초기화.
+//     send() => 리퀘스트를 송신
+//   : 읽기완료 => load이벤트 감시
+// ----------
+const btn = document.querySelector('button'); // ボタン要素を取得
+btn.addEventListener('click', () => {
+    // ボタンをクリックしたとき
+    // XHRを作成
+    const req = new XMLHttpRequest();
+    // 読み込み完了時のイベント
+    req.addEventListener('load', (event) => {
+        // レスポンスを受け取る
+        const text = event.target.responseText;
+
+        // テキストを出力
+        document.querySelector('#log').innerHTML = text;
+    });
+    // ファイルを指定
+    req.open('GET', './sample.txt');
+    // 読み込み開始
+    req.send();
+});
+// ----------------------------
+// - XMLHttpRequest의 데이터 읽기 상황을 취득
+//   : 프로그래스바를 표시하고 싶을때등
+//   : progress이벤트 감시.
+//   : event.loaded => 현재 읽은 양
+//     event.totla  => 총용량
+// ----------
+// HTML
+// ----------
+// &lt;div class="progress"&gt;
+// &lt;div class="progress-bar"&gt;&lt;/div&gt;
+// &lt;/div&gt
+// ----------
+// JS
+// ----------
+const btn = document.querySelector('button'); // ボタン要素を取得
+btn.addEventListener('click', () => {
+    // ボタンをクリックしたとき
+    // XHRを作成
+    const req = new XMLHttpRequest();
+    // データの種類を設定
+    req.responseType = 'blob';
+
+    req.addEventListener('progress', (event) => {
+        // 読み込みの割合を算出(0〜1)
+        const rate = event.loaded / event.total;
+
+        // プログレスバーの幅を変更する
+        const element = document.querySelector('.progress-bar');
+        element.style.width = `${rate * 100}%`;
+    });
+
+    // 読み込み完了時のイベント
+    req.addEventListener('load', (event) => {
+        // レスポンスを受け取る
+        const data = event.target.response;
+        // 画像データに変換
+        const source = URL.createObjectURL(data);
+
+        // 画像を作成
+        const image = new Image();
+        image.src = source;
+        // テキストを出力
+        document.querySelector('#log').appendChild(image);
+    });
+    // ファイルを指定
+    req.open('GET', './sample.jpg');
+    // 読み込み開始
+    req.send();
+});
+// ----------------------------
+// - XMLHttpRequest으로 읽기중의 통신을 취소.
+//   abort() => abort이벤트가 발생하고, load이벤트 발생안함.
+// ----------
+const btn = document.querySelector('button'); // ボタン要素を取得
+btn.addEventListener('click', () => {
+    // ボタンをクリックしたとき
+    // XHRを作成
+    const req = new XMLHttpRequest();
+    // データの種類を設定
+    req.responseType = 'blob';
+
+    // 読み込みに失敗したときのイベント
+    req.addEventListener('abort', (event) => {
+        // 画面に表示
+        document.querySelector('#log').textContent = '読み込みに失敗しました';
+    });
+
+    // 読み込み完了時のイベント
+    req.addEventListener('load', (event) => {
+        // レスポンスを受け取る
+        const data = event.target.response;
+        // 画像データに変換
+        const source = URL.createObjectURL(data);
+        // 画像を作成
+        const image = new Image();
+        image.src = source;
+        // テキストを出力
+        document.querySelector('#log').appendChild(image);
+    });
+    // ファイルを指定
+    req.open('GET', './sample.jpg');
+    // 読み込み開始
+    req.send();
+
+    // 50%の確率で
+    if (Math.random() > 0.5) {
+        // わざと読み込みを中断する
+        req.abort();
+    }
+});
+// ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// - 백그라운드에서 스크립트를 실행.
+//   : 부하가 높은 처리를 실행할때.
+//   : new Worker(파일패스)
+//   : js는 메인스레드에서 동작함
+//     부하높은 처리를 하면
+//     -> UI를 담당하는 메인스레드가 멈춤
+//     -> 조작불가능상태가 됨.
+//   : Web Worker는 메인스크립트의 스레드와 
+//     스레드가 다르기 때문에 DOM조작이 불가능하다.
+//     또, Web Worker는 페이지가 열려있을때만 실행된다.
+//   : Web Worker와 메인스레드가 데이터 통신할때는 
+//     postMessage()로 송신하고, 
+//     받은 메시지는 onmessage이벤트핸들러로 답신한다.
+//     메시지는 onmessage이벤트의 data속성에 담겨진다.
+// ----------
+// main.js
+// ----------
+// 参照を取得
+const numA   = document.querySelector('#numA');
+const numB   = document.querySelector('#numB');
+const result = document.querySelector('.result');
+const btn    = document.querySelector('button');
+
+// ワーカーを作成
+const worker = new Worker('worker.js');
+
+// ボタンをクリックしたとき
+btn.addEventListener('click', () => {
+    worker.postMessage([Number(numA.value), Number(numB.value)]);
+    console.log('[メインスクリプト] ワーカーへメッセージを送信');
+});
+
+// ワーカーから受信したとき
+worker.onmessage = function(e) {
+    // 結果を画面に表示
+    result.textContent = e.data;
+    console.log('[メインスクリプト] ワーカーからメッセージを受信');
+};
+// ----------
+// worker.js
+// ----------
+onmessage = (e) => {
+    console.log('[ワーカー] メインスクリプトからメッセージを受信');
+
+    // 足し算を実行
+    const result = e.data[0] + e.data[1];
+
+    console.log('[ワーカー] メインスクリプトにメッセージを送信');
+    postMessage(result);
+};
+// ----------------------------
+// - 백그라운드에서 서비스워커를 실행
+//   : 브라우저의 뒤에서 네트워크를 감시할때등
+//   : navigator.serviceWorker.register()
+//     => 서비스워커를 등록.
+//        반환값 : Promise
+//   : 서비스워커 => 열려있는 웹페이지의 뒤에서 항상 기동하는 스크립트.
+//     웹워커는 페이지가 열려있을 때만 실행된다.
+//     서비스워커는 브라우저를 닫아도 실행가능하다.
+//     => 푸쉬통지나 캐쉬기능을 이용하는데 유용.
+//   : 서비스워커에서 캐쉬를 이용하려면, 구글이 제공하는 
+//     라이브러리 Workbox를 이용하는게 좋다.
+//     서비스워커에 URL룰을 기재하는것만으로 이용가능.
+//     오프라인시에 웹페이지를 표시한다거나, HTTP캐쉬에서도 강력한 캐쉬기능을
+//     구축할수 있기때문에 웹사이트의 고속配信에 유용.
+// ----------
+// main.js
+// ----------
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker
+        .register('serviceworker.js')
+        .then((registration) => {
+            // 登録成功
+            console.log('ServiceWorkerの登録に成功');
+        })
+        .catch((error) => {
+            // 登録失敗
+            console.log('ServiceWorkerの登録に失敗: ', error);
+        });
+} else {
+    console.log('ServiceWorkerに未対応です');
+}
+// ----------
+// serviceworker.js
+// ----------
+self.addEventListener('fetch', (event) => {
+    console.log('通信が発生', event.request);
+});
+// ----------------------------
+// - 푸쉬통지를 실행.
+//   : 브라우저에서 OS의 통지기능을 이용해서 통지하려 할때.
+//     브라우저에서 웹페이지를 열었을때만 가능.
+//   : Notification.permission => 브라우저가 통지를 허용하고 있는가.
+//     Notification.requestPermission() => 통지허용을 요구.
+//     new Notification(통지타이틀) => 통지를 함.
+//   : 브라우저를 닫은 상태에서도 푸쉬통지를 사용하고 싶으면
+//     => 서비스워커를 이용. 
+//        https://ics.media/entry/11763/
+// ----------
+const btn = document.querySelector('button');
+btn.addEventListener('click', notify);
+
+// 通知を試みる
+function notify() {
+    switch (Notification.permission) {
+        case 'default': // デフォルト状態だったら
+            // 通知の許可を求めます
+            Notification.requestPermission();
+            break;
+        case 'granted': // 許可されていれば
+            // 許可されている場合はNotificationで通知
+            new Notification('こんにちは');
+            break;
+        case 'denied': // 拒否されていれば
+            alert('通知が拒否されています');
+            break;
+    }
+}
+// ----------------------------</code></pre>
 <!-- ############################################# -->
 <pre><code class="javascript"></code></pre>
 <!-- ############################################# -->
