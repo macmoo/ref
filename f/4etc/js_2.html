@@ -5001,7 +5001,41 @@ function convertCookieToObject(cookies) {
 }
 // ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// - 위치정보취득
+//   : Geolocation API로 취득
+//   : navigator.geolocation.getCurrentPosition(성공시의함수, 실패시의함수)
+//   : position.coords.latitude  => 위도
+//     position.coords.longitude => 경도
+//     position.coords.accuracy  => 위도경도의 오차
+//   : 위도 => 仰角(ぎょうかく), 앙각, (수평에서 위를)올려본각
+//     경도 => 方位角(ういかく), 수평에서 옆으로의 각
+//     경도 
+// ----------
+// https://macmoo.github.io/ref/f/7phone/001_geo.html
+// ----------
+// 현재위치 취득
+navigator.geolocation.getCurrentPosition(getSuccess, getError);
+
+// 취득성공
+function getSuccess(position){
+    // 위도
+    const lat = position.coords.latitude;
+    // 경도
+    const lng = position.coords.longitude;
+    // 오차(m)
+    const acc = Math.floor(position.coords.accuracy);
+
+    alert(`위도 : ${lat}\n` 
+        + `경도 : ${lng}\n`
+        + `오차 : ${acc}`);
+}
+
+// 취득실패(거부)
+function getError(){
+    alert('Geolocation Error');
+}
+// ----------------------------</code></pre>
 <!-- ############################################# -->
 <pre><code class="javascript"></code></pre>
 <!-- ############################################# -->
