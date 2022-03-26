@@ -4859,7 +4859,147 @@ function notify() {
 }
 // ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// ----------------------------
+// - 15장
+// ----------
+// - localStorage로 로컬데이터 사용.
+//   : 데이터를 영속적으로 브라우저에 보관.
+//   : localStorage.setItem('myParam', data) => 로컬스토리지에 데이터 보존
+//     localStorage.getItem('myParam) => 로컬스토리지에서 데이터 가져옴
+//   : 로컬스토리지는 브라우저에 데이터를 보존가능한 수단.
+//     window오브젝트에 localStorage오브젝트가 존재하기 때문에 
+//     localStorage로 직접 호출가능. 
+//     보존기간의 제한이 없다.
+//   : 프라이빗 브라우징 모드일 경우 브라우저 마다 로컬스토리지 운용방법이 다르다.
+//   : sessionStorage
+//     localStorage와 사용법은 동일하지만 세션이 끝나면(브라우저를 닫으면) 클리어 된다.
+// ----------
+const section = document.querySelector('.localStorage'); // 親要素を取得
+const btnRead = section.querySelector('.btnRead'); // ボタン要素を取得
+const btnSave = section.querySelector('.btnSave'); // ボタン要素を取得
+const input   = section.querySelector('input'); // テキスト入力欄の要素
+
+// 「保存する」ボタンをクリックしたとき
+btnSave.addEventListener('click', () => {
+    // テキスト入力欄の文字列を取得
+    const data = input.value;
+    // ローカルストレージに保存
+    localStorage.setItem('myKey', data);
+});
+
+// 「読み出す」ボタンをクリックしたとき
+btnRead.addEventListener('click', () => {
+    // ローカルストレージから読み出す
+    const data = localStorage.getItem('myKey');
+    // テキスト入力欄の文字列に代入
+    input.value = data;
+});
+// ----------------------------
+// - Storage API로 데이터를 삭제
+//   : localStorage.removeItem(키명) => 일부삭제
+//     localStorage.clear()          => 전부삭제
+// ----------
+const section   = document.querySelector('.localStorage'); // 親要素を取得
+const btnClear  = section.querySelector('.btnClear'); // ボタン要素を取得
+const btnRemove = section.querySelector('.btnRemove'); // ボタン要素を取得
+const btnSave   = section.querySelector('.btnSave'); // ボタン要素を取得
+const input     = section.querySelector('input'); // テキスト入力欄の要素
+
+// 「保存する」ボタンをクリックしたとき
+btnSave.addEventListener('click', () => {
+    // テキスト入力欄の文字列を取得
+    const data = input.value;
+    // ローカルストレージに保存
+    localStorage.setItem('myKey1', data);
+    localStorage.setItem('myKey2', data);
+});
+
+// 「削除する」ボタンをクリックしたとき
+btnRemove.addEventListener('click', () => {
+    // ローカルストレージから削除する
+    localStorage.removeItem('myKey1');
+});
+
+// 「クリアする」ボタンをクリックしたとき
+btnClear.addEventListener('click', () => {
+    // クリアする
+    localStorage.clear();
+});
+// ----------------------------
+// - Cookie로 로컬데이터를 사용.
+//   : document.cookie => 쿠리를 참조.
+//   : 쿠키에는 1차원의 문자열만 보존 가능.
+//     클라이언트에서 이용가능하지만, 
+//     서버쪽에도 공유해서 읽기/쓰기가 가능.
+//   : 특수기호나 일본어는 인코드에서 저장하고, 읽을때 디코드가 필요.
+//   : 쿠키의 사양
+//     .쿠키는 브라우저가 자동적으로 웹서버에 전송
+//     .쿠키는 유효기간의 설정이 가능
+//     .지우지 않는한 계속 유지됨
+//     .도메인단위로 유지됨. 다만, 동일 도메인이라도 http와 https는 다른 영역에 보존됨.
+// ----------
+const btnRead = document.querySelector('.btnRead'); // ボタン要素を取得
+const btnSave = document.querySelector('.btnSave'); // ボタン要素を取得
+
+// 「保存する」ボタンをクリックしたとき
+btnSave.addEventListener('click', () => {
+    // クッキーを保存する（代入しているが、それぞれが保存できる）
+    document.cookie = 'id=1';
+    document.cookie = 'age=30';
+    document.cookie = `name=${encodeURIComponent('山田')}`;
+});
+// 「読み出す」ボタンをクリックしたとき
+btnRead.addEventListener('click', () => {
+    // クッキーを読み出す
+    alert(document.cookie);
+    // => [id=1; age=30; name=%E5%B1%B1%E7%94%B0]
+});
+// ----------------------------
+// - 쿠키로부터 데이터 읽기
+//   쿠키의 문자열값을 연상배열로 분해
+// ----------
+const btnRead = document.querySelector('.btnRead'); // ボタン要素を取得
+const btnSave = document.querySelector('.btnSave'); // ボタン要素を取得
+
+// 「保存する」ボタンをクリックしたとき
+btnSave.addEventListener('click', () => {
+    // クッキーを保存する
+    document.cookie = 'id=1';
+    document.cookie = 'age=30';
+    document.cookie = `name=${encodeURIComponent('山田')}`;
+});
+
+// 「読み出す」ボタンをクリックしたとき
+btnRead.addEventListener('click', () => {
+    // クッキーを読み出す
+    const obj = convertCookieToObject(document.cookie);
+    console.log(obj); // => [Object { id: "1", age: "30", name: "山田" }]
+    document.querySelector('#log').innerHTML = JSON.stringify(obj, null, '  ');
+});
+
+/**
+ * クッキーをObjectに変換します。
+ * @param cookies クッキー文字列
+ * @return 連想配列
+ */
+function convertCookieToObject(cookies) {
+    const cookieItems = cookies.split(';');
+
+    const obj = {};
+    cookieItems.forEach((item) => {
+        // 「=」で分解
+        var elem = item.split('=');
+        // キーを取得
+        const key = elem[0].trim();
+        // バリューを取得
+        const val = decodeURIComponent(elem[1]);
+        // 保存
+        obj[key] = val;
+    });
+    return obj;
+}
+// ----------------------------</code></pre>
 <!-- ############################################# -->
 <pre><code class="javascript"></code></pre>
 <!-- ############################################# -->
