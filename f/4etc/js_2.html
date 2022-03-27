@@ -5067,25 +5067,590 @@ function deviceMotionHandler(event){
 }
 // ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// - 진동
+//   : navigator.vibrate(진동시킬 미리초)
+// ----------
+// 1000미리초 진동
+navigator.vibrate(1000);
+// 500진동, 100정지, 그후에 500진동
+navigator.vibrate([500,100,500]);
+// ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">
+// ----------------------------
+// - 17장 : 디버그
+// ----------------------------
+// - 정보, 경로, 에러 출력
+// ----------
+console.log('ログです');
+console.info('情報です');
+console.warn('警告です');
+console.error('エラーです');
+// ----------------------------
+// - 오브젝트의 구조를 출력
+//   : console.dir(오브젝트)   => 트리구조로 출력
+//     console.table(오브젝트) => 테이블형식으로 출력
+// ----------
+const myObject = {
+    id: 2,
+    name: '鈴木'
+};
+console.dir(myObject);
+// body要素の構造を出力
+console.dir(document.body);
+// ----------
+// console.table のサンプル
+const myArray = [
+    { id: 100, name: '鈴木', age: 25 },
+    { id: 200, name: '田中', age: 30 },
+    { id: 300, name: '太郎', age: 35 }
+];
+console.table(myArray);
+// ----------------------------
+// - 에러오브젝트 생성.
+//   : new Error(에러내용)
+//     Error인스턴스.message => 에러내용
+const err = new Error("에러가 발생");
+console.log(err.message);
+// ----------------------------
+// - 에러throw 
+//   : throw Error인스턴스
+// ---------------
+// CSS
+// ---------------
+// @import url(../../common/css/base_photo.css);
+// 
+// body {
+//     background-size: cover;
+//     background: url("../common/bg_nature.jpg") center;
+// }
+// ---------------
+// JS
+// ---------------
+/** 引数valueが数値でない場合にエラーを発生させる関数 */
+function myFunction(value) {
+    if (typeof value !== 'number') {
+        // エラーを生成する
+        const error = new Error(`「${value}」はNumberではありません`);
+        // エラー内容をアラートで表示する
+        alert(error.message);
+        // エラーを投げる
+        throw error;
+    }
+    console.log(`「${value}」は数値です`);
+}
+// 関数に数値を渡す（エラーなし）
+myFunction(5);
+// 関数に文字列を渡す（エラーが発生する）
+myFunction('鈴木');
+// ----------------------------
+// - 에러 catch
+// ---------------
+const a = 10;
+try {
+    a = 20;
+} catch (error) {
+    console.log(`에러가 발생: ${error.message}`);
+}
+// 중단되지 않고 실행됨.
+console.log(`정수a의 값은${a}이다`);
+// ----------------------------
+// - finally
+// ---------------
+/** 50%の確率でエラーが発生し、try cacthで処理する */
+function generateError() {
+    try {
+        // 50%の確率でエラーを発生させる
+        if (Math.random() > 0.5) {
+            throw new Error();
+        } else {
+            console.log('エラーなし');
+        }
+    } catch (error) {
+        // エラー発生時の処理
+        console.log(`エラーが発生`);
+    } finally {
+        // エラー発生有無に関わらず実行される
+        console.log('エラーの処理が完了しました');
+        console.log('----------');
+    }
+}
+// 3秒ごとにgenerateError()を実行する
+setInterval(generateError, 3000);
+// ----------------------------
+// - 에러의 종류
+//   : RangeError     => 값이 허용범위밖
+//     ReferenceError => 선언안된 변수를 참조
+//     SyntaxError    => 언어의 구문이 부정
+//     TypeError      => 데이터형이 부정
+//     URIError       => URI가 부정
+// ----------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
-<!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
-<!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
-<!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
-<!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
-<!-- ############################################# -->
-<pre><code class="javascript"></code></pre>
+<pre><code class="javascript">// ----------------------------
+// ----------------------------
+// - 18장 : 함수, 클래스
+// ----------------------------
+// - 클래스 작성
+//   : new 클래스명()
+// - 클래스 변수.
+//   : 클래스에 속하는 변수는 
+//     클래스필드, 클래스변수, 멤버변수라고 함.
+//   : 멤버변수에 초기값을 대입하지 않으면 undefined.
+// ---------------
+class MyClass{
+    constructor(){
+        // let이나 const로 기재하지않음.
+        this.classField = 12;
+    }
+    classMethod(){
+        console.log('메소드 실행됨!');
+    }
+}
 
+const myInstance = new MyClass();
+console.log(myInstance.classField);
+myInstance.classMethod();
+// ----------------------------
+// - 정적 메소드
+//   : 인스턴스 작성없이 호출가능.
+// ---------------
+class MyClass2{
+    static method2(){
+        console.log('정적 메소드 실행됨!');
+    }
+}
+MyClass2.method2();
+// ----------------------------
+// - 클래스 상속
+//   : class 클래스명 extends 부모클래스명
+// ---------------
+class MyParent {
+    parentMethod(){
+        console.log('부모 메소드 실행됨!');
+    }
+}
+class MyChild extends MyParent{
+    constructor(){
+        super();
+    }
+    childMethod(){
+        console.log('자식 메소드 실행됨!');
+    }
+}
 
+const myChild = new MyChild();
+myChild.parentMethod();
+myChild.childMethod();
+// ----------------------------
+// - getter/setter
+// ---------------
+class MyClass3{
+    set customField(value){
+        console.log("setter");
+        this._customField = value;
+    }
+    get customField(){
+        console.log("getter");
+        return this._customField;
+    }
+    constructor(value){
+        console.log("constructor");
+        this._customField = value;
+    }
+}
+const myInstance3 = new MyClass3();
+myInstance3.customField = 20;
+// myInstance3.customField(20); // 이건 불가능.함수가 아니다.
+console.log(myInstance3.customField);
 
+// ----------------------------
+// - this가 참조하는 것을 고정. 
+//   : () => {}    (애로우함수)
+//     애로우함수를 사용하면, this의 실행장소에 관계없이
+//     참조하는 곳이 바뀌지않기때문에 코드를 읽기쉬움.
+// ---------------
+class LikeCounter {
+    constructor() {
+        // ボタンをクリックした数
+        this.clickedCount = 0;
+    
+        const button = document.querySelector('.button');
+        const clickedCountText = document.querySelector('.clickedCountText');
+    
+        // 애로우함수로 이벤트리스너를 정의`
+        button.addEventListener('click', () => {
+            this.clickedCount += 1;
+            clickedCountText.textContent = this.clickedCount;
+        });
+    }
+new LikeCounter();
+// ----------------------------</code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript">s
+// ----------------------------
+// - 19장 : 심화
+// ----------------------------
+// - JS읽기 타이밍 최적화
+//   : HTML해석중에 script태그를 만나면 HTML해석이 멈추고 
+//     js파일의 다운로드/실행이 동기되어 시작됨.
+//     async나 defer를 쓰면 HTML의 해석이 멈추지 않음.
+//   : &lt;script src="path" async &gt;&lt;/script&gt;
+//     => js파일을 비동기로 읽고, 읽기가 완료되면 즉시 실행.
+//     &lt;script src="path" defer &gt;&lt;/script&gt;
+//     => js파일을 비동기로 읽고, HTML해석완료후에 실행. 
+//   : async / defer의 차이는 실행타이밍
+//   : defer가 설정된 스크립트가 복수개 있을경우, 위에서부터 순차처리.
+//     async는 처리 순서 보장안함.
+//     => async는 다른 js파일과 독립되어 실행되는 처리에 이용하는 것이 좋다.
+//   : defer속성을 사용하면 DOM취득이 쉽다.
+///    => HTML해석이 끝난후 실행되기 때문에 document.querySelector()등의
+//        DOM상의 각요소를 조작할수 있다.
+// ----------------------------
+// - 처리별로 파일을 분할(ES모듈)
+//   : ES모듈 => 복수의 js파일을 의존관계에 따라 적절하게 읽어들이는 구조를 말함.
+//     ES모듈을 사용하면 처리별로 js파일을 분할 가능.
+//     출력하는 모듈에는 export를, 모듈을 읽어들일 때는 import를 사용.
+// ---------------
+// HTML
+// ---------------
+// ES모듈을 사용할 때는 type에 module을 지정.
+// &lt;script type="module" src="main.js" defer&gt;&lt;/script&gt;
+// ---------------
+// MyClass1.js
+// ---------------
+export class MyClass1 {
+    myMethod1() {
+        return 'MyClass1のメソッドが実行されました';
+    }
+}
+// ---------------
+// MyClass2.js
+// ---------------
+export class MyClass2 {
+    myMethod2() {
+        return 'MyClass2のメソッドが実行されました';
+    }
+}
+// ---------------
+// main.js
+// ---------------
+// MyClass1.jsをimport
+import { MyClass1 } from './MyClass1.js';
+// MyClass2.jsをimport
+import { MyClass2 } from './MyClass2.js';
+
+// MyClass1のメソッドより文字列を取得する
+const message1 = new MyClass1().myMethod1();
+// MyClass2のメソッドより文字列を取得する
+const message2 = new MyClass2().myMethod2();
+
+// #log要素に出力する
+const log = document.querySelector('#log');
+log.innerHTML += `<p>${message1}</p>`;
+log.innerHTML += `<p>${message2}</p>`;
+// ----------------------------
+// - 모듈을 export
+//   : export 모듈 => 모듈을 공개함.
+//   : 클래스, 오브젝트, 변수, 정수, 함수등 모든것을 모듈로서 취급가능.
+//   : export default => 하나의 js파일로부터 하나의 모듈만을 export한다.
+//     export default 모듈명;
+// ---------------
+export const myConstant = 2; 
+export const myObject   = { name:'KK', age:18 };
+export function myFunc  = { console.log('my task'); }
+export class MyClass    = { constructor(){} }
+// ----------------------------
+// - 모듈을 import
+//   : import { 모듈명 } from './파일명.js'
+//   : 파일의 확장자는 필수.
+// ---------------
+// . js파일에서 모듈을 읽음.
+import { 모듈명 } from './파일.js';
+// . 하나의 파일에서 복수개의 모듈을 읽음.
+import { 모듈명1, 모둘명2 } from './파일.js';
+// . 모듈명1을 모둘명2라는 이름으로 읽음.
+import { 모듈명1 as 모둘명2 } from './파일.js';
+// . js파일에서 [export defaul]로 정의된 모듈을 읽어 들임.
+import 모듈명 from './파일.js';
+// . js파일에서 모든 모듈을 읽어들여, 모듈명으로 한다.
+import * as 모듈명 from './파일.js';
+// . 모듈을 읽기만함.
+import './파일.js';
+// . 서버상의 모듈을 import
+import * as RemoteModule from 'https://exp.com/module.js';
+// ----------------------------
+// - 모듈을 사용한 js를 HTML에서 읽기.
+// &lt;script type="module" src="main.js" defer&gt;&lt;/script&gt;
+// 다른 방법
+// &lt;script type="module"&gt;
+//     import { MyClass } from './MyClass.js';
+//     new MyClass();
+// &lt;/script&gt;
+// ----------------------------</code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript">// ----------------------------
+// - iterator
+//   : 오브젝트[Symbol.iterator]() => 이터레이터취득
+//     이터레이터.next() => 다음 이터레이터를 취득
+//   : 이터레이터.value  => 현재의 값
+//     이터레이터.done   => 종료했는가 (T/F)
+//   : 이터레이터 => 복수의 값을 연속해서 억세스 가능한 구조를 갖고 있는 오브젝트.
+//     iterable오브젝트 => for .. of 처리가 가능.
+// ---------------
+const array = ['鈴木', '高橋', '田中'];
+
+const iterator = array[Symbol.iterator]();
+
+const next1 = iterator.next();
+console.log(next1.value); // 結果: '鈴木'
+console.log(next1.done); // 結果: false
+
+const next2 = iterator.next();
+console.log(next2.value); // 結果: '高橋'
+console.log(next2.done); // 結果: false
+
+const next3 = iterator.next();
+console.log(next3.value); // 結果: '田中'
+console.log(next3.done); // 結果: false
+
+const next4 = iterator.next();
+console.log(next4.value); // 結果: undefined
+console.log(next4.done); // 結果: true
+// ----------------------------
+// - iterator를 자작 (generator)
+//   : function* 함수명() {}  => generator를 정의
+//     yield 값               => 값을 반환.(다음 값을 지정)
+//   : yield는 그 시점에 함수의 실행을 멈추고, next()가 호출되면 
+//     계속해서 실행되는 성질을 갖고 있다.
+// ---------------
+function* myGenerator(){
+    yield '스즈키';
+    yield '다나카';
+    yield '고토';
+}
+// next()로 값을 하나하나 출력
+const myIterable = myGenerator();
+console.log(myIterable.next().value);
+console.log(myIterable.next().value);
+console.log(myIterable.next().value);
+console.log(myIterable.next().done);
+// for .. of로 값에 접근
+const myIterable2 = myGenerator();
+for(let value of myIterable2) {
+    console.log(value);
+}
+// ---------------
+function* myGenerator() {
+    console.log('こんにちは');
+    yield 1000;
+    console.log('今日はいい天気ですね');
+    yield 2000;
+    console.log('明日は晴れるでしょう');
+    yield 3000;
+}
+const myIterable = myGenerator();
+
+// 結果
+// 1秒後、「こんにちは」が出力された後、1000が出力される
+// 2秒後、「今日はいい天気ですね」が出力された後、2000が出力される
+// 3秒後、「明日は晴れるでしょう」が出力された後、3000が出力される
+// それ以降はundfinedが出力される
+setInterval(() => {
+    console.log(myIterable.next().value);
+}, 1000);
+// ----------------------------
+// ジェネレータの定義
+function* range(start, end) {
+    let result = start;
+    while (result <= end) {
+        yield result;
+        result++;
+    }
+}
+
+// 使用例
+for (let value of range(2, 6)) {
+    console.log(value); // 結果: 2, 3, 4, 5, 6...と順番に出力される
+}
+// ----------------------------</code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript">
+// ----------------------------
+// - Symbol
+//   : 절대 중복되지 않는 데이터를 취급할때.
+//     빌트인 오브젝트에 독자메소드를 추가할경우의 메소드 명을 작성할때.
+//   : Symbol(문자열 또는 수치) => 심볼생성
+//   : 심볼 => 다른것과 중복되지 않는 값을 취급한다.
+//   : new를 쓰지않고 단지 Symbol()로 생성
+// ---------------
+const symbol1 = Symbol();
+const symbol2 = Symbol();
+console.log(symbol1 == symbol2);  // false
+console.log(symbol1 === symbol2); // false
+console.log(typeof symbol1);      // symbol
+console.log(symbol1);             // Symbol()
+const symbol3 = Symbol('foo');
+const symbol4 = Symbol('foo');
+console.log(symbol3 == symbol4);  // false
+// ----------------------------
+// - 배열이나 오브젝트에 독자메소드를 추가.
+//   : 오브젝트.prototype[심볼] = function(){}
+//     => 오브젝트에 독자메소드를 추가.
+//     오브젝트[심볼]()
+//     => 독자메소드를 실행.
+//   : prototype => 오브젝트에 멤버(멤버함수, 멤버변수)를 추가하기 위한 프로퍼티이다.
+//     Object를 상속받는 모든 객체는 prototype가 있다.
+//   : 이미 존재하는 멤버와 같은 이름으로 추가할 경우 덮어씌어진다.
+//     => Symbol을 사용하는 이유
+console.log(String.prototype);
+console.log(Array.prototype);
+console.log(Date.prototype);
+// ---------------
+// [myMethod]라는 심볼생성.
+const myMethod = Symbol();
+// 독자메소드 추가.
+Array.prototype[myMethod] = function(){
+    console.log('독자메소드이다.');
+}
+// 독자메소드 실행.
+const arr = [1,2,3];
+arr[myMethod](); // 독자메소드이다.
+// ---------------
+// 배열에 셔플메소드 추가.
+const shuffle = Symbol();
+
+Array.prototype[shuffle] = function(){
+    const arrayLength = this.length;
+    for(let i = arrayLength - 1; i >= 0 ; i --){
+        const randomIndex = Math.floor(Math.random() * (i+1));
+        [this[i], this[randomIndex]] = [this[randomIndex], this[i]];
+    }
+    return this; // 자기자신을 반환.
+};
+// 테스트
+// 배열에서 짝수를 빼내어 셔플하고 100배로 한다.
+const arr2 = [1,2,3,4,5,6,7,8,9,10];
+const arr3 = arr2.filter((value) => value % 2 === 0)
+                    [shuffle]()
+                    .map((value) => value * 100);
+console.log(arr3);
+// => Array(5) [ 400, 200, 800, 600, 1000 ]
+// ---------------
+// 이렇게도 가능.
+Array.prototype.myMethod = function(){
+    console.log('안녕');
+}
+const arr4 = [1,2,3];
+arr4.myMethod(); // 안녕
+// ----------------------------
+// - Map을 사용.
+//   : 메소드
+//     new Map(iterable한 객체) => Map객체를 초기화.
+//     맵.set(키, 값)   => 맵에 키/값을 등록
+//     맵.get(키)       => 값 취득
+//     맵.has(키)       => 키의 값이 존재하나
+//     맵.delete(키)    => 키의 값을 삭제
+//     맵.clear()       => 모두 삭제
+//     맵.keys()        => 키로 이루어진 iterator객체
+//     맵.values()      => 값으로 이루어진 iterator객체
+//     맵.entries()     => 키/값의 배열로 이루어진 iterator객체
+//     맵.forEach(콜백) => 각 페어에 대해 처리를 함.
+//   : 프로퍼티
+//     맵.size          => 키 / 값의 페어수
+//   : forEach의 콜백구문
+//     (키, 값) => {}   => 키 / 값을 받아 처리를 함.
+//   : 키가 이미 존재할경우, 덮어씌어진다.
+// ---------------
+// 맴 초기화.
+const memberList = new Map();
+// 맵 값 설정.
+memberList.set( 20, '스즈키');
+memberList.set( 50, '다나카');
+memberList.set(120, '다카하시');
+// 이렇게도 기술가능
+// memberList.set( 20, '스즈키')
+//             .set( 50, '다나카' )
+//             .set(120, '다카하시');
+// 값 취득.
+console.log(memberList.get(20)); // 스즈키
+// 맵의 존재 확인.
+console.log(memberList.has(50)); // true
+// ---------------
+// 맵 생성2
+const memMap = new Map([[20, '스즈키'],[50, '다나카'],[120, '다카하시']]);
+console.log(memMap.get(50));        // 다나카
+console.log(memMap.get(502));       // undefined
+const keySymbol = Symbol();
+memMap.set(keySymbol, '고토우');
+console.log(memMap.get(keySymbol)); // 고토우
+
+console.log(memMap.size);           // 4
+// 키
+const keyList = memMap.keys();
+for(let key of keyList){
+    console.log(memMap.get(key));
+}
+// 값
+const valList = memMap.values();
+for(let val of valList){
+    console.log(val);
+}
+// 엔트리
+memMap.delete(keySymbol);
+memMap.forEach((value, key) => {
+    console.log(`${key} : ${value}`);
+});
+// ----------------------------</code></pre>
+<!-- ############################################# -->
+<pre><code class="javascript">// ----------------------------
+// - Set => 중복하지 않는 값의 컬렉션
+//   : 인덱스나 키로 값에 접근이 불가능
+//     기존에 있는 값을 세트하면 무시됨.
+//   : 메소드
+//     new Set(iterable객체)
+//     세트.add(값)
+//     세트.has(값)
+//     세트.delete(값)
+//     세트.clear()
+//     세트.values()
+//     세트.forEach(콜백함수)
+//   : 프로퍼티
+//     세트.size
+// ---------------
+const userList = new Set();
+userList.add( 20);
+userList.add( 50);
+userList.add(120);
+// userList.add( 20)
+//         .add( 50)
+//         .add(120);
+console.log(userList.has(50)); // true
+// 초기화2
+const userList2 = new Set([20, 50, 120]);
+// for .. of
+const userValList = userList.values();
+for(let value of userValList){
+    console.log(value);// 20, 50, 120
+}
+// forEach
+userList.forEach((value)=>{
+    console.log(value);// 20, 50, 120
+});
+// 이미 있는 값은 무시됨.
+userList.add(120);
+userList.forEach((value)=>{
+    console.log(value); // 20, 50, 120
+});
+// 스플레트연산자로 배열로 변환.
+const userIdArr = [...userList];
+console.log(userIdArr);
+// => Array(3) [ 20, 50, 120 ]
+console.log(userList.size); // 3
+// ----------------------------
+// JavaScriptコードレシピ 完
+// ----------------------------</code></pre>
+<!-- ############################################# -->
 
 </body>
-
 </html>
