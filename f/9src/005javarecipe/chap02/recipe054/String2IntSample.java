@@ -1,0 +1,27 @@
+package jp.co.shoeisha.javarecipe.chapter02.recipe054;
+
+public class String2IntSample {
+
+	public static void main(String[] args) {
+		/////////////////////////////////////////////////////////////////////////////
+		// 文字列を数値に変換する
+		/////////////////////////////////////////////////////////////////////////////
+		{
+			try {
+				int i = Integer.parseInt("1");
+				System.out.println(i);
+			} catch (NumberFormatException e) {
+				// 変換できない文字列を指定すると、実行時エラー NumberFormatExceptionがスローされる
+				e.printStackTrace();
+			}
+		}
+		/////////////////////////////////////////////////////////////////////////////
+		// 数値を文字列に変換する
+		/////////////////////////////////////////////////////////////////////////////
+		{
+			String str = String.valueOf(1);
+			System.out.println(str);
+		}
+	}
+
+}
