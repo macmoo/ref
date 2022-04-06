@@ -59,3 +59,8 @@ public class EnumSample {
 	}
 
 }
+// 男です
+// MAN
+// name():MAN toString():MAN ordinal():0 compareTo():-1
+// name():WOMAN toString():WOMAN ordinal():1 compareTo():0
+// 2
