@@ -21,7 +21,7 @@ public class InvokeSample {
 
 			// フィールド
 			Field field = SampleBean.class.getDeclaredField("field");
-			field.setAccessible(true);
+			field.setAccessible(true); // <- public 이외일 경우에는 해야만함.
 
 			field.set(bean, 200);
 			Object fieldValue = field.get(bean);

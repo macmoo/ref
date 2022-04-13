@@ -10,7 +10,7 @@ public class StaticInvokeSample {
 		try {
 			// staticメソッド
 			Method method = SampleBean.class.getMethod("getMessage", String.class);
-			Object methodResult = method.invoke(null, "Takako");
+			Object methodResult = method.invoke(null, "Takako"); // static일 경우, null 설정
 			System.out.println(methodResult);
 
 			// staticフィールド

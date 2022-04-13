@@ -147,3 +147,29 @@ public class MainSample {
 	}
 
 }
+// *** 型変数: T ***
+// T
+// class jp.co.shoeisha.javarecipe.chapter03.recipe089.GenericSample
+// class java.lang.Object
+// *** 型変数の配列: T[] ***
+// T
+// class jp.co.shoeisha.javarecipe.chapter03.recipe089.GenericSample
+// class java.lang.Object
+// *** パラメータ化された型: List<String> ***
+// interface java.util.List
+// class java.lang.String
+// *** パラメータ化された型: List<T> ***
+// interface java.util.List
+// T
+// *** 制限つきパラメータ化された型: List<U> ***
+// U
+// class java.lang.Exception
+// *** 上限つきワイルドカード: List<? extends Exception> ***
+// class java.lang.Exception
+// 0
+// *** GenericSampleクラスの情報 ***
+// T
+// U
+// *** GenericInterfaceインターフェースの情報 ***
+// jp.co.shoeisha.javarecipe.chapter03.recipe089.GenericInterface<java.lang.Integer>
+// class java.lang.Integer
