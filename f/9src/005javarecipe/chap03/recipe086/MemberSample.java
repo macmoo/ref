@@ -115,3 +115,90 @@ public class MemberSample {
 	}
 
 }
+
+// ********** publicコンストラクタ **********
+// java.io.File[class java.lang.String]isPublic: true
+// java.io.File[class java.lang.String, class java.lang.String]isPublic: true
+// java.io.File[class java.net.URI]isPublic: true
+// java.io.File[class java.io.File, class java.lang.String]isPublic: true
+// ********** publicメソッド **********
+// class java.lang.String getName[]isStatic: false
+// boolean equals[class java.lang.Object]isStatic: false
+// long length[]isStatic: false
+// class java.lang.String toString[]isStatic: false
+// int hashCode[]isStatic: false
+// boolean isHidden[]isStatic: false
+// int compareTo[class java.io.File]isStatic: false
+// int compareTo[class java.lang.Object]isStatic: false
+// class [Ljava.lang.String; list[]isStatic: false
+// class [Ljava.lang.String; list[interface java.io.FilenameFilter]isStatic: false
+// boolean isAbsolute[]isStatic: false
+// class java.lang.String getParent[]isStatic: false
+// boolean delete[]isStatic: false
+// boolean setReadOnly[]isStatic: false
+// boolean canRead[]isStatic: false
+// class java.lang.String getPath[]isStatic: false
+// class java.net.URI toURI[]isStatic: false
+// class java.net.URL toURL[]isStatic: false
+// boolean exists[]isStatic: false
+// boolean createNewFile[]isStatic: false
+// boolean renameTo[class java.io.File]isStatic: false
+// class java.lang.String getAbsolutePath[]isStatic: false
+// class java.lang.String getCanonicalPath[]isStatic: false
+// boolean isDirectory[]isStatic: false
+// class java.io.File getAbsoluteFile[]isStatic: false
+// boolean mkdir[]isStatic: false
+// class java.io.File getCanonicalFile[]isStatic: false
+// class java.io.File getParentFile[]isStatic: false
+// boolean mkdirs[]isStatic: false
+// boolean setWritable[boolean]isStatic: false
+// boolean setWritable[boolean, boolean]isStatic: false
+// boolean setReadable[boolean]isStatic: false
+// boolean setReadable[boolean, boolean]isStatic: false
+// boolean setExecutable[boolean, boolean]isStatic: false
+// boolean setExecutable[boolean]isStatic: false
+// class [Ljava.io.File; listRoots[]isStatic: true
+// class java.io.File createTempFile[class java.lang.String, class java.lang.String, class java.io.File]isStatic: true
+// class java.io.File createTempFile[class java.lang.String, class java.lang.String]isStatic: true
+// boolean canWrite[]isStatic: false
+// boolean isFile[]isStatic: false
+// long lastModified[]isStatic: false
+// void deleteOnExit[]isStatic: false
+// class [Ljava.io.File; listFiles[interface java.io.FilenameFilter]isStatic: false
+// class [Ljava.io.File; listFiles[interface java.io.FileFilter]isStatic: false
+// class [Ljava.io.File; listFiles[]isStatic: false
+// boolean setLastModified[long]isStatic: false
+// boolean canExecute[]isStatic: false
+// long getTotalSpace[]isStatic: false
+// long getFreeSpace[]isStatic: false
+// long getUsableSpace[]isStatic: false
+// interface java.nio.file.Path toPath[]isStatic: false
+// void wait[long, int]isStatic: false
+// void wait[]isStatic: false
+// void wait[long]isStatic: false
+// class java.lang.Class getClass[]isStatic: false
+// void notify[]isStatic: false
+// void notifyAll[]isStatic: false
+// ********** publicフィールド **********
+// char separatorChar isFinal: true
+// class java.lang.String separator isFinal: true
+// char pathSeparatorChar isFinal: true
+// class java.lang.String pathSeparator isFinal: true
+// ********** privateコンストラクタ **********
+// [class java.lang.String, class java.io.File]
+// [class java.lang.String, int]
+// ********** privateメソッド **********
+// readObject
+// writeObject
+// slashify
+// normalizedList
+// ********** privateフィールド **********
+// fs
+// path
+// status
+// prefixLength
+// UNSAFE
+// PATH_OFFSET
+// PREFIX_LENGTH_OFFSET
+// serialVersionUID
+// filePath

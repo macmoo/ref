@@ -1255,16 +1255,16 @@ static class C implements A, B {
 // ■ 열거형
 //
 // - 기본
-https://github.com/macmoo/ref/tree/master/f/9src/005javarecipe/chap03/recipe075
+github.com/macmoo/ref/tree/master/f/9src/005javarecipe/chap03/recipe075
 // 
 // - 정수별로 메소드 오버라이드
-https://github.com/macmoo/ref/tree/master/f/9src/005javarecipe/chap03/recipe076
+github.com/macmoo/ref/tree/master/f/9src/005javarecipe/chap03/recipe076
 // 
 // - 열거형에 효율이 좋은 컬렉션
-https://github.com/macmoo/ref/tree/master/f/9src/005javarecipe/chap03/recipe077
+github.com/macmoo/ref/tree/master/f/9src/005javarecipe/chap03/recipe077
 // ---------------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>// ---------------------------------
+<pre><code class="java">// ---------------------------------
 // 78장
 // ■ 제너릭스
 https://github.com/macmoo/ref/tree/master/f/9src/005javarecipe/chap03/recipe078
@@ -1275,31 +1275,153 @@ https://github.com/macmoo/ref/tree/master/f/9src/005javarecipe/chap03/recipe080
 // => MyClass 또는 그 서브클래스를 대입가능.
 // &lt;? super MyClass&gt;
 // => MyClass 또는 그 부모클래스를 대입가능.
-// 
-// - 
-// 
-// - 
-// 
+https://github.com/macmoo/ref/tree/master/f/9src/005javarecipe/chap03/recipe081
+// ---------------------------------</code></pre>
 <!-- ############################################# -->
 <pre><code class="java">// ---------------------------------
-// - 
-// 
+// 82장 
+// ■ 가변인수
+https://github.com/macmoo/ref/tree/master/f/9src/005javarecipe/chap03/recipe082
 // ---------------------------------
-// - 
-// 
+// 83장 
+// - annotation
+//   @SuppressWarnings => 컴파일러가 발생시키는 경고를 억제
+//     : 복수지정가능, eclipse에서 [ctrl + 1] 로 선택.
+//       @SuppressWarnings({"unchecked","varargs"})
+//   @SageVarargs => 제네릭스를 지정한 가변인수의 경고를 억제
+//   @FunctionalInterface => 함수형인터페이스임을 나타냄
 // ---------------------------------
-// - 
-// 
+// - 독자annotation
+//   : @interface키워드로 정의
+//   : 종류
+//     1. marker 어노테이션 => 속성이 없는 어노테이션, 표시용.
+//        사용예 : @Check
+//        public @interface Check {}
+//     2. full 어노테이션   => 속성이 있는 어노테이션.
+//        사용예 : @Check(id= 1, value = "message")
+//        public @interface Check { String value(); int id(); }
+//     3. single 어노테이션 => value라는 이름의 속성이 1개만 정의된 어노테이션.
+//        사용예 : @Check("message")  
+//                 단일어노테이션은 이용시 속성명 생략가능. 
+//                 속성명이 value인 경우에는 생략불가능.
+//        public @interface Check { String value();}
+//    : 어노테이션의 속성에 디폴트값을 설정.
+//      "@Check"같이 값을 생략하면 기본값이 사용됨. 
+//      그외에는 "@Check(false)"와 같이 사용.
+//      public @interface Check { 
+//			boolean value() default true;
+//		}
+//    : 메타어노테이션
+//      메타정로보써 어노테이션을 부여가 가능하고,
+//      어노테이션 부여가능한 곳과 실행시에 리플렉션으로 읽기가능한지 아닌지를 지정가능.
+//      메타어노테이션은 [java.lang.annotation.*]에 정의되어 있다.
+// 		@Documented
+// 		@Inherited
+// 		@Target({TYPE, METHOD})	// クラスやインターフェースや列挙型、メソッドに付与できる
+// 		@Retention(RUNTIME)		// コンパイル時に保存し、実行時にJava VM上にも保持
+// 			public @interface Check {
+// 		}
 // ---------------------------------
-// - 
-// 
+// - 메타어노테이션
+https://is.gd/1mAWCJ
+// meta-annotation 은 다른 annation 에서도 사용되는 annotation 의 경우를 말하며 
+// custom-annotation 을 생성할 때 주로 사용됩니다.
+// ----------
+// @Target
+// @Target 은 Java compiler 가 annotation 이 어디에 적용될지 결정하기 위해 사용합니다.
+// 예를 들어 위에서 사용한 @Service 의 ElementType.TYPE 은 해당 Annotation 은 
+// 타입 선언 시 사용한다는 의미입니다.
+// - 종류
+// ElementType.PACKAGE         : 패키지 선언(package-info.java파일에만 부여가능)
+// ElementType.TYPE            : 타입 선언
+// ElementType.ANNOTATION_TYPE : 어노테이션 타입 선언
+// ElementType.CONSTRUCTOR     : 생성자 선언
+// ElementType.FIELD           : 멤버 변수 선언
+// ElementType.LOCAL_VARIABLE  : 지역 변수 선언
+// ElementType.METHOD          : 메서드 선언
+// ElementType.PARAMETER       : 전달인자 선언
+// ElementType.TYPE_PARAMETER  : 전달인자 타입 선언
+// ElementType.TYPE_USE        : 타입 선언(형을 사용하는 곳은 어디든지 지정가능)
+// ----------
+// @Retention
+// @Retetion 은 Annotation 이 실제로 적용되고 유지되는 범위를 의미합니다.
+// Policy 에 관련된 Annotation 으로 컴파일 이후에도 JVM 에서 참조가 가능한 RUNTIME 으로 지정합니다.
+// - 종류
+// RetentionPolicy.RUNTIME
+// => 컴파일 이후에도 JVM 에 의해서 계속 참조가 가능합니다. 주로 리플렉션이나 로깅에 많이 사용됩니다.
+// RetentionPolicy.CLASS
+// => 컴파일러가 클래스를 참조할 때가지 유효합니다.
+// RetentionPolicy.SOURCE
+// => 컴파일 전까지만 유효합니다. 즉, 컴파일 이후에는 사라지게
+// ----------
+// @Inherited
+// 해당 어노테이션이 상속됨을 나타냄
+// @Documented
+// 문서에 어노테이션 정보가 표기됩니다.
+// // ----------
+// @Repeatable
+// java8부터 지원하며, 동일한 선언에 annotation을 두번 이상 적용할 수 있도록 합니다.
 // ---------------------------------
-// - 
-// 
-// ---------------------------------
-</code></pre>
+// - 어노테이션이란
+// Anntation은 JDK 1.5부터 도입된 것으로 자바 소스 코드에 추가하여 사용할 수 
+// 있는 메타데이터의 일종입니다.
+// 대부분이 많이 봤을 만한 @Override, @Deprecated 가 Annotation 예로 
+// Annotation의 구현된 정보에 따라 연결되는 방향이 결정됩니다.
+// 즉, 전체적인 소스코드의 로직을 바꾸진 않지만 Annotation의 타겟을 
+// 연결 방법이나 소스코드의 구조를 변경할 수 있습니다. Annotation의 기능을 잘 
+// 활용한다면 비즈니스 로직과 별도의 시스템 설정은 Annotation에게 위임함으로써 
+// 개발자들은 로직 구현에만 집중할 수 있습니다. 따라서 Annotation을 통해 
+// AOP(Aspect Object Programming)을 구성할 수 있습니다.
+//
+https://github.com/macmoo/ref/tree/master/f/9src/005javarecipe/chap03/recipe084
+//
+https://github.com/macmoo/ref/blob/master/f/9src/005javarecipe/chap03/recipe084/target/AnnotationSample.java
+// ---------------------------------</code></pre>
 <!-- ############################################# -->
-<pre><code class="java"></code></pre>
+<pre><code class="java">// ---------------------------------
+// 85장
+// ■ Class인스턴스를 취득
+// - 취득 : 클래스명.class
+Class<Exception> e = Exception.class </Exception>
+// ----------
+// - 인스턴스에서 클래스인스턴스를 취득 : getClass()
+Exception instance = new Exception();
+Class<? extends Exception> e = instance.getClass();
+// - 클래스명의 문자열로부터 취득
+Class<?> e = Ckass.forName("java.lang.Exception");
+// ----------
+// - 취득한 Class인스턴스로 정보취득
+https://github.com/macmoo/ref/blob/master/f/9src/005javarecipe/chap03/recipe086/ClassSample.java
+// ---------------------------------</code></pre>
+<!-- ############################################# -->
+<pre><code class="java">// ---------------------------------
+// ■ 리플렉션
+//   Class오브젝트로부터 필드나 메소드 등의 정보를 취득하고, 
+//   더 나아가 그 필드나 메소드를 동적으로 호출하는 것이 가능하게 하는것.
+// 예)
+// Class 오브젝트취득
+Class<?> clazz = obj.getClass();
+// 메소드명과 인수의 형을 지정해서 Method오브젝트를 취득
+Method method = clazz.getMethod("setName", String.class);
+// setName메소드를 호출
+method.invoke(obj, "Naoki");
+// ----------
+// - 리플렉션으로 클래스의 멤버정보를 취득
+https://github.com/macmoo/ref/tree/master/f/9src/005javarecipe/chap03/recipe086/MemberSample.java
+// ----------
+// - 리플렉션으로 인수명을 취득
+https://github.com/macmoo/ref/blob/master/f/9src/005javarecipe/chap03/recipe086/ParameterNamesSample.java
+// ----------
+// - 리플렉션으로 인스턴스를 생성
+//   Constructor#newInstance()
+https://github.com/macmoo/ref/blob/master/f/9src/005javarecipe/chap03/recipe087/NewInstanceSample.java
+// ----------
+// - 리플렉션으로 메소드나 필드를 호출
+
+// ----------
+// ----------
+// ----------
+// ---------------------------------</code></pre>
 <!-- ############################################# -->
 <pre><code class="java"></code></pre>
 <!-- ############################################# -->
