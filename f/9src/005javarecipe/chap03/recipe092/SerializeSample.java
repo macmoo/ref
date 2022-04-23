@@ -33,3 +33,6 @@ public class SerializeSample {
 	}
 
 }
+// id: 15
+// lastName: ***多可子***
+// firstName: 島本
