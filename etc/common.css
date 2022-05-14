@@ -3,7 +3,8 @@
 body{
     /* font-family: Consolas,monaco,monospace, cursive; */
     font-family: Tahoma, Arial, Helvetica, 'Microsoft YaHei New', 'Microsoft Yahei', sans-serif;
-    font-size: 1em;
+    /* font-size: 1em; */
+    font-size: 13px;
     background-size: 1em 1em;
     background-image: radial-gradient(circle,rgba(0,50,255,0.2) 1px,rgba(0,0,0, 0) 2px); 
     background-position:.3em .62em;
@@ -17,7 +18,6 @@ body{
     position:fixed;
     top: 0;
     width:100%;
-    padding-left: 11px;
 }
 .nav  li {
     float:left;
@@ -82,6 +82,7 @@ ol ol li::before{
     outline: none;
     font-size: 15px;
     /* font-family: Consolas,monaco,monospace;  */
+    font-family: Tahoma, Arial, Helvetica, 'Microsoft YaHei New', 'Microsoft Yahei', sans-serif;
 }
 .active,
 .collapsible:hover {
@@ -98,7 +99,7 @@ ol ol li::before{
     content: "\2212";
 }
 .content {
-    padding: 0px 10px;
+    /* padding: 0px 10px; */
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
