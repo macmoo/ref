@@ -12,7 +12,55 @@
     </script>
     <!-- E N D -->
 </head>
+<style>
 
+    /* ```css */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+    background-color: white;
+}
+
+.data-table th,
+.data-table td {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: center;
+}
+
+.data-table th {
+    font-weight: bold;
+}
+
+.data-table th:nth-child(1),
+.data-table td:nth-child(1) {
+    width: 60px;
+}
+
+.data-table th:nth-child(2),
+.data-table td:nth-child(2) {
+    text-align: left;
+}
+
+.data-table th:nth-child(3),
+.data-table td:nth-child(3),
+.data-table th:nth-child(4),
+.data-table td:nth-child(4) {
+    width: 120px;
+}
+
+.data-table a {
+    text-decoration: none;
+}
+
+.data-table a:hover {
+    text-decoration: underline;
+}
+/* ``` */
+
+</style>
 <body>
     <div id="topMenu"></div>
     <br>
@@ -29,7 +77,6 @@
                 <li><a href="./f/2prj/winmain.html">[Win32] winmain.cpp</a></li>
                 <li><a href="./f/1_dev/WinUser.html">[SRC] WinUser.h</a></li>
                 <li><a href="./f/1_dev/memory.html">[SRC] memory.h</a></li>
-                <li><a href="https://github.com/macmoo/ref/tree/master/f/8.lib/glibc-2.33">[SRC] The GNU C Library (glibc)</a></li>
                 <li><a href="http://soen.kr/lecture/ccpp/reference/reference.htm">[Ref] C/C++ Ref</a></li>
                 <li><a href="http://soen.kr/lecture/win32api/reference/reference.htm">[Ref] win32api</a></li>
                 <li><a href="https://www.cplusplus.com/reference/string/stoi/">[Ref] std::stoi</a></li>
@@ -54,106 +101,209 @@
             </ol>
         </div>
         <!-- ################################################# -->
-        <button type="button" class="collapsible">ETC</button>
-        <div class="content">
-            <ol>
-                <li><a href="./f/4etc/java_1.html">[JAVA] snippet</a></li>
-                <li><a href="./f/4etc/java_2.html">[JAVA] Java逆引きレシピ 第2版</a></li>
-                <li><a href="https://github.com/macmoo/ref/tree/master/f/9src/005javarecipe">[src__] Java逆引きレシピ 第2版 </a></li>
-                <li><a href="https://is.gd/VRT6A1">[RULE] Javaコーディング規約 </a></li>
-                <li><a href="./f/4etc/junit.html" >[jUnit] snippet</a></li>
-                <li><a href="./f/4etc/git.html"   >[git] command</a></li>
-            </ol>
-        </div>
-        <!-- ################################################# -->
-        <button type="button" class="collapsible">JS</button>
-        <div class="content">
-            <ol>
-                <li><a href="./f/3js/js_2.html">[コードレシピ278]  </a></li>
-                <li><a href="./f/3js/js_1.html">etc               </a></li>
-                <li><a href="./f/3js/001_geo.html"  >geo          </a></li>
-                <li><a href="./f/3js/002_gyro.html" >gyro         </a></li>
-                <li><a href="./f/3js/003_vib.html"  >vib          </a></li>
-                <li><a href="./f/3js/004_color.html">color        </a></li>
-                <li><a href="./f/3js/005_sort.html" >sort         </a></li>
-            </ol>
-            </ol>
-        </div>
-        <!-- ################################################# -->
-        <button type="button" class="collapsible">알고리즘</button>
-        <div class="content">
-            <ol>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/binary_search/anim.html">이분탐색(二分探索)</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/binary_search/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/reverse/anim.html">リバース</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/reverse/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/insertion/anim.html">挿入</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/insertion/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/merge/anim.html">マージ</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/merge/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/partition/anim.html">パーティション </a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/partition/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/bubble_sort/anim.html">バブルソート</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/bubble_sort/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/selection_sort/anim.html">選択ソート</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/selection_sort/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/insertion_sort/anim.html">挿入ソート</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/insertion_sort/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/shaker_sort/anim.html">シェーカーソート</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/shaker_sort/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/sieve_of_eratosthenes/anim.html">エラトステネスの篩</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/sieve_of_eratosthenes/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/euclidean_algorithm/anim.html">ユークリッドの互除法</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/euclidean_algorithm/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/stack_simulation/anim.html">スタック</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/stack_simulation/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/queue_simulation/anim.html">キュー </a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/queue_simulation/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/accumulation/anim.html">累積和 </a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/accumulation/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/1d_accumulation/anim.html">１次元累積和 </a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/1d_accumulation/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/2d_accumulation/anim.html">２次元累積和 </a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/2d_accumulation/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/grid_dp_path/anim.html">グリッド上の動的計画法 </a></li>
-                <li><a href="">  ⇒ pseudo_code : 없음</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/upheap_simulation/anim.html">Up Heap</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/upheap_simulation/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/downheap_simulation/anim.html">Down Heap</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/downheap_simulation/code.html">  ⇒ pseudo_code</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/heap_construction/anim.html">Building Heap</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/heap_construction/code.html">  ⇒ pseudo_code</a></li>
-
-
-            </ol>
-        </div>
-          <!-- ################################################# -->
-        <button type="button" class="collapsible">git ref</button>
-        <div class="content">
-            <ol>
-                <li><a href="https://doom.fandom.com/wiki/Doom_source_code">Doom src code Wiki</a></li>
-                <li><a href="https://github.com/id-Software/DOOM">Doom1 src</a></li>
-                <li><a href="https://github.com/id-Software/DOOM-3">Doom3 src</a></li>
-                <li><a href="https://github.com/id-Software/wolf3d">wolf3d</a></li>
-                <li><a href="https://github.com/d07RiV/diabloweb">Web Diablo Src</a></li>
-                <li><a href="https://github.com/d07RiV/devilution">Diablo Src</a></li>
-                <li><a href="https://github.com/diasurgical/devilution/tree/master/Source">Diablo src</a></li>
-                <li><a href="https://github.com/Roobyx/awesome-game-design">Awesome Game design</a></li>
-                <li><a href="https://github.com/WinampDesktop/winamp">winamp</a></li>
-                <li><a href=""></a></li>
-            </ol>
-        </div>
-        <!-- ################################################# -->
         <button type="button" class="collapsible">Book Source</button>
         <div class="content">
             <ol>
                 <li><a href="https://github.com/macmoo/ref/tree/master/f/9src/001Pointer">ポインタの極意</a></li>
-                <li><a href="https://github.com/macmoo/ref/tree/master/f/9src/002jsReceipe">JavaScript逆引きレシピ</a></li>
-                <li><a href="https://yutaka-watanobe.github.io/star-aida/books/">アルゴリズム ビジュアル大事典</a></li>
             </ol>
         </div>
+        <br/>
         <!-- ################################################# -->
+        <button type="button" class="collapsible">Repository</button>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Repository</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Doom src code Wiki</td>
+                    <td><a href="https://doom.fandom.com/wiki/Doom_source_code">보기</a></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Doom1 src</td>
+                    <td><a href="https://github.com/id-Software/DOOM">GitHub</a></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Doom3 src</td>
+                    <td><a href="https://github.com/id-Software/DOOM-3">GitHub</a></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>wolf3d</td>
+                    <td><a href="https://github.com/id-Software/wolf3d">GitHub</a></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Web Diablo Src</td>
+                    <td><a href="https://github.com/d07RiV/diabloweb">GitHub</a></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Diablo Src</td>
+                    <td><a href="https://github.com/d07RiV/devilution">GitHub</a></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Diablo src</td>
+                    <td><a href="https://github.com/diasurgical/devilution/tree/master/Source">GitHub</a></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Awesome Game design</td>
+                    <td><a href="https://github.com/Roobyx/awesome-game-design">GitHub</a></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>winamp</td>
+                    <td><a href="https://github.com/WinampDesktop/winamp">GitHub</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- ################################################# -->
+        <button type="button" class="collapsible">알고리즘</button>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>알고리즘</th>
+                    <th>Animation</th>
+                    <th>Pseudo Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>이분탐색(二分探索)</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/binary_search/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/binary_search/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>リバース</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/reverse/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/reverse/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>挿入</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/insertion/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/insertion/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>マージ</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/merge/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/merge/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>パーティション</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/partition/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/partition/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>バブルソート</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/bubble_sort/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/bubble_sort/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>選択ソート</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/selection_sort/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/selection_sort/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>挿入ソート</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/insertion_sort/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/insertion_sort/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>シェーカーソート</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/shaker_sort/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/shaker_sort/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>エラトステネスの篩</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/sieve_of_eratosthenes/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/sieve_of_eratosthenes/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>ユークリッドの互除法</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/euclidean_algorithm/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/euclidean_algorithm/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>スタック</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/stack_simulation/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/stack_simulation/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>キュー</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/queue_simulation/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/queue_simulation/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>累積和</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/accumulation/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/accumulation/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>１次元累積和</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/1d_accumulation/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/1d_accumulation/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>２次元累積和</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/2d_accumulation/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/2d_accumulation/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>グリッド上の動的計画法</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/grid_dp_path/anim.html">보기</a></td>
+                    <td>없음</td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>Up Heap</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/upheap_simulation/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/upheap_simulation/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>Down Heap</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/downheap_simulation/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/downheap_simulation/code.html">보기</a></td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>Building Heap</td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/1.0/algorithms/heap_construction/anim.html">보기</a></td>
+                    <td><a href="https://yutaka-watanobe.github.io/star-aida/books/pseudo_code/heap_construction/code.html">보기</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- ################################################# -->
+
     </div>
 </body>
-
 </html>
