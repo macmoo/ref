@@ -1,1 +1,0 @@
-coffee = milked ? 'latte' : 'black'

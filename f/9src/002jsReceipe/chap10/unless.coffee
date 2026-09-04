@@ -1,2 +1,0 @@
-unless milked
-  coffee = 'black'
